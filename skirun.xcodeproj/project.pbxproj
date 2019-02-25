@@ -1,0 +1,585 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		842C4A1E2224166000E802F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C4A1D2224166000E802F9 /* AppDelegate.swift */; };
+		842C4A202224166000E802F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C4A1F2224166000E802F9 /* ViewController.swift */; };
+		842C4A232224166000E802F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842C4A212224166000E802F9 /* Main.storyboard */; };
+		842C4A252224166200E802F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842C4A242224166200E802F9 /* Assets.xcassets */; };
+		842C4A282224166200E802F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842C4A262224166200E802F9 /* LaunchScreen.storyboard */; };
+		842C4A332224166200E802F9 /* skirunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C4A322224166200E802F9 /* skirunTests.swift */; };
+		842C4A3E2224166200E802F9 /* skirunUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C4A3D2224166200E802F9 /* skirunUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		842C4A2F2224166200E802F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 842C4A122224165F00E802F9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 842C4A192224166000E802F9;
+			remoteInfo = skirun;
+		};
+		842C4A3A2224166200E802F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 842C4A122224165F00E802F9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 842C4A192224166000E802F9;
+			remoteInfo = skirun;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		842C4A1A2224166000E802F9 /* skirun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = skirun.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		842C4A1D2224166000E802F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		842C4A1F2224166000E802F9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		842C4A222224166000E802F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		842C4A242224166200E802F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		842C4A272224166200E802F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		842C4A292224166200E802F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		842C4A2E2224166200E802F9 /* skirunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = skirunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		842C4A322224166200E802F9 /* skirunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skirunTests.swift; sourceTree = "<group>"; };
+		842C4A342224166200E802F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		842C4A392224166200E802F9 /* skirunUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = skirunUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		842C4A3D2224166200E802F9 /* skirunUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skirunUITests.swift; sourceTree = "<group>"; };
+		842C4A3F2224166200E802F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		842C4A172224166000E802F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842C4A2B2224166200E802F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842C4A362224166200E802F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		842C4A112224165F00E802F9 = {
+			isa = PBXGroup;
+			children = (
+				842C4A1C2224166000E802F9 /* skirun */,
+				842C4A312224166200E802F9 /* skirunTests */,
+				842C4A3C2224166200E802F9 /* skirunUITests */,
+				842C4A1B2224166000E802F9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		842C4A1B2224166000E802F9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				842C4A1A2224166000E802F9 /* skirun.app */,
+				842C4A2E2224166200E802F9 /* skirunTests.xctest */,
+				842C4A392224166200E802F9 /* skirunUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		842C4A1C2224166000E802F9 /* skirun */ = {
+			isa = PBXGroup;
+			children = (
+				842C4A1D2224166000E802F9 /* AppDelegate.swift */,
+				842C4A1F2224166000E802F9 /* ViewController.swift */,
+				842C4A212224166000E802F9 /* Main.storyboard */,
+				842C4A242224166200E802F9 /* Assets.xcassets */,
+				842C4A262224166200E802F9 /* LaunchScreen.storyboard */,
+				842C4A292224166200E802F9 /* Info.plist */,
+			);
+			path = skirun;
+			sourceTree = "<group>";
+		};
+		842C4A312224166200E802F9 /* skirunTests */ = {
+			isa = PBXGroup;
+			children = (
+				842C4A322224166200E802F9 /* skirunTests.swift */,
+				842C4A342224166200E802F9 /* Info.plist */,
+			);
+			path = skirunTests;
+			sourceTree = "<group>";
+		};
+		842C4A3C2224166200E802F9 /* skirunUITests */ = {
+			isa = PBXGroup;
+			children = (
+				842C4A3D2224166200E802F9 /* skirunUITests.swift */,
+				842C4A3F2224166200E802F9 /* Info.plist */,
+			);
+			path = skirunUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		842C4A192224166000E802F9 /* skirun */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 842C4A422224166200E802F9 /* Build configuration list for PBXNativeTarget "skirun" */;
+			buildPhases = (
+				842C4A162224166000E802F9 /* Sources */,
+				842C4A172224166000E802F9 /* Frameworks */,
+				842C4A182224166000E802F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = skirun;
+			productName = skirun;
+			productReference = 842C4A1A2224166000E802F9 /* skirun.app */;
+			productType = "com.apple.product-type.application";
+		};
+		842C4A2D2224166200E802F9 /* skirunTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 842C4A452224166200E802F9 /* Build configuration list for PBXNativeTarget "skirunTests" */;
+			buildPhases = (
+				842C4A2A2224166200E802F9 /* Sources */,
+				842C4A2B2224166200E802F9 /* Frameworks */,
+				842C4A2C2224166200E802F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				842C4A302224166200E802F9 /* PBXTargetDependency */,
+			);
+			name = skirunTests;
+			productName = skirunTests;
+			productReference = 842C4A2E2224166200E802F9 /* skirunTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		842C4A382224166200E802F9 /* skirunUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 842C4A482224166200E802F9 /* Build configuration list for PBXNativeTarget "skirunUITests" */;
+			buildPhases = (
+				842C4A352224166200E802F9 /* Sources */,
+				842C4A362224166200E802F9 /* Frameworks */,
+				842C4A372224166200E802F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				842C4A3B2224166200E802F9 /* PBXTargetDependency */,
+			);
+			name = skirunUITests;
+			productName = skirunUITests;
+			productReference = 842C4A392224166200E802F9 /* skirunUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		842C4A122224165F00E802F9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = GROUP2;
+				TargetAttributes = {
+					842C4A192224166000E802F9 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					842C4A2D2224166200E802F9 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 842C4A192224166000E802F9;
+					};
+					842C4A382224166200E802F9 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 842C4A192224166000E802F9;
+					};
+				};
+			};
+			buildConfigurationList = 842C4A152224165F00E802F9 /* Build configuration list for PBXProject "skirun" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 842C4A112224165F00E802F9;
+			productRefGroup = 842C4A1B2224166000E802F9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				842C4A192224166000E802F9 /* skirun */,
+				842C4A2D2224166200E802F9 /* skirunTests */,
+				842C4A382224166200E802F9 /* skirunUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		842C4A182224166000E802F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				842C4A282224166200E802F9 /* LaunchScreen.storyboard in Resources */,
+				842C4A252224166200E802F9 /* Assets.xcassets in Resources */,
+				842C4A232224166000E802F9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842C4A2C2224166200E802F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842C4A372224166200E802F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		842C4A162224166000E802F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				842C4A202224166000E802F9 /* ViewController.swift in Sources */,
+				842C4A1E2224166000E802F9 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842C4A2A2224166200E802F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				842C4A332224166200E802F9 /* skirunTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842C4A352224166200E802F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				842C4A3E2224166200E802F9 /* skirunUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		842C4A302224166200E802F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 842C4A192224166000E802F9 /* skirun */;
+			targetProxy = 842C4A2F2224166200E802F9 /* PBXContainerItemProxy */;
+		};
+		842C4A3B2224166200E802F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 842C4A192224166000E802F9 /* skirun */;
+			targetProxy = 842C4A3A2224166200E802F9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		842C4A212224166000E802F9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				842C4A222224166000E802F9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		842C4A262224166200E802F9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				842C4A272224166200E802F9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		842C4A402224166200E802F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		842C4A412224166200E802F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		842C4A432224166200E802F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = skirun/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ch.hevs.aislab.sapao.skirun;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		842C4A442224166200E802F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = skirun/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ch.hevs.aislab.sapao.skirun;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		842C4A462224166200E802F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = skirunTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ch.hevs.aislab.sapao.skirunTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/skirun.app/skirun";
+			};
+			name = Debug;
+		};
+		842C4A472224166200E802F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = skirunTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ch.hevs.aislab.sapao.skirunTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/skirun.app/skirun";
+			};
+			name = Release;
+		};
+		842C4A492224166200E802F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = skirunUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ch.hevs.aislab.sapao.skirunUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = skirun;
+			};
+			name = Debug;
+		};
+		842C4A4A2224166200E802F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = skirunUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ch.hevs.aislab.sapao.skirunUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = skirun;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		842C4A152224165F00E802F9 /* Build configuration list for PBXProject "skirun" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				842C4A402224166200E802F9 /* Debug */,
+				842C4A412224166200E802F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		842C4A422224166200E802F9 /* Build configuration list for PBXNativeTarget "skirun" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				842C4A432224166200E802F9 /* Debug */,
+				842C4A442224166200E802F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		842C4A452224166200E802F9 /* Build configuration list for PBXNativeTarget "skirunTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				842C4A462224166200E802F9 /* Debug */,
+				842C4A472224166200E802F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		842C4A482224166200E802F9 /* Build configuration list for PBXNativeTarget "skirunUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				842C4A492224166200E802F9 /* Debug */,
+				842C4A4A2224166200E802F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 842C4A122224165F00E802F9 /* Project object */;
+}
