@@ -16,7 +16,22 @@ class ViewController: UIViewController {
         //test
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-
+    
+    //FOR TESTING CONTINIOUS INTEGRATION
+    func isNumberOk(num: Int) -> Bool {
+        if (num % 2 == 0){
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    func printHello(){
+        print("hello")
+    }
 }
+
+
+
 
