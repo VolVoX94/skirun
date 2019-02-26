@@ -27,7 +27,7 @@ class skirunTests: XCTestCase {
     func testIsNumberOk(){
         //INSTANCE TO THE CLASS
         let viewController = ViewController()
-        let number = 6
+        let number = 7
         
         XCTAssertFalse(viewController.isNumberOk(num: number))
     }
