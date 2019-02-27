@@ -1,0 +1,770 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		59615D75925F5D1A8004EC91DC2ED56D /* Pods-skirunTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 95BEF87009C7F6893A91E12B83B73003 /* Pods-skirunTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5FB54E78A0046AAD39A24285BC0A3F24 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		AF254EC971852AFE0467C2C5FE139350 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		B60C738FDC478070A77667659FE34D57 /* Pods-skirunTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C3507C1ED46B7385B2D481182FAA63BC /* Pods-skirunTests-dummy.m */; };
+		B6BA5810422A808D44378826CAE6509A /* Pods-skirun-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 06C86F64023E2E625577C28D984FD86B /* Pods-skirun-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BB232AEC9B16255F58AA1762C8EC7C44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		CEC815166D7355953623DC4412286987 /* Pods-skirun-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 245C4D0D9CACCB5E0BCD9C7AB4B35816 /* Pods-skirun-dummy.m */; };
+		DF36EC7A2370ED4CA992F2978976274F /* Pods-skirunUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 76BFD38875063F2D9137630C8EBA5675 /* Pods-skirunUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F9B99BC2996A64E19D5B02189655130A /* Pods-skirunUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F649C698DE21BA83A7A67D20346368 /* Pods-skirunUITests-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2FDD21555C0A766EB2EC2164058DD971 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4736922112F2352D95692ACD6831A6F9;
+			remoteInfo = "Pods-skirun";
+		};
+		37E5C08562547B8F36B7D1F83460C4BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4736922112F2352D95692ACD6831A6F9;
+			remoteInfo = "Pods-skirun";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		06C86F64023E2E625577C28D984FD86B /* Pods-skirun-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-skirun-umbrella.h"; sourceTree = "<group>"; };
+		113110560A805AE8956EAD579CDB2A83 /* Pods-skirun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-skirun.release.xcconfig"; sourceTree = "<group>"; };
+		245C4D0D9CACCB5E0BCD9C7AB4B35816 /* Pods-skirun-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-skirun-dummy.m"; sourceTree = "<group>"; };
+		256837B1854C0D53227EE3D9747C8AFC /* Pods-skirun-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-skirun-Info.plist"; sourceTree = "<group>"; };
+		25B44073174AB7C81A73A69C43825A63 /* Pods-skirunUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-skirunUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		44B08CCF1CA7775020AF797E052E1AE6 /* Pods-skirun-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-skirun-acknowledgements.markdown"; sourceTree = "<group>"; };
+		4B86D476BC570557D2C412ADA36AB8E8 /* Pods_skirun.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_skirun.framework; path = "Pods-skirun.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50F649C698DE21BA83A7A67D20346368 /* Pods-skirunUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-skirunUITests-dummy.m"; sourceTree = "<group>"; };
+		5D789FD6DA33326687848E1465EC65A5 /* Pods-skirunUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-skirunUITests-Info.plist"; sourceTree = "<group>"; };
+		6255E2FCC4101ED2EADDA99CFAA0BD48 /* Pods-skirunTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-skirunTests.modulemap"; sourceTree = "<group>"; };
+		6686401288BECA9B66E33C7638623C74 /* Pods-skirun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-skirun.debug.xcconfig"; sourceTree = "<group>"; };
+		69C0766DB664504FB68D63ADCC325E3B /* Pods-skirunTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-skirunTests.release.xcconfig"; sourceTree = "<group>"; };
+		76BFD38875063F2D9137630C8EBA5675 /* Pods-skirunUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-skirunUITests-umbrella.h"; sourceTree = "<group>"; };
+		7C477F31A677320647497239402ECA85 /* Pods-skirunUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-skirunUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		842BCE13685A6C3AAECDFE8610F0005B /* Pods_skirunTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_skirunTests.framework; path = "Pods-skirunTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D5FF0907DEAC4CAD6617C4E82504D5E /* Pods-skirunTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-skirunTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		95BEF87009C7F6893A91E12B83B73003 /* Pods-skirunTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-skirunTests-umbrella.h"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A141765667CE8D4219D3753F06EC0DF7 /* Pods-skirun.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-skirun.modulemap"; sourceTree = "<group>"; };
+		B14A37FB47222D2D4D1D7D01ABA28638 /* Pods_skirunUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_skirunUITests.framework; path = "Pods-skirunUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B80C3A3585A9E449D4154638164156E3 /* Pods-skirun-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-skirun-acknowledgements.plist"; sourceTree = "<group>"; };
+		BA54D3DB27FC6B31F1BD8DABA6A8F785 /* Pods-skirunTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-skirunTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		C3507C1ED46B7385B2D481182FAA63BC /* Pods-skirunTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-skirunTests-dummy.m"; sourceTree = "<group>"; };
+		C95A7429294D087070A7CD922A2EA421 /* Pods-skirunUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-skirunUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D7AA1D7CD8F148FB3E31FB4CB403BE13 /* Pods-skirunUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-skirunUITests.modulemap"; sourceTree = "<group>"; };
+		D89CAD205CBE1E2A28CC7D082DC1DAB7 /* Pods-skirunUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-skirunUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E0B42750C6D47671A3661B245E95D0F8 /* Pods-skirunTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-skirunTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F177979625723D77F114ABD1FEF0277E /* Pods-skirunTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-skirunTests-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7D52CE061F887D38F58D71F69F3AAF66 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB232AEC9B16255F58AA1762C8EC7C44 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85E6990F2E947A2C767FD2135CE29508 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF254EC971852AFE0467C2C5FE139350 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B06E98D089CAEF11B78BFAABBCF2BA6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FB54E78A0046AAD39A24285BC0A3F24 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		032A12F4EC661A4169963EC116ADA769 /* Pods-skirun */ = {
+			isa = PBXGroup;
+			children = (
+				A141765667CE8D4219D3753F06EC0DF7 /* Pods-skirun.modulemap */,
+				44B08CCF1CA7775020AF797E052E1AE6 /* Pods-skirun-acknowledgements.markdown */,
+				B80C3A3585A9E449D4154638164156E3 /* Pods-skirun-acknowledgements.plist */,
+				245C4D0D9CACCB5E0BCD9C7AB4B35816 /* Pods-skirun-dummy.m */,
+				256837B1854C0D53227EE3D9747C8AFC /* Pods-skirun-Info.plist */,
+				06C86F64023E2E625577C28D984FD86B /* Pods-skirun-umbrella.h */,
+				6686401288BECA9B66E33C7638623C74 /* Pods-skirun.debug.xcconfig */,
+				113110560A805AE8956EAD579CDB2A83 /* Pods-skirun.release.xcconfig */,
+			);
+			name = "Pods-skirun";
+			path = "Target Support Files/Pods-skirun";
+			sourceTree = "<group>";
+		};
+		5FBE205A9F5A74CAA4FFDABC23897978 /* Pods-skirunTests */ = {
+			isa = PBXGroup;
+			children = (
+				6255E2FCC4101ED2EADDA99CFAA0BD48 /* Pods-skirunTests.modulemap */,
+				BA54D3DB27FC6B31F1BD8DABA6A8F785 /* Pods-skirunTests-acknowledgements.markdown */,
+				8D5FF0907DEAC4CAD6617C4E82504D5E /* Pods-skirunTests-acknowledgements.plist */,
+				C3507C1ED46B7385B2D481182FAA63BC /* Pods-skirunTests-dummy.m */,
+				F177979625723D77F114ABD1FEF0277E /* Pods-skirunTests-Info.plist */,
+				95BEF87009C7F6893A91E12B83B73003 /* Pods-skirunTests-umbrella.h */,
+				E0B42750C6D47671A3661B245E95D0F8 /* Pods-skirunTests.debug.xcconfig */,
+				69C0766DB664504FB68D63ADCC325E3B /* Pods-skirunTests.release.xcconfig */,
+			);
+			name = "Pods-skirunTests";
+			path = "Target Support Files/Pods-skirunTests";
+			sourceTree = "<group>";
+		};
+		610F4C86F56093A58DA11D817A86B5D3 /* Pods-skirunUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D7AA1D7CD8F148FB3E31FB4CB403BE13 /* Pods-skirunUITests.modulemap */,
+				7C477F31A677320647497239402ECA85 /* Pods-skirunUITests-acknowledgements.markdown */,
+				25B44073174AB7C81A73A69C43825A63 /* Pods-skirunUITests-acknowledgements.plist */,
+				50F649C698DE21BA83A7A67D20346368 /* Pods-skirunUITests-dummy.m */,
+				5D789FD6DA33326687848E1465EC65A5 /* Pods-skirunUITests-Info.plist */,
+				76BFD38875063F2D9137630C8EBA5675 /* Pods-skirunUITests-umbrella.h */,
+				D89CAD205CBE1E2A28CC7D082DC1DAB7 /* Pods-skirunUITests.debug.xcconfig */,
+				C95A7429294D087070A7CD922A2EA421 /* Pods-skirunUITests.release.xcconfig */,
+			);
+			name = "Pods-skirunUITests";
+			path = "Target Support Files/Pods-skirunUITests";
+			sourceTree = "<group>";
+		};
+		9B055D0CFEA43187E72B03DED11F5662 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		CA583CE5DA7E138FC00500B34632DC36 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				032A12F4EC661A4169963EC116ADA769 /* Pods-skirun */,
+				5FBE205A9F5A74CAA4FFDABC23897978 /* Pods-skirunTests */,
+				610F4C86F56093A58DA11D817A86B5D3 /* Pods-skirunUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				E88D23A5C5EAFC0AB2995EC2D79B68F7 /* Products */,
+				CA583CE5DA7E138FC00500B34632DC36 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B055D0CFEA43187E72B03DED11F5662 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E88D23A5C5EAFC0AB2995EC2D79B68F7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4B86D476BC570557D2C412ADA36AB8E8 /* Pods_skirun.framework */,
+				842BCE13685A6C3AAECDFE8610F0005B /* Pods_skirunTests.framework */,
+				B14A37FB47222D2D4D1D7D01ABA28638 /* Pods_skirunUITests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		551EA18FD6F5496D720D6F1087B35F37 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59615D75925F5D1A8004EC91DC2ED56D /* Pods-skirunTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D82948B6BD8B12481A1AE7D1847CA204 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF36EC7A2370ED4CA992F2978976274F /* Pods-skirunUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DC105BDF62F579BDD6B85C55DD608218 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6BA5810422A808D44378826CAE6509A /* Pods-skirun-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		4736922112F2352D95692ACD6831A6F9 /* Pods-skirun */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2B83F5F3A19B2090637416FA1B119D5 /* Build configuration list for PBXNativeTarget "Pods-skirun" */;
+			buildPhases = (
+				DC105BDF62F579BDD6B85C55DD608218 /* Headers */,
+				42B44E950E1B5256522A48BF2018323F /* Sources */,
+				B06E98D089CAEF11B78BFAABBCF2BA6B /* Frameworks */,
+				03DBAC3522D4630AF604C353D466A04A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-skirun";
+			productName = "Pods-skirun";
+			productReference = 4B86D476BC570557D2C412ADA36AB8E8 /* Pods_skirun.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		55C4485AEDA10377D18244F3C18DF143 /* Pods-skirunTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B53BC4FB6ED7FA8196C73062AE4683A9 /* Build configuration list for PBXNativeTarget "Pods-skirunTests" */;
+			buildPhases = (
+				551EA18FD6F5496D720D6F1087B35F37 /* Headers */,
+				C005E6E1785BD12BB42C0C7B3851E1F6 /* Sources */,
+				7D52CE061F887D38F58D71F69F3AAF66 /* Frameworks */,
+				65682E0F7A8896B2B18CAEFFEE0A6508 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0E3FF84C20F027DA02F3DB4401363E71 /* PBXTargetDependency */,
+			);
+			name = "Pods-skirunTests";
+			productName = "Pods-skirunTests";
+			productReference = 842BCE13685A6C3AAECDFE8610F0005B /* Pods_skirunTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		58FE54D4175F7592F5235B9300A99937 /* Pods-skirunUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90E2006ED673CED5A279EC2058626E74 /* Build configuration list for PBXNativeTarget "Pods-skirunUITests" */;
+			buildPhases = (
+				D82948B6BD8B12481A1AE7D1847CA204 /* Headers */,
+				5FCDC43C21F9A4102EC7ED13DC26C1A7 /* Sources */,
+				85E6990F2E947A2C767FD2135CE29508 /* Frameworks */,
+				6C057558CE27C2659890070086B13BF2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9F7A01AA5F3BFE86D9CDCC975283E067 /* PBXTargetDependency */,
+			);
+			name = "Pods-skirunUITests";
+			productName = "Pods-skirunUITests";
+			productReference = B14A37FB47222D2D4D1D7D01ABA28638 /* Pods_skirunUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = E88D23A5C5EAFC0AB2995EC2D79B68F7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4736922112F2352D95692ACD6831A6F9 /* Pods-skirun */,
+				55C4485AEDA10377D18244F3C18DF143 /* Pods-skirunTests */,
+				58FE54D4175F7592F5235B9300A99937 /* Pods-skirunUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		03DBAC3522D4630AF604C353D466A04A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65682E0F7A8896B2B18CAEFFEE0A6508 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C057558CE27C2659890070086B13BF2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		42B44E950E1B5256522A48BF2018323F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEC815166D7355953623DC4412286987 /* Pods-skirun-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FCDC43C21F9A4102EC7ED13DC26C1A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9B99BC2996A64E19D5B02189655130A /* Pods-skirunUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C005E6E1785BD12BB42C0C7B3851E1F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B60C738FDC478070A77667659FE34D57 /* Pods-skirunTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0E3FF84C20F027DA02F3DB4401363E71 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-skirun";
+			target = 4736922112F2352D95692ACD6831A6F9 /* Pods-skirun */;
+			targetProxy = 2FDD21555C0A766EB2EC2164058DD971 /* PBXContainerItemProxy */;
+		};
+		9F7A01AA5F3BFE86D9CDCC975283E067 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-skirun";
+			target = 4736922112F2352D95692ACD6831A6F9 /* Pods-skirun */;
+			targetProxy = 37E5C08562547B8F36B7D1F83460C4BF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3831098B7D6398A49EA25BC4E436B5F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0B42750C6D47671A3661B245E95D0F8 /* Pods-skirunTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-skirunTests/Pods-skirunTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-skirunTests/Pods-skirunTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		42549DE05C4AAE584DD2091A8B0AA6FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D89CAD205CBE1E2A28CC7D082DC1DAB7 /* Pods-skirunUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-skirunUITests/Pods-skirunUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-skirunUITests/Pods-skirunUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		51D68A13FBD4666F5B5E5D19011D28B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69C0766DB664504FB68D63ADCC325E3B /* Pods-skirunTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-skirunTests/Pods-skirunTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-skirunTests/Pods-skirunTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		833845C89175BEB8A76B637E1EB4C5D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C95A7429294D087070A7CD922A2EA421 /* Pods-skirunUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-skirunUITests/Pods-skirunUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-skirunUITests/Pods-skirunUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		899CD0DB099A0051523F53390627A0CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6686401288BECA9B66E33C7638623C74 /* Pods-skirun.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-skirun/Pods-skirun-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-skirun/Pods-skirun.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A105C1752A0A49B30ED621B71E226CDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		ACA4744B293813CEDB8068D6CF565502 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 113110560A805AE8956EAD579CDB2A83 /* Pods-skirun.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-skirun/Pods-skirun-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-skirun/Pods-skirun.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C1391485F05B41BD35738A433056B7FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C1391485F05B41BD35738A433056B7FA /* Debug */,
+				A105C1752A0A49B30ED621B71E226CDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		90E2006ED673CED5A279EC2058626E74 /* Build configuration list for PBXNativeTarget "Pods-skirunUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42549DE05C4AAE584DD2091A8B0AA6FE /* Debug */,
+				833845C89175BEB8A76B637E1EB4C5D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B53BC4FB6ED7FA8196C73062AE4683A9 /* Build configuration list for PBXNativeTarget "Pods-skirunTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3831098B7D6398A49EA25BC4E436B5F2 /* Debug */,
+				51D68A13FBD4666F5B5E5D19011D28B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2B83F5F3A19B2090637416FA1B119D5 /* Build configuration list for PBXNativeTarget "Pods-skirun" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				899CD0DB099A0051523F53390627A0CA /* Debug */,
+				ACA4744B293813CEDB8068D6CF565502 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
