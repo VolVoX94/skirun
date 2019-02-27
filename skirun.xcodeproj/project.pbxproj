@@ -1,0 +1,591 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE7C823C222682F500FA4B3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C823B222682F500FA4B3B /* AppDelegate.swift */; };
+		CE7C823E222682F500FA4B3B /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C823D222682F500FA4B3B /* FirstViewController.swift */; };
+		CE7C8240222682F500FA4B3B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C823F222682F500FA4B3B /* SecondViewController.swift */; };
+		CE7C8243222682F500FA4B3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7C8241222682F500FA4B3B /* Main.storyboard */; };
+		CE7C8245222682F600FA4B3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7C8244222682F600FA4B3B /* Assets.xcassets */; };
+		CE7C8248222682F600FA4B3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7C8246222682F600FA4B3B /* LaunchScreen.storyboard */; };
+		CE7C8253222682F600FA4B3B /* skirunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C8252222682F600FA4B3B /* skirunTests.swift */; };
+		CE7C825E222682F600FA4B3B /* skirunUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C825D222682F600FA4B3B /* skirunUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CE7C824F222682F600FA4B3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE7C8230222682F500FA4B3B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE7C8237222682F500FA4B3B;
+			remoteInfo = skirun;
+		};
+		CE7C825A222682F600FA4B3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE7C8230222682F500FA4B3B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE7C8237222682F500FA4B3B;
+			remoteInfo = skirun;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CE7C8238222682F500FA4B3B /* skirun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = skirun.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE7C823B222682F500FA4B3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CE7C823D222682F500FA4B3B /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		CE7C823F222682F500FA4B3B /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		CE7C8242222682F500FA4B3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CE7C8244222682F600FA4B3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CE7C8247222682F600FA4B3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CE7C8249222682F600FA4B3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE7C824E222682F600FA4B3B /* skirunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = skirunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE7C8252222682F600FA4B3B /* skirunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skirunTests.swift; sourceTree = "<group>"; };
+		CE7C8254222682F600FA4B3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE7C8259222682F600FA4B3B /* skirunUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = skirunUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE7C825D222682F600FA4B3B /* skirunUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skirunUITests.swift; sourceTree = "<group>"; };
+		CE7C825F222682F600FA4B3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE7C8235222682F500FA4B3B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE7C824B222682F600FA4B3B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE7C8256222682F600FA4B3B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CE7C822F222682F500FA4B3B = {
+			isa = PBXGroup;
+			children = (
+				CE7C823A222682F500FA4B3B /* skirun */,
+				CE7C8251222682F600FA4B3B /* skirunTests */,
+				CE7C825C222682F600FA4B3B /* skirunUITests */,
+				CE7C8239222682F500FA4B3B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CE7C8239222682F500FA4B3B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE7C8238222682F500FA4B3B /* skirun.app */,
+				CE7C824E222682F600FA4B3B /* skirunTests.xctest */,
+				CE7C8259222682F600FA4B3B /* skirunUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE7C823A222682F500FA4B3B /* skirun */ = {
+			isa = PBXGroup;
+			children = (
+				CE7C823B222682F500FA4B3B /* AppDelegate.swift */,
+				CE7C823D222682F500FA4B3B /* FirstViewController.swift */,
+				CE7C823F222682F500FA4B3B /* SecondViewController.swift */,
+				CE7C8241222682F500FA4B3B /* Main.storyboard */,
+				CE7C8244222682F600FA4B3B /* Assets.xcassets */,
+				CE7C8246222682F600FA4B3B /* LaunchScreen.storyboard */,
+				CE7C8249222682F600FA4B3B /* Info.plist */,
+			);
+			path = skirun;
+			sourceTree = "<group>";
+		};
+		CE7C8251222682F600FA4B3B /* skirunTests */ = {
+			isa = PBXGroup;
+			children = (
+				CE7C8252222682F600FA4B3B /* skirunTests.swift */,
+				CE7C8254222682F600FA4B3B /* Info.plist */,
+			);
+			path = skirunTests;
+			sourceTree = "<group>";
+		};
+		CE7C825C222682F600FA4B3B /* skirunUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CE7C825D222682F600FA4B3B /* skirunUITests.swift */,
+				CE7C825F222682F600FA4B3B /* Info.plist */,
+			);
+			path = skirunUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CE7C8237222682F500FA4B3B /* skirun */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE7C8262222682F600FA4B3B /* Build configuration list for PBXNativeTarget "skirun" */;
+			buildPhases = (
+				CE7C8234222682F500FA4B3B /* Sources */,
+				CE7C8235222682F500FA4B3B /* Frameworks */,
+				CE7C8236222682F500FA4B3B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = skirun;
+			productName = skirun;
+			productReference = CE7C8238222682F500FA4B3B /* skirun.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CE7C824D222682F600FA4B3B /* skirunTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE7C8265222682F600FA4B3B /* Build configuration list for PBXNativeTarget "skirunTests" */;
+			buildPhases = (
+				CE7C824A222682F600FA4B3B /* Sources */,
+				CE7C824B222682F600FA4B3B /* Frameworks */,
+				CE7C824C222682F600FA4B3B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE7C8250222682F600FA4B3B /* PBXTargetDependency */,
+			);
+			name = skirunTests;
+			productName = skirunTests;
+			productReference = CE7C824E222682F600FA4B3B /* skirunTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CE7C8258222682F600FA4B3B /* skirunUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE7C8268222682F600FA4B3B /* Build configuration list for PBXNativeTarget "skirunUITests" */;
+			buildPhases = (
+				CE7C8255222682F600FA4B3B /* Sources */,
+				CE7C8256222682F600FA4B3B /* Frameworks */,
+				CE7C8257222682F600FA4B3B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE7C825B222682F600FA4B3B /* PBXTargetDependency */,
+			);
+			name = skirunUITests;
+			productName = skirunUITests;
+			productReference = CE7C8259222682F600FA4B3B /* skirunUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CE7C8230222682F500FA4B3B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = hevs;
+				TargetAttributes = {
+					CE7C8237222682F500FA4B3B = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					CE7C824D222682F600FA4B3B = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = CE7C8237222682F500FA4B3B;
+					};
+					CE7C8258222682F600FA4B3B = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = CE7C8237222682F500FA4B3B;
+					};
+				};
+			};
+			buildConfigurationList = CE7C8233222682F500FA4B3B /* Build configuration list for PBXProject "skirun" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CE7C822F222682F500FA4B3B;
+			productRefGroup = CE7C8239222682F500FA4B3B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CE7C8237222682F500FA4B3B /* skirun */,
+				CE7C824D222682F600FA4B3B /* skirunTests */,
+				CE7C8258222682F600FA4B3B /* skirunUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE7C8236222682F500FA4B3B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE7C8248222682F600FA4B3B /* LaunchScreen.storyboard in Resources */,
+				CE7C8245222682F600FA4B3B /* Assets.xcassets in Resources */,
+				CE7C8243222682F500FA4B3B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE7C824C222682F600FA4B3B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE7C8257222682F600FA4B3B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CE7C8234222682F500FA4B3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE7C8240222682F500FA4B3B /* SecondViewController.swift in Sources */,
+				CE7C823C222682F500FA4B3B /* AppDelegate.swift in Sources */,
+				CE7C823E222682F500FA4B3B /* FirstViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE7C824A222682F600FA4B3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE7C8253222682F600FA4B3B /* skirunTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE7C8255222682F600FA4B3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE7C825E222682F600FA4B3B /* skirunUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CE7C8250222682F600FA4B3B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE7C8237222682F500FA4B3B /* skirun */;
+			targetProxy = CE7C824F222682F600FA4B3B /* PBXContainerItemProxy */;
+		};
+		CE7C825B222682F600FA4B3B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE7C8237222682F500FA4B3B /* skirun */;
+			targetProxy = CE7C825A222682F600FA4B3B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CE7C8241222682F500FA4B3B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE7C8242222682F500FA4B3B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CE7C8246222682F600FA4B3B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE7C8247222682F600FA4B3B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CE7C8260222682F600FA4B3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CE7C8261222682F600FA4B3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CE7C8263222682F600FA4B3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KSMBE3ZCZB;
+				INFOPLIST_FILE = skirun/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = hevs.skirun;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CE7C8264222682F600FA4B3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KSMBE3ZCZB;
+				INFOPLIST_FILE = skirun/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = hevs.skirun;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CE7C8266222682F600FA4B3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = skirunTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = hevs.skirunTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/skirun.app/skirun";
+			};
+			name = Debug;
+		};
+		CE7C8267222682F600FA4B3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = skirunTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = hevs.skirunTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/skirun.app/skirun";
+			};
+			name = Release;
+		};
+		CE7C8269222682F600FA4B3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = skirunUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = hevs.skirunUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = skirun;
+			};
+			name = Debug;
+		};
+		CE7C826A222682F600FA4B3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = skirunUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = hevs.skirunUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = skirun;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CE7C8233222682F500FA4B3B /* Build configuration list for PBXProject "skirun" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE7C8260222682F600FA4B3B /* Debug */,
+				CE7C8261222682F600FA4B3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE7C8262222682F600FA4B3B /* Build configuration list for PBXNativeTarget "skirun" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE7C8263222682F600FA4B3B /* Debug */,
+				CE7C8264222682F600FA4B3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE7C8265222682F600FA4B3B /* Build configuration list for PBXNativeTarget "skirunTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE7C8266222682F600FA4B3B /* Debug */,
+				CE7C8267222682F600FA4B3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE7C8268222682F600FA4B3B /* Build configuration list for PBXNativeTarget "skirunUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE7C8269222682F600FA4B3B /* Debug */,
+				CE7C826A222682F600FA4B3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CE7C8230222682F500FA4B3B /* Project object */;
+}
