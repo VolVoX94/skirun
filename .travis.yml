@@ -7,4 +7,4 @@ script: xcodebuild clean build test -workspace skirun.xcworkspace -scheme "skiru
 branches:
   only:
   - master
-  - travis
+  - dev
