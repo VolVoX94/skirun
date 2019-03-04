@@ -10,6 +10,7 @@
 		19574B84DA350E52DD77D840 /* Pods_skirunUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7F03E9FFD1BF1A37DD61EF0 /* Pods_skirunUITests.framework */; };
 		53F33A3E1BAB0C046DFD7A38 /* Pods_skirunTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 459C244C4ECA3C81E12A71A6 /* Pods_skirunTests.framework */; };
 		B6A32530ACB85AC0D5AA2B22 /* Pods_skirun.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7739317431CD4D4FA0C9A5 /* Pods_skirun.framework */; };
+		CE2BACC6222D17C500836DE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE2BACC5222D17C500836DE3 /* GoogleService-Info.plist */; };
 		CE7C823C222682F500FA4B3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C823B222682F500FA4B3B /* AppDelegate.swift */; };
 		CE7C823E222682F500FA4B3B /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C823D222682F500FA4B3B /* FirstViewController.swift */; };
 		CE7C8240222682F500FA4B3B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C823F222682F500FA4B3B /* SecondViewController.swift */; };
@@ -45,6 +46,7 @@
 		579E97E107E43CF0A777C66A /* Pods-skirun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-skirun.release.xcconfig"; path = "Target Support Files/Pods-skirun/Pods-skirun.release.xcconfig"; sourceTree = "<group>"; };
 		5C7739317431CD4D4FA0C9A5 /* Pods_skirun.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_skirun.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C213F753E47128B9333F7934 /* Pods-skirun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-skirun.debug.xcconfig"; path = "Target Support Files/Pods-skirun/Pods-skirun.debug.xcconfig"; sourceTree = "<group>"; };
+		CE2BACC5222D17C500836DE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE7C8238222682F500FA4B3B /* skirun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = skirun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7C823B222682F500FA4B3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE7C823D222682F500FA4B3B /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -101,7 +103,6 @@
 				0CC983EC5CE026509552904C /* Pods-skirunUITests.debug.xcconfig */,
 				0B9763DA9A8CC2D5F0120B1C /* Pods-skirunUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -140,6 +141,7 @@
 		CE7C823A222682F500FA4B3B /* skirun */ = {
 			isa = PBXGroup;
 			children = (
+				CE2BACC5222D17C500836DE3 /* GoogleService-Info.plist */,
 				CE7C823B222682F500FA4B3B /* AppDelegate.swift */,
 				CE7C823D222682F500FA4B3B /* FirstViewController.swift */,
 				CE7C823F222682F500FA4B3B /* SecondViewController.swift */,
@@ -277,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE7C8248222682F600FA4B3B /* LaunchScreen.storyboard in Resources */,
+				CE2BACC6222D17C500836DE3 /* GoogleService-Info.plist in Resources */,
 				CE7C8245222682F600FA4B3B /* Assets.xcassets in Resources */,
 				CE7C8243222682F500FA4B3B /* Main.storyboard in Resources */,
 			);
