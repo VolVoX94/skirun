@@ -10,7 +10,7 @@
 		19574B84DA350E52DD77D840 /* Pods_skirunUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7F03E9FFD1BF1A37DD61EF0 /* Pods_skirunUITests.framework */; };
 		53F33A3E1BAB0C046DFD7A38 /* Pods_skirunTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 459C244C4ECA3C81E12A71A6 /* Pods_skirunTests.framework */; };
 		B6A32530ACB85AC0D5AA2B22 /* Pods_skirun.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7739317431CD4D4FA0C9A5 /* Pods_skirun.framework */; };
-		CE2BACC6222D17C500836DE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE2BACC5222D17C500836DE3 /* GoogleService-Info.plist */; };
+		CE2C1F46222D684500D4A491 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE2C1F45222D684500D4A491 /* GoogleService-Info.plist */; };
 		CE7C823C222682F500FA4B3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C823B222682F500FA4B3B /* AppDelegate.swift */; };
 		CE7C823E222682F500FA4B3B /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C823D222682F500FA4B3B /* FirstViewController.swift */; };
 		CE7C8240222682F500FA4B3B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C823F222682F500FA4B3B /* SecondViewController.swift */; };
@@ -46,7 +46,7 @@
 		579E97E107E43CF0A777C66A /* Pods-skirun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-skirun.release.xcconfig"; path = "Target Support Files/Pods-skirun/Pods-skirun.release.xcconfig"; sourceTree = "<group>"; };
 		5C7739317431CD4D4FA0C9A5 /* Pods_skirun.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_skirun.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C213F753E47128B9333F7934 /* Pods-skirun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-skirun.debug.xcconfig"; path = "Target Support Files/Pods-skirun/Pods-skirun.debug.xcconfig"; sourceTree = "<group>"; };
-		CE2BACC5222D17C500836DE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CE2C1F45222D684500D4A491 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE7C8238222682F500FA4B3B /* skirun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = skirun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7C823B222682F500FA4B3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE7C823D222682F500FA4B3B /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -141,7 +141,7 @@
 		CE7C823A222682F500FA4B3B /* skirun */ = {
 			isa = PBXGroup;
 			children = (
-				CE2BACC5222D17C500836DE3 /* GoogleService-Info.plist */,
+				CE2C1F45222D684500D4A491 /* GoogleService-Info.plist */,
 				CE7C823B222682F500FA4B3B /* AppDelegate.swift */,
 				CE7C823D222682F500FA4B3B /* FirstViewController.swift */,
 				CE7C823F222682F500FA4B3B /* SecondViewController.swift */,
@@ -182,6 +182,8 @@
 				CE7C8234222682F500FA4B3B /* Sources */,
 				CE7C8235222682F500FA4B3B /* Frameworks */,
 				CE7C8236222682F500FA4B3B /* Resources */,
+				A7767DF42522963ED3284782 /* [CP] Embed Pods Frameworks */,
+				BF1404729C0011D87027D91D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -279,7 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE7C8248222682F600FA4B3B /* LaunchScreen.storyboard in Resources */,
-				CE2BACC6222D17C500836DE3 /* GoogleService-Info.plist in Resources */,
+				CE2C1F46222D684500D4A491 /* GoogleService-Info.plist in Resources */,
 				CE7C8245222682F600FA4B3B /* Assets.xcassets in Resources */,
 				CE7C8243222682F500FA4B3B /* Main.storyboard in Resources */,
 			);
@@ -346,6 +348,36 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A7767DF42522963ED3284782 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-skirun/Pods-skirun-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-skirun/Pods-skirun-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B669EDFFD45FF64DBD6A1C61 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -366,6 +398,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF1404729C0011D87027D91D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-skirun/Pods-skirun-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-skirun/Pods-skirun-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
