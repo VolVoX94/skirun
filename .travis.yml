@@ -6,6 +6,9 @@ script: xcodebuild clean build test -workspace skirun.xcworkspace -scheme "skiru
 before_install:
     - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
     - pod install --repo-update
+    - cp ../mock-GoogleService-Info.plist ./GoogleService-Info.plist 
+    - sed -i ‘’ ‘/<key>$BUNDLE_ID</{n;s/id/com.google.firebase.quickstart.skirun/;}’ GoogleService-Info.plist 
+    - sed -i ‘’ ‘s/$REVERSED_CLIENT/com.googleusercontent.apps.123456789000-hjugbg6ud799v4c49dim8ce2usclthar/’ skirun/Info.plist 
 
 # safelist
 branches:
