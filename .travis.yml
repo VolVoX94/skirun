@@ -6,7 +6,7 @@ script: xcodebuild clean build test -workspace skirun.xcworkspace -scheme "skiru
 before_install:
     - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
     - gem install slather --no-rdoc --no-ri --no-document --quiet
-    - cd Project && pod install
+    - pod install
 
 # safelist
 branches:
