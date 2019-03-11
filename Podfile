@@ -6,7 +6,6 @@ target 'skirun' do
   use_frameworks!
 
   # Pods for skirun
-  pod 'GoogleSignIn'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
