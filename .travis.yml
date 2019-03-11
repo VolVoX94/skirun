@@ -8,3 +8,8 @@ branches:
   only:
   - master
   - dev
+
+pods:
+  rm -rf Pods
+  bundle install
+  bundle exec pod install
