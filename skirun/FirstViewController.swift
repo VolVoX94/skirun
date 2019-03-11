@@ -1,10 +1,4 @@
-//
-//  FirstViewController.swift
-//  skirun
-//
-//  Created by AISLAB on 27.02.19.
-//  Copyright © 2019 hevs. All rights reserved.
-//
+
 
 import UIKit
 
