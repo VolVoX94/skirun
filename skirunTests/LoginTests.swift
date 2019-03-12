@@ -1,15 +1,14 @@
 //
-//  skirunTests.swift
+//  LoginTests.swift
 //  skirunTests
 //
-//  Created by AISLAB on 27.02.19.
+//  Created by AISLAB on 12.03.19.
 //  Copyright © 2019 hevs. All rights reserved.
 //
 
 import XCTest
-@testable import skirun
 
-class skirunTests: XCTestCase {
+class LoginTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -30,4 +29,5 @@ class skirunTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+
 }

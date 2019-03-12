@@ -10,6 +10,8 @@
 		19574B84DA350E52DD77D840 /* Pods_skirunUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7F03E9FFD1BF1A37DD61EF0 /* Pods_skirunUITests.framework */; };
 		53F33A3E1BAB0C046DFD7A38 /* Pods_skirunTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 459C244C4ECA3C81E12A71A6 /* Pods_skirunTests.framework */; };
 		B6A32530ACB85AC0D5AA2B22 /* Pods_skirun.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7739317431CD4D4FA0C9A5 /* Pods_skirun.framework */; };
+		CE11914F2237C07900EE325C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE11914E2237C07900EE325C /* SettingsViewController.swift */; };
+		CE1191532237C27900EE325C /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1191522237C27900EE325C /* LoginTests.swift */; };
 		CE2C1F46222D684500D4A491 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE2C1F45222D684500D4A491 /* GoogleService-Info.plist */; };
 		CE42A18622369D56000CBE46 /* DetailsSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42A18522369D56000CBE46 /* DetailsSignupViewController.swift */; };
 		CE7C823C222682F500FA4B3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C823B222682F500FA4B3B /* AppDelegate.swift */; };
@@ -18,8 +20,6 @@
 		CE7C8243222682F500FA4B3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7C8241222682F500FA4B3B /* Main.storyboard */; };
 		CE7C8245222682F600FA4B3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7C8244222682F600FA4B3B /* Assets.xcassets */; };
 		CE7C8248222682F600FA4B3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7C8246222682F600FA4B3B /* LaunchScreen.storyboard */; };
-		CE7C8253222682F600FA4B3B /* skirunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C8252222682F600FA4B3B /* skirunTests.swift */; };
-		CE7C825E222682F600FA4B3B /* skirunUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C825D222682F600FA4B3B /* skirunUITests.swift */; };
 		CEE4645C22368BE100F42D5D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEE4645B22368BE100F42D5D /* Login.storyboard */; };
 		CEE4646022368F1500F42D5D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE4645F22368F1500F42D5D /* LoginViewController.swift */; };
 		CEE4646222368F2300F42D5D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE4646122368F2300F42D5D /* SignUpViewController.swift */; };
@@ -50,6 +50,8 @@
 		579E97E107E43CF0A777C66A /* Pods-skirun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-skirun.release.xcconfig"; path = "Target Support Files/Pods-skirun/Pods-skirun.release.xcconfig"; sourceTree = "<group>"; };
 		5C7739317431CD4D4FA0C9A5 /* Pods_skirun.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_skirun.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C213F753E47128B9333F7934 /* Pods-skirun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-skirun.debug.xcconfig"; path = "Target Support Files/Pods-skirun/Pods-skirun.debug.xcconfig"; sourceTree = "<group>"; };
+		CE11914E2237C07900EE325C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CE1191522237C27900EE325C /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 		CE2C1F45222D684500D4A491 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE42A18522369D56000CBE46 /* DetailsSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsSignupViewController.swift; sourceTree = "<group>"; };
 		CE7C8238222682F500FA4B3B /* skirun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = skirun.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,11 +63,8 @@
 		CE7C8247222682F600FA4B3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE7C8249222682F600FA4B3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE7C824E222682F600FA4B3B /* skirunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = skirunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE7C8252222682F600FA4B3B /* skirunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skirunTests.swift; sourceTree = "<group>"; };
 		CE7C8254222682F600FA4B3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE7C8259222682F600FA4B3B /* skirunUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = skirunUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE7C825D222682F600FA4B3B /* skirunUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skirunUITests.swift; sourceTree = "<group>"; };
-		CE7C825F222682F600FA4B3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEE4645B22368BE100F42D5D /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		CEE4645F22368F1500F42D5D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CEE4646122368F2300F42D5D /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +138,7 @@
 				CEE4645F22368F1500F42D5D /* LoginViewController.swift */,
 				CEE4646122368F2300F42D5D /* SignUpViewController.swift */,
 				CE42A18522369D56000CBE46 /* DetailsSignupViewController.swift */,
+				CE11914E2237C07900EE325C /* SettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -158,7 +158,6 @@
 			children = (
 				CE7C823A222682F500FA4B3B /* skirun */,
 				CE7C8251222682F600FA4B3B /* skirunTests */,
-				CE7C825C222682F600FA4B3B /* skirunUITests */,
 				CE7C8239222682F500FA4B3B /* Products */,
 				A8F20DF7420029A6473E7254 /* Pods */,
 				B912B21EC5FCAACD9765D5EB /* Frameworks */,
@@ -192,19 +191,10 @@
 		CE7C8251222682F600FA4B3B /* skirunTests */ = {
 			isa = PBXGroup;
 			children = (
-				CE7C8252222682F600FA4B3B /* skirunTests.swift */,
 				CE7C8254222682F600FA4B3B /* Info.plist */,
+				CE1191522237C27900EE325C /* LoginTests.swift */,
 			);
 			path = skirunTests;
-			sourceTree = "<group>";
-		};
-		CE7C825C222682F600FA4B3B /* skirunUITests */ = {
-			isa = PBXGroup;
-			children = (
-				CE7C825D222682F600FA4B3B /* skirunUITests.swift */,
-				CE7C825F222682F600FA4B3B /* Info.plist */,
-			);
-			path = skirunUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -443,6 +433,7 @@
 			files = (
 				CEE4646222368F2300F42D5D /* SignUpViewController.swift in Sources */,
 				CE7C8240222682F500FA4B3B /* SecondViewController.swift in Sources */,
+				CE11914F2237C07900EE325C /* SettingsViewController.swift in Sources */,
 				CE7C823C222682F500FA4B3B /* AppDelegate.swift in Sources */,
 				CEE4646022368F1500F42D5D /* LoginViewController.swift in Sources */,
 				CE7C823E222682F500FA4B3B /* FirstViewController.swift in Sources */,
@@ -454,7 +445,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE7C8253222682F600FA4B3B /* skirunTests.swift in Sources */,
+				CE1191532237C27900EE325C /* LoginTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,7 +453,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE7C825E222682F600FA4B3B /* skirunUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
