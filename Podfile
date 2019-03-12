@@ -16,9 +16,4 @@ target 'skirun' do
     # Pods for testing
   end
 
-  target 'skirunUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 end
