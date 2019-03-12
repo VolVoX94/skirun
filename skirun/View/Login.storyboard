@@ -124,6 +124,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="NextPage"/>
                                 <connections>
+                                    <action selector="nextButtonFunc:" destination="Hcw-Vt-iTI" eventType="touchUpInside" id="iV7-9F-Uza"/>
                                     <segue destination="IkC-jj-aM4" kind="show" id="mUO-0c-EoY"/>
                                 </connections>
                             </button>
