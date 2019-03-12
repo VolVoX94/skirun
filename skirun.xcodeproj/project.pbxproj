@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		19574B84DA350E52DD77D840 /* Pods_skirunUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7F03E9FFD1BF1A37DD61EF0 /* Pods_skirunUITests.framework */; };
 		53F33A3E1BAB0C046DFD7A38 /* Pods_skirunTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 459C244C4ECA3C81E12A71A6 /* Pods_skirunTests.framework */; };
 		B6A32530ACB85AC0D5AA2B22 /* Pods_skirun.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7739317431CD4D4FA0C9A5 /* Pods_skirun.framework */; };
 		CE11914F2237C07900EE325C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE11914E2237C07900EE325C /* SettingsViewController.swift */; };
@@ -44,8 +43,6 @@
 
 /* Begin PBXFileReference section */
 		0811030B0C6D3195F36AE22F /* Pods-skirunTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-skirunTests.debug.xcconfig"; path = "Target Support Files/Pods-skirunTests/Pods-skirunTests.debug.xcconfig"; sourceTree = "<group>"; };
-		0B9763DA9A8CC2D5F0120B1C /* Pods-skirunUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-skirunUITests.release.xcconfig"; path = "Target Support Files/Pods-skirunUITests/Pods-skirunUITests.release.xcconfig"; sourceTree = "<group>"; };
-		0CC983EC5CE026509552904C /* Pods-skirunUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-skirunUITests.debug.xcconfig"; path = "Target Support Files/Pods-skirunUITests/Pods-skirunUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		459C244C4ECA3C81E12A71A6 /* Pods_skirunTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_skirunTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		579E97E107E43CF0A777C66A /* Pods-skirun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-skirun.release.xcconfig"; path = "Target Support Files/Pods-skirun/Pods-skirun.release.xcconfig"; sourceTree = "<group>"; };
 		5C7739317431CD4D4FA0C9A5 /* Pods_skirun.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_skirun.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,7 +96,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19574B84DA350E52DD77D840 /* Pods_skirunUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,8 +116,6 @@
 				579E97E107E43CF0A777C66A /* Pods-skirun.release.xcconfig */,
 				0811030B0C6D3195F36AE22F /* Pods-skirunTests.debug.xcconfig */,
 				FFA8D45F8B645FFE6ADBB6DF /* Pods-skirunTests.release.xcconfig */,
-				0CC983EC5CE026509552904C /* Pods-skirunUITests.debug.xcconfig */,
-				0B9763DA9A8CC2D5F0120B1C /* Pods-skirunUITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -248,7 +242,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE7C8268222682F600FA4B3B /* Build configuration list for PBXNativeTarget "skirunUITests" */;
 			buildPhases = (
-				6B1F065E1033411015DB488C /* [CP] Check Pods Manifest.lock */,
 				CE7C8255222682F600FA4B3B /* Sources */,
 				CE7C8256222682F600FA4B3B /* Frameworks */,
 				CE7C8257222682F600FA4B3B /* Resources */,
@@ -338,28 +331,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6B1F065E1033411015DB488C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-skirunUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		81BE370CB829655D3BD350AC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -676,6 +647,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KSMBE3ZCZB;
 				INFOPLIST_FILE = skirunTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -697,6 +669,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KSMBE3ZCZB;
 				INFOPLIST_FILE = skirunTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -713,7 +686,6 @@
 		};
 		CE7C8269222682F600FA4B3B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0CC983EC5CE026509552904C /* Pods-skirunUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -733,7 +705,6 @@
 		};
 		CE7C826A222682F600FA4B3B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0B9763DA9A8CC2D5F0120B1C /* Pods-skirunUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
