@@ -107,6 +107,7 @@
                                     <action selector="logoutFunc:" destination="kex-xQ-IeH" eventType="touchUpInside" id="3a6-YM-YYc"/>
                                     <action selector="logoutFunc:" destination="xaY-1e-7lU" eventType="touchUpInside" id="DJw-XP-sgI"/>
                                     <action selector="logoutFunct:" destination="9pv-A4-QxB" eventType="touchUpInside" id="SEa-TM-5Se"/>
+                                    <segue destination="uOj-h3-gh1" kind="presentation" id="o1T-DO-RCG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -142,6 +143,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="VjF-fh-jiY">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="uOj-h3-gh1" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GiA-In-cd5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1556" y="564"/>
         </scene>
     </scenes>
     <resources>
