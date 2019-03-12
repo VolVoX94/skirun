@@ -1,0 +1,30 @@
+
+/* Class = "UILabel"; text = "Welcom to SkiRun"; ObjectID = "1a2-0j-Mhg"; */
+"1a2-0j-Mhg.text" = "Bienvenu sur SkiRun";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "6ge-vG-2gs"; */
+"6ge-vG-2gs.placeholder" = "Mot de pass";
+
+/* Class = "UITextField"; placeholder = "Phone number"; ObjectID = "ZU4-JR-d61"; */
+"ZU4-JR-d61.placeholder" = "Numéro de téléphone";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "eex-Oh-znm"; */
+"eex-Oh-znm.placeholder" = "Mot de pass";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "kv1-gd-01w"; */
+"kv1-gd-01w.placeholder" = "Adresse mail";
+
+/* Class = "UITextField"; placeholder = "Lastname"; ObjectID = "lgC-DA-CIP"; */
+"lgC-DA-CIP.placeholder" = "Nom";
+
+/* Class = "UITextField"; placeholder = "Firstname"; ObjectID = "rAq-dS-bje"; */
+"rAq-dS-bje.placeholder" = "Prénom";
+
+/* Class = "UILabel"; text = "Login"; ObjectID = "t3x-km-ej5"; */
+"t3x-km-ej5.text" = "Connexion";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "z4K-un-8Rb"; */
+"z4K-un-8Rb.placeholder" = "Adresse mail";
+
+/* Class = "UITextField"; placeholder = "Repeat password"; ObjectID = "zXH-n3-Ao5"; */
+"zXH-n3-Ao5.placeholder" = "Répéter le mot de pass";

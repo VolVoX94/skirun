@@ -107,6 +107,7 @@
                                     <action selector="logoutFunc:" destination="kex-xQ-IeH" eventType="touchUpInside" id="3a6-YM-YYc"/>
                                     <action selector="logoutFunc:" destination="xaY-1e-7lU" eventType="touchUpInside" id="DJw-XP-sgI"/>
                                     <action selector="logoutFunct:" destination="9pv-A4-QxB" eventType="touchUpInside" id="SEa-TM-5Se"/>
+                                    <segue destination="uOj-h3-gh1" kind="presentation" id="o1T-DO-RCG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -117,12 +118,11 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="logoutButton" destination="T8z-6f-HHc" id="6YB-0Q-Fq4"/>
-                        <outlet property="logoutFunc" destination="T8z-6f-HHc" id="ZOd-fu-6gR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OQE-8C-Whq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="785" y="785"/>
+            <point key="canvasLocation" x="785" y="752"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -136,12 +136,20 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="kex-xQ-IeH" kind="relationship" relationship="viewControllers" id="gr1-AI-uxh"/>
+                        <segue destination="kex-xQ-IeH" kind="relationship" relationship="viewControllers" id="g3I-z3-tsz"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-204" y="-115"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="VjF-fh-jiY">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="uOj-h3-gh1" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GiA-In-cd5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1556" y="564"/>
         </scene>
     </scenes>
     <resources>
