@@ -101,6 +101,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		841633812237B66D00939A9D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A8F20DF7420029A6473E7254 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +131,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CE42A1882236A052000CBE46 /* ViewControllers */ = {
+		CE42A1882236A052000CBE46 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				CE7C823D222682F500FA4B3B /* FirstViewController.swift */,
@@ -133,17 +140,17 @@
 				CEE4646122368F2300F42D5D /* SignUpViewController.swift */,
 				CE42A18522369D56000CBE46 /* DetailsSignupViewController.swift */,
 			);
-			path = ViewControllers;
+			path = Controller;
 			sourceTree = "<group>";
 		};
-		CE42A1892236A071000CBE46 /* StoryBoards */ = {
+		CE42A1892236A071000CBE46 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				CE7C8241222682F500FA4B3B /* Main.storyboard */,
 				CE7C8246222682F600FA4B3B /* LaunchScreen.storyboard */,
 				CEE4645B22368BE100F42D5D /* Login.storyboard */,
 			);
-			path = StoryBoards;
+			path = View;
 			sourceTree = "<group>";
 		};
 		CE7C822F222682F500FA4B3B = {
@@ -171,9 +178,10 @@
 		CE7C823A222682F500FA4B3B /* skirun */ = {
 			isa = PBXGroup;
 			children = (
+				841633812237B66D00939A9D /* Model */,
 				CE2C1F45222D684500D4A491 /* GoogleService-Info.plist */,
-				CE42A1892236A071000CBE46 /* StoryBoards */,
-				CE42A1882236A052000CBE46 /* ViewControllers */,
+				CE42A1892236A071000CBE46 /* View */,
+				CE42A1882236A052000CBE46 /* Controller */,
 				CE7C823B222682F500FA4B3B /* AppDelegate.swift */,
 				CE7C8244222682F600FA4B3B /* Assets.xcassets */,
 				CE7C8249222682F600FA4B3B /* Info.plist */,
