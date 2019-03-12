@@ -12,6 +12,7 @@
 		B6A32530ACB85AC0D5AA2B22 /* Pods_skirun.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7739317431CD4D4FA0C9A5 /* Pods_skirun.framework */; };
 		CE11914F2237C07900EE325C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE11914E2237C07900EE325C /* SettingsViewController.swift */; };
 		CE1191532237C27900EE325C /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1191522237C27900EE325C /* LoginTests.swift */; };
+		CE1191582237DB8100EE325C /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE11915A2237DB8100EE325C /* Login.storyboard */; };
 		CE2C1F46222D684500D4A491 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE2C1F45222D684500D4A491 /* GoogleService-Info.plist */; };
 		CE42A18622369D56000CBE46 /* DetailsSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42A18522369D56000CBE46 /* DetailsSignupViewController.swift */; };
 		CE7C823C222682F500FA4B3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C823B222682F500FA4B3B /* AppDelegate.swift */; };
@@ -20,7 +21,6 @@
 		CE7C8243222682F500FA4B3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7C8241222682F500FA4B3B /* Main.storyboard */; };
 		CE7C8245222682F600FA4B3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7C8244222682F600FA4B3B /* Assets.xcassets */; };
 		CE7C8248222682F600FA4B3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7C8246222682F600FA4B3B /* LaunchScreen.storyboard */; };
-		CEE4645C22368BE100F42D5D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEE4645B22368BE100F42D5D /* Login.storyboard */; };
 		CEE4646022368F1500F42D5D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE4645F22368F1500F42D5D /* LoginViewController.swift */; };
 		CEE4646222368F2300F42D5D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE4646122368F2300F42D5D /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +52,13 @@
 		C213F753E47128B9333F7934 /* Pods-skirun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-skirun.debug.xcconfig"; path = "Target Support Files/Pods-skirun/Pods-skirun.debug.xcconfig"; sourceTree = "<group>"; };
 		CE11914E2237C07900EE325C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CE1191522237C27900EE325C /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
+		CE1191542237DB6600EE325C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		CE1191552237DB6600EE325C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		CE1191562237DB6A00EE325C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		CE1191572237DB6B00EE325C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		CE1191592237DB8100EE325C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		CE11915C2237DB8D00EE325C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Login.strings; sourceTree = "<group>"; };
+		CE11915E2237DB8E00EE325C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Login.strings; sourceTree = "<group>"; };
 		CE2C1F45222D684500D4A491 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE42A18522369D56000CBE46 /* DetailsSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsSignupViewController.swift; sourceTree = "<group>"; };
 		CE7C8238222682F500FA4B3B /* skirun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = skirun.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,7 +72,6 @@
 		CE7C824E222682F600FA4B3B /* skirunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = skirunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7C8254222682F600FA4B3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE7C8259222682F600FA4B3B /* skirunUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = skirunUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEE4645B22368BE100F42D5D /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		CEE4645F22368F1500F42D5D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CEE4646122368F2300F42D5D /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		F7F03E9FFD1BF1A37DD61EF0 /* Pods_skirunUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_skirunUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,7 +154,7 @@
 			children = (
 				CE7C8241222682F500FA4B3B /* Main.storyboard */,
 				CE7C8246222682F600FA4B3B /* LaunchScreen.storyboard */,
-				CEE4645B22368BE100F42D5D /* Login.storyboard */,
+				CE11915A2237DB8100EE325C /* Login.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -287,6 +293,8 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
+				de,
 			);
 			mainGroup = CE7C822F222682F500FA4B3B;
 			productRefGroup = CE7C8239222682F500FA4B3B /* Products */;
@@ -308,7 +316,7 @@
 				CE7C8248222682F600FA4B3B /* LaunchScreen.storyboard in Resources */,
 				CE2C1F46222D684500D4A491 /* GoogleService-Info.plist in Resources */,
 				CE7C8245222682F600FA4B3B /* Assets.xcassets in Resources */,
-				CEE4645C22368BE100F42D5D /* Login.storyboard in Resources */,
+				CE1191582237DB8100EE325C /* Login.storyboard in Resources */,
 				CE7C8243222682F500FA4B3B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,10 +480,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		CE11915A2237DB8100EE325C /* Login.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE1191592237DB8100EE325C /* Base */,
+				CE11915C2237DB8D00EE325C /* fr */,
+				CE11915E2237DB8E00EE325C /* de */,
+			);
+			name = Login.storyboard;
+			sourceTree = "<group>";
+		};
 		CE7C8241222682F500FA4B3B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				CE7C8242222682F500FA4B3B /* Base */,
+				CE1191542237DB6600EE325C /* fr */,
+				CE1191562237DB6A00EE325C /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -484,6 +504,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				CE7C8247222682F600FA4B3B /* Base */,
+				CE1191552237DB6600EE325C /* fr */,
+				CE1191572237DB6B00EE325C /* de */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -495,6 +517,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -556,6 +579,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
