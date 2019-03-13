@@ -21,20 +21,29 @@ class MissionCreationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        timePicker.isHidden = true
+        timePickerStart()
 
         // Do any additional setup after loading the view.
     }
+    
+    
+    func timePickerStart(){
+        
+        timePicker.isHidden = false
+        let number = 10
+        print(number)
+    }
+    
     
     
     @IBAction func timePickerChanged(_ sender: Any) {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
-        
-        //dateFormatter.timeStyle = DateFormatter.Style.short
-        
         let strDate = dateFormatter.string(from: timePicker.date)
         startTime.text = strDate
+        
         
     }
     
