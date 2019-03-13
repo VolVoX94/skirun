@@ -8,13 +8,36 @@
 
 import UIKit
 
-class MissionCreationViewController: UIViewController {
 
+class MissionCreationViewController: UIViewController {
+    
+    
+    @IBOutlet weak var startTime: UITextField!
+    
+    @IBOutlet weak var endTime: UITextField!
+    
+    @IBOutlet weak var timePicker: UIDatePicker!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    
+    @IBAction func timePickerChanged(_ sender: Any) {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        
+        //dateFormatter.timeStyle = DateFormatter.Style.short
+        
+        let strDate = dateFormatter.string(from: timePicker.date)
+        startTime.text = strDate
+        
+    }
+    
     
 
     @IBAction func backCompetition(_ sender: Any) {
