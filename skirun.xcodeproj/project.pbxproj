@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		53F33A3E1BAB0C046DFD7A38 /* Pods_skirunTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 459C244C4ECA3C81E12A71A6 /* Pods_skirunTests.framework */; };
+		84F075C42239105800084B8B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F075C32239105800084B8B /* User.swift */; };
+		84F075C6223932B200084B8B /* FirebaseSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F075C5223932B200084B8B /* FirebaseSession.swift */; };
 		B6A32530ACB85AC0D5AA2B22 /* Pods_skirun.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7739317431CD4D4FA0C9A5 /* Pods_skirun.framework */; };
 		CE11914F2237C07900EE325C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE11914E2237C07900EE325C /* SettingsViewController.swift */; };
 		CE1191532237C27900EE325C /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1191522237C27900EE325C /* LoginTests.swift */; };
@@ -46,6 +48,8 @@
 		459C244C4ECA3C81E12A71A6 /* Pods_skirunTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_skirunTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		579E97E107E43CF0A777C66A /* Pods-skirun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-skirun.release.xcconfig"; path = "Target Support Files/Pods-skirun/Pods-skirun.release.xcconfig"; sourceTree = "<group>"; };
 		5C7739317431CD4D4FA0C9A5 /* Pods_skirun.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_skirun.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84F075C32239105800084B8B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		84F075C5223932B200084B8B /* FirebaseSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSession.swift; sourceTree = "<group>"; };
 		C213F753E47128B9333F7934 /* Pods-skirun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-skirun.debug.xcconfig"; path = "Target Support Files/Pods-skirun/Pods-skirun.debug.xcconfig"; sourceTree = "<group>"; };
 		CE11914E2237C07900EE325C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CE1191522237C27900EE325C /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
@@ -105,8 +109,19 @@
 		841633812237B66D00939A9D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				84F075C32239105800084B8B /* User.swift */,
+				84F075C5223932B200084B8B /* FirebaseSession.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		84D223712238FA71006FC05C /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				CEE4646122368F2300F42D5D /* SignUpViewController.swift */,
+				CE42A18522369D56000CBE46 /* DetailsSignupViewController.swift */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 		A8F20DF7420029A6473E7254 /* Pods */ = {
@@ -133,11 +148,10 @@
 		CE42A1882236A052000CBE46 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				84D223712238FA71006FC05C /* Registration */,
 				CE7C823D222682F500FA4B3B /* FirstViewController.swift */,
 				CE7C823F222682F500FA4B3B /* SecondViewController.swift */,
 				CEE4645F22368F1500F42D5D /* LoginViewController.swift */,
-				CEE4646122368F2300F42D5D /* SignUpViewController.swift */,
-				CE42A18522369D56000CBE46 /* DetailsSignupViewController.swift */,
 				CE11914E2237C07900EE325C /* SettingsViewController.swift */,
 			);
 			path = Controller;
@@ -414,7 +428,9 @@
 				CE7C8240222682F500FA4B3B /* SecondViewController.swift in Sources */,
 				CE11914F2237C07900EE325C /* SettingsViewController.swift in Sources */,
 				CE7C823C222682F500FA4B3B /* AppDelegate.swift in Sources */,
+				84F075C42239105800084B8B /* User.swift in Sources */,
 				CEE4646022368F1500F42D5D /* LoginViewController.swift in Sources */,
+				84F075C6223932B200084B8B /* FirebaseSession.swift in Sources */,
 				CE7C823E222682F500FA4B3B /* FirstViewController.swift in Sources */,
 				CE42A18622369D56000CBE46 /* DetailsSignupViewController.swift in Sources */,
 			);
