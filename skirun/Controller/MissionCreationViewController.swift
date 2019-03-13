@@ -1,5 +1,5 @@
 //
-//  CompetionCreationViewController.swift
+//  MissionCreationViewController.swift
 //  skirun
 //
 //  Created by iOS Dev on 13.03.19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CompetionCreationViewController: UIViewController {
+class MissionCreationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,9 +17,6 @@ class CompetionCreationViewController: UIViewController {
     }
     
 
-    @IBAction func goBackManagement(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
     /*
     // MARK: - Navigation
 

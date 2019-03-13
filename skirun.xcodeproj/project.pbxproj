@@ -11,6 +11,7 @@
 		6A632E6B2238F98B00629A0D /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A632E6A2238F98B00629A0D /* AdminViewController.swift */; };
 		6A632E6D2238FB2C00629A0D /* AdminManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A632E6C2238FB2C00629A0D /* AdminManagementViewController.swift */; };
 		6AD9068B2239109D0096A173 /* CompetionCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD9068A2239109D0096A173 /* CompetionCreationViewController.swift */; };
+		6AD9068D223927700096A173 /* MissionCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD9068C223927700096A173 /* MissionCreationViewController.swift */; };
 		B6A32530ACB85AC0D5AA2B22 /* Pods_skirun.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7739317431CD4D4FA0C9A5 /* Pods_skirun.framework */; };
 		CE11914F2237C07900EE325C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE11914E2237C07900EE325C /* SettingsViewController.swift */; };
 		CE1191532237C27900EE325C /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1191522237C27900EE325C /* LoginTests.swift */; };
@@ -52,6 +53,7 @@
 		6A632E6A2238F98B00629A0D /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
 		6A632E6C2238FB2C00629A0D /* AdminManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminManagementViewController.swift; sourceTree = "<group>"; };
 		6AD9068A2239109D0096A173 /* CompetionCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetionCreationViewController.swift; sourceTree = "<group>"; };
+		6AD9068C223927700096A173 /* MissionCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCreationViewController.swift; sourceTree = "<group>"; };
 		C213F753E47128B9333F7934 /* Pods-skirun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-skirun.debug.xcconfig"; path = "Target Support Files/Pods-skirun/Pods-skirun.debug.xcconfig"; sourceTree = "<group>"; };
 		CE11914E2237C07900EE325C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CE1191522237C27900EE325C /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				CE11914E2237C07900EE325C /* SettingsViewController.swift */,
 				6A632E6C2238FB2C00629A0D /* AdminManagementViewController.swift */,
 				6AD9068A2239109D0096A173 /* CompetionCreationViewController.swift */,
+				6AD9068C223927700096A173 /* MissionCreationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				CEE4646222368F2300F42D5D /* SignUpViewController.swift in Sources */,
 				CE7C8240222682F500FA4B3B /* SecondViewController.swift in Sources */,
 				CE11914F2237C07900EE325C /* SettingsViewController.swift in Sources */,
+				6AD9068D223927700096A173 /* MissionCreationViewController.swift in Sources */,
 				CE7C823C222682F500FA4B3B /* AppDelegate.swift in Sources */,
 				6A632E6B2238F98B00629A0D /* AdminViewController.swift in Sources */,
 				CEE4646022368F1500F42D5D /* LoginViewController.swift in Sources */,
