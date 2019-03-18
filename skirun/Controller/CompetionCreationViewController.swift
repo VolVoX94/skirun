@@ -20,7 +20,7 @@ class CompetionCreationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view.        
     }
     
 
@@ -45,7 +45,7 @@ class CompetionCreationViewController: UIViewController {
             
             //Define that something is wrong
             wrongInput = true;
-            alertBox.message = "title ";
+            alertBox.message = "The title can contain text and/or numbers ";
             
             //Display the alertBox
             self.present(alertBox, animated: true);
@@ -54,7 +54,7 @@ class CompetionCreationViewController: UIViewController {
         if((isValidDate(dateString: startDate.text!) == false) && wrongInput != true){
             //Define that something is wrong
             wrongInput = true;
-            alertBox.message = "start date";
+            alertBox.message = "The format for the Start date is dd-MM-yyyy";
             
             //Display the alertBox
             self.present(alertBox, animated: true);
@@ -63,7 +63,7 @@ class CompetionCreationViewController: UIViewController {
         if((isValidDate(dateString: endDate.text!) == false) && wrongInput != true){
             //Define that something is wrong
             wrongInput = true;
-            alertBox.message = "end date";
+            alertBox.message = "The format for the End date is dd-MM-yyyy";
             
             //Display the alertBox
             self.present(alertBox, animated: true);
@@ -72,7 +72,7 @@ class CompetionCreationViewController: UIViewController {
         if((isValidTexte(test: discipline.text!) == false) && wrongInput != true){
             //Define that something is wrong
             wrongInput = true;
-            alertBox.message = "discipline";
+            alertBox.message = "Write your discipline with characters and/or numbers";
             
             //Display the alertBox
             self.present(alertBox, animated: true);
@@ -96,7 +96,7 @@ class CompetionCreationViewController: UIViewController {
     
     func isValidDate(dateString: String) -> Bool {
         let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "yyyy-MM-dd"
+        dateFormatterGet.dateFormat = "dd-MM-yyyy"
         if let _ = dateFormatterGet.date(from: dateString) {
             //date parsing succeeded, if you need to do additional logic, replace _ with some variable name i.e date
             return true
@@ -109,7 +109,7 @@ class CompetionCreationViewController: UIViewController {
     
     
     func isValidTexte(test:String)-> Bool {
-        let textRegEx = "[a-z]{4,20}"
+        let textRegEx = "[A-Z-a-z-0-9]{4,20}"
         
         let textTest = NSPredicate(format: "SELF MATCHES %@", textRegEx)
         return textTest.evaluate(with:test)
