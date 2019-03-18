@@ -24,6 +24,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        designTextField()
+        
         //If the user is already logged we skip the page
         if Auth.auth().currentUser != nil {
             self.performSegue(withIdentifier: "alreadyLoggedIn", sender: nil)
@@ -44,14 +46,15 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    
+    //UI Design purpose
+    func designTextField(){
+        emailField.borderStyle = UITextField.BorderStyle.roundedRect
+        emailField.backgroundColor = UIColor.white
+        
+        passwordField.borderStyle = UITextField.BorderStyle.roundedRect
+        passwordField.backgroundColor = UIColor.white
     }
-    */
 
 }
