@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class DetailsSignupViewController: UIViewController {
+class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
     //Attributes that get pushed data from previous controller
     var email: String?;
     var password: String?;
@@ -25,7 +25,20 @@ class DetailsSignupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        //UI field designing
+        designTextField()
+        
+        //KEYBOARD - RETURN = Button "next"
+        self.fnameField.delegate = self
+        self.lnameField.delegate = self
+        self.phonefield.delegate = self
+    }
+    
+    //when tap return-keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        registerButton(self)
+        textField.resignFirstResponder()
+        return true
     }
     
     
@@ -156,5 +169,18 @@ class DetailsSignupViewController: UIViewController {
         
         let phoneTest = NSPredicate(format:"SELF MATCHES %@", phoneRegEx)
         return phoneTest.evaluate(with: testStr)
+    }
+    
+    
+    //UI Design purpose
+    func designTextField(){
+        fnameField.borderStyle = UITextField.BorderStyle.roundedRect
+        fnameField.backgroundColor = UIColor.white
+        
+        lnameField.borderStyle = UITextField.BorderStyle.roundedRect
+        lnameField.backgroundColor = UIColor.white
+        
+        phonefield.borderStyle = UITextField.BorderStyle.roundedRect
+        phonefield.backgroundColor = UIColor.white
     }
 }

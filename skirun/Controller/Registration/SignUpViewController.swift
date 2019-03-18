@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -19,12 +19,25 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        //UI field designing
+        designTextField()
+        
+        //KEYBOARD - RETURN = Button "next"
+        self.emailField.delegate = self
+        self.passwordField.delegate = self
+        self.repeatPwField.delegate = self
     }
     
-    
+    //Back button
     @IBAction func backButton(_ sender: Any) {
             self.dismiss(animated: true, completion: nil)
+    }
+    
+    //when tap return-keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nextButtonFunc(self)
+        textField.resignFirstResponder()
+        return true
     }
     
     //when click on next
@@ -101,14 +114,15 @@ class SignUpViewController: UIViewController {
         destinationController.password = password;
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //UI Design purpose
+    func designTextField(){
+        emailField.borderStyle = UITextField.BorderStyle.roundedRect
+        emailField.backgroundColor = UIColor.white
+        
+        passwordField.borderStyle = UITextField.BorderStyle.roundedRect
+        passwordField.backgroundColor = UIColor.white
+        
+        repeatPwField.borderStyle = UITextField.BorderStyle.roundedRect
+        repeatPwField.backgroundColor = UIColor.white
     }
-    */
-
 }
