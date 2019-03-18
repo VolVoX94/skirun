@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController,  UITextFieldDelegate {
 
     
     @IBOutlet weak var emailField: UITextField!
@@ -26,10 +26,21 @@ class LoginViewController: UIViewController {
         
         designTextField()
         
+        //KEYBOARD - RETURN = Button "next"
+        self.emailField.delegate = self
+        self.passwordField.delegate = self
+        
         //If the user is already logged we skip the page
         if Auth.auth().currentUser != nil {
             self.performSegue(withIdentifier: "alreadyLoggedIn", sender: nil)
         }
+    }
+    
+    //when tap return-keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        loginAction(self)
+        textField.resignFirstResponder()
+        return true
     }
     
     @IBAction func loginAction(_ sender: Any) {
