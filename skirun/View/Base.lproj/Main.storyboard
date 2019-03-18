@@ -181,14 +181,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sx1-YT-gX9">
-                                <rect key="frame" x="24" y="187" width="31" height="33"/>
+                                <rect key="frame" x="20" y="187" width="35" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Add">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="DiL-V7-qlv" kind="show" id="BEp-Ed-0Jj"/>
+                                    <action selector="next:" destination="7iP-uM-gqX" eventType="touchUpInside" id="JrL-sX-DvQ"/>
+                                    <segue destination="DiL-V7-qlv" kind="presentation" identifier="addChampion" id="t80-IV-DA1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -197,8 +198,9 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="skl-Dm-zgV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="7iP-uM-gqX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2531" y="8"/>
+            <point key="canvasLocation" x="2530.434782608696" y="7.3660714285714279"/>
         </scene>
         <!--Competion Creation View Controller-->
         <scene sceneID="Gzi-aF-RJz">
@@ -226,12 +228,15 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Save" id="jyf-d2-Y5X">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="saveButton:" destination="DiL-V7-qlv" id="T41-WX-B3d"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kxc-Fz-Ixq">
-                                <rect key="frame" x="0.0" y="272" width="414" height="168"/>
+                                <rect key="frame" x="0.0" y="286" width="414" height="168"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Discipline:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBg-P1-eeN">
@@ -253,11 +258,25 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JhP-0g-fIi">
+                                        <rect key="frame" x="159" y="105" width="97" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ref Api" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8PT-eb-DSa">
+                                        <rect key="frame" x="46" y="105" width="76" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.027450980390000001" green="0.20000000000000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pp5-Nv-L5G">
-                                <rect key="frame" x="0.0" y="131" width="414" height="114"/>
+                                <rect key="frame" x="0.0" y="134" width="414" height="126"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="M1a-B7-wst">
@@ -273,8 +292,20 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Date" textAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="o45-xq-R6S">
-                                        <rect key="frame" x="8" y="42" width="398" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="End Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oQY-Q5-q9N">
+                                        <rect key="frame" x="8" y="81" width="398" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Start Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HxE-X9-Xx1">
+                                        <rect key="frame" x="8" y="39" width="398" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -289,7 +320,7 @@
                                 <color key="backgroundColor" red="0.027450980390000001" green="0.20000000000000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g5v-qQ-ch2">
-                                <rect key="frame" x="0.0" y="448" width="414" height="197"/>
+                                <rect key="frame" x="0.0" y="468" width="414" height="197"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Missions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjm-ai-HRM">
@@ -317,10 +348,19 @@
                         <color key="backgroundColor" red="0.027450980390000001" green="0.20000000000000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="kzs-uQ-LfU"/>
                     </view>
+                    <connections>
+                        <outlet property="discipline" destination="U2n-DF-Kfg" id="hZW-Du-aaW"/>
+                        <outlet property="endDate" destination="oQY-Q5-q9N" id="aOE-M3-ucc"/>
+                        <outlet property="refApi" destination="JhP-0g-fIi" id="hgv-xp-2N3"/>
+                        <outlet property="save" destination="jyf-d2-Y5X" id="ZDz-BZ-gKp"/>
+                        <outlet property="startDate" destination="HxE-X9-Xx1" id="jUo-Pj-Alu"/>
+                        <outlet property="tileCompetion" destination="M1a-B7-wst" id="Jhj-f8-aUx"/>
+                        <segue destination="M6B-KH-18W" kind="presentation" identifier="nextSegue" id="5S7-mi-7to"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lnh-jQ-xcD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3305.7971014492755" y="6.6964285714285712"/>
+            <point key="canvasLocation" x="3328.985507246377" y="-13.392857142857142"/>
         </scene>
         <!--Mission Creation View Controller-->
         <scene sceneID="pk9-Gn-V9d">
@@ -553,7 +593,8 @@
         <image name="rocketWhite" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jaA-MC-ch9"/>
+        <segue reference="5S7-mi-7to"/>
+        <segue reference="t80-IV-DA1"/>
         <segue reference="xlc-eV-QVU"/>
         <segue reference="H4c-0W-dzj"/>
         <segue reference="GmT-KU-Wwj"/>

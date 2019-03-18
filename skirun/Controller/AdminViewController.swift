@@ -9,6 +9,8 @@
 import UIKit
 
 class AdminViewController: UIViewController {
+    
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +21,11 @@ class AdminViewController: UIViewController {
     @IBAction func backAdmin(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func next(_ sender: UIButton) {
+        performSegue(withIdentifier: "addChampion", sender: self)
+    }
+    
     /*
     // MARK: - Navigation
 
