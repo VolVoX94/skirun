@@ -12,7 +12,6 @@ class CompetionCreationViewController: UIViewController {
     
     @IBOutlet weak var tileCompetion: UITextField!
     @IBOutlet weak var endDate: UITextField!
-    @IBOutlet weak var discipline: UITextField!
     @IBOutlet weak var refApi: UITextField!
     @IBOutlet weak var save: UIBarButtonItem!
     @IBOutlet weak var startDate: UITextField!
@@ -64,15 +63,6 @@ class CompetionCreationViewController: UIViewController {
             //Define that something is wrong
             wrongInput = true;
             alertBox.message = "The format for the End date is dd-MM-yyyy";
-            
-            //Display the alertBox
-            self.present(alertBox, animated: true);
-        }
-        
-        if((isValidTexte(test: discipline.text!) == false) && wrongInput != true){
-            //Define that something is wrong
-            wrongInput = true;
-            alertBox.message = "Write your discipline with characters and/or numbers";
             
             //Display the alertBox
             self.present(alertBox, animated: true);
