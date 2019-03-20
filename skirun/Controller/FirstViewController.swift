@@ -2,15 +2,20 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 
 class FirstViewController: UITableViewController {
     
-    var myCompetition:Competition?;
-    let competitions = [myCompetition];
+    var myCompetition:Competition?
+    var competitions:[Competition]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        loadData()
+        
+        
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -28,26 +33,46 @@ class FirstViewController: UITableViewController {
         print("test")
     }
     
-    func loadData(uid:String){
+    func loadData(){
         //Get data for the list
         let competitionSession:FirebaseSession = FirebaseSession.competition;
         
         var ref: DatabaseReference!
-        ref = Database.database().reference();
+        ref =  Database.database().reference()
         
-        ref.child(competitionSession.rawValue).childByAutoId()
-        
-        
+        ref.child(competitionSession.rawValue).queryOrderedByKey().observe(.childAdded) { (snapshot) in
+            let snapValue = snapshot.value as! NSDictionary
+            
+            //Create temp object
+            self.myCompetition = Competition(
+                name: snapValue["name"] as? String ?? "",
+                startDateTime: snapValue["stardDateTime"] as? String ?? "",
+                endDateTime: snapValue["endDateTime"] as? String ?? "",
+                guestClub: snapValue["guestClub"] as? String ?? "",
+                refAPI: snapValue["refAPI"] as? String ?? "",
+                discipline: snapValue["discipline"] as? String ?? "");
+            
+            //Add the item to the list
+            self.competitions?.append(self.myCompetition!)
+            self.tableView.reloadData()
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return competitions!.count;
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        
+        var cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        
+        let nameLabel = cell?.viewWithTag(1) as! UILabel
+        nameLabel.text = competitions?[indexPath.row].name
+        
+        return cell!
+        
     }
-
-
+    
+    
 }
 
