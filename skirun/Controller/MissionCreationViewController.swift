@@ -17,7 +17,7 @@ class MissionCreationViewController: UIViewController {
     
     
     @IBOutlet weak var typeOfJob: UITextField!
-    @IBOutlet weak var Discipline: UITextField!
+    @IBOutlet weak var discipline: UITextField!
     @IBOutlet weak var startTime: UITextField!
     @IBOutlet weak var endTime: UITextField!
     @IBOutlet weak var nameMission: UITextField!
