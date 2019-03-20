@@ -4,7 +4,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class FirstViewController: UITableViewController {
+class FirstViewController: UITableViewController{
     
     var myCompetition:Competition?
     var competitions:[Competition]?
@@ -12,7 +12,10 @@ class FirstViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Delete seperator lines in the view
+        self.tableView.separatorStyle = .none
         
+        //Load data from firebase
         loadData()
         
         
@@ -52,6 +55,8 @@ class FirstViewController: UITableViewController {
                 refAPI: snapValue["refAPI"] as? String ?? "",
                 discipline: snapValue["discipline"] as? String ?? "");
             
+            print(self.myCompetition?.name)
+            
             //Add the item to the list
             self.competitions?.append(self.myCompetition!)
             self.tableView.reloadData()
@@ -59,7 +64,7 @@ class FirstViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return competitions!.count;
+        return competitions?.count ?? 0;
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -72,7 +77,6 @@ class FirstViewController: UITableViewController {
         return cell!
         
     }
-    
-    
+  
 }
 
