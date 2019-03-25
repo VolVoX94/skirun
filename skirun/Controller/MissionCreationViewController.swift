@@ -22,7 +22,7 @@ class MissionCreationViewController: UIViewController , UITableViewDataSource{
     @IBOutlet weak var nameMission: UITextField!
     @IBOutlet weak var nbPeople: UITextField!
     @IBOutlet weak var descriptionMission: UITextField!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tablesView: UITableView!
     
     
     private var data: [String] = []
@@ -31,15 +31,14 @@ class MissionCreationViewController: UIViewController , UITableViewDataSource{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+        FirebaseManager.getDisciplines { (data) in
             
-        for i in 0...1000 {
-            data.append("\(i)")
+           self.data = Array (data)
+            
         }
         
-        tableView.dataSource = self
-        
+        tablesView.dataSource = self
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -56,11 +55,8 @@ class MissionCreationViewController: UIViewController , UITableViewDataSource{
         return cell //4.
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     
-
+    // Function go back to the previous view
     @IBAction func backCompetition(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

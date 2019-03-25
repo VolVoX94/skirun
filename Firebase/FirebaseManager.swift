@@ -24,5 +24,31 @@ class FirebaseManager{
         })
         
     }
+    /*
+    static func getDisciplines(completion: @escaping ([String]) -> Void) {
+       let ref:DatabaseReference = Database.database().reference().child("disciplinesV2");
+        ref.observe(.childAdded, with: { (snapshot) in
+            let name: String = (snapshot.key as? String)!
+            debugPrint("XXXXXXXXXXX",name)
+        })
+        
+    }*/
+    
+    
+    
+    static func getDisciplines(completion: @escaping ([String])-> Void){
+        let ref:DatabaseReference = Database.database().reference().child("disciplinesV2");
+        var numberOfDisciplines = [String]()
+        
+        ref.observe(.childAdded, with: { (snapshot) in
+            let name:String = snapshot.key
+            print("XXXXXXXXXXX",name)
+            
+           numberOfDisciplines.append(name)
+            completion(numberOfDisciplines)
+        })
+    }
+    
+    
     
 }
