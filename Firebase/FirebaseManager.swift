@@ -35,6 +35,4 @@ class FirebaseManager{
             completion(competition)
         })
     }
-
-    
 }

@@ -10,9 +10,10 @@ import UIKit
 
 class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDelegate{
         
-    private var data:[String] = []
+    private var data:[Competition] = []
     var name:String?
     var date:String?
+    var myCompetition:Competition?
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var myCompetitionName: UILabel!
@@ -23,13 +24,17 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
             super.viewDidLoad()
             tableView.dataSource = self
             
-            FirebaseManager.getCompetitons(completion: { (data) in
-                self.data = Array(data)
-            })
-            
+            loadCompetition(selectedCompetition: self.name!)
             self.myCompetitionName.text = self.name
             self.myStartDateLabel.text = self.name
         }
+    
+    func loadCompetition(selectedCompetition: String){
+            FirebaseManager.getCompetiton(name: selectedCompetition , completion: { (data) in
+                self.myCompetition = data
+                self.myStartDateLabel.text = data.startDateTime.description
+            })
+    }
         
 
     @IBAction func nextButton(_ sender: Any) {
@@ -46,7 +51,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cellCompetition")! //1.
             
-            let text = data[indexPath.row] //2.
+            let text = data[indexPath.row].name //2.
             
             cell.textLabel?.text = text //3.
             
