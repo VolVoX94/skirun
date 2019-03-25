@@ -15,4 +15,12 @@ enum FirebaseSession:String {
     case club = "clubsV2"
     case jobType = "typeJobsV2"
     case results = "results"
+    
+    //Competiontion nodes
+    case NODE_ENDDATE = "endDate";
+    case NODE_REFAPI = "refAPI";
+    case NODE_STARTDATE = "startDate";
+    case NODE_GUESTCLUBS = "guestClubs";
+    case NODE_DISCIPLINES = "disciplines";
+    
 }

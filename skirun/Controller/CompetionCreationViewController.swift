@@ -10,29 +10,35 @@ import UIKit
 
 class CompetionCreationViewController: UIViewController {
     
-    @IBOutlet weak var tileCompetion: UITextField!
+  
+    @IBOutlet weak var titleCompetition: UITextField!
     @IBOutlet weak var endDate: UITextField!
     @IBOutlet weak var refApi: UITextField!
     @IBOutlet weak var save: UIBarButtonItem!
     @IBOutlet weak var startDate: UITextField!
     
+    var selectedCompetition: String = "";
+    var competiton: Competition?;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        var competitions = [String]();
         
-        FirebaseManager.getCompetitons(completion: { (data) in
-            print(data)
-            print("data print-------------------")
-            let competitions = Array(data)
-        })
+        if(selectedCompetition != "none"){
+            loadCompetition()
+        }
         
-        
-        
-        
-
     }
     
+    func loadCompetition(){
+        FirebaseManager.getCompetiton(name: selectedCompetition , completion: { (data) in
+            self.competiton = data
+            self.titleCompetition.text = self.competiton?.name
+            //self.startDate.text = self.competiton?.startDateTime as String
+            //self.endDate.text = self.competiton?.endDateTime as String
+            self.refApi.text = self.competiton?.refAPI
+        })
+        
+    }
 
     @IBAction func goBackManagement(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -51,7 +57,7 @@ class CompetionCreationViewController: UIViewController {
         alertBox.addAction(UIAlertAction(title:"Ok", style: .cancel, handler:nil))
         
         
-        if((isValidTexte(test: tileCompetion.text!) == false)){
+        if((isValidTexte(test: titleCompetition.text!) == false)){
             
             //Define that something is wrong
             wrongInput = true;
