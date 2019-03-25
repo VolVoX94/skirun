@@ -34,8 +34,7 @@ class MissionCreationViewController: UIViewController {
             
             if !snapshot.exists() { return }
             
-            let snapshot: AnyObject
-            
+            print(snapshot.value!)
             
             
             
