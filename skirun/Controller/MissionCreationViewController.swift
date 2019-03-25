@@ -29,7 +29,18 @@ class MissionCreationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let ref = Database.database().reference(withPath: "disciplinesV2")
+        ref.observeSingleEvent(of: .value, with: { snapshot in
+            
+            if !snapshot.exists() { return }
+            
+            let snapshot: AnyObject
+            
+            
+            
+            
+        })
+        
     }
     
 

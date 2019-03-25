@@ -23,7 +23,6 @@ class LoginViewController: UIViewController,  UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         designTextField()
         
         //KEYBOARD - RETURN = Button "next"
@@ -34,6 +33,7 @@ class LoginViewController: UIViewController,  UITextFieldDelegate {
         if Auth.auth().currentUser != nil {
             self.performSegue(withIdentifier: "alreadyLoggedIn", sender: nil)
         }
+        
     }
     
     //when tap return-keyboard

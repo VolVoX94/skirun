@@ -31,6 +31,7 @@
 		CE7C8243222682F500FA4B3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7C8241222682F500FA4B3B /* Main.storyboard */; };
 		CE7C8245222682F600FA4B3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7C8244222682F600FA4B3B /* Assets.xcassets */; };
 		CE7C8248222682F600FA4B3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7C8246222682F600FA4B3B /* LaunchScreen.storyboard */; };
+		CEE05BC922427EAD002B5DD5 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE05BC822427EAD002B5DD5 /* FirebaseManager.swift */; };
 		CEE4646022368F1500F42D5D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE4645F22368F1500F42D5D /* LoginViewController.swift */; };
 		CEE4646222368F2300F42D5D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE4646122368F2300F42D5D /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
@@ -91,6 +92,7 @@
 		CE7C824E222682F600FA4B3B /* skirunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = skirunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7C8254222682F600FA4B3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE7C8259222682F600FA4B3B /* skirunUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = skirunUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEE05BC822427EAD002B5DD5 /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		CEE4645F22368F1500F42D5D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CEE4646122368F2300F42D5D /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		F7F03E9FFD1BF1A37DD61EF0 /* Pods_skirunUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_skirunUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,6 +199,7 @@
 		CE7C822F222682F500FA4B3B = {
 			isa = PBXGroup;
 			children = (
+				CEE05BC522427E32002B5DD5 /* Firebase */,
 				CE7C823A222682F500FA4B3B /* skirun */,
 				CE7C8251222682F600FA4B3B /* skirunTests */,
 				CE7C8239222682F500FA4B3B /* Products */,
@@ -236,6 +239,14 @@
 				CE1191522237C27900EE325C /* LoginTests.swift */,
 			);
 			path = skirunTests;
+			sourceTree = "<group>";
+		};
+		CEE05BC522427E32002B5DD5 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				CEE05BC822427EAD002B5DD5 /* FirebaseManager.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -464,6 +475,7 @@
 				CEE4646022368F1500F42D5D /* LoginViewController.swift in Sources */,
 				8445A78F22394B930018C1EE /* AdminManagementViewController.swift in Sources */,
 				8445A792223F8FAD0018C1EE /* MyGradientView.swift in Sources */,
+				CEE05BC922427EAD002B5DD5 /* FirebaseManager.swift in Sources */,
 				8445A79022394B930018C1EE /* AdminViewController.swift in Sources */,
 				84F075C6223932B200084B8B /* FirebaseSession.swift in Sources */,
 				CE7C823E222682F500FA4B3B /* FirstViewController.swift in Sources */,
