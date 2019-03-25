@@ -18,8 +18,8 @@ class AdminManagementViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellCompetition")! //1.
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellCompetition")!//1.
+        cell.textLabel?.textColor = UIColor.white
         let text = data[indexPath.row] //2.
         
         cell.textLabel?.text = text //3.
