@@ -35,8 +35,31 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
                 self.myStartDateLabel.text = data.startDateTime.description
             })
     }
+    
+    @IBAction func submitButton(_ sender: Any) {
         
-
+        //Define a general UIAlert
+        let alertBox = UIAlertController(
+            title: "No role choosen",
+            message: "",
+            preferredStyle: .actionSheet);
+        
+        alertBox.addAction(UIAlertAction(title: "Ok", style: .cancel, handler:nil))
+        
+        
+        //Check if email is correct
+        //Will call the regex pattern method!
+        //if((isValidName(testStr: fnameField.text!) == false)){
+            
+            //Define that something is wrong
+            alertBox.message = "You have to select a mission";
+            
+            //Display the alertBox
+            self.present(alertBox, animated: true);
+        }
+    
+    
+    
     @IBAction func nextButton(_ sender: Any) {
             performSegue(withIdentifier: "MyNextSegue", sender: self)
         }
@@ -54,6 +77,9 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
             let text = data[indexPath.row].name //2.
             
             cell.textLabel?.text = text //3.
+            cell.textLabel?.text = text //3.
+            cell.textLabel?.font = UIFont(name: "Avenir Next", size: 18)
+            cell.textLabel?.textColor = UIColor.white
             
             return cell //4.
         }
