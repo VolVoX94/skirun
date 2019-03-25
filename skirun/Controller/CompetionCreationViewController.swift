@@ -19,7 +19,18 @@ class CompetionCreationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.        
+        var competitions = [String]();
+        
+        FirebaseManager.getCompetitons(completion: { (data) in
+            print(data)
+            print("data print-------------------")
+            let competitions = Array(data)
+        })
+        
+        
+        
+        
+
     }
     
 
