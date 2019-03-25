@@ -4,16 +4,18 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class FirstViewController: UITableViewController{
+class FirstViewController: UIViewController, UITableViewDataSource{
     
     var myCompetition:Competition?
-    var competitions:[Competition]?
-
+    var competitions:[Competition] = []
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
-        //Delete seperator lines in the view
-        self.tableView.separatorStyle = .none
+        tableView.dataSource = self
         
         //Load data from firebase
         loadData()
@@ -48,35 +50,35 @@ class FirstViewController: UITableViewController{
             
             //Create temp object
             self.myCompetition = Competition(
-                name: snapValue["name"] as? String ?? "",
+                name: snapshot.key,
                 startDateTime: snapValue["stardDateTime"] as? String ?? "",
                 endDateTime: snapValue["endDateTime"] as? String ?? "",
                 guestClub: snapValue["guestClub"] as? String ?? "",
                 refAPI: snapValue["refAPI"] as? String ?? "",
                 discipline: snapValue["discipline"] as? String ?? "");
             
-            print(self.myCompetition?.name)
-            
             //Add the item to the list
-            self.competitions?.append(self.myCompetition!)
-            self.tableView.reloadData()
+            self.competitions.insert(self.myCompetition!, at: 0)
         }
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return competitions?.count ?? 0;
+    func numberOfSections(in tableView:UITableView) -> Int{
+        return 1
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        var cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        
-        let nameLabel = cell?.viewWithTag(1) as! UILabel
-        nameLabel.text = competitions?[indexPath.row].name
-        
-        return cell!
-        
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("NUMBEROFROWSINSECTION---", competitions.count)
+        return competitions.count;
     }
-  
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell")!
+        
+        cell.textLabel?.text = competitions[indexPath.row].name
+        
+        print("CELLFORROWAT---", self.myCompetition?.name)
+        return cell
+    }
 }
 
