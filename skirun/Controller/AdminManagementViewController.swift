@@ -8,18 +8,30 @@
 
 import UIKit
 
-class AdminManagementViewController: UIViewController, UITableViewDataSource {
+class AdminManagementViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var tableView: UITableView!
     private var data: [String] = []
+    var selectedCompetition = "none"
+    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        FirebaseManager.getCompetitons(completion: { (data) in
+            self.data = Array(data)
+        })
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellCompetition")! //1.
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellCompetition")!//1.
+        cell.textLabel?.textColor = UIColor.white
         let text = data[indexPath.row] //2.
         
         cell.textLabel?.text = text //3.
@@ -27,15 +39,20 @@ class AdminManagementViewController: UIViewController, UITableViewDataSource {
         return cell //4.
     }
     
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.dataSource = self
-        
-        FirebaseManager.getCompetitons(completion: { (data) in
-            self.data = Array(data)
-        })
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        selectedCompetition = data[indexPath.startIndex]
+        performSegue(withIdentifier: "toChampionship", sender: self)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let destinationController = segue.destination as! CompetionCreationViewController;
+        destinationController.selectedCompetition = selectedCompetition;
+    }
+    
+    
     
     @IBAction func backAdmin(_ sender: Any) {
         dismiss(animated: true, completion: nil)

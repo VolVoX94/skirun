@@ -22,7 +22,6 @@ class FirebaseManager{
                 }
             completion(competitions)
         })
-        
     }
     /*
     static func getDisciplines(completion: @escaping ([String]) -> Void) {
@@ -51,4 +50,15 @@ class FirebaseManager{
     
     
     
+    
+    static func getCompetiton(name: String, completion: @escaping (Competition) -> Void) {
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(name);
+        
+        ref.observe(.value, with: { (snapshot) in
+            let competition = Competition(name: snapshot.key, startDateTime: snapshot.childSnapshot(forPath: FirebaseSession.NODE_STARTDATE.rawValue).value as! CLongLong, endDateTime: snapshot.childSnapshot(forPath: FirebaseSession.NODE_ENDDATE.rawValue).value as! CLongLong, refAPI: snapshot.childSnapshot(forPath: FirebaseSession.NODE_REFAPI.rawValue).value as! String)
+            
+            
+            completion(competition)
+        })
+    }
 }

@@ -30,9 +30,13 @@ class LoginViewController: UIViewController,  UITextFieldDelegate {
         self.passwordField.delegate = self
         
         //If the user is already logged we skip the page
-        if Auth.auth().currentUser != nil {
-            self.performSegue(withIdentifier: "alreadyLoggedIn", sender: nil)
+
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if user != nil {
+                self.performSegue(withIdentifier: "alreadyLoggedIn", sender: nil)
+            } 
         }
+
         
     }
     
