@@ -10,20 +10,20 @@ import UIKit
 
 class Competition {
 
-    let name: String
-    let startDateTime: String
-    let endDateTime: String
-    let guestClub: String
-    let refAPI: String //Open for extension
-    let discipline: String
+    var name: String
+    var startDateTime: CLongLong
+    var endDateTime: CLongLong
+    var guestClub: String
+    var refAPI: String //Open for extension
+    var discipline: String
     
-    init(name: String, startDateTime: String, endDateTime: String, guestClub: String, refAPI: String, discipline: String) {
+    init(name: String, startDateTime: CLongLong, endDateTime: CLongLong, refAPI: String) {
         self.name = name;
         self.startDateTime = startDateTime;
         self.endDateTime = endDateTime;
-        self.guestClub = guestClub;
         self.refAPI = refAPI;
-        self.discipline = discipline;
+        self.guestClub = "";
+        self.discipline = "";
     }
     
     

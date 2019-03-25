@@ -267,7 +267,7 @@
                                 </state>
                                 <connections>
                                     <action selector="next:" destination="7iP-uM-gqX" eventType="touchUpInside" id="JrL-sX-DvQ"/>
-                                    <segue destination="DiL-V7-qlv" kind="presentation" identifier="addChampion" id="t80-IV-DA1"/>
+                                    <segue destination="DiL-V7-qlv" kind="presentation" identifier="toChampionship" id="t80-IV-DA1"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bvY-wG-ZDD">
@@ -275,8 +275,8 @@
                                 <color key="backgroundColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="0.0" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="0.0" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <color key="separatorColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="0.0" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="sectionIndexBackgroundColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="0.0" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="sectionIndexColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellCompetition" id="D1Y-FU-f5j">
                                         <rect key="frame" x="0.0" y="28" width="374" height="44"/>
@@ -395,7 +395,7 @@
                                 <rect key="frame" x="0.0" y="134" width="414" height="126"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="M1a-B7-wst">
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="M1a-B7-wst" userLabel="Title competition">
                                         <rect key="frame" x="8" y="0.0" width="398" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.027450980390000001" green="0.20000000000000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -469,7 +469,7 @@
                         <outlet property="refApi" destination="JhP-0g-fIi" id="hgv-xp-2N3"/>
                         <outlet property="save" destination="jyf-d2-Y5X" id="ZDz-BZ-gKp"/>
                         <outlet property="startDate" destination="HxE-X9-Xx1" id="jUo-Pj-Alu"/>
-                        <outlet property="tileCompetion" destination="M1a-B7-wst" id="Jhj-f8-aUx"/>
+                        <outlet property="titleCompetition" destination="M1a-B7-wst" id="vZo-cd-IQs"/>
                         <segue destination="M6B-KH-18W" kind="presentation" identifier="nextSegue" id="5S7-mi-7to"/>
                     </connections>
                 </viewController>
@@ -710,7 +710,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Availability" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQK-KZ-Gcw">
-                                <rect key="frame" x="80" y="95" width="254" height="55"/>
+                                <rect key="frame" x="80" y="51" width="254" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="C1R-HD-C9f"/>
                                 </constraints>
@@ -719,7 +719,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Missions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zUY-ar-0pL">
-                                <rect key="frame" x="37" y="317" width="154" height="29"/>
+                                <rect key="frame" x="37" y="273" width="154" height="29"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -793,8 +793,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="5S7-mi-7to"/>
         <segue reference="t80-IV-DA1"/>
-        <segue reference="Ehz-FG-DVX"/>
-        <segue reference="H4c-0W-dzj"/>
+        <segue reference="xlc-eV-QVU"/>
+        <segue reference="Iej-E6-wjr"/>
         <segue reference="GmT-KU-Wwj"/>
     </inferredMetricsTieBreakers>
 </document>
