@@ -115,23 +115,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
             self.present(alertBox, animated: true);
         }
         
-        if((isValidTime(test: startTime.text!) == false) && wrongInput != true){
-            //Define that something is wrong
-            wrongInput = true;
-            alertBox.message = "The format for the start time is XX:XX";
-            
-            //Display the alertBox
-            self.present(alertBox, animated: true);
-        }
         
-       if((isValidTime(test: endTime.text!) == false) && wrongInput != true){
-            //Define that something is wrong
-            wrongInput = true;
-            alertBox.message = "The format for the end time is XX:XX";
-            
-            //Display the alertBox
-            self.present(alertBox, animated: true);
-        }
         
         if((isValidTexte(test: descriptionMission.text!) == false) && wrongInput != true){
             //Define that something is wrong

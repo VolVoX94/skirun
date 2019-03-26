@@ -20,6 +20,10 @@ class CompetionCreationViewController: UIViewController {
     @IBOutlet weak var save: UIBarButtonItem!
     @IBOutlet weak var startDate: UITextField!
     
+    var startDateInt = 0
+    var endDateInt = 0
+
+    
     @IBAction func startdateEditing(_ sender: UITextField) {
         startDate.inputView = UIView()
         datePicker.isHidden = false
@@ -40,11 +44,19 @@ class CompetionCreationViewController: UIViewController {
     
     
     @IBAction func valueChanged(_ sender: UIDatePicker) {
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/YYYY HH:mm"
-        let somedateString = dateFormatter.string(from: sender.date)
+        let result = dateFormatter.string(from: sender.date)
         
-        startDate.text = somedateString
+        if startDate.isFirstResponder {
+            startDate.text = result
+            startDateInt = Int(sender.date.timeIntervalSince1970.rounded())
+        }
+        if endDate.isFirstResponder {
+            endDate.text = result
+            endDateInt = Int(sender.date.timeIntervalSince1970.rounded())
+        }
     }
     
     
@@ -109,24 +121,17 @@ class CompetionCreationViewController: UIViewController {
             return;
         }
         
-        if((isValidDate(dateString: startDate.text!) == false)){
-            alertBox.message = "The format for the Start date is dd-MM-yyyy";
-            
-            //Display the alertBox
-            self.present(alertBox, animated: true);
-            return;
-        }
-        
-        if((isValidDate(dateString: endDate.text!) == false)){
-            alertBox.message = "The format for the End date is dd-MM-yyyy";
-            
-            //Display the alertBox
-            self.present(alertBox, animated: true);
-            return;
-        }
-        
+
         if((isValidTexte(test: refApi.text!) == false)){
             alertBox.message = "refapi";
+            
+            //Display the alertBox
+            self.present(alertBox, animated: true);
+            return;
+        }
+        
+        if(startDateInt>endDateInt){
+            alertBox.message = "End date can't be before start date !";
             
             //Display the alertBox
             self.present(alertBox, animated: true);
@@ -141,7 +146,7 @@ class CompetionCreationViewController: UIViewController {
     func insertCompetition(){
         
         //create the object competition
-        let newCompetition = Competition(name: titleCompetition.text ?? "Error", startDateTime: 12345, endDateTime: 1234, refAPI: refApi.text ?? "Error")
+        let newCompetition = Competition(name: titleCompetition.text ?? "Error", startDateTime: startDateInt, endDateTime: endDateInt, refAPI: refApi.text ?? "Error")
         
         //set the reference to the name of the new cometition
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(newCompetition.name);
@@ -150,17 +155,7 @@ class CompetionCreationViewController: UIViewController {
         ref.setValue(newCompetition.toAnyObject())
     }
     
-    func isValidDate(dateString: String) -> Bool {
-        let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "dd-MM-yyyy"
-        if let _ = dateFormatterGet.date(from: dateString) {
-            //date parsing succeeded, if you need to do additional logic, replace _ with some variable name i.e date
-            return true
-        } else {
-            // Invalid date
-            return false
-        }
-    }
+
     
     
     
