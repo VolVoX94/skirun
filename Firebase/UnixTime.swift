@@ -13,7 +13,7 @@ typealias UnixTime = Int
 extension UnixTime {
     private func formatType(form: String) -> DateFormatter {
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.locale = Locale(identifier: "fr_CH")
         dateFormatter.dateFormat = form
         return dateFormatter
     }
@@ -23,8 +23,14 @@ extension UnixTime {
     var toHour: String {
         return formatType(form: "HH:mm").string(from: dateFull)
     }
-    var toDay: String {
-        return formatType(form: "MM/dd/yyyy").string(from: dateFull)
+    
+    var toDate: String {
+        return formatType(form: "dd/MM/yyyy").string(from: dateFull)
+    }
+    
+    var toDateTime: String {
+        return formatType(form: "dd/MM/yyyy HH:mm").string(from: dateFull)
     }
 }
+
 

@@ -12,12 +12,12 @@ class Competition {
 
     var name: String
     var startDateTime: Int
-    var endDateTime: CLongLong
+    var endDateTime: Int
     var guestClub: String
     var refAPI: String //Open for extension
     var discipline: String
     
-    init(name: String, startDateTime: Int, endDateTime: CLongLong, refAPI: String) {
+    init(name: String, startDateTime: Int, endDateTime: Int, refAPI: String) {
         self.name = name;
         self.startDateTime = startDateTime;
         self.endDateTime = endDateTime;
@@ -29,12 +29,9 @@ class Competition {
     
     func toAnyObject() -> Any {
         return [
-            "name": name,
-            "startDateTime": startDateTime,
+            "startDateTime" : startDateTime,
             "endDateTime": endDateTime,
-            "guestClub": guestClub,
             "refAPI": refAPI,
-            "discipline": discipline
         ]
     }
 
