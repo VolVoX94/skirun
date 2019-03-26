@@ -11,39 +11,52 @@ import Firebase
 import FirebaseDatabase
 
 
-class MissionCreationViewController: UIViewController {
+class MissionCreationViewController: UIViewController , UITableViewDataSource{
+    
     
     var myMission:Mission?
-    
-    
+
     @IBOutlet weak var typeOfJob: UITextField!
-    @IBOutlet weak var discipline: UITextField!
     @IBOutlet weak var startTime: UITextField!
     @IBOutlet weak var endTime: UITextField!
     @IBOutlet weak var nameMission: UITextField!
     @IBOutlet weak var nbPeople: UITextField!
     @IBOutlet weak var descriptionMission: UITextField!
+    @IBOutlet weak var tablesView: UITableView!
+    
+    
+    private var data: [String] = []
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let ref = Database.database().reference(withPath: "disciplinesV2")
-        ref.observeSingleEvent(of: .value, with: { snapshot in
-            
-            if !snapshot.exists() { return }
-            
-            let snapshot: AnyObject
-            
-            
-            
-            
-        })
         
+        FirebaseManager.getDisciplines { (data) in
+            
+           self.data = Array (data)
+            
+        }
+        
+        tablesView.dataSource = self
     }
     
-
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier")! //1.
+        
+        let text = data[indexPath.row] //2.
+        
+        cell.textLabel?.text = text //3.
+        
+        return cell //4.
+    }
+    
+    
+    // Function go back to the previous view
     @IBAction func backCompetition(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

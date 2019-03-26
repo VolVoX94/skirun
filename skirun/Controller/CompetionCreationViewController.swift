@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import Firebase
 
 class CompetionCreationViewController: UIViewController {
     
   
    
+
     @IBOutlet weak var titleCompetition: UITextField!
     @IBOutlet weak var endDate: UITextField!
     @IBOutlet weak var refApi: UITextField!
@@ -24,6 +26,7 @@ class CompetionCreationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //If we have a competitions, we load it
         if(selectedCompetition != "none"){
             loadCompetition()
         }
@@ -31,11 +34,21 @@ class CompetionCreationViewController: UIViewController {
     }
     
     func loadCompetition(){
+        //diable the field
+        titleCompetition.isEnabled = false
+        startDate.isEnabled = false
+        endDate.isEnabled = false
+        refApi.isEnabled = false
+        save.isEnabled = false
+        
+        //load the competion object in the fields
         FirebaseManager.getCompetiton(name: selectedCompetition , completion: { (data) in
             self.competiton = data
             self.titleCompetition.text = self.competiton?.name
-            //self.startDate.text = self.competiton?.startDateTime as String
-            //self.endDate.text = self.competiton?.endDateTime as String
+            let start: UnixTime = (self.competiton?.startDateTime)!
+            self.startDate.text = start.toDateTime
+            let end: UnixTime = (self.competiton?.endDateTime)!
+            self.endDate.text = end.toDateTime
             self.refApi.text = self.competiton?.refAPI
         })
         
@@ -47,7 +60,6 @@ class CompetionCreationViewController: UIViewController {
     
     
     @IBAction func saveButton(_ sender: Any) {
-        var wrongInput = false;
         
         //UIAlert
         let alertBox = UIAlertController(
@@ -59,47 +71,52 @@ class CompetionCreationViewController: UIViewController {
         
         
         if((isValidTexte(test: titleCompetition.text!) == false)){
-            
-            //Define that something is wrong
-            wrongInput = true;
             alertBox.message = "The title can contain text and/or numbers ";
             
             //Display the alertBox
             self.present(alertBox, animated: true);
+            return;
         }
         
-        if((isValidDate(dateString: startDate.text!) == false) && wrongInput != true){
-            //Define that something is wrong
-            wrongInput = true;
+        if((isValidDate(dateString: startDate.text!) == false)){
             alertBox.message = "The format for the Start date is dd-MM-yyyy";
             
             //Display the alertBox
             self.present(alertBox, animated: true);
+            return;
         }
         
-        if((isValidDate(dateString: endDate.text!) == false) && wrongInput != true){
-            //Define that something is wrong
-            wrongInput = true;
+        if((isValidDate(dateString: endDate.text!) == false)){
             alertBox.message = "The format for the End date is dd-MM-yyyy";
             
             //Display the alertBox
             self.present(alertBox, animated: true);
+            return;
         }
         
-        if((isValidTexte(test: refApi.text!) == false) && wrongInput != true){
-            //Define that something is wrong
-            wrongInput = true;
+        if((isValidTexte(test: refApi.text!) == false)){
             alertBox.message = "refapi";
             
             //Display the alertBox
             self.present(alertBox, animated: true);
+            return;
         }
         
-        if(wrongInput == false){
-            
-           performSegue(withIdentifier: "nextSegue", sender: self)
-        }
         
+        insertCompetition()
+        
+    }
+    
+    func insertCompetition(){
+        
+        //create the object competition
+        let newCompetition = Competition(name: titleCompetition.text ?? "Error", startDateTime: 12345, endDateTime: 1234, refAPI: refApi.text ?? "Error")
+        
+        //set the reference to the name of the new cometition
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(newCompetition.name);
+        
+        //add the object
+        ref.setValue(newCompetition.toAnyObject())
     }
     
     func isValidDate(dateString: String) -> Bool {
