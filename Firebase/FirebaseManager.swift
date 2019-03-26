@@ -23,29 +23,18 @@ class FirebaseManager{
             completion(competitions)
         })
     }
-    /*
-    static func getDisciplines(completion: @escaping ([String]) -> Void) {
-       let ref:DatabaseReference = Database.database().reference().child("disciplinesV2");
-        ref.observe(.childAdded, with: { (snapshot) in
-            let name: String = (snapshot.key as? String)!
-            debugPrint("XXXXXXXXXXX",name)
-        })
-        
-    }*/
-    
-    
-    
+ 
     static func getDisciplines(completion: @escaping ([String])-> Void){
-        let ref:DatabaseReference = Database.database().reference().child("disciplinesV2");
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.discipline.rawValue);
         var numberOfDisciplines = [String]()
         
-        ref.observe(.childAdded, with: { (snapshot) in
-            let name:String = snapshot.key
-            print("XXXXXXXXXXX",name)
-            
-           numberOfDisciplines.append(name)
+        ref.observe(.value, with: { (snapshot) in
+            for childSnapshot in snapshot.children{
+                numberOfDisciplines.append((childSnapshot as AnyObject).key as String)
+            }
             completion(numberOfDisciplines)
         })
+        
     }
     
     

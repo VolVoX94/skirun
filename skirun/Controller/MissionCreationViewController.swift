@@ -11,7 +11,9 @@ import Firebase
 import FirebaseDatabase
 
 
-class MissionCreationViewController: UIViewController , UITableViewDataSource{
+class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    
     
     
     var myMission:Mission?
@@ -22,7 +24,8 @@ class MissionCreationViewController: UIViewController , UITableViewDataSource{
     @IBOutlet weak var nameMission: UITextField!
     @IBOutlet weak var nbPeople: UITextField!
     @IBOutlet weak var descriptionMission: UITextField!
-    @IBOutlet weak var tablesView: UITableView!
+   
+    @IBOutlet weak var pickerView: UIPickerView!
     
     
     private var data: [String] = []
@@ -32,28 +35,45 @@ class MissionCreationViewController: UIViewController , UITableViewDataSource{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FirebaseManager.getDisciplines { (data) in
-            
-           self.data = Array (data)
-            
-        }
+        pickerView.delegate = self
+        pickerView.dataSource = self
         
-        tablesView.dataSource = self
+        FirebaseManager.getDisciplines (completion: {(data) in
+            self.data = Array (data)
+            
+            for item in data{
+                print(item)
+            }
+        })
+        
+        
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+
         return data.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier")! //1.
-        
-        let text = data[indexPath.row] //2.
-        
-        cell.textLabel?.text = text //3.
-        
-        return cell //4.
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+
+        return data[row]
+    }
+    
+    
+   /* func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        return data.count
+    }
+    
+   */
     
     
     // Function go back to the previous view

@@ -470,21 +470,12 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HW2-cS-DkP">
-                                        <rect key="frame" x="87" y="127" width="240" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jm6-WL-s1j">
+                                        <rect key="frame" x="-8" y="125" width="414" height="216"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellReuseIdentifier" id="ej1-wc-2iy">
-                                                <rect key="frame" x="0.0" y="28" width="240" height="44"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ej1-wc-2iy" id="D1y-cT-FdT">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </tableViewCellContentView>
-                                            </tableViewCell>
-                                        </prototypes>
-                                    </tableView>
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </pickerView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.027450980390000001" green="0.20000000000000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -520,8 +511,8 @@
                     </view>
                     <connections>
                         <outlet property="endTime" destination="zuj-OE-41J" id="l13-gr-jc4"/>
+                        <outlet property="pickerView" destination="Jm6-WL-s1j" id="j9m-rA-4aZ"/>
                         <outlet property="startTime" destination="0sK-qi-KwL" id="dXq-dw-0KD"/>
-                        <outlet property="tablesView" destination="HW2-cS-DkP" id="tZA-r7-aqz"/>
                         <outlet property="typeOfJob" destination="seM-Et-Yg1" id="wHM-bz-LRh"/>
                     </connections>
                 </viewController>
@@ -976,7 +967,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="IB7-qQ-rAC"/>
-        <segue reference="t80-IV-DA1"/>
+        <segue reference="jaA-MC-ch9"/>
         <segue reference="xlc-eV-QVU"/>
         <segue reference="H4c-0W-dzj"/>
         <segue reference="lzU-1b-eKA"/>
