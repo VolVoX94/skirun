@@ -31,11 +31,15 @@ class FirebaseManager{
         ref.observe(.value, with: { (snapshot) in
             for childSnapshot in snapshot.children{
                 numberOfDisciplines.append((childSnapshot as AnyObject).key as String)
+                print((childSnapshot as AnyObject).key as String)
             }
             completion(numberOfDisciplines)
         })
         
     }
+    
+    
+    
 
     static func getCompetiton(name: String, completion: @escaping (Competition) -> Void) {
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(name);

@@ -18,34 +18,25 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     
     var myMission:Mission?
 
+
     @IBOutlet weak var typeOfJob: UITextField!
     @IBOutlet weak var startTime: UITextField!
     @IBOutlet weak var endTime: UITextField!
     @IBOutlet weak var nameMission: UITextField!
     @IBOutlet weak var nbPeople: UITextField!
     @IBOutlet weak var descriptionMission: UITextField!
-   
+    
+    
+    
+    // Picker for the disciplines
     @IBOutlet weak var pickerView: UIPickerView!
+    var data: [String] = [String]()
     
-    
-    private var data: [String] = []
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        pickerView.delegate = self
-        pickerView.dataSource = self
-        
-        FirebaseManager.getDisciplines (completion: {(data) in
-            self.data = Array (data)
-            
-            for item in data{
-                print(item)
-            }
-        })
-        
+
+        loadDisciplineData()
         
     }
     
@@ -64,17 +55,13 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     }
     
     
-   /* func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+    func loadDisciplineData(){
+        FirebaseManager.getDisciplines(completion: { (Pdata) in
+            self.data = Array(Pdata)
+            self.pickerView.delegate = self
+            self.pickerView.dataSource = self
+        })
     }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
-        return data.count
-    }
-    
-   */
-    
     
     // Function go back to the previous view
     @IBAction func backCompetition(_ sender: Any) {
