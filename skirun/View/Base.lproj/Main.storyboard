@@ -405,12 +405,15 @@
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="IVj-F4-TdB">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
-                                                <action selector="backCompetition:" destination="M6B-KH-18W" id="op4-V4-2Jp"/>
+                                                <action selector="backCompetition:" destination="M6B-KH-18W" id="DmJ-rx-qdu"/>
                                                 <segue destination="DiL-V7-qlv" kind="presentation" id="jaA-MC-ch9"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Save" id="QBQ-Yc-zeU">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="saveMission:" destination="M6B-KH-18W" id="fkA-aU-566"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -443,20 +446,17 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
+                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qEW-Np-3YS">
+                                        <rect key="frame" x="0.0" y="171" width="414" height="82"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    </pickerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BeG-b2-inb">
-                                        <rect key="frame" x="153" y="78" width="109" height="22"/>
+                                        <rect key="frame" x="8" y="78" width="109" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="seM-Et-Yg1">
-                                        <rect key="frame" x="159" y="166" width="97" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.027450980390000001" green="0.20000000000000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -521,7 +521,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jm6-WL-s1j">
+                                    <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jm6-WL-s1j">
                                         <rect key="frame" x="0.0" y="132" width="414" height="118"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -535,9 +535,9 @@
                     </view>
                     <connections>
                         <outlet property="endTime" destination="zuj-OE-41J" id="l13-gr-jc4"/>
+                        <outlet property="pickerJob" destination="qEW-Np-3YS" id="DFT-tc-8m9"/>
                         <outlet property="pickerView" destination="Jm6-WL-s1j" id="j9m-rA-4aZ"/>
                         <outlet property="startTime" destination="0sK-qi-KwL" id="dXq-dw-0KD"/>
-                        <outlet property="typeOfJob" destination="seM-Et-Yg1" id="wHM-bz-LRh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MYe-Ck-U0V" userLabel="First Responder" sceneMemberID="firstResponder"/>

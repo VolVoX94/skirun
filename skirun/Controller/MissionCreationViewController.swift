@@ -19,14 +19,15 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     var myMission:Mission?
 
 
-    @IBOutlet weak var typeOfJob: UITextField!
     @IBOutlet weak var startTime: UITextField!
     @IBOutlet weak var endTime: UITextField!
     @IBOutlet weak var nameMission: UITextField!
     @IBOutlet weak var nbPeople: UITextField!
     @IBOutlet weak var descriptionMission: UITextField!
     
-    
+    // Picker for the job
+    @IBOutlet weak var pickerJob: UIPickerView!
+    var job:[String] = [String]()
     
     // Picker for the disciplines
     @IBOutlet weak var pickerView: UIPickerView!
@@ -36,13 +37,22 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loadJobData()
         loadDisciplineData()
+        
         
     }
     
+    //--------- PickerView function -------------
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        if (pickerView.tag == 0){
+            return job.count
+        }else{
+            return data.count
+        }
 
-        return data.count
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -50,11 +60,26 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        if (pickerView.tag == 0){
+            return "\(job[row])"
+        }else{
+            return "\(data[row])"
+        }
 
-        return data[row]
+    }
+    //-----------------End of the stuff print dscipline-------------------
+    
+    // call the function in FirebaseManager getJobs ==> return all the jobs existing
+    func loadJobData(){
+        FirebaseManager.getJobs(completion: { (data) in
+            self.job = Array(data)
+            self.pickerJob.delegate = self
+            self.pickerJob.dataSource = self
+        })
     }
     
-    
+    // call the function in FirebaseManager getDisciplines ==> return all the disciplines existing
     func loadDisciplineData(){
         FirebaseManager.getDisciplines(completion: { (Pdata) in
             self.data = Array(Pdata)
@@ -180,14 +205,9 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         
     }
     
-    //Regex pattern see the startTime and endTime
-    func isValidTime(test:String)-> Bool{
-        let timeRegEx = "[0-9][0-9]:[0-9][0-9]"
-        
-        let timeTest = NSPredicate(format: "SELF MATCHES %@", timeRegEx)
-        return timeTest.evaluate(with:test)
-        
-    }
+    
+    
+    
     
     
 }
