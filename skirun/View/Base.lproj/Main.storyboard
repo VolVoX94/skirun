@@ -365,7 +365,6 @@
                         <outlet property="refApi" destination="JhP-0g-fIi" id="hgv-xp-2N3"/>
                         <outlet property="save" destination="jyf-d2-Y5X" id="ZDz-BZ-gKp"/>
                         <outlet property="startDate" destination="HxE-X9-Xx1" id="jUo-Pj-Alu"/>
-                        <outlet property="tileCompetion" destination="M1a-B7-wst" id="Jhj-f8-aUx"/>
                         <outlet property="titleCompetition" destination="M1a-B7-wst" id="XCa-vZ-i2T"/>
                         <segue destination="M6B-KH-18W" kind="presentation" identifier="nextSegue" id="5S7-mi-7to"/>
                     </connections>
