@@ -797,7 +797,7 @@
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="0.0" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellCompetition" rowHeight="50" id="kYV-Fm-PE5">
+                                    <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="missionCell" rowHeight="50" id="kYV-Fm-PE5">
                                         <rect key="frame" x="0.0" y="28" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kYV-Fm-PE5" id="KaZ-Jc-1zR">
@@ -810,47 +810,10 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TIME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcJ-x2-E61">
-                                                    <rect key="frame" x="93" y="15" width="60" height="24"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="60" id="Wr3-10-Su0"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TIME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAJ-Xq-O8O">
-                                                    <rect key="frame" x="191" y="15" width="60" height="24"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="obJ-Tv-Bwb">
-                                                    <rect key="frame" x="313" y="9" width="49" height="31"/>
-                                                </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAf-PV-o4S">
-                                                    <rect key="frame" x="152" y="15" width="39" height="24"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="39" id="c3G-6b-NNI"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="tAJ-Xq-O8O" firstAttribute="leading" secondItem="FcJ-x2-E61" secondAttribute="trailing" constant="38" id="Bwb-vm-Vgx"/>
-                                                <constraint firstItem="iAf-PV-o4S" firstAttribute="baseline" secondItem="tAJ-Xq-O8O" secondAttribute="baseline" id="Dod-A8-uRV"/>
-                                                <constraint firstItem="FcJ-x2-E61" firstAttribute="leading" secondItem="KaZ-Jc-1zR" secondAttribute="leadingMargin" constant="73" id="M0A-ck-RsP"/>
-                                                <constraint firstItem="obJ-Tv-Bwb" firstAttribute="leading" secondItem="tAJ-Xq-O8O" secondAttribute="trailing" constant="62" id="Mse-H5-pus"/>
-                                                <constraint firstItem="FcJ-x2-E61" firstAttribute="top" secondItem="KaZ-Jc-1zR" secondAttribute="topMargin" constant="-40" id="UNm-ks-F6C"/>
                                                 <constraint firstItem="Bdy-Uj-w5u" firstAttribute="top" secondItem="KaZ-Jc-1zR" secondAttribute="topMargin" constant="-44" id="XkN-8a-EMB"/>
                                                 <constraint firstItem="Bdy-Uj-w5u" firstAttribute="leading" secondItem="KaZ-Jc-1zR" secondAttribute="leadingMargin" constant="10" id="hjH-sU-h4v"/>
-                                                <constraint firstItem="obJ-Tv-Bwb" firstAttribute="centerY" secondItem="KaZ-Jc-1zR" secondAttribute="centerY" id="jIk-YO-9DS"/>
-                                                <constraint firstItem="tAJ-Xq-O8O" firstAttribute="leading" secondItem="iAf-PV-o4S" secondAttribute="trailing" id="jno-c4-B6M"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="obJ-Tv-Bwb" secondAttribute="trailing" constant="-8" id="k5C-lF-atQ"/>
-                                                <constraint firstItem="FcJ-x2-E61" firstAttribute="baseline" secondItem="iAf-PV-o4S" secondAttribute="baseline" id="lh3-Mw-T1G"/>
-                                                <constraint firstItem="obJ-Tv-Bwb" firstAttribute="top" secondItem="KaZ-Jc-1zR" secondAttribute="topMargin" constant="-46" id="uR7-WN-zyY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="0.0" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -956,7 +919,7 @@
                         <outlet property="myCompetitionName" destination="Cp9-sw-cbQ" id="M7Z-ga-dKI"/>
                         <outlet property="myPicker" destination="XIg-JY-Tsd" id="6Ko-Mm-ybM"/>
                         <outlet property="myStartDateLabel" destination="J9l-ty-V0V" id="HKR-hg-Bxp"/>
-                        <outlet property="tableView" destination="DTk-fr-BQR" id="sLo-9c-H47"/>
+                        <outlet property="tableView" destination="DTk-fr-BQR" id="L7l-yN-StS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xgk-h6-PLO" userLabel="First Responder" sceneMemberID="firstResponder"/>

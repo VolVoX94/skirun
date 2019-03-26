@@ -47,10 +47,7 @@ class FirebaseManager{
             completion(numberOfDisciplines)
         })
     }
-    
-    
-    
-    
+
     static func getCompetiton(name: String, completion: @escaping (Competition) -> Void) {
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(name);
         
@@ -61,4 +58,34 @@ class FirebaseManager{
             completion(competition)
         })
     }
+    
+    //---------------- DISCIPLINES ------------
+    
+    static func getDisciplinesOfCompetition(name: String, completion: @escaping ([String])-> Void){
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(name).child("disciplines");
+        var numberOfDisciplines = [String]()
+        
+        ref.observe(.childAdded, with: { (snapshot) in
+            let name:String = snapshot.key
+            print("XXXXXXXXXXX",name)
+            
+            numberOfDisciplines.append(name)
+            completion(numberOfDisciplines)
+        })
+    }
+    
+    //----------------- MISSIONS ------------------
+    static func getMissionsOfDisciplines(competitionName: String, disciplineName: String, completion: @escaping ([String])-> Void){
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(competitionName).child("disciplines").child(disciplineName);
+        var numberOfMissions = [String]()
+        
+        ref.observe(.childAdded, with: { (snapshot) in
+            let name:String = snapshot.key
+            print("XXXXXXXXXXX",name)
+            
+            numberOfMissions.append(name)
+            completion(numberOfMissions)
+        })
+    }
+    
 }
