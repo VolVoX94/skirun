@@ -35,6 +35,8 @@ class CompetionCreationViewController: UIViewController {
         FirebaseManager.getCompetiton(name: selectedCompetition , completion: { (data) in
             self.competiton = data
             self.titleCompetition.text = self.competiton?.name
+            let start: UnixTime = (self.competiton?.startDateTime)!
+            print(start.dateFull)
             //self.startDate.text = self.competiton?.startDateTime as String
             //self.endDate.text = self.competiton?.endDateTime as String
             self.refApi.text = self.competiton?.refAPI

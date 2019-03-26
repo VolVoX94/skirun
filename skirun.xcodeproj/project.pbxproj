@@ -32,6 +32,7 @@
 		CE7C8243222682F500FA4B3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7C8241222682F500FA4B3B /* Main.storyboard */; };
 		CE7C8245222682F600FA4B3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7C8244222682F600FA4B3B /* Assets.xcassets */; };
 		CE7C8248222682F600FA4B3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7C8246222682F600FA4B3B /* LaunchScreen.storyboard */; };
+		CEAB3CC7224A25AD0079CE5B /* UnixTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB3CC6224A25AD0079CE5B /* UnixTime.swift */; };
 		CEE05BC922427EAD002B5DD5 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE05BC822427EAD002B5DD5 /* FirebaseManager.swift */; };
 		CEE4646022368F1500F42D5D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE4645F22368F1500F42D5D /* LoginViewController.swift */; };
 		CEE4646222368F2300F42D5D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE4646122368F2300F42D5D /* SignUpViewController.swift */; };
@@ -94,6 +95,7 @@
 		CE7C824E222682F600FA4B3B /* skirunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = skirunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7C8254222682F600FA4B3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE7C8259222682F600FA4B3B /* skirunUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = skirunUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEAB3CC6224A25AD0079CE5B /* UnixTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnixTime.swift; sourceTree = "<group>"; };
 		CEE05BC822427EAD002B5DD5 /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		CEE4645F22368F1500F42D5D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CEE4646122368F2300F42D5D /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				CEE05BC822427EAD002B5DD5 /* FirebaseManager.swift */,
+				CEAB3CC6224A25AD0079CE5B /* UnixTime.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEE4646222368F2300F42D5D /* SignUpViewController.swift in Sources */,
+				CEAB3CC7224A25AD0079CE5B /* UnixTime.swift in Sources */,
 				842CA7962242620A00260ECF /* MyGradientTableView.swift in Sources */,
 				842CA7922242308B00260ECF /* Competition.swift in Sources */,
 				CE7C8240222682F500FA4B3B /* SecondViewController.swift in Sources */,

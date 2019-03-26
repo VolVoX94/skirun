@@ -163,7 +163,7 @@
                                 </state>
                                 <connections>
                                     <action selector="next:" destination="7iP-uM-gqX" eventType="touchUpInside" id="JrL-sX-DvQ"/>
-                                    <segue destination="DiL-V7-qlv" kind="presentation" identifier="addChampion" id="t80-IV-DA1"/>
+                                    <segue destination="DiL-V7-qlv" kind="presentation" identifier="toChampionship" id="t80-IV-DA1"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bvY-wG-ZDD">
@@ -964,7 +964,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="5S7-mi-7to"/>
         <segue reference="t80-IV-DA1"/>
-        <segue reference="xlc-eV-QVU"/>
+        <segue reference="Ehz-FG-DVX"/>
         <segue reference="H4c-0W-dzj"/>
         <segue reference="lzU-1b-eKA"/>
     </inferredMetricsTieBreakers>

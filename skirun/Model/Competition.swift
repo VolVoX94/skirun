@@ -11,13 +11,13 @@ import UIKit
 class Competition {
 
     var name: String
-    var startDateTime: CLongLong
+    var startDateTime: Int
     var endDateTime: CLongLong
     var guestClub: String
     var refAPI: String //Open for extension
     var discipline: String
     
-    init(name: String, startDateTime: CLongLong, endDateTime: CLongLong, refAPI: String) {
+    init(name: String, startDateTime: Int, endDateTime: CLongLong, refAPI: String) {
         self.name = name;
         self.startDateTime = startDateTime;
         self.endDateTime = endDateTime;
