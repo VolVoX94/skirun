@@ -13,25 +13,56 @@ class CompetionCreationViewController: UIViewController {
     
   
    
-
+    @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var titleCompetition: UITextField!
     @IBOutlet weak var endDate: UITextField!
     @IBOutlet weak var refApi: UITextField!
     @IBOutlet weak var save: UIBarButtonItem!
     @IBOutlet weak var startDate: UITextField!
     
+    @IBAction func startdateEditing(_ sender: UITextField) {
+        startDate.inputView = UIView()
+        datePicker.isHidden = false
+    }
+    
+    @IBAction func startdateEditingEnd(_ sender: UITextField) {
+        datePicker.isHidden = true
+    }
+    
+    @IBAction func enddateEditing(_ sender: UITextField) {
+        endDate.inputView = UIView()
+        datePicker.isHidden = false
+    }
+    
+    @IBAction func enddateEditingEnd(_ sender: UITextField) {
+        datePicker.isHidden = true
+    }
+    
+    
+    @IBAction func valueChanged(_ sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/YYYY HH:mm"
+        let somedateString = dateFormatter.string(from: sender.date)
+        
+        startDate.text = somedateString
+    }
+    
+    
     var selectedCompetition: String = "";
     var competiton: Competition?;
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        datePicker.isHidden=true
+        datePicker.backgroundColor = UIColor.white
+
         //If we have a competitions, we load it
         if(selectedCompetition != "none"){
             loadCompetition()
         }
         
     }
+
     
     func loadCompetition(){
         //diable the field
