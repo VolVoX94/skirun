@@ -291,7 +291,7 @@
                                 <rect key="frame" x="0.0" y="134" width="414" height="126"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="M1a-B7-wst">
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="M1a-B7-wst" userLabel="Title Competition">
                                         <rect key="frame" x="8" y="0.0" width="398" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.027450980390000001" green="0.20000000000000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -366,6 +366,7 @@
                         <outlet property="save" destination="jyf-d2-Y5X" id="ZDz-BZ-gKp"/>
                         <outlet property="startDate" destination="HxE-X9-Xx1" id="jUo-Pj-Alu"/>
                         <outlet property="tileCompetion" destination="M1a-B7-wst" id="Jhj-f8-aUx"/>
+                        <outlet property="titleCompetition" destination="M1a-B7-wst" id="XCa-vZ-i2T"/>
                         <segue destination="M6B-KH-18W" kind="presentation" identifier="nextSegue" id="5S7-mi-7to"/>
                     </connections>
                 </viewController>
@@ -963,9 +964,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="5S7-mi-7to"/>
-        <segue reference="jaA-MC-ch9"/>
-        <segue reference="Ehz-FG-DVX"/>
-        <segue reference="Iej-E6-wjr"/>
+        <segue reference="t80-IV-DA1"/>
+        <segue reference="xlc-eV-QVU"/>
+        <segue reference="H4c-0W-dzj"/>
         <segue reference="lzU-1b-eKA"/>
     </inferredMetricsTieBreakers>
 </document>
