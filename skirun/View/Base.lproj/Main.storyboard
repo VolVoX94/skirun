@@ -302,6 +302,12 @@
                                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="enddateEditing:" destination="DiL-V7-qlv" eventType="editingDidBegin" id="Ild-a4-xYH"/>
+                                            <action selector="enddateEditing:" destination="DiL-V7-qlv" eventType="touchDragInside" id="bHd-mn-c5J"/>
+                                            <action selector="enddateEditingEnd:" destination="DiL-V7-qlv" eventType="editingDidEnd" id="WAA-j2-Le5"/>
+                                            <action selector="enddateEditingEnd:" destination="DiL-V7-qlv" eventType="touchDragOutside" id="i5V-5u-ITN"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Start Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HxE-X9-Xx1">
                                         <rect key="frame" x="8" y="39" width="398" height="30"/>
@@ -314,6 +320,11 @@
                                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="enddateEditing:" destination="DiL-V7-qlv" eventType="touchDragInside" id="67b-eI-SJg"/>
+                                            <action selector="startdateEditing:" destination="DiL-V7-qlv" eventType="editingDidBegin" id="DoF-er-lFQ"/>
+                                            <action selector="startdateEditingEnd:" destination="DiL-V7-qlv" eventType="editingDidEnd" id="f9W-hu-Pgs"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.027450980390000001" green="0.20000000000000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -343,11 +354,25 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.027450980390000001" green="0.20000000000000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="10" translatesAutoresizingMaskIntoConstraints="NO" id="gOg-yd-4HF">
+                                <rect key="frame" x="0.0" y="656" width="414" height="240"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <date key="date" timeIntervalSinceReferenceDate="575295852.51723194">
+                                    <!--2019-03-26 12:24:12 +0000-->
+                                </date>
+                                <locale key="locale" localeIdentifier="fr_CH"/>
+                                <connections>
+                                    <action selector="valueChanged:" destination="DiL-V7-qlv" eventType="valueChanged" id="CVF-sF-Kbw"/>
+                                </connections>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" red="0.027450980390000001" green="0.20000000000000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="kzs-uQ-LfU"/>
                     </view>
                     <connections>
+                        <outlet property="datePicker" destination="gOg-yd-4HF" id="lKR-yP-mgj"/>
                         <outlet property="endDate" destination="oQY-Q5-q9N" id="aOE-M3-ucc"/>
                         <outlet property="refApi" destination="JhP-0g-fIi" id="hgv-xp-2N3"/>
                         <outlet property="save" destination="jyf-d2-Y5X" id="ZDz-BZ-gKp"/>
@@ -939,9 +964,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="IB7-qQ-rAC"/>
-        <segue reference="t80-IV-DA1"/>
+        <segue reference="jaA-MC-ch9"/>
         <segue reference="xlc-eV-QVU"/>
         <segue reference="H4c-0W-dzj"/>
-        <segue reference="lzU-1b-eKA"/>
+        <segue reference="GmT-KU-Wwj"/>
     </inferredMetricsTieBreakers>
 </document>
