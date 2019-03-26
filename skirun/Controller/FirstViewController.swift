@@ -37,6 +37,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         let text = data[indexPath.row] //2.
         
         cell.textLabel?.text = text //3.
+        cell.textLabel?.font = UIFont(name: "Avenir Next", size: 18)
+        cell.textLabel?.textColor = UIColor.white
         
         return cell //4.
     }
@@ -44,6 +46,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                 self.name = data[indexPath.row]
                 self.date = data[indexPath.row]
+                var cell:UITableViewCell = tableView.cellForRow(at: indexPath)!
+                cell.contentView.backgroundColor = UIColor(red:0.00, green:0.15, blue:0.29, alpha:1.0)
                 performSegue(withIdentifier: "MyNextAvailability", sender: self)
     }
     

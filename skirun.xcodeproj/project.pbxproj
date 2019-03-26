@@ -226,8 +226,8 @@
 			children = (
 				841633812237B66D00939A9D /* Model */,
 				CE2C1F45222D684500D4A491 /* GoogleService-Info.plist */,
-				CE42A1892236A071000CBE46 /* View */,
 				CE42A1882236A052000CBE46 /* Controller */,
+				CE42A1892236A071000CBE46 /* View */,
 				CE7C823B222682F500FA4B3B /* AppDelegate.swift */,
 				CE7C8244222682F600FA4B3B /* Assets.xcassets */,
 				CE7C8249222682F600FA4B3B /* Info.plist */,
