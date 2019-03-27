@@ -54,11 +54,12 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isHorizontal" value="NO"/>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="rocketWhite" selectedImage="rocketWhite" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="" selectedImage="rocketWhite" id="VRL-zN-l4T"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1000" y="81"/>
+            <point key="canvasLocation" x="819" y="38"/>
         </scene>
         <!--Admin View Controller-->
         <scene sceneID="3T8-qo-ogT">
@@ -68,9 +69,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Srq-Z4-jGa">
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Srq-Z4-jGa">
                                 <rect key="frame" x="0.0" y="42" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.027450980390000001" green="0.20000000000000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="barTintColor" red="0.027450980390000001" green="0.20000000000000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
@@ -81,28 +81,35 @@
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="vl1-do-ago">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
-                                                <action selector="backAdmin:" destination="8hz-nY-BuE" id="Eff-Fu-We9"/>
-                                                <segue destination="8rJ-Kc-sve" kind="presentation" id="GmT-KU-Wwj"/>
+                                                <action selector="back:" destination="8hz-nY-BuE" id="cuH-df-36L"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znN-qk-Ej9">
-                                <rect key="frame" x="59" y="389" width="103" height="119"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYq-Es-H0b">
+                                <rect key="frame" x="263" y="387" width="85" height="122"/>
+                                <state key="normal" image="Location"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znN-qk-Ej9">
+                                <rect key="frame" x="75" y="389" width="103" height="119"/>
                                 <state key="normal" image="Management"/>
                                 <connections>
                                     <segue destination="oFV-Vs-ePn" kind="show" id="Ehz-FG-DVX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYq-Es-H0b">
-                                <rect key="frame" x="239" y="389" width="85" height="122"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Location"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.027450980390000001" green="0.20000000000000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="znN-qk-Ej9" firstAttribute="centerY" secondItem="JYq-Es-H0b" secondAttribute="centerY" id="9sM-14-ueL"/>
+                            <constraint firstItem="Srq-Z4-jGa" firstAttribute="top" secondItem="fgZ-Hx-M1d" secondAttribute="topMargin" constant="-2" id="Ahn-S5-jrB"/>
+                            <constraint firstAttribute="trailing" secondItem="Srq-Z4-jGa" secondAttribute="trailing" id="At6-yF-qjE"/>
+                            <constraint firstItem="znN-qk-Ej9" firstAttribute="centerY" secondItem="fgZ-Hx-M1d" secondAttribute="centerY" id="GyI-90-55n"/>
+                            <constraint firstItem="Srq-Z4-jGa" firstAttribute="leading" secondItem="fgZ-Hx-M1d" secondAttribute="leading" id="KTS-xj-sic"/>
+                            <constraint firstItem="kq0-rm-9qa" firstAttribute="bottom" secondItem="znN-qk-Ej9" secondAttribute="bottom" constant="354" id="dc0-kK-jdh"/>
+                            <constraint firstItem="znN-qk-Ej9" firstAttribute="leading" secondItem="kq0-rm-9qa" secondAttribute="leading" constant="75" id="i3n-wj-hMS"/>
+                            <constraint firstItem="JYq-Es-H0b" firstAttribute="leading" secondItem="znN-qk-Ej9" secondAttribute="trailing" constant="85" id="y6U-4Q-dQb"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="kq0-rm-9qa"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="firstColor">
@@ -140,7 +147,6 @@
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
                                                 <action selector="backAdmin:" destination="oFV-Vs-ePn" id="Q3X-gW-0rN"/>
-                                                <segue destination="8hz-nY-BuE" kind="presentation" id="H4c-0W-dzj"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -240,8 +246,7 @@
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="CZx-FH-avN">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
-                                                <action selector="goBackManagement:" destination="DiL-V7-qlv" id="jnk-DD-ohn"/>
-                                                <segue destination="oFV-Vs-ePn" kind="presentation" id="xlc-eV-QVU"/>
+                                                <action selector="back:" destination="DiL-V7-qlv" id="Qmi-gl-xYT"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Save" id="jyf-d2-Y5X">
@@ -955,8 +960,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="IB7-qQ-rAC"/>
         <segue reference="jaA-MC-ch9"/>
-        <segue reference="xlc-eV-QVU"/>
-        <segue reference="H4c-0W-dzj"/>
-        <segue reference="GmT-KU-Wwj"/>
     </inferredMetricsTieBreakers>
 </document>

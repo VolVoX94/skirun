@@ -43,6 +43,7 @@ class CompetionCreationViewController: UIViewController {
     }
     
     
+    
     @IBAction func valueChanged(_ sender: UIDatePicker) {
         
         let dateFormatter = DateFormatter()
@@ -166,5 +167,9 @@ class CompetionCreationViewController: UIViewController {
         return textTest.evaluate(with:test)
     }
     
+    @IBAction func back(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
 
+    }
+    
 }

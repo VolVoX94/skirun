@@ -74,6 +74,8 @@ class FirebaseManager{
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(name).child("disciplines");
         var numberOfDisciplines = [String]()
         
+ 
+        
         ref.observe(.childAdded, with: { (snapshot) in
             let name:String = snapshot.key
             print("XXXXXXXXXXX",name)

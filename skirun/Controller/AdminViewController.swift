@@ -26,6 +26,9 @@ class AdminViewController: UIViewController {
         performSegue(withIdentifier: "addChampion", sender: self)
     }
     
+    @IBAction func back(_ sender: Any) {
+    self.dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 
