@@ -17,9 +17,9 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     
     
     var myMission:Mission?
-    let result = 0
     var disciplines: String?
     var jobs: String?
+    var selectedCompetition: String?
 
     @IBOutlet weak var location: UITextField!
     @IBOutlet weak var nameMission: UITextField!
@@ -213,15 +213,14 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         self.present(alertBox, animated: true);
     }
         
-        if((isValidNbPeople(test: nbPeople.text!) == false) && wrongInput != true){
+    if(0<=(Int(nbPeople.text!)!) && wrongInput != true){
             //Define that something is wrong
             wrongInput = true;
             alertBox.message = "Input wrong please enter a number";
             
             //Display the alertBox
             self.present(alertBox, animated: true);
-            
-           result == Int(nbPeople.text!)
+        
         }
         
         createMission()
@@ -231,9 +230,9 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     func createMission(){
         //3 ---- Create Mission
         
-        let newMission = Mission(title: nameMission.text ?? "Error", description: descriptionMission.text ?? "Error", startTime: startTimeInt, endTime: endTimeInt, nbPeople: result ,location: location.text ?? "Error", discipline: disciplines ?? "Error", jobs: jobs ?? "Error")
+        let newMission = Mission(title: nameMission.text ?? "Error", description: descriptionMission.text ?? "Error", startTime: startTimeInt, endTime: endTimeInt, nbPeople: Int(nbPeople.text!)! ,location: location.text ?? "Error", discipline: disciplines ?? "Error", jobs: jobs ?? "Error")
         
-        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child("name compet").child(FirebaseSession.discipline.rawValue).child(disciplines!).child(newMission.title);
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(self.selectedCompetition!).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(disciplines!).child(newMission.title);
         
         //add the object
         ref.setValue(newMission.toAnyObject())
@@ -252,15 +251,6 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         return textTest.evaluate(with:test)
     }
     
-    //Regex pattern see the nbPeople
-    func isValidNbPeople(test:String)-> Bool {
-        
-        let dateRegEx = "[0-9]{1,10}"
-        
-        let dateTest = NSPredicate(format: "SELF MATCHES %@", dateRegEx)
-        return dateTest.evaluate(with:test)
-        
-    }
     
     
     @IBAction func back(_ sender: Any) {

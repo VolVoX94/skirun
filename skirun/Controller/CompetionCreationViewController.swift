@@ -258,4 +258,10 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
 
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let destinationController = segue.destination as! MissionCreationViewController;
+        destinationController.selectedCompetition = self.titleCompetition.text;
+    }
+    
 }

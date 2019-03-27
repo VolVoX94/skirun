@@ -12,7 +12,6 @@ class Mission {
     
     let title : String
     let description: String
-    let typeJob:String
     let startTime: Int
     let endTime: Int
     let nbPeople: Int
@@ -24,7 +23,6 @@ class Mission {
     init(title: String, description: String, startTime: Int, endTime: Int, nbPeople: Int, location: String, discipline: String, jobs: String) {
         self.title = title;
         self.description = description;
-        self.typeJob = typeJob;
         self.startTime = startTime;
         self.endTime = endTime;
         self.nbPeople = nbPeople;
@@ -37,7 +35,6 @@ class Mission {
     func toAnyObject() -> Any {
         return [
             "description": description,
-            "typeJob":typeJob,
             "startTime": startTime,
             "endTime": endTime,
             "nbPeople": nbPeople,

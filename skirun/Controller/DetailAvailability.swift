@@ -22,6 +22,8 @@ import UIKit
 import Firebase
 
 class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource{
+
+    
    
     //1------- DECLARED VARIABLES
     private var data:[Competition] = []
@@ -140,7 +142,6 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         return missionData.count
     }
         
-<<<<<<< Updated upstream
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("LLLLLLLLLL", missionData[indexPath.row])
         let cell = tableView.dequeueReusableCell(withIdentifier: "missionCell")! //1.
@@ -150,7 +151,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
             
         let start: UnixTime = missionData[indexPath.row].startTime
         let end: UnixTime = missionData[indexPath.row].endTime
-        let text = tempMission.typeJob + " " + start.toHour + " - " + end.toHour
+        let text = tempMission.jobs + " " + start.toHour + " - " + end.toHour
             
         cell.textLabel?.text = text //3.
         cell.textLabel?.font = UIFont(name: "Avenir Next", size: 18)
@@ -167,19 +168,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         
         return cell //4.
     }
-=======
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "missionCell")! //1.
-            
-            let tempMission = missionData2[indexPath.row]
-            
-            cell.textLabel?.text = tempMission.title //3.
-            cell.textLabel?.font = UIFont(name: "Avenir Next", size: 18)
-            cell.textLabel?.textColor = UIColor.white
-            
-            return cell //4.
-        }
->>>>>>> Stashed changes
+
     
     @objc func toggel(_ sender:UISwitch, name:String){
         print("Switch", sender.tag)
