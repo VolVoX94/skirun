@@ -19,8 +19,15 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     var myMission:Mission?
 
 
-    @IBOutlet weak var startTime: UITextField!
+    // Time part
+    @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var endTime: UITextField!
+    @IBOutlet weak var startTime: UITextField!
+    var startTimeInt = 0
+    var endTimeInt = 0
+    
+    //----------------------------------------
+    
     @IBOutlet weak var nameMission: UITextField!
     @IBOutlet weak var nbPeople: UITextField!
     @IBOutlet weak var descriptionMission: UITextField!
@@ -33,15 +40,63 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     @IBOutlet weak var pickerView: UIPickerView!
     var data: [String] = [String]()
     
-
+    
+    //--------- Date Picker -------------------
+    
+    
+    @IBAction func starTimeEdit(_ sender: UITextField) {
+        startTime.inputView = UIView()
+        datePicker.isHidden = false
+    }
+    
+    
+    @IBAction func starTimeEditEnd(_ sender: UITextField) {
+        datePicker.isHidden = true
+    }
+    
+   
+    @IBAction func endTimeEdit(_ sender: UITextField) {
+        endTime.inputView = UIView()
+        datePicker.isHidden = false
+    }
+    
+    
+    @IBAction func editTimeEditEnd(_ sender: UITextField) {
+        datePicker.isHidden = true
+    }
+    
+    
+    @IBAction func valueChanged(_ sender: UIDatePicker) {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/YYYY HH:mm"
+        let result = dateFormatter.string(from: sender.date)
+        
+        if startTime.isFirstResponder{
+            startTime.text = result
+            startTimeInt = Int(sender.date.timeIntervalSince1970.rounded())
+        }
+        if endTime.isFirstResponder{
+            endTime.text = result
+            endTimeInt = Int(sender.date.timeIntervalSince1970.rounded())
+        }
+        
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        datePicker.isHidden = true
+        datePicker.backgroundColor = UIColor.white
         loadJobData()
         loadDisciplineData()
         
         
     }
+
+    
+    //--------- End part of the Date Picker-----------
     
     //--------- PickerView function -------------
     
@@ -93,7 +148,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func saveMission(_ sender: Any) {
+   /* @IBAction func saveMission(_ sender: Any) {
         var wrongInput = false;
         
         //UIAlert
@@ -141,8 +196,6 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
             self.myMission = Mission(
                 title: nameMission.text!,
                 description: descriptionMission.text!,
-                startTime: startTime.text!,
-                endTime: endTime.text!,
                 nbPeople: nbPeople.text!);
             
             print("----------------------xxxxxxxxxxxxxxxxxxxxxxxx----------------------------");
@@ -155,7 +208,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
             
         }
         
-    }
+    }*/
     
     func createMission(title:String){
         //3 ---- Create Mission

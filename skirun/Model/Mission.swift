@@ -12,11 +12,11 @@ class Mission {
     
     let title : String
     let description: String
-    let startTime: String
-    let endTime: String
-    let nbPeople: String
+    let startTime: Int
+    let endTime: Int
+    let nbPeople: Int
     
-    init(title: String, description: String, startTime: String, endTime: String, nbPeople: String) {
+    init(title: String, description: String, startTime: Int, endTime: Int, nbPeople: Int) {
         self.title = title;
         self.description = description;
         self.startTime = startTime;
