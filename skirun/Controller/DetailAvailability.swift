@@ -12,6 +12,7 @@
          3. BUTTONS
          4. TABLE VIEW - MISSIONS
          5. FIREBASE CONNECTION
+         6. mainSubscribe-Method
  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ß
  */
 
@@ -104,34 +105,31 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     //Enter subscribtion
     @IBAction func submitButton(_ sender: Any) {
         
-        //Define a general UIAlert
-        let alertBox = UIAlertController(
-            title: "No role choosen",
-            message: "",
-            preferredStyle: .actionSheet);
-        
-            alertBox.addAction(UIAlertAction(title: "Ok", style: .cancel, handler:nil))
-        
+        //Display the alertBox
+        if(choosenMissions.count <= 0){
+            let alertBox = UIAlertController(
+                title: "Oh ooooh",
+                message: "",
+                preferredStyle: .actionSheet);
+            
             //Define that something is wrong
             alertBox.message = "You have to select a mission";
-            
-            //Display the alertBox
-        if(choosenMissions.count <= 0){
+            alertBox.addAction(UIAlertAction(title: "Ok", style: .cancel, handler:nil))
             self.present(alertBox, animated: true);
         }
         else{
-            for item in choosenMissions {
-                saveSubscriber(mission: self.missionData[item].title)
-            }
-            
-            
-            performSegue(withIdentifier: "goHome", sender: self)
+            subscribe()
         }
     }
     
     //Open previous page
     @IBAction func backButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        if(choosenMissions.count > 0){
+            subscribe()
+        }
+        else{
+             self.dismiss(animated: true, completion: nil)
+        }
     }
     
     
@@ -139,10 +137,8 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return missionData.count
     }
-        
-<<<<<<< Updated upstream
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("LLLLLLLLLL", missionData[indexPath.row])
         let cell = tableView.dequeueReusableCell(withIdentifier: "missionCell")! //1.
             
         //2.
@@ -167,19 +163,6 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         
         return cell //4.
     }
-=======
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "missionCell")! //1.
-            
-            let tempMission = missionData2[indexPath.row]
-            
-            cell.textLabel?.text = tempMission.title //3.
-            cell.textLabel?.font = UIFont(name: "Avenir Next", size: 18)
-            cell.textLabel?.textColor = UIColor.white
-            
-            return cell //4.
-        }
->>>>>>> Stashed changes
     
     @objc func toggel(_ sender:UISwitch, name:String){
         print("Switch", sender.tag)
@@ -228,5 +211,29 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
                                                  nameMission: mission,
                                                  nameDiscipline: (self.myDiscipline)!,
                                                  nameCompetition: (self.myCompetition!.name))
+    }
+    
+    //6 MAIN SUBSCRIBE METHOD ---------------
+    
+    func subscribe(){
+        let alertBox = UIAlertController(
+            title: "Confirmation",
+            message: "",
+            preferredStyle: .actionSheet);
+        
+        //Define that something is wrong
+        alertBox.message = "Do you want to subscribe?";
+        alertBox.addAction(UIAlertAction(title: "Yes", style: .default, handler:{ (action: UIAlertAction!) in
+            print("Subscriber written")
+            for item in self.choosenMissions {
+                self.saveSubscriber(mission: self.missionData[item].title)
+            }
+            self.dismiss(animated: true, completion: nil)
+        }))
+        alertBox.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{(action: UIAlertAction!) in
+            print("Subscription aborted")
+            self.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alertBox, animated: true)
     }
 }

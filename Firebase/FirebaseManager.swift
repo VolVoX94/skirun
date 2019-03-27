@@ -108,7 +108,6 @@ class FirebaseManager{
         var missions:[Mission] = []
         ref.observe(.value, with: { (snapshot) in
             for childSnapshot in snapshot.children{
-                print("------------",snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String).childSnapshot(forPath: "description"))
                 let tempMission = Mission(title: (childSnapshot as AnyObject).key as String,
                                           description: snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String).childSnapshot(forPath: FirebaseSession.MISSION_DESCRIPTION.rawValue).value as! String,
                                           typeJob: snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String).childSnapshot(forPath: FirebaseSession.MISSION_TYPE_JOB.rawValue).value as! String,
@@ -127,9 +126,11 @@ class FirebaseManager{
     static func saveSubscribersToMission(uidUser:String, nameMission:String, nameDiscipline:String, nameCompetition:String){
         
         //set the reference to the name of the new cometition
-        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(nameCompetition).child(FirebaseSession.discipline.rawValue).child(nameDiscipline).child(nameMission).child(FirebaseSession.MISSION_SUBSCRIBED.rawValue);
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(nameCompetition).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(nameDiscipline).child(nameMission).child(FirebaseSession.MISSION_SUBSCRIBED.rawValue);
+        print(ref);
         
         //add the object
-        ref.setValue(uidUser)
+        let userChild = ref.child(uidUser)
+        userChild.setValue(false)
     }
 }
