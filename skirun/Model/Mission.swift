@@ -16,14 +16,21 @@ class Mission {
     let startTime: Int
     let endTime: Int
     let nbPeople: Int
+    let location: String
+    let discipline: String
+    let jobs: String
     
-    init(title: String, description: String, typeJob: String, startTime: Int, endTime: Int, nbPeople: Int) {
+    
+    init(title: String, description: String, startTime: Int, endTime: Int, nbPeople: Int, location: String, discipline: String, jobs: String) {
         self.title = title;
         self.description = description;
         self.typeJob = typeJob;
         self.startTime = startTime;
         self.endTime = endTime;
         self.nbPeople = nbPeople;
+        self.location = location;
+        self.discipline = discipline;
+        self.jobs = jobs;
     }
     
     
@@ -33,7 +40,10 @@ class Mission {
             "typeJob":typeJob,
             "startTime": startTime,
             "endTime": endTime,
-            "nbPeople": nbPeople
+            "nbPeople": nbPeople,
+            "location": location,
+            "discipline": discipline,
+            "jobs": jobs,
         ]
     }
     

@@ -33,7 +33,6 @@ class FirebaseManager{
         ref.observe(.value, with: { (snapshot) in
             for childSnapshot in snapshot.children{
                 numberOfDisciplines.append((childSnapshot as AnyObject).key as String)
-                print((childSnapshot as AnyObject).key as String)
             }
             completion(numberOfDisciplines)
         })
@@ -50,7 +49,6 @@ class FirebaseManager{
         ref.observe(.value, with: { (snapshot) in
             for childSnapshot in snapshot.children{
                 jobs.append((childSnapshot as AnyObject).key as String)
-                print((childSnapshot as AnyObject).key as String)
             }
             completion(jobs)
         })
@@ -116,7 +114,10 @@ class FirebaseManager{
                                           startTime: snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String).childSnapshot(forPath: FirebaseSession.MISSION_STARTDATE.rawValue).value as! Int,
                                           //TODO delete String
                                           endTime: snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String).childSnapshot(forPath: FirebaseSession.MISSION_ENDDATE.rawValue).value as! Int,
-                                          nbPeople:  snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String).childSnapshot(forPath: FirebaseSession.MISSION_NBROFPEOPLE.rawValue).value as! Int)
+                                          nbPeople:  snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String).childSnapshot(forPath: FirebaseSession.MISSION_NBROFPEOPLE.rawValue).value as! Int,
+                                          location:" ", discipline: "String", jobs: "<#String#>")
+            
+                
                 missions.append(tempMission)
             }
             completion(missions)
