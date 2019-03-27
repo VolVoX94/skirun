@@ -17,20 +17,15 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     
     
     var myMission:Mission?
+    let result = 0
+    var disciplines: String?
+    var jobs: String?
 
-
-    // Time part
-    @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var endTime: UITextField!
-    @IBOutlet weak var startTime: UITextField!
-    var startTimeInt = 0
-    var endTimeInt = 0
-    
-    //----------------------------------------
-    
+    @IBOutlet weak var location: UITextField!
     @IBOutlet weak var nameMission: UITextField!
     @IBOutlet weak var nbPeople: UITextField!
     @IBOutlet weak var descriptionMission: UITextField!
+    
     
     // Picker for the job
     @IBOutlet weak var pickerJob: UIPickerView!
@@ -41,9 +36,17 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     var data: [String] = [String]()
     
     
-    //--------- Date Picker -------------------
+    // Picker for the start and end time
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var endTime: UITextField!
+    @IBOutlet weak var startTime: UITextField!
+    var startTimeInt = 0
+    var endTimeInt = 0
     
     
+    
+    
+    //--------- Time function for edit and changed value -------------------
     @IBAction func starTimeEdit(_ sender: UITextField) {
         startTime.inputView = UIView()
         datePicker.isHidden = false
@@ -82,6 +85,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         }
         
     }
+    //--------- End of the time function -------------------
     
     
     
@@ -93,10 +97,9 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         loadDisciplineData()
         
         
+        
     }
 
-    
-    //--------- End part of the Date Picker-----------
     
     //--------- PickerView function -------------
     
@@ -123,7 +126,21 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         }
 
     }
-    //-----------------End of the stuff print dscipline-------------------
+    
+    
+    //Check wich element has been choosen
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if(pickerView.tag == 0){
+            self.disciplines = data[row]
+                
+        }else{
+            self.jobs = job[row]
+            
+        }
+
+    }
+    
+    //------------ End of the stuff print discipline or jobs -------------
     
     // call the function in FirebaseManager getJobs ==> return all the jobs existing
     func loadJobData(){
@@ -145,10 +162,11 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     
     // Function go back to the previous view
     @IBAction func backCompetition(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
-   /* @IBAction func saveMission(_ sender: Any) {
+    // Function Save a Mission
+   @IBAction func saveMission(_ sender: Any) {
         var wrongInput = false;
         
         //UIAlert
@@ -170,8 +188,6 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
             self.present(alertBox, animated: true);
         }
         
-        
-        
         if((isValidTexte(test: descriptionMission.text!) == false) && wrongInput != true){
             //Define that something is wrong
             wrongInput = true;
@@ -180,47 +196,51 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
             //Display the alertBox
             self.present(alertBox, animated: true);
         }
+    
+        if((isValidTexte(test: location.text!) == false) && wrongInput != true){
+            //Define that something is wrong
+            wrongInput = true;
+            alertBox.message = "The Location of the mission, you can write some text and/or numbers";
+        
+            //Display the alertBox
+            self.present(alertBox, animated: true);
+        }
+    
+    if(startTimeInt > endTimeInt){
+        alertBox.message = "End date can't be before start date !";
+        
+        //Display the alertBox
+        self.present(alertBox, animated: true);
+    }
         
         if((isValidNbPeople(test: nbPeople.text!) == false) && wrongInput != true){
             //Define that something is wrong
             wrongInput = true;
-            alertBox.message = "You have to enter a number of people you want for the mission";
+            alertBox.message = "Input wrong please enter a number";
             
             //Display the alertBox
             self.present(alertBox, animated: true);
+            
+           result == Int(nbPeople.text!)
         }
         
-        if (wrongInput == false){
-            
-            //creation of the mission
-            self.myMission = Mission(
-                title: nameMission.text!,
-                description: descriptionMission.text!,
-                nbPeople: nbPeople.text!);
-            
-            print("----------------------xxxxxxxxxxxxxxxxxxxxxxxx----------------------------");
-            print(myMission!.title + myMission!.description + myMission!.startTime + myMission!.endTime + myMission!.nbPeople);
-            
-            //-------Firebase---------
-            
-            createMission(title: nameMission.text!)
-            
-            
-        }
+        createMission()
         
-    }*/
+    }
     
-    func createMission(title:String){
+    func createMission(){
         //3 ---- Create Mission
         
-        //need load value from enum
-        let missionSession:FirebaseSession = FirebaseSession.discipline;
+        let newMission = Mission(title: nameMission.text ?? "Error", description: descriptionMission.text ?? "Error", startTime: startTimeInt, endTime: endTimeInt, nbPeople: result ,location: location.text ?? "Error", discipline: disciplines ?? "Error", jobs: jobs ?? "Error")
         
-        var ref: DatabaseReference!
-        ref = Database.database().reference();
-        ref.child(missionSession.rawValue).child(title).setValue(self.myMission!.toAnyObject());
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child("name compet").child(FirebaseSession.discipline.rawValue).child(disciplines!).child(newMission.title);
         
-        performSegue(withIdentifier: "saveMission", sender: self)
+        //add the object
+        ref.setValue(newMission.toAnyObject())
+        
+        
+        
+       
     }
     
 
