@@ -22,6 +22,7 @@ class AdminManagementViewController: UIViewController, UITableViewDataSource, UI
         
         FirebaseManager.getCompetitons(completion: { (data) in
             self.data = Array(data)
+            self.tableView.reloadData()
         })
     }
     
@@ -33,7 +34,7 @@ class AdminManagementViewController: UIViewController, UITableViewDataSource, UI
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCompetition")!//1.
         cell.textLabel?.textColor = UIColor.white
         let text = data[indexPath.row] //2.
-        
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.textLabel?.text = text //3.
         
         return cell //4.
@@ -42,7 +43,7 @@ class AdminManagementViewController: UIViewController, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        selectedCompetition = data[indexPath.startIndex]
+        selectedCompetition = data[indexPath.item]
         performSegue(withIdentifier: "toChampionship", sender: self)
     }
     
