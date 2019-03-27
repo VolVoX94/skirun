@@ -19,18 +19,20 @@
 
 
 import UIKit
+import Firebase
 
 class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource{
    
     //1------- DECLARED VARIABLES
     private var data:[Competition] = []
-    var selectedDiscipline:String?
     var name:String?
     var date:String?
+    var myDiscipline:String?
     var myCompetition:Competition?
     var myMission:Mission?
     var pickerData: [String] = [String]()
-    var missionData2:[Mission] = []
+    var missionData:[Mission] = []
+    var choosenMissions:[Int] = []
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -76,8 +78,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     
     //Check wich element has been choosen
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.selectedDiscipline = pickerData[row]
-        
+        self.myDiscipline = pickerData[row]
         //load the data for missions
         if(pickerData[row] != "Please select"){
             loadMissionData(disciplineName: pickerData[row])
@@ -110,19 +111,24 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
             message: "",
             preferredStyle: .actionSheet);
         
-        alertBox.addAction(UIAlertAction(title: "Ok", style: .cancel, handler:nil))
+            alertBox.addAction(UIAlertAction(title: "Ok", style: .cancel, handler:nil))
         
             //Define that something is wrong
             alertBox.message = "You have to select a mission";
             
             //Display the alertBox
+        if(choosenMissions.count <= 0){
             self.present(alertBox, animated: true);
         }
-    
-    //Next page will be opened
-    @IBAction func nextButton(_ sender: Any) {
-            performSegue(withIdentifier: "MyNextSegue", sender: self)
+        else{
+            for item in choosenMissions {
+                saveSubscriber(mission: self.missionData[item].title)
+            }
+            
+            
+            performSegue(withIdentifier: "goHome", sender: self)
         }
+    }
     
     //Open previous page
     @IBAction func backButton(_ sender: Any) {
@@ -132,19 +138,19 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     
     //4 TABLE VIEW ---------------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return missionData2.count
+        return missionData.count
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("LLLLLLLLLL", missionData2[indexPath.row])
+        print("LLLLLLLLLL", missionData[indexPath.row])
         let cell = tableView.dequeueReusableCell(withIdentifier: "missionCell")! //1.
             
         //2.
-        let tempMission = missionData2[indexPath.row]
+        let tempMission = missionData[indexPath.row]
             
-        let start: UnixTime = missionData2[indexPath.row].startTime
-        let end: UnixTime = missionData2[indexPath.row].endTime
-        let text = tempMission.title + " " + start.toHour + " - " + end.toHour
+        let start: UnixTime = missionData[indexPath.row].startTime
+        let end: UnixTime = missionData[indexPath.row].endTime
+        let text = tempMission.typeJob + " " + start.toHour + " - " + end.toHour
             
         cell.textLabel?.text = text //3.
         cell.textLabel?.font = UIFont(name: "Avenir Next", size: 18)
@@ -154,10 +160,28 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         //SWITCH BUTTON ---------------------------------
         let switchObj = UISwitch(frame: CGRect(x: 1, y: 1, width: 20, height: 20))
         switchObj.isOn = false
+        switchObj.addTarget(self, action: #selector(toggel(_:name:)), for: .valueChanged)
+        switchObj.tag = indexPath.row
         cell.accessoryView = switchObj
         
         
         return cell //4.
+    }
+    
+    @objc func toggel(_ sender:UISwitch, name:String){
+        print("Switch", sender.tag)
+        if(sender.isOn){
+            //ADD element
+            choosenMissions.append(sender.tag);
+        }
+        else{
+            //DELETE element
+            choosenMissions = choosenMissions.filter{$0 != sender.tag}
+        }
+        for item in choosenMissions {
+            print(item)
+        }
+        //print(Auth.auth().currentUser?.uid)
     }
     
     
@@ -166,8 +190,8 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     //---------------- FIREBASE CONNECTION -----------------
     func loadMissionData(disciplineName: String){
         
-        FirebaseManager.getMisOfDisciplines(competitionName: self.name!, disciplineName: disciplineName) { (missionData2) in
-            self.missionData2 = Array(missionData2)
+        FirebaseManager.getMisOfDisciplines(competitionName: self.name!, disciplineName: disciplineName) { (missionData) in
+            self.missionData = Array(missionData)
         }
     }
     
@@ -183,5 +207,12 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
             self.myCompetition = data
             self.myStartDateLabel.text = data.startDateTime.description
         })
+    }
+    
+    func saveSubscriber(mission:String){
+        FirebaseManager.saveSubscribersToMission(uidUser: (Auth.auth().currentUser?.uid)!,
+                                                 nameMission: mission,
+                                                 nameDiscipline: (self.myDiscipline)!,
+                                                 nameCompetition: (self.myCompetition!.name))
     }
 }

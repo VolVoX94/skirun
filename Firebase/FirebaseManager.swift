@@ -100,6 +100,7 @@ class FirebaseManager{
         })
     }
     
+    //Get all missions as "MISSION"-Objects
     static func getMisOfDisciplines(competitionName: String, disciplineName: String, completion: @escaping ([Mission])-> Void){
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(competitionName).child("disciplines").child(disciplineName);
         var missions:[Mission] = []
@@ -108,6 +109,7 @@ class FirebaseManager{
                 print("------------",snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String).childSnapshot(forPath: "description"))
                 let tempMission = Mission(title: (childSnapshot as AnyObject).key as String,
                                           description: snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String).childSnapshot(forPath: FirebaseSession.MISSION_DESCRIPTION.rawValue).value as! String,
+                                          typeJob: snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String).childSnapshot(forPath: FirebaseSession.MISSION_TYPE_JOB.rawValue).value as! String,
                                           //TODO delete String
                                           startTime: snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String).childSnapshot(forPath: FirebaseSession.MISSION_STARTDATE.rawValue).value as! Int,
                                           //TODO delete String
@@ -117,5 +119,15 @@ class FirebaseManager{
             }
             completion(missions)
         })
+    }
+    
+    //Add Subscribers to missions
+    static func saveSubscribersToMission(uidUser:String, nameMission:String, nameDiscipline:String, nameCompetition:String){
+        
+        //set the reference to the name of the new cometition
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(nameCompetition).child(FirebaseSession.discipline.rawValue).child(nameDiscipline).child(nameMission).child(FirebaseSession.MISSION_SUBSCRIBED.rawValue);
+        
+        //add the object
+        ref.setValue(uidUser)
     }
 }

@@ -953,6 +953,7 @@
                         <outlet property="myPicker" destination="XIg-JY-Tsd" id="6Ko-Mm-ybM"/>
                         <outlet property="myStartDateLabel" destination="J9l-ty-V0V" id="HKR-hg-Bxp"/>
                         <outlet property="tableView" destination="DTk-fr-BQR" id="L7l-yN-StS"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="goHome" id="9q0-SX-fMg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xgk-h6-PLO" userLabel="First Responder" sceneMemberID="firstResponder"/>
