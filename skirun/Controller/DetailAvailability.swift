@@ -30,7 +30,6 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     var myCompetition:Competition?
     var myMission:Mission?
     var pickerData: [String] = [String]()
-    var missionData: [String] = [String]()
     var missionData2:[Mission] = []
     
     @IBOutlet weak var tableView: UITableView!
@@ -133,32 +132,39 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     
     //4 TABLE VIEW ---------------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return missionData.count
+        return missionData2.count
     }
         
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            print("LLLLLLLLLL", missionData[indexPath.row])
-            let cell = tableView.dequeueReusableCell(withIdentifier: "missionCell")! //1.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("LLLLLLLLLL", missionData2[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: "missionCell")! //1.
             
-            let text = missionData[indexPath.row] //2.
-            let tempMission = missionData2[indexPath.row]
+        //2.
+        let tempMission = missionData2[indexPath.row]
             
+        let start: UnixTime = missionData2[indexPath.row].startTime
+        let end: UnixTime = missionData2[indexPath.row].endTime
+        let text = tempMission.title + " " + start.toHour + " - " + end.toHour
             
-            cell.textLabel?.text = tempMission.title //3.
-            cell.textLabel?.font = UIFont(name: "Avenir Next", size: 18)
-            cell.textLabel?.textColor = UIColor.white
-            
-            return cell //4.
-        }
+        cell.textLabel?.text = text //3.
+        cell.textLabel?.font = UIFont(name: "Avenir Next", size: 18)
+        cell.textLabel?.textColor = UIColor.white
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        
+        //SWITCH BUTTON ---------------------------------
+        let switchObj = UISwitch(frame: CGRect(x: 1, y: 1, width: 20, height: 20))
+        switchObj.isOn = false
+        cell.accessoryView = switchObj
+        
+        
+        return cell //4.
+    }
     
     
     
     
     //---------------- FIREBASE CONNECTION -----------------
     func loadMissionData(disciplineName: String){
-        FirebaseManager.getMissionsOfDisciplines(competitionName: self.name!, disciplineName: disciplineName) { (missionData) in
-            self.missionData = Array(missionData)
-        }
         
         FirebaseManager.getMisOfDisciplines(competitionName: self.name!, disciplineName: disciplineName) { (missionData2) in
             self.missionData2 = Array(missionData2)
