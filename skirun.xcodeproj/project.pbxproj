@@ -17,7 +17,7 @@
 		8445A79022394B930018C1EE /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445A78C22394B930018C1EE /* AdminViewController.swift */; };
 		8445A792223F8FAD0018C1EE /* MyGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445A791223F8FAD0018C1EE /* MyGradientView.swift */; };
 		846662ED2248D3D1008845E5 /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846662EC2248D3D1008845E5 /* MyTableViewCell.swift */; };
-		84827B94224B74CF00F40A71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84827B93224B74CF00F40A71 /* Main.storyboard */; };
+		84827B96224B8C2400F40A71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84827B95224B8C2400F40A71 /* Main.storyboard */; };
 		84C056FC22490DC7009367AF /* DetailAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C056FB22490DC7009367AF /* DetailAvailability.swift */; };
 		84F075C42239105800084B8B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F075C32239105800084B8B /* User.swift */; };
 		84F075C6223932B200084B8B /* FirebaseSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F075C5223932B200084B8B /* FirebaseSession.swift */; };
@@ -69,7 +69,7 @@
 		8445A78C22394B930018C1EE /* AdminViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
 		8445A791223F8FAD0018C1EE /* MyGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGradientView.swift; sourceTree = "<group>"; };
 		846662EC2248D3D1008845E5 /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
-		84827B93224B74CF00F40A71 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		84827B95224B8C2400F40A71 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		84C056FB22490DC7009367AF /* DetailAvailability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAvailability.swift; sourceTree = "<group>"; };
 		84F075C32239105800084B8B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		84F075C5223932B200084B8B /* FirebaseSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSession.swift; sourceTree = "<group>"; };
@@ -190,7 +190,7 @@
 		CE42A1892236A071000CBE46 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				84827B93224B74CF00F40A71 /* Main.storyboard */,
+				84827B95224B8C2400F40A71 /* Main.storyboard */,
 				CE7C8246222682F600FA4B3B /* LaunchScreen.storyboard */,
 				CE11915A2237DB8100EE325C /* Login.storyboard */,
 				8445A791223F8FAD0018C1EE /* MyGradientView.swift */,
@@ -363,7 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE7C8248222682F600FA4B3B /* LaunchScreen.storyboard in Resources */,
-				84827B94224B74CF00F40A71 /* Main.storyboard in Resources */,
+				84827B96224B8C2400F40A71 /* Main.storyboard in Resources */,
 				CE2C1F46222D684500D4A491 /* GoogleService-Info.plist in Resources */,
 				CE7C8245222682F600FA4B3B /* Assets.xcassets in Resources */,
 				CE1191582237DB8100EE325C /* Login.storyboard in Resources */,
