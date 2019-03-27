@@ -17,6 +17,7 @@ class FirebaseManager{
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue);
         var competitions = [String]()
         ref.observe(.value, with: { (snapshot) in
+            competitions.removeAll()
                 for childSnapshot in snapshot.children{
                     competitions.append((childSnapshot as AnyObject).key as String)
                 }
@@ -44,6 +45,8 @@ class FirebaseManager{
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.jobType.rawValue);
         var jobs = [String]()
         
+   
+        
         ref.observe(.value, with: { (snapshot) in
             for childSnapshot in snapshot.children{
                 jobs.append((childSnapshot as AnyObject).key as String)
@@ -65,7 +68,7 @@ class FirebaseManager{
                                           startDateTime: snapshot.childSnapshot(forPath: FirebaseSession.NODE_STARTDATE.rawValue).value as! Int,
                                           endDateTime: snapshot.childSnapshot(forPath: FirebaseSession.NODE_ENDDATE.rawValue).value as! Int,
                                           refAPI: snapshot.childSnapshot(forPath: FirebaseSession.NODE_REFAPI.rawValue).value as! String)
-          completion(competition)
+            completion(competition)
         })
     }
     
@@ -75,7 +78,6 @@ class FirebaseManager{
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(name).child("disciplines");
         var numberOfDisciplines = [String]()
         
- 
         
         ref.observe(.childAdded, with: { (snapshot) in
             let name:String = snapshot.key

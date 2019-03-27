@@ -80,9 +80,8 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.myDiscipline = pickerData[row]
         //load the data for missions
-        if(pickerData[row] != "Please select"){
+        if(row>0){
             loadMissionData(disciplineName: pickerData[row])
-            self.tableView.reloadData()
         }
     }
     
@@ -141,6 +140,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         return missionData.count
     }
         
+<<<<<<< Updated upstream
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("LLLLLLLLLL", missionData[indexPath.row])
         let cell = tableView.dequeueReusableCell(withIdentifier: "missionCell")! //1.
@@ -167,6 +167,19 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         
         return cell //4.
     }
+=======
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "missionCell")! //1.
+            
+            let tempMission = missionData2[indexPath.row]
+            
+            cell.textLabel?.text = tempMission.title //3.
+            cell.textLabel?.font = UIFont(name: "Avenir Next", size: 18)
+            cell.textLabel?.textColor = UIColor.white
+            
+            return cell //4.
+        }
+>>>>>>> Stashed changes
     
     @objc func toggel(_ sender:UISwitch, name:String){
         print("Switch", sender.tag)
@@ -192,6 +205,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         
         FirebaseManager.getMisOfDisciplines(competitionName: self.name!, disciplineName: disciplineName) { (missionData) in
             self.missionData = Array(missionData)
+             self.tableView.reloadData()
         }
     }
     
