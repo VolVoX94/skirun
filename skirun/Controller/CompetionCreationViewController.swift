@@ -13,25 +13,69 @@ class CompetionCreationViewController: UIViewController {
     
   
    
-
+    @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var titleCompetition: UITextField!
     @IBOutlet weak var endDate: UITextField!
     @IBOutlet weak var refApi: UITextField!
     @IBOutlet weak var save: UIBarButtonItem!
     @IBOutlet weak var startDate: UITextField!
     
+    var startDateInt = 0
+    var endDateInt = 0
+
+    
+    @IBAction func startdateEditing(_ sender: UITextField) {
+        startDate.inputView = UIView()
+        datePicker.isHidden = false
+    }
+    
+    @IBAction func startdateEditingEnd(_ sender: UITextField) {
+        datePicker.isHidden = true
+    }
+    
+    @IBAction func enddateEditing(_ sender: UITextField) {
+        endDate.inputView = UIView()
+        datePicker.isHidden = false
+    }
+    
+    @IBAction func enddateEditingEnd(_ sender: UITextField) {
+        datePicker.isHidden = true
+    }
+    
+    
+    
+    @IBAction func valueChanged(_ sender: UIDatePicker) {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/YYYY HH:mm"
+        let result = dateFormatter.string(from: sender.date)
+        
+        if startDate.isFirstResponder {
+            startDate.text = result
+            startDateInt = Int(sender.date.timeIntervalSince1970.rounded())
+        }
+        if endDate.isFirstResponder {
+            endDate.text = result
+            endDateInt = Int(sender.date.timeIntervalSince1970.rounded())
+        }
+    }
+    
+    
     var selectedCompetition: String = "";
     var competiton: Competition?;
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        datePicker.isHidden=true
+        datePicker.backgroundColor = UIColor.white
+
         //If we have a competitions, we load it
         if(selectedCompetition != "none"){
             loadCompetition()
         }
         
     }
+
     
     func loadCompetition(){
         //diable the field
@@ -78,24 +122,17 @@ class CompetionCreationViewController: UIViewController {
             return;
         }
         
-        if((isValidDate(dateString: startDate.text!) == false)){
-            alertBox.message = "The format for the Start date is dd-MM-yyyy";
-            
-            //Display the alertBox
-            self.present(alertBox, animated: true);
-            return;
-        }
-        
-        if((isValidDate(dateString: endDate.text!) == false)){
-            alertBox.message = "The format for the End date is dd-MM-yyyy";
-            
-            //Display the alertBox
-            self.present(alertBox, animated: true);
-            return;
-        }
-        
+
         if((isValidTexte(test: refApi.text!) == false)){
             alertBox.message = "refapi";
+            
+            //Display the alertBox
+            self.present(alertBox, animated: true);
+            return;
+        }
+        
+        if(startDateInt>endDateInt){
+            alertBox.message = "End date can't be before start date !";
             
             //Display the alertBox
             self.present(alertBox, animated: true);
@@ -110,7 +147,7 @@ class CompetionCreationViewController: UIViewController {
     func insertCompetition(){
         
         //create the object competition
-        let newCompetition = Competition(name: titleCompetition.text ?? "Error", startDateTime: 12345, endDateTime: 1234, refAPI: refApi.text ?? "Error")
+        let newCompetition = Competition(name: titleCompetition.text ?? "Error", startDateTime: startDateInt, endDateTime: endDateInt, refAPI: refApi.text ?? "Error")
         
         //set the reference to the name of the new cometition
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(newCompetition.name);
@@ -119,17 +156,7 @@ class CompetionCreationViewController: UIViewController {
         ref.setValue(newCompetition.toAnyObject())
     }
     
-    func isValidDate(dateString: String) -> Bool {
-        let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "dd-MM-yyyy"
-        if let _ = dateFormatterGet.date(from: dateString) {
-            //date parsing succeeded, if you need to do additional logic, replace _ with some variable name i.e date
-            return true
-        } else {
-            // Invalid date
-            return false
-        }
-    }
+
     
     
     
@@ -140,5 +167,9 @@ class CompetionCreationViewController: UIViewController {
         return textTest.evaluate(with:test)
     }
     
+    @IBAction func back(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
 
+    }
+    
 }

@@ -55,7 +55,7 @@ class AdminManagementViewController: UIViewController, UITableViewDataSource, UI
     
     
     @IBAction func backAdmin(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     /*

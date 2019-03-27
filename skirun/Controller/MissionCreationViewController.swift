@@ -11,50 +11,82 @@ import Firebase
 import FirebaseDatabase
 
 
-class MissionCreationViewController: UIViewController , UITableViewDataSource{
+class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    
     
     
     var myMission:Mission?
 
-    @IBOutlet weak var typeOfJob: UITextField!
+
     @IBOutlet weak var startTime: UITextField!
     @IBOutlet weak var endTime: UITextField!
     @IBOutlet weak var nameMission: UITextField!
     @IBOutlet weak var nbPeople: UITextField!
     @IBOutlet weak var descriptionMission: UITextField!
-    @IBOutlet weak var tablesView: UITableView!
     
+    // Picker for the job
+    @IBOutlet weak var pickerJob: UIPickerView!
+    var job:[String] = [String]()
     
-    private var data: [String] = []
+    // Picker for the disciplines
+    @IBOutlet weak var pickerView: UIPickerView!
+    var data: [String] = [String]()
     
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        loadJobData()
+        loadDisciplineData()
         
-        FirebaseManager.getDisciplines { (data) in
-            
-           self.data = Array (data)
-            
+        
+    }
+    
+    //--------- PickerView function -------------
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        if (pickerView.tag == 0){
+            return job.count
+        }else{
+            return data.count
         }
-        
-        tablesView.dataSource = self
+
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier")! //1.
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        let text = data[indexPath.row] //2.
-        
-        cell.textLabel?.text = text //3.
-        
-        return cell //4.
+        if (pickerView.tag == 0){
+            return "\(job[row])"
+        }else{
+            return "\(data[row])"
+        }
+
+    }
+    //-----------------End of the stuff print dscipline-------------------
+    
+    // call the function in FirebaseManager getJobs ==> return all the jobs existing
+    func loadJobData(){
+        FirebaseManager.getJobs(completion: { (data) in
+            self.job = Array(data)
+            self.pickerJob.delegate = self
+            self.pickerJob.dataSource = self
+        })
     }
     
+    // call the function in FirebaseManager getDisciplines ==> return all the disciplines existing
+    func loadDisciplineData(){
+        FirebaseManager.getDisciplines(completion: { (Pdata) in
+            self.data = Array(Pdata)
+            self.pickerView.delegate = self
+            self.pickerView.dataSource = self
+        })
+    }
     
     // Function go back to the previous view
     @IBAction func backCompetition(_ sender: Any) {
@@ -83,23 +115,7 @@ class MissionCreationViewController: UIViewController , UITableViewDataSource{
             self.present(alertBox, animated: true);
         }
         
-        if((isValidTime(test: startTime.text!) == false) && wrongInput != true){
-            //Define that something is wrong
-            wrongInput = true;
-            alertBox.message = "The format for the start time is XX:XX";
-            
-            //Display the alertBox
-            self.present(alertBox, animated: true);
-        }
         
-       if((isValidTime(test: endTime.text!) == false) && wrongInput != true){
-            //Define that something is wrong
-            wrongInput = true;
-            alertBox.message = "The format for the end time is XX:XX";
-            
-            //Display the alertBox
-            self.present(alertBox, animated: true);
-        }
         
         if((isValidTexte(test: descriptionMission.text!) == false) && wrongInput != true){
             //Define that something is wrong
@@ -173,14 +189,9 @@ class MissionCreationViewController: UIViewController , UITableViewDataSource{
         
     }
     
-    //Regex pattern see the startTime and endTime
-    func isValidTime(test:String)-> Bool{
-        let timeRegEx = "[0-9][0-9]:[0-9][0-9]"
-        
-        let timeTest = NSPredicate(format: "SELF MATCHES %@", timeRegEx)
-        return timeTest.evaluate(with:test)
-        
-    }
+    
+    
+    
     
     
 }

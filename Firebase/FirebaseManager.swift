@@ -23,30 +23,39 @@ class FirebaseManager{
             completion(competitions)
         })
     }
-    /*
-    static func getDisciplines(completion: @escaping ([String]) -> Void) {
-       let ref:DatabaseReference = Database.database().reference().child("disciplinesV2");
-        ref.observe(.childAdded, with: { (snapshot) in
-            let name: String = (snapshot.key as? String)!
-            debugPrint("XXXXXXXXXXX",name)
-        })
-        
-    }*/
     
-    
-    
+    //Obtain all the discipline
     static func getDisciplines(completion: @escaping ([String])-> Void){
-        let ref:DatabaseReference = Database.database().reference().child("disciplinesV2");
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.discipline.rawValue);
         var numberOfDisciplines = [String]()
         
-        ref.observe(.childAdded, with: { (snapshot) in
-            let name:String = snapshot.key
-            print("XXXXXXXXXXX",name)
-            
-           numberOfDisciplines.append(name)
+        ref.observe(.value, with: { (snapshot) in
+            for childSnapshot in snapshot.children{
+                numberOfDisciplines.append((childSnapshot as AnyObject).key as String)
+                print((childSnapshot as AnyObject).key as String)
+            }
             completion(numberOfDisciplines)
         })
+        
     }
+    
+    //Obtain all the job
+    static func getJobs(completion: @escaping ([String])-> Void){
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.jobType.rawValue);
+        var jobs = [String]()
+        
+        ref.observe(.value, with: { (snapshot) in
+            for childSnapshot in snapshot.children{
+                jobs.append((childSnapshot as AnyObject).key as String)
+                print((childSnapshot as AnyObject).key as String)
+            }
+            completion(jobs)
+        })
+        
+    }
+    
+    
+    
 
     static func getCompetiton(name: String, completion: @escaping (Competition) -> Void) {
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(name);
@@ -65,6 +74,8 @@ class FirebaseManager{
     static func getDisciplinesOfCompetition(name: String, completion: @escaping ([String])-> Void){
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(name).child("disciplines");
         var numberOfDisciplines = [String]()
+        
+ 
         
         ref.observe(.childAdded, with: { (snapshot) in
             let name:String = snapshot.key
