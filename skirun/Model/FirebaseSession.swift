@@ -23,4 +23,15 @@ enum FirebaseSession:String {
     case NODE_GUESTCLUBS = "guestClubs";
     case NODE_DISCIPLINES = "disciplines";
     
+    //Mission nodes
+    case MISSION_DESCRIPTION = "description";
+    case MISSION_DOOR = "door";
+    case MISSION_ENDDATE = "endDateTime";
+    case MISSION_NBROFPEOPLE = "nbrPeople";
+    case MISSION_RESULT_BY_BIB = "resultsByBibNumber";
+    case MISSION_SELECTED = "selected";
+    case MISSION_STARTDATE = "startDateTime";
+    case MISSION_SUBSCRIBED = "subscribed";
+    case MISSION_TYPE_JOB = "typeJob";
+    
 }

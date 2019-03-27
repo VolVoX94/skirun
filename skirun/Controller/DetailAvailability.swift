@@ -31,6 +31,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     var myMission:Mission?
     var pickerData: [String] = [String]()
     var missionData: [String] = [String]()
+    var missionData2:[Mission] = []
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -140,8 +141,10 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
             let cell = tableView.dequeueReusableCell(withIdentifier: "missionCell")! //1.
             
             let text = missionData[indexPath.row] //2.
+            let tempMission = missionData2[indexPath.row]
             
-            cell.textLabel?.text = text //3.
+            
+            cell.textLabel?.text = tempMission.title //3.
             cell.textLabel?.font = UIFont(name: "Avenir Next", size: 18)
             cell.textLabel?.textColor = UIColor.white
             
@@ -155,6 +158,10 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     func loadMissionData(disciplineName: String){
         FirebaseManager.getMissionsOfDisciplines(competitionName: self.name!, disciplineName: disciplineName) { (missionData) in
             self.missionData = Array(missionData)
+        }
+        
+        FirebaseManager.getMisOfDisciplines(competitionName: self.name!, disciplineName: disciplineName) { (missionData2) in
+            self.missionData2 = Array(missionData2)
         }
     }
     
