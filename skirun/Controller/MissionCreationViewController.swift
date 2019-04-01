@@ -100,6 +100,35 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     
     //--------- PickerView function -------------
     
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        
+        if (pickerView.tag == 0){
+            let view = UIView(frame: CGRect(x:0, y:0, width:400, height: 30))
+            
+            let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: 14))
+            topLabel.text = job[row]
+            topLabel.textColor = UIColor.white
+            topLabel.textAlignment = .center
+            topLabel.font = UIFont.systemFont(ofSize: 14)
+            view.addSubview(topLabel)
+            
+            return view
+            
+        }else{
+            let view = UIView(frame: CGRect(x:0, y:0, width:400, height: 30))
+            
+            let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: 14))
+            topLabel.text = data[row]
+            topLabel.textColor = UIColor.white
+            topLabel.textAlignment = .center
+            topLabel.font = UIFont.systemFont(ofSize: 14)
+            view.addSubview(topLabel)
+            
+            return view
+        }
+    }
+    
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         if (pickerView.tag == 0){
@@ -177,7 +206,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         alertBox.addAction(UIAlertAction(title:"OK",
                                          style: .cancel, handler:nil))
         
-        if((isValidTexte(test: nameMission.text!) == false)){
+        if((isValidTexte(test: nameMission.text!) == false) && wrongInput != true){
             
             //Define that something is wrong
             wrongInput = true;
