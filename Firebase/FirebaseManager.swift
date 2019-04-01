@@ -106,11 +106,19 @@ class FirebaseManager{
         var missions:[Mission] = []
         ref.observe(.value, with: { (snapshot) in
             for childSnapshot in snapshot.children{
-                let tempMission = Mission(title: (childSnapshot as AnyObject).key as String,
+                let tempMission = Mission(title: (childSnapshot as AnyObject ).key as String,
                                           description: snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String).childSnapshot(forPath: FirebaseSession.MISSION_DESCRIPTION.rawValue).value as! String,
                                           startTime: snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String).childSnapshot(forPath: FirebaseSession.MISSION_STARTDATE.rawValue).value as! Int, endTime: snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String).childSnapshot(forPath: FirebaseSession.MISSION_ENDDATE.rawValue).value as! Int, nbPeople:  snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String).childSnapshot(forPath: FirebaseSession.MISSION_NBROFPEOPLE.rawValue).value as! Int, location:" ", discipline: "String", jobs: snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String).childSnapshot(forPath: FirebaseSession.MISSION_TYPE_JOB.rawValue).value as! String)
             
+                var selected = [String]()
                 
+                
+                
+                for selectedChild in ((childSnapshot as AnyObject).childSnapshot(forPath: FirebaseSession.MISSION_SELECTED.rawValue)).children{
+                    selected.append((selectedChild as AnyObject ).key as String)
+                }
+                
+                tempMission.selected = selected
                 missions.append(tempMission)
             }
             completion(missions)
