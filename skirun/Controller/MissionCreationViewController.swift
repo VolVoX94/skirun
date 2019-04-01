@@ -16,7 +16,6 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     
     
     
-    var myMission:Mission?
     var disciplines: String?
     var jobs: String?
     var selectedCompetition: String?
@@ -96,12 +95,39 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         loadJobData()
         loadDisciplineData()
         
-        
-        
     }
 
     
     //--------- PickerView function -------------
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        
+        if (pickerView.tag == 0){
+            let view = UIView(frame: CGRect(x:0, y:0, width:400, height: 30))
+            
+            let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: 14))
+            topLabel.text = job[row]
+            topLabel.textColor = UIColor.white
+            topLabel.textAlignment = .center
+            topLabel.font = UIFont.systemFont(ofSize: 14)
+            view.addSubview(topLabel)
+            
+            return view
+            
+        }else{
+            let view = UIView(frame: CGRect(x:0, y:0, width:400, height: 30))
+            
+            let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: 14))
+            topLabel.text = data[row]
+            topLabel.textColor = UIColor.white
+            topLabel.textAlignment = .center
+            topLabel.font = UIFont.systemFont(ofSize: 14)
+            view.addSubview(topLabel)
+            
+            return view
+        }
+    }
+    
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
@@ -130,7 +156,8 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     
     //Check wich element has been choosen
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if(pickerView.tag == 0){
+        
+        if(pickerView.tag == 1){
             self.disciplines = data[row]
                 
         }else{
@@ -149,6 +176,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
             self.pickerJob.delegate = self
             self.pickerJob.dataSource = self
         })
+        
     }
     
     // call the function in FirebaseManager getDisciplines ==> return all the disciplines existing
@@ -178,7 +206,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         alertBox.addAction(UIAlertAction(title:"OK",
                                          style: .cancel, handler:nil))
         
-        if((isValidTexte(test: nameMission.text!) == false)){
+        if((isValidTexte(test: nameMission.text!) == false) && wrongInput != true){
             
             //Define that something is wrong
             wrongInput = true;
@@ -213,7 +241,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         self.present(alertBox, animated: true);
     }
         
-    if(0<=(Int(nbPeople.text!)!) && wrongInput != true){
+    if(0>=(Int(nbPeople.text!)!) && wrongInput != true){
             //Define that something is wrong
             wrongInput = true;
             alertBox.message = "Input wrong please enter a number";
@@ -230,9 +258,10 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     func createMission(){
         //3 ---- Create Mission
         
-        let newMission = Mission(title: nameMission.text ?? "Error", description: descriptionMission.text ?? "Error", startTime: startTimeInt, endTime: endTimeInt, nbPeople: Int(nbPeople.text!)! ,location: location.text ?? "Error", discipline: disciplines ?? "Error", jobs: jobs ?? "Error")
+        let newMission = Mission(title: nameMission.text ?? "Error", description: descriptionMission.text ?? "Error", startTime: startTimeInt, endTime: endTimeInt, nbPeople: Int(nbPeople.text!)! ,location: location.text ?? "Error", discipline: disciplines ?? data[0], jobs: jobs ?? job[0])
         
-        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(self.selectedCompetition!).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(disciplines!).child(newMission.title);
+        
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(self.selectedCompetition!).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(newMission.discipline).child(newMission.title);
         
         //add the object
         ref.setValue(newMission.toAnyObject())
