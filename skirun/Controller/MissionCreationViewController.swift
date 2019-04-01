@@ -16,7 +16,6 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     
     
     
-    var myMission:Mission?
     var disciplines: String?
     var jobs: String?
     var selectedCompetition: String?
@@ -96,8 +95,6 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         loadJobData()
         loadDisciplineData()
         
-        
-        
     }
 
     
@@ -132,11 +129,9 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if(pickerView.tag == 1){
-            print(row, "----------------0 discipline")
             self.disciplines = data[row]
                 
         }else{
-            print(row, "----------------else job")
             self.jobs = job[row]
             
         }
@@ -152,6 +147,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
             self.pickerJob.delegate = self
             self.pickerJob.dataSource = self
         })
+        
     }
     
     // call the function in FirebaseManager getDisciplines ==> return all the disciplines existing
@@ -216,7 +212,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         self.present(alertBox, animated: true);
     }
         
-    if(0<=(Int(nbPeople.text!)!) && wrongInput != true){
+    if(0>=(Int(nbPeople.text!)!) && wrongInput != true){
             //Define that something is wrong
             wrongInput = true;
             alertBox.message = "Input wrong please enter a number";
@@ -233,9 +229,10 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     func createMission(){
         //3 ---- Create Mission
         
-        let newMission = Mission(title: nameMission.text ?? "Error", description: descriptionMission.text ?? "Error", startTime: startTimeInt, endTime: endTimeInt, nbPeople: Int(nbPeople.text!)! ,location: location.text ?? "Error", discipline: disciplines ?? "Error", jobs: jobs ?? "Error")
+        let newMission = Mission(title: nameMission.text ?? "Error", description: descriptionMission.text ?? "Error", startTime: startTimeInt, endTime: endTimeInt, nbPeople: Int(nbPeople.text!)! ,location: location.text ?? "Error", discipline: disciplines ?? data[0], jobs: jobs ?? job[0])
         
-        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(self.selectedCompetition!).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(disciplines!).child(newMission.title);
+        
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(self.selectedCompetition!).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(newMission.discipline).child(newMission.title);
         
         //add the object
         ref.setValue(newMission.toAnyObject())

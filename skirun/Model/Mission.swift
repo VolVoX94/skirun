@@ -35,12 +35,11 @@ class Mission {
     func toAnyObject() -> Any {
         return [
             "description": description,
-            "startTime": startTime,
-            "endTime": endTime,
-            "nbPeople": nbPeople,
+            "startDateTime": startTime,
+            "endDateTime": endTime,
+            "nbrPeople": nbPeople,
             "location": location,
-            "discipline": discipline,
-            "jobs": jobs,
+            "typeJob": jobs,
         ]
     }
     
