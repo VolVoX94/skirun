@@ -122,10 +122,51 @@ class FirebaseManager{
         
         //set the reference to the name of the new cometition
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(nameCompetition).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(nameDiscipline).child(nameMission).child(FirebaseSession.MISSION_SUBSCRIBED.rawValue);
-        print(ref);
         
-        //add the object
-        let userChild = ref.child(uidUser)
-        userChild.setValue(false)
+            let newChild = ref.child(uidUser)
+            newChild.setValue(true);
+
+    }
+    
+    //Add Subscribers to missions
+    static func deleteSubscriber(uidUser:String, nameMission:String, nameDiscipline:String, nameCompetition:String){
+        
+        //set the reference to the name of the new cometition
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(nameCompetition).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(nameDiscipline).child(nameMission).child(FirebaseSession.MISSION_SUBSCRIBED.rawValue);
+        
+        let newChild = ref.child(uidUser)
+        newChild.removeValue()
+    }
+    
+    static func checkIfAlreadySubscribed(uidUser:String, nameDiscipline:String, nameCompetition:String, completion: @escaping ([String])-> Void){
+        var tempMissionData:[Mission] = []
+        
+        var states = [String]()
+        FirebaseManager.getMisOfDisciplines(competitionName: nameCompetition, disciplineName: nameDiscipline) { (missionData) in
+            tempMissionData = Array(missionData)
+            states.removeAll()
+            //For every mission in list
+            for item in tempMissionData{
+                let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(nameCompetition).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(nameDiscipline).child(item.title).child("subscribed");
+                
+                
+                ref.observe(.value, with: { (snapshot) in
+                    for childSnapshot in snapshot.children{
+                        //Load UID
+                        let tempUid:String = (childSnapshot as AnyObject).key as String
+                        //Check if currentUser has an subscription
+                        if(tempUid == uidUser){
+                            //Identifier for mission
+                            print("IN",item.description)
+                            states.append(item.description)
+                        }
+                    }
+
+                    //print(states.count)
+                    completion(states)
+                    
+                })
+            }
+        }
     }
 }

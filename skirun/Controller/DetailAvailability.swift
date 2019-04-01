@@ -30,12 +30,15 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     private var data:[Competition] = []
     var name:String?
     var date:String?
+    var alreadyReloaded:Bool = true
     var myDiscipline:String?
     var myCompetition:Competition?
     var myMission:Mission?
     var pickerData: [String] = [String]()
     var missionData:[Mission] = []
     var choosenMissions:[Int] = []
+    var notChoosenMissions:[Int] = []
+    var alreadySubscribedMissions: [String] = []
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -51,7 +54,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
             
             loadCompetitionData()
             self.myCompetitionName.text = self.name
-            self.myStartDateLabel.text = self.name
+            //self.myStartDateLabel.text = self.name
         
             self.myPicker.delegate = self
             self.myPicker.dataSource = self
@@ -81,10 +84,14 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     
     //Check wich element has been choosen
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.notChoosenMissions.removeAll()
+        self.choosenMissions.removeAll()
         self.myDiscipline = pickerData[row]
         //load the data for missions
         if(row>0){
             loadMissionData(disciplineName: pickerData[row])
+            checkAlreadySubscribed()
+            self.alreadyReloaded = false
         }
     }
     
@@ -108,7 +115,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     @IBAction func submitButton(_ sender: Any) {
         
         //Display the alertBox
-        if(choosenMissions.count <= 0){
+        if(choosenMissions.count <= 0 && notChoosenMissions.count <= 0){
             let alertBox = UIAlertController(
                 title: "Oh ooooh",
                 message: "",
@@ -126,7 +133,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     
     //Open previous page
     @IBAction func backButton(_ sender: Any) {
-        if(choosenMissions.count > 0){
+        if(choosenMissions.count > 0 || notChoosenMissions.count > 0){
             subscribe()
         }
         else{
@@ -142,7 +149,6 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "missionCell")! //1.
-            
         //2.
         let tempMission = missionData[indexPath.row]
             
@@ -155,42 +161,61 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         cell.textLabel?.textColor = UIColor.white
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
+        print(missionData[indexPath.row].description)
+        
         //SWITCH BUTTON ---------------------------------
         let switchObj = UISwitch(frame: CGRect(x: 1, y: 1, width: 20, height: 20))
-        switchObj.isOn = false
+        if(alreadySubscribedMissions.contains(missionData[indexPath.row].description)){
+            switchObj.isOn = true
+            choosenMissions.append(indexPath.row)
+        }
+        else{
+            switchObj.isOn = false;
+        }
+       
         switchObj.addTarget(self, action: #selector(toggel(_:name:)), for: .valueChanged)
         switchObj.tag = indexPath.row
         cell.accessoryView = switchObj
-        
-        
+      
         return cell //4.
     }
     
     @objc func toggel(_ sender:UISwitch, name:String){
-        print("Switch", sender.tag)
+
         if(sender.isOn){
             //ADD element
             choosenMissions.append(sender.tag);
+            notChoosenMissions = notChoosenMissions.filter{$0 != sender.tag}
         }
         else{
             //DELETE element
             choosenMissions = choosenMissions.filter{$0 != sender.tag}
+            notChoosenMissions.append(sender.tag)
         }
-        for item in choosenMissions {
-            print(item)
-        }
-        //print(Auth.auth().currentUser?.uid)
+        print("choosenMission",choosenMissions.count)
+        print("NotCHoosenMission",notChoosenMissions.count)
     }
     
-    
-    
-    
+    func reloadMyTable(){
+        if(self.alreadyReloaded == false){
+            self.tableView.reloadData()
+            self.alreadyReloaded = true;
+        }
+    }
+  
     //---------------- FIREBASE CONNECTION -----------------
     func loadMissionData(disciplineName: String){
-        
         FirebaseManager.getMisOfDisciplines(competitionName: self.name!, disciplineName: disciplineName) { (missionData) in
             self.missionData = Array(missionData)
-             self.tableView.reloadData()
+        }
+    }
+    
+    func checkAlreadySubscribed(){
+        FirebaseManager.checkIfAlreadySubscribed(uidUser: (Auth.auth().currentUser?.uid)!,
+                                                 nameDiscipline: (self.myDiscipline)!,
+                                                 nameCompetition: (self.myCompetition!.name)) { (data) in
+            self.alreadySubscribedMissions = Array(data)
+            self.reloadMyTable()
         }
     }
     
@@ -209,14 +234,22 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func saveSubscriber(mission:String){
+        print("added")
         FirebaseManager.saveSubscribersToMission(uidUser: (Auth.auth().currentUser?.uid)!,
                                                  nameMission: mission,
                                                  nameDiscipline: (self.myDiscipline)!,
                                                  nameCompetition: (self.myCompetition!.name))
     }
     
-    //6 MAIN SUBSCRIBE METHOD ---------------
+    func deleteSubscriber(mission:String){
+        print("deleted")
+        FirebaseManager.deleteSubscriber(uidUser: (Auth.auth().currentUser?.uid)!,
+                                                 nameMission: mission,
+                                                 nameDiscipline: (self.myDiscipline)!,
+                                                 nameCompetition: (self.myCompetition!.name))
+    }
     
+    //6 MAIN SUBSCRIBE METHOD ---------------
     func subscribe(){
         let alertBox = UIAlertController(
             title: "Confirmation",
@@ -224,16 +257,19 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
             preferredStyle: .actionSheet);
         
         //Define that something is wrong
-        alertBox.message = "Do you want to subscribe?";
+        alertBox.message = "Do you want to submit your choice?";
         alertBox.addAction(UIAlertAction(title: "Yes", style: .default, handler:{ (action: UIAlertAction!) in
-            print("Subscriber written")
+            //SUBSCRIBE SELECTION
             for item in self.choosenMissions {
                 self.saveSubscriber(mission: self.missionData[item].title)
+            }
+            //DELETE DESELECTION
+            for item in self.notChoosenMissions {
+                self.deleteSubscriber(mission: self.missionData[item].title)
             }
             self.dismiss(animated: true, completion: nil)
         }))
         alertBox.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{(action: UIAlertAction!) in
-            print("Subscription aborted")
             self.dismiss(animated: true, completion: nil)
         }))
         self.present(alertBox, animated: true)
