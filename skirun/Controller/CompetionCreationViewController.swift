@@ -150,10 +150,6 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         FirebaseManager.getMisOfDisciplines(competitionName: self.selectedCompetition!, disciplineName: disciplineName) { (missionData) in
             self.missionData = Array(missionData)
             self.missionTableview.reloadData()
-            for mission in self.missionData{
-                print("-----", mission.title)
-                self.missionTableview.reloadData()
-            }
         }
     }
     
