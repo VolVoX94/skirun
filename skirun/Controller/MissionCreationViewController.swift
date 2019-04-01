@@ -130,10 +130,13 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     
     //Check wich element has been choosen
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if(pickerView.tag == 0){
+        
+        if(pickerView.tag == 1){
+            print(row, "----------------0 discipline")
             self.disciplines = data[row]
                 
         }else{
+            print(row, "----------------else job")
             self.jobs = job[row]
             
         }
