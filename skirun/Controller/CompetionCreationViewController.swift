@@ -150,10 +150,6 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         FirebaseManager.getMisOfDisciplines(competitionName: self.selectedCompetition!, disciplineName: disciplineName) { (missionData) in
             self.missionData = Array(missionData)
             self.missionTableview.reloadData()
-            for mission in self.missionData{
-                print("-----", mission.title)
-                self.missionTableview.reloadData()
-            }
         }
     }
     
@@ -203,7 +199,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         alertBox.addAction(UIAlertAction(title:"Ok", style: .cancel, handler:nil))
         
         
-        if((isValidTexte(test: titleCompetition.text!) == false)){
+        if(titleCompetition.text!.count < 5) || (titleCompetition.text ?? "").isEmpty{
             alertBox.message = "The title can contain text and/or numbers ";
             
             //Display the alertBox
