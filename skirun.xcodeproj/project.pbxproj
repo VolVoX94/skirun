@@ -143,6 +143,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		842ABBFB2253664300C48CD1 /* Availability */ = {
+			isa = PBXGroup;
+			children = (
+				84C056FB22490DC7009367AF /* DetailAvailability.swift */,
+				84629B38225245F700B53B35 /* AvailabilityController.swift */,
+				CE7C823D222682F500FA4B3B /* FirstViewController.swift */,
+			);
+			path = Availability;
+			sourceTree = "<group>";
+		};
 		84D223712238FA71006FC05C /* Registration */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,13 +192,11 @@
 				8445A78922394B860018C1EE /* CompetionCreationViewController.swift */,
 				8445A78A22394B930018C1EE /* MissionCreationViewController.swift */,
 				84D223712238FA71006FC05C /* Registration */,
-				CE7C823D222682F500FA4B3B /* FirstViewController.swift */,
+				842ABBFB2253664300C48CD1 /* Availability */,
 				CE7C823F222682F500FA4B3B /* SecondViewController.swift */,
 				CEE4645F22368F1500F42D5D /* LoginViewController.swift */,
 				CE11914E2237C07900EE325C /* SettingsViewController.swift */,
 				846662EC2248D3D1008845E5 /* MyTableViewCell.swift */,
-				84C056FB22490DC7009367AF /* DetailAvailability.swift */,
-				84629B38225245F700B53B35 /* AvailabilityController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
