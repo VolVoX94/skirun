@@ -24,6 +24,7 @@
 		84F075C42239105800084B8B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F075C32239105800084B8B /* User.swift */; };
 		84F075C6223932B200084B8B /* FirebaseSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F075C5223932B200084B8B /* FirebaseSession.swift */; };
 		B6A32530ACB85AC0D5AA2B22 /* Pods_skirun.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7739317431CD4D4FA0C9A5 /* Pods_skirun.framework */; };
+		CE069ED4225366000057F349 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE069ED3225366000057F349 /* Result.swift */; };
 		CE11914F2237C07900EE325C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE11914E2237C07900EE325C /* SettingsViewController.swift */; };
 		CE1191532237C27900EE325C /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1191522237C27900EE325C /* LoginTests.swift */; };
 		CE1191582237DB8100EE325C /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE11915A2237DB8100EE325C /* Login.storyboard */; };
@@ -78,6 +79,7 @@
 		84F075C32239105800084B8B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		84F075C5223932B200084B8B /* FirebaseSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSession.swift; sourceTree = "<group>"; };
 		C213F753E47128B9333F7934 /* Pods-skirun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-skirun.debug.xcconfig"; path = "Target Support Files/Pods-skirun/Pods-skirun.debug.xcconfig"; sourceTree = "<group>"; };
+		CE069ED3225366000057F349 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		CE11914E2237C07900EE325C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CE1191522237C27900EE325C /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 		CE1191552237DB6600EE325C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 		841633812237B66D00939A9D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CE069ED3225366000057F349 /* Result.swift */,
 				84F075C32239105800084B8B /* User.swift */,
 				84F075C5223932B200084B8B /* FirebaseSession.swift */,
 				6A1A8DB722423331009DB3FD /* Mission.swift */,
@@ -486,6 +489,7 @@
 				842CA7962242620A00260ECF /* MyGradientTableView.swift in Sources */,
 				842CA7922242308B00260ECF /* Competition.swift in Sources */,
 				842ABBFA2253658400C48CD1 /* TimeKeeperViewController.swift in Sources */,
+				CE069ED4225366000057F349 /* Result.swift in Sources */,
 				CE7C8240222682F500FA4B3B /* SecondViewController.swift in Sources */,
 				CE11914F2237C07900EE325C /* SettingsViewController.swift in Sources */,
 				846662ED2248D3D1008845E5 /* MyTableViewCell.swift in Sources */,
