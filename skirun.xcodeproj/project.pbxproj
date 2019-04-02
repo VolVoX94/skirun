@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		53F33A3E1BAB0C046DFD7A38 /* Pods_skirunTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 459C244C4ECA3C81E12A71A6 /* Pods_skirunTests.framework */; };
 		6A1A8DB822423331009DB3FD /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1A8DB722423331009DB3FD /* Mission.swift */; };
+		842ABBFA2253658400C48CD1 /* TimeKeeperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842ABBF92253658300C48CD1 /* TimeKeeperViewController.swift */; };
 		842CA7922242308B00260ECF /* Competition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CA7912242308B00260ECF /* Competition.swift */; };
 		842CA7962242620A00260ECF /* MyGradientTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CA7952242620A00260ECF /* MyGradientTableView.swift */; };
 		8445A78D22394B930018C1EE /* CompetionCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445A78922394B860018C1EE /* CompetionCreationViewController.swift */; };
@@ -62,6 +63,7 @@
 		579E97E107E43CF0A777C66A /* Pods-skirun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-skirun.release.xcconfig"; path = "Target Support Files/Pods-skirun/Pods-skirun.release.xcconfig"; sourceTree = "<group>"; };
 		5C7739317431CD4D4FA0C9A5 /* Pods_skirun.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_skirun.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A1A8DB722423331009DB3FD /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
+		842ABBF92253658300C48CD1 /* TimeKeeperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeKeeperViewController.swift; sourceTree = "<group>"; };
 		842CA7912242308B00260ECF /* Competition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Competition.swift; sourceTree = "<group>"; };
 		842CA7952242620A00260ECF /* MyGradientTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGradientTableView.swift; sourceTree = "<group>"; };
 		8445A78922394B860018C1EE /* CompetionCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompetionCreationViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 		CE42A1882236A052000CBE46 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				842ABBF92253658300C48CD1 /* TimeKeeperViewController.swift */,
 				8445A78B22394B930018C1EE /* AdminManagementViewController.swift */,
 				8445A78C22394B930018C1EE /* AdminViewController.swift */,
 				8445A78922394B860018C1EE /* CompetionCreationViewController.swift */,
@@ -474,6 +477,7 @@
 				CEAB3CC7224A25AD0079CE5B /* UnixTime.swift in Sources */,
 				842CA7962242620A00260ECF /* MyGradientTableView.swift in Sources */,
 				842CA7922242308B00260ECF /* Competition.swift in Sources */,
+				842ABBFA2253658400C48CD1 /* TimeKeeperViewController.swift in Sources */,
 				CE7C8240222682F500FA4B3B /* SecondViewController.swift in Sources */,
 				CE11914F2237C07900EE325C /* SettingsViewController.swift in Sources */,
 				846662ED2248D3D1008845E5 /* MyTableViewCell.swift in Sources */,
