@@ -199,7 +199,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         alertBox.addAction(UIAlertAction(title:"Ok", style: .cancel, handler:nil))
         
         
-        if((isValidTexte(test: titleCompetition.text!) == false)){
+        if(titleCompetition.text!.count < 5) || (titleCompetition.text ?? "").isEmpty{
             alertBox.message = "The title can contain text and/or numbers ";
             
             //Display the alertBox

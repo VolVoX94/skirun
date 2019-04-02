@@ -206,7 +206,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         alertBox.addAction(UIAlertAction(title:"OK",
                                          style: .cancel, handler:nil))
         
-        if((isValidTexte(test: nameMission.text!) == false) && wrongInput != true){
+        if(nameMission.text!.count < 5) || (nameMission.text ?? "").isEmpty{
             
             //Define that something is wrong
             wrongInput = true;
@@ -216,7 +216,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
             self.present(alertBox, animated: true);
         }
         
-        if((isValidTexte(test: descriptionMission.text!) == false) && wrongInput != true){
+        if(descriptionMission.text!.count < 5) || (descriptionMission.text ?? "").isEmpty{
             //Define that something is wrong
             wrongInput = true;
             alertBox.message = "Description of the mission, you can write some text and/or numbers";
@@ -225,7 +225,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
             self.present(alertBox, animated: true);
         }
     
-        if((isValidTexte(test: location.text!) == false) && wrongInput != true){
+        if(location.text!.count < 5) || (location.text ?? "").isEmpty{
             //Define that something is wrong
             wrongInput = true;
             alertBox.message = "The Location of the mission, you can write some text and/or numbers";
