@@ -90,7 +90,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         //load the data for missions
         if(row>0){
             loadMissionData(disciplineName: pickerData[row])
-            checkAlreadySubscribed()
+            //checkAlreadySubscribed()
             self.alreadyReloaded = false
         }
     }
@@ -161,11 +161,12 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         cell.textLabel?.textColor = UIColor.white
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
-        print(missionData[indexPath.row].description)
         
         //SWITCH BUTTON ---------------------------------
         let switchObj = UISwitch(frame: CGRect(x: 1, y: 1, width: 20, height: 20))
-        if(alreadySubscribedMissions.contains(missionData[indexPath.row].description)){
+        print("compared Value", missionData[indexPath.row].jobs)
+        if(alreadySubscribedMissions.contains(missionData[indexPath.row].jobs)){
+            print("switched on")
             switchObj.isOn = true
             choosenMissions.append(indexPath.row)
         }
@@ -195,27 +196,22 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         print("choosenMission",choosenMissions.count)
         print("NotCHoosenMission",notChoosenMissions.count)
     }
-    
-    func reloadMyTable(){
-        if(self.alreadyReloaded == false){
-            self.tableView.reloadData()
-            self.alreadyReloaded = true;
-        }
-    }
   
     //---------------- FIREBASE CONNECTION -----------------
     func loadMissionData(disciplineName: String){
         FirebaseManager.getMisOfDisciplines(competitionName: self.name!, disciplineName: disciplineName) { (missionData) in
             self.missionData = Array(missionData)
+            self.checkAlreadySubscribed(missionData: self.missionData, nameCompetition: self.name!, disciplineName: disciplineName)
+            
+            
         }
     }
     
-    func checkAlreadySubscribed(){
-        FirebaseManager.checkIfAlreadySubscribed(uidUser: (Auth.auth().currentUser?.uid)!,
-                                                 nameDiscipline: (self.myDiscipline)!,
-                                                 nameCompetition: (self.myCompetition!.name)) { (data) in
+    func checkAlreadySubscribed(missionData:[Mission], nameCompetition:String, disciplineName:String){
+        FirebaseManager.checkIfAlreadySubscribed(uidUser: (Auth.auth().currentUser?.uid)!, missionData: missionData, nameDiscipline: disciplineName, nameCompetition: nameCompetition) { (data) in
             self.alreadySubscribedMissions = Array(data)
-            self.reloadMyTable()
+            
+            self.tableView.reloadData()
         }
     }
     

@@ -17,7 +17,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         FirebaseManager.getCompetitons(completion: { (data) in
             self.data = Array(data)
-        })
+            self.tableView.reloadData()
+        })        
     }
     
     @IBAction func nextButton(_ sender: Any) {
