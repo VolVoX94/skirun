@@ -47,6 +47,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         if(selectedCompetition != "none"){
             loadCompetition()
             loadDisciplineData()
+            self.missionTableview.delegate = self
             self.missionTableview.dataSource = self
             self.disciplinePicker.isHidden = false
         }
@@ -261,9 +262,10 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        
-        selectedMission = data[indexPath.item]
+         print("------to display mission", indexPath.item)
+        selectedMission = missionData[indexPath.item].title
         performSegue(withIdentifier: "toDisplayMission", sender: self)
+       
     }
     
     
