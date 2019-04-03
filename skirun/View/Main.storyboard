@@ -383,7 +383,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="M6B-KH-18W" kind="show" id="IB7-qQ-rAC"/>
+                                            <segue destination="M6B-KH-18W" kind="show" identifier="toDisplayMission" id="IB7-qQ-rAC"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -462,7 +462,6 @@
                         <outlet property="save" destination="jyf-d2-Y5X" id="ZDz-BZ-gKp"/>
                         <outlet property="startDate" destination="HxE-X9-Xx1" id="jUo-Pj-Alu"/>
                         <outlet property="titleCompetition" destination="M1a-B7-wst" id="XCa-vZ-i2T"/>
-                        <segue destination="M6B-KH-18W" kind="presentation" identifier="nextSegue" id="5S7-mi-7to"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lnh-jQ-xcD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -981,7 +980,4 @@
         <image name="Time White" width="30" height="30"/>
         <image name="rocketWhite" width="30" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="IB7-qQ-rAC"/>
-    </inferredMetricsTieBreakers>
 </document>

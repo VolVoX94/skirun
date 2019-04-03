@@ -42,6 +42,10 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     var startTimeInt = 0
     var endTimeInt = 0
     
+    var mission: Mission?
+    var disciplineChoose = "none"
+    var missionChoose = "none"
+    var competitionChoose = "none"
     
     
     
@@ -94,6 +98,9 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         datePicker.backgroundColor = UIColor.white
         loadJobData()
         loadDisciplineData()
+        if(missionChoose != "none"){
+            loadMission()
+        }
         
     }
 
@@ -168,6 +175,15 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     }
     
     //------------ End of the stuff print discipline or jobs -------------
+    
+    func loadMission(){
+        
+        FirebaseManager.getMission(nameCompetition: competitionChoose, nameDiscipline: disciplineChoose, nameMission: missionChoose) { (data) in
+            self.mission = data
+            self.nameMission.text = self.mission?.title
+        }
+        
+    }
     
     // call the function in FirebaseManager getJobs ==> return all the jobs existing
     func loadJobData(){
