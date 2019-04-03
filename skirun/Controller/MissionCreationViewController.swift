@@ -14,8 +14,6 @@ import FirebaseDatabase
 class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
     
     
-    
-    
     var disciplines: String?
     var jobs: String?
     var selectedCompetition: String?
@@ -42,8 +40,10 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     var startTimeInt = 0
     var endTimeInt = 0
     
-    
-    
+    var mission: Mission?
+    var disciplineChoose = "none"
+    var missionChoose = "none"
+    var competitionChoose = "none"
     
     //--------- Time function for edit and changed value -------------------
     @IBAction func starTimeEdit(_ sender: UITextField) {
@@ -94,6 +94,9 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         datePicker.backgroundColor = UIColor.white
         loadJobData()
         loadDisciplineData()
+        if(missionChoose != "none"){
+            loadMission()
+        }
         
     }
 
@@ -169,6 +172,15 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     
     //------------ End of the stuff print discipline or jobs -------------
     
+    func loadMission(){
+        
+        FirebaseManager.getMission(nameCompetition: competitionChoose, nameDiscipline: disciplineChoose, nameMission: missionChoose) { (data) in
+            self.mission = data
+            self.nameMission.text = self.mission?.title
+        }
+        
+    }
+    
     // call the function in FirebaseManager getJobs ==> return all the jobs existing
     func loadJobData(){
         FirebaseManager.getJobs(completion: { (data) in
@@ -176,7 +188,6 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
             self.pickerJob.delegate = self
             self.pickerJob.dataSource = self
         })
-        
     }
     
     // call the function in FirebaseManager getDisciplines ==> return all the disciplines existing

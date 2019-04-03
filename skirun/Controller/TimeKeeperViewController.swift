@@ -12,6 +12,7 @@ import Firebase
 class TimeKeeperViewController: UIViewController {
 
     
+    @IBOutlet weak var navbar: UINavigationItem!
     
     @IBOutlet weak var textMission: UITextView!
     
@@ -25,49 +26,61 @@ class TimeKeeperViewController: UIViewController {
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var dnfButton: UIButton!
     
-    //TO REMOVE WHEN LINK WITH MISSION
+    var unitResult: String?
+    
     var currentCompetition: String!
     var currentDiscipline: String!
     var currentMission: String!
-    var typeJob: String!
+    var currentMissionObject: Mission!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //TO REMOVE WHEN LINK WITH MISSION
-        currentCompetition = "Concours Crans-Montana - 2019"
-        currentDiscipline = "Cross-country skiing"
-        currentMission = "mission10"
-        typeJob = "TimeKeeper - vitesse"
         
-        loadTypeJob(typeJob: typeJob)
+        
+        loadMission()
         // Do any additional setup after loading the view.
     }
     
     @IBAction func submitAction(_ sender: Any) {
         
-        let result = Result (number: numberField.text!, result: resultField.text!)
-        
+        let result = Result (number: numberField.text!, result: resultField.text!, unit:unitResult!)
         addResult(result: result)
     }
     
     @IBAction func dnfAction(_ sender: Any) {
-        let result = Result (number: numberField.text!,result: "0")
-        result.status = "Did not finish"
-        
+        let result = Result (number: numberField.text!,result: "Did not finish", unit:unitResult!)
         addResult(result: result)
     }
     
     func loadTypeJob(typeJob: String){
         
+        self.navbar.title = currentMissionObject.title
+        self.textMission.text = currentMissionObject.description
+        
+        if(typeJob == "TimeKeeper - time"){
+            self.resultLabel.text = "Distance"
+            self.unitResult = "Min, sec"
+        }
+        
         if(typeJob == "TimeKeeper - distance"){
             self.resultLabel.text = "Distance"
+            self.unitResult = "Meter"
         }
         
         if(typeJob == "TimeKeeper - vitesse"){
             self.resultLabel.text = "Vitesse"
+            self.unitResult = "Km/h"
+        }
+        
+        if(typeJob == "Door Controller"){
+            self.numberLabel.isHidden = true
+            self.numberField.isHidden = true
+            self.resultLabel.isHidden = true
+            self.resultField.isHidden = true
+            self.submitButton.isHidden = true
+            self.dnfButton.isHidden = true
         }
         
         if(typeJob == "Logistics"){
@@ -79,17 +92,35 @@ class TimeKeeperViewController: UIViewController {
             self.submitButton.isHidden = true
             self.dnfButton.isHidden = true
         }
-        
-        
-        
-        
+    }
+    
+    func loadMission(){
+        FirebaseManager.getMission(nameCompetition: currentCompetition, nameDiscipline: currentDiscipline, nameMission: currentMission) { (data) in
+            self.currentMissionObject = data
+            self.loadTypeJob(typeJob: self.currentMissionObject.jobs)
+        }
     }
     
     func addResult(result: Result){
         
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(currentCompetition).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(currentDiscipline).child(currentMission).child(FirebaseSession.MISSION_RESULT_BY_BIB.rawValue).child(result.number);
         
-        ref.setValue(result.toAnyObject())
+        ref.setValue(result.toAnyObject()){
+            (error:Error?, ref:DatabaseReference) in
+            if error != nil {
+                let message = "Result inserted"
+                let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+                self.present(alert, animated: true)
+                
+                // duration in seconds
+                let duration: Double = 2
+                
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration) {
+                    alert.dismiss(animated: true)
+                }
+            }
+            
+        }
         
     }
     

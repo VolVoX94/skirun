@@ -26,6 +26,9 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     var pickerData: [String] = [String]()
     var missionData:[Mission] = []
     
+    private var data:[String] = []
+    var selectedMission = "none"
+    
  
     var startDateInt = 0
     var endDateInt = 0
@@ -44,6 +47,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         if(selectedCompetition != "none"){
             loadCompetition()
             loadDisciplineData()
+            self.missionTableview.delegate = self
             self.missionTableview.dataSource = self
             self.disciplinePicker.isHidden = false
         }
@@ -89,6 +93,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     
     var selectedCompetition: String?;
     var competiton: Competition?;
+    var selectedDiscipline: String?
     
 
 
@@ -140,6 +145,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     
     //Check wich element has been choosen
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedDiscipline = pickerData[row]
         //load the data for missions
         if(row>0){
             loadMissionData(disciplineName: pickerData[row])
@@ -254,10 +260,26 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
 
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        let destinationController = segue.destination as! MissionCreationViewController;
-        destinationController.selectedCompetition = self.titleCompetition.text;
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+         print("------to display mission", indexPath.item)
+        selectedMission = missionData[indexPath.item].title
+        performSegue(withIdentifier: "toDisplayMission", sender: self)
+       
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "toDisplayMission"){
+        let destinationController = segue.destination as! MissionCreationViewController;
+        destinationController.competitionChoose = self.titleCompetition.text!
+        destinationController.missionChoose = selectedMission
+        destinationController.disciplineChoose = selectedDiscipline!
+        }
+    }
+    
+    
+ 
+  
     
 }

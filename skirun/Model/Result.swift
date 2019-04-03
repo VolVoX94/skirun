@@ -13,20 +13,20 @@ class Result {
     
     var number: String
     var result: String
-    var status: String
+    var unit: String
 
     
-    init(number: String, result: String) {
+    init(number: String, result: String, unit: String) {
         self.number = number
         self.result = result
-        self.status = "accepted"
+        self.unit = unit
     }
     
     
     func toAnyObject() -> Any {
         return [
             "result": result,
-            "status": status,
+            "unit": unit,
         ]
     }
     

@@ -70,6 +70,27 @@ class FirebaseManager{
         })
     }
     
+    //---------------- Get Mission ------------
+    static func getMission(nameCompetition: String,nameDiscipline: String, nameMission: String, completion: @escaping (Mission) -> Void) {
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(nameCompetition).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(nameDiscipline).child(nameMission);
+        
+        ref.observe(.value, with: { (snapshot) in
+            let mission = Mission(title: snapshot.key,
+                                  description: snapshot.childSnapshot(forPath:
+                                    FirebaseSession.MISSION_DESCRIPTION.rawValue).value as! String,
+                                  startTime: snapshot.childSnapshot(forPath:
+                                    FirebaseSession.MISSION_STARTDATE.rawValue).value as! Int,
+                                  endTime: snapshot.childSnapshot(forPath: FirebaseSession.MISSION_ENDDATE.rawValue).value as! Int,
+                                  nbPeople: snapshot.childSnapshot(forPath: FirebaseSession.MISSION_NBROFPEOPLE.rawValue).value as! Int,
+                                  location: snapshot.childSnapshot(forPath:
+                                    FirebaseSession.MISSION_DOOR.rawValue).value as! String,
+                                  discipline: "null",
+                                  jobs: snapshot.childSnapshot(forPath:
+                                    FirebaseSession.MISSION_TYPE_JOB.rawValue).value as! String)
+            completion(mission)
+        })
+    }
+    
     
     //---------------- DISCIPLINES ------------
     
@@ -106,6 +127,7 @@ class FirebaseManager{
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(competitionName).child("disciplines").child(disciplineName);
         var missions:[Mission] = []
         ref.observe(.value, with: { (snapshot) in
+            missions.removeAll()
             for childSnapshot in snapshot.children{
                 let tempMission = Mission(title: (childSnapshot as AnyObject ).key as String,
                                           description: snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String).childSnapshot(forPath: FirebaseSession.MISSION_DESCRIPTION.rawValue).value as! String,
