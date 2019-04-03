@@ -12,6 +12,7 @@ import Firebase
 class TimeKeeperViewController: UIViewController {
 
     
+    @IBOutlet weak var navbar: UINavigationItem!
     
     @IBOutlet weak var textMission: UITextView!
     
@@ -54,6 +55,9 @@ class TimeKeeperViewController: UIViewController {
     }
     
     func loadTypeJob(typeJob: String){
+        
+        self.navbar.title = currentMissionObject.title
+        self.textMission.text = currentMissionObject.description
         
         if(typeJob == "TimeKeeper - time"){
             self.resultLabel.text = "Distance"
