@@ -70,6 +70,29 @@ class FirebaseManager{
         })
     }
     
+    //---------------- Get Mission ------------
+    static func getMission(nameCompetition: String,nameDiscipline: String, nameMission: String, completion: @escaping (Mission) -> Void) {
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(nameCompetition).child(FirebaseSession.discipline.rawValue).child(nameDiscipline).child(nameMission);
+        
+        ref.observe(.value, with: { (snapshot) in
+            let mission = Mission(title: snapshot.key,
+                                  description: snapshot.childSnapshot(forPath:
+                                    FirebaseSession.MISSION_DESCRIPTION.rawValue).value as! String,
+                                  startTime: snapshot.childSnapshot(forPath:
+                                    FirebaseSession.MISSION_STARTDATE.rawValue).value as! Int,
+                                  endTime: snapshot.childSnapshot(forPath: FirebaseSession.MISSION_ENDDATE.rawValue).value as! Int,
+                                  nbPeople: snapshot.childSnapshot(forPath: FirebaseSession.MISSION_NBROFPEOPLE.rawValue).value as! Int,
+                                  location: snapshot.childSnapshot(forPath:
+                                    FirebaseSession.MISSION_DOOR.rawValue).value as! String,
+                                  discipline: snapshot.childSnapshot(forPath:
+                                    FirebaseSession.NODE_DISCIPLINES.rawValue).value as! String,
+                                  jobs: snapshot.childSnapshot(forPath:
+                                    FirebaseSession.MISSION_TYPE_JOB.rawValue).value as! String)
+            completion(mission)
+        })
+    }
+    
+    
     //---------------- DISCIPLINES ------------
     
     static func getDisciplinesOfCompetition(name: String, completion: @escaping ([String])-> Void){
