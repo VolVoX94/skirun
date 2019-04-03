@@ -705,8 +705,8 @@
                     <connections>
                         <outlet property="myTabBar" destination="W28-zg-YXA" id="s69-0z-AcM"/>
                         <segue destination="WZj-Lu-YWf" kind="relationship" relationship="viewControllers" id="KSp-ZO-7HF"/>
-                        <segue destination="kex-xQ-IeH" kind="relationship" relationship="viewControllers" id="g3I-z3-tsz"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="nB7-zF-i1m"/>
+                        <segue destination="kex-xQ-IeH" kind="relationship" relationship="viewControllers" id="g3I-z3-tsz"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
