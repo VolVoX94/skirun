@@ -99,11 +99,11 @@ class FirebaseManager{
         var numberOfDisciplines = [String]()
         
         
-        ref.observe(.childAdded, with: { (snapshot) in
-            let name:String = snapshot.key
-            print("XXXXXXXXXXX",name)
+        ref.observe(.value, with: { (snapshot) in
             
-            numberOfDisciplines.append(name)
+            for childSnapshot in snapshot.children{
+                numberOfDisciplines.append((childSnapshot as AnyObject).key as String)
+            }
             completion(numberOfDisciplines)
         })
     }
