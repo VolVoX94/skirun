@@ -72,7 +72,7 @@ class FirebaseManager{
     
     //---------------- Get Mission ------------
     static func getMission(nameCompetition: String,nameDiscipline: String, nameMission: String, completion: @escaping (Mission) -> Void) {
-        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(nameCompetition).child(FirebaseSession.discipline.rawValue).child(nameDiscipline).child(nameMission);
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(nameCompetition).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(nameDiscipline).child(nameMission);
         
         ref.observe(.value, with: { (snapshot) in
             let mission = Mission(title: snapshot.key,
@@ -84,8 +84,7 @@ class FirebaseManager{
                                   nbPeople: snapshot.childSnapshot(forPath: FirebaseSession.MISSION_NBROFPEOPLE.rawValue).value as! Int,
                                   location: snapshot.childSnapshot(forPath:
                                     FirebaseSession.MISSION_DOOR.rawValue).value as! String,
-                                  discipline: snapshot.childSnapshot(forPath:
-                                    FirebaseSession.NODE_DISCIPLINES.rawValue).value as! String,
+                                  discipline: "null",
                                   jobs: snapshot.childSnapshot(forPath:
                                     FirebaseSession.MISSION_TYPE_JOB.rawValue).value as! String)
             completion(mission)

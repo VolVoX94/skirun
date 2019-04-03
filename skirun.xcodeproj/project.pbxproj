@@ -25,6 +25,7 @@
 		84F075C6223932B200084B8B /* FirebaseSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F075C5223932B200084B8B /* FirebaseSession.swift */; };
 		B6A32530ACB85AC0D5AA2B22 /* Pods_skirun.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7739317431CD4D4FA0C9A5 /* Pods_skirun.framework */; };
 		CE069ED4225366000057F349 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE069ED3225366000057F349 /* Result.swift */; };
+		CE069ED62254A0F50057F349 /* TimeKeeper.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE069ED52254A0F50057F349 /* TimeKeeper.storyboard */; };
 		CE11914F2237C07900EE325C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE11914E2237C07900EE325C /* SettingsViewController.swift */; };
 		CE1191532237C27900EE325C /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1191522237C27900EE325C /* LoginTests.swift */; };
 		CE1191582237DB8100EE325C /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE11915A2237DB8100EE325C /* Login.storyboard */; };
@@ -80,6 +81,7 @@
 		84F075C5223932B200084B8B /* FirebaseSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSession.swift; sourceTree = "<group>"; };
 		C213F753E47128B9333F7934 /* Pods-skirun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-skirun.debug.xcconfig"; path = "Target Support Files/Pods-skirun/Pods-skirun.debug.xcconfig"; sourceTree = "<group>"; };
 		CE069ED3225366000057F349 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		CE069ED52254A0F50057F349 /* TimeKeeper.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimeKeeper.storyboard; sourceTree = "<group>"; };
 		CE11914E2237C07900EE325C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CE1191522237C27900EE325C /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 		CE1191552237DB6600EE325C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		CE42A1892236A071000CBE46 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CE069ED52254A0F50057F349 /* TimeKeeper.storyboard */,
 				84827B95224B8C2400F40A71 /* Main.storyboard */,
 				CE7C8246222682F600FA4B3B /* LaunchScreen.storyboard */,
 				CE11915A2237DB8100EE325C /* Login.storyboard */,
@@ -379,6 +382,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE069ED62254A0F50057F349 /* TimeKeeper.storyboard in Resources */,
 				CE7C8248222682F600FA4B3B /* LaunchScreen.storyboard in Resources */,
 				842ABBFD2253689800C48CD1 /* ManageSubscriber.storyboard in Resources */,
 				84827B96224B8C2400F40A71 /* Main.storyboard in Resources */,

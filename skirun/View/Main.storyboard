@@ -76,12 +76,13 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isHorizontal" value="NO"/>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" selectedImage="rocketWhite" id="VRL-zN-l4T"/>
+                    <tabBarItem key="tabBarItem" title="" image="rocketWhite" selectedImage="rocketWhite" id="VRL-zN-l4T"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="TableViewMission" destination="Zeh-Yj-NwL" id="jMP-Xh-Lpe"/>
                         <outlet property="competitionPicker" destination="5kf-cn-ud4" id="BTb-TA-DTK"/>
                         <outlet property="disciplinePicker" destination="XQd-KW-AO6" id="nVj-wB-QZN"/>
+                        <segue destination="eWn-0Z-gAN" kind="presentation" identifier="toMission" id="HvW-ef-zf9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -708,6 +709,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GiA-In-cd5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1360" y="-674"/>
+        </scene>
+        <!--TimeKeeper-->
+        <scene sceneID="cfT-ge-DV6">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TimeKeeper" id="eWn-0Z-gAN" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VVG-Og-Tz2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1305" y="-359"/>
         </scene>
         <!--availabilityList-->
         <scene sceneID="09d-2N-3th">

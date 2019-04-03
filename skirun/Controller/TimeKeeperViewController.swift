@@ -25,26 +25,20 @@ class TimeKeeperViewController: UIViewController {
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var dnfButton: UIButton!
     
-    var unitResult: String = "M, sec"
+    var unitResult: String = ""
     
-    //TO REMOVE WHEN LINK WITH MISSION
     var currentCompetition: String!
     var currentDiscipline: String!
     var currentMission: String!
-    var typeJob: String!
+    var currentMissionObject: Mission!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //TO REMOVE WHEN LINK WITH MISSION
-        currentCompetition = "Concours Crans-Montana - 2019"
-        currentDiscipline = "Cross-country skiing"
-        currentMission = "mission10"
-        typeJob = "TimeKeeper - vitesse"
         
-        loadTypeJob(typeJob: typeJob)
+        
+        loadMission()
         // Do any additional setup after loading the view.
     }
     
@@ -60,6 +54,11 @@ class TimeKeeperViewController: UIViewController {
     }
     
     func loadTypeJob(typeJob: String){
+        
+        if(typeJob == "TimeKeeper - time"){
+            self.resultLabel.text = "Distance"
+            self.unitResult = "Min, sec"
+        }
         
         if(typeJob == "TimeKeeper - distance"){
             self.resultLabel.text = "Distance"
@@ -80,10 +79,13 @@ class TimeKeeperViewController: UIViewController {
             self.submitButton.isHidden = true
             self.dnfButton.isHidden = true
         }
-        
-        
-        
-        
+    }
+    
+    func loadMission(){
+        FirebaseManager.getMission(nameCompetition: currentCompetition, nameDiscipline: currentDiscipline, nameMission: currentMission) { (data) in
+            self.currentMissionObject = data
+            self.loadTypeJob(typeJob: self.currentMissionObject.jobs)
+        }
     }
     
     func addResult(result: Result){

@@ -32,6 +32,9 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     // table view
     @IBOutlet weak var TableViewMission: UITableView!
     
+    // selected competition
+    var selectedMission: String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +68,20 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.textLabel?.text = text //3.
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        selectedMission = listMissions[indexPath.item].title
+        performSegue(withIdentifier: "toMission", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let destinationController = segue.destination as! TimeKeeperViewController;
+        destinationController.currentMission = selectedMission;
+        destinationController.currentDiscipline = selectedDiscipline;
+        destinationController.currentCompetition = selectedCompetition;
     }
     
     
