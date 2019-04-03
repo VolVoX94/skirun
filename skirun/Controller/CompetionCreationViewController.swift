@@ -28,6 +28,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     
     private var data:[String] = []
     var selectedMission = "none"
+
     
  
     var startDateInt = 0
@@ -93,7 +94,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     
     var selectedCompetition: String?;
     var competiton: Competition?;
-    var selectedDiscipline: String?
+    var selectedDiscipline = "none"
     
 
 
@@ -268,13 +269,15 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
        
     }
     
+    @IBAction func addAction(_ sender: Any) {
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "toDisplayMission"){
         let destinationController = segue.destination as! MissionCreationViewController;
         destinationController.competitionChoose = self.titleCompetition.text!
         destinationController.missionChoose = selectedMission
-        destinationController.disciplineChoose = selectedDiscipline!
+        destinationController.disciplineChoose = selectedDiscipline
         }
     }
     
