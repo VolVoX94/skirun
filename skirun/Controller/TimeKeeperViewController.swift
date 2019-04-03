@@ -26,7 +26,7 @@ class TimeKeeperViewController: UIViewController {
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var dnfButton: UIButton!
     
-    var unitResult: String = ""
+    var unitResult: String?
     
     var currentCompetition: String!
     var currentDiscipline: String!
@@ -45,12 +45,12 @@ class TimeKeeperViewController: UIViewController {
     
     @IBAction func submitAction(_ sender: Any) {
         
-        let result = Result (number: numberField.text!, result: resultField.text!, unit:unitResult)
+        let result = Result (number: numberField.text!, result: resultField.text!, unit:unitResult!)
         addResult(result: result)
     }
     
     @IBAction func dnfAction(_ sender: Any) {
-        let result = Result (number: numberField.text!,result: "Did not finish", unit:unitResult)
+        let result = Result (number: numberField.text!,result: "Did not finish", unit:unitResult!)
         addResult(result: result)
     }
     
@@ -72,6 +72,15 @@ class TimeKeeperViewController: UIViewController {
         if(typeJob == "TimeKeeper - vitesse"){
             self.resultLabel.text = "Vitesse"
             self.unitResult = "Km/h"
+        }
+        
+        if(typeJob == "Door Controller"){
+            self.numberLabel.isHidden = true
+            self.numberField.isHidden = true
+            self.resultLabel.isHidden = true
+            self.resultField.isHidden = true
+            self.submitButton.isHidden = true
+            self.dnfButton.isHidden = true
         }
         
         if(typeJob == "Logistics"){
@@ -96,7 +105,22 @@ class TimeKeeperViewController: UIViewController {
         
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(currentCompetition).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(currentDiscipline).child(currentMission).child(FirebaseSession.MISSION_RESULT_BY_BIB.rawValue).child(result.number);
         
-        ref.setValue(result.toAnyObject())
+        ref.setValue(result.toAnyObject()){
+            (error:Error?, ref:DatabaseReference) in
+            if error != nil {
+                let message = "Result inserted"
+                let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+                self.present(alert, animated: true)
+                
+                // duration in seconds
+                let duration: Double = 2
+                
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration) {
+                    alert.dismiss(animated: true)
+                }
+            }
+            
+        }
         
     }
     
