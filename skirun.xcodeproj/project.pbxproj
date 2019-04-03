@@ -11,6 +11,9 @@
 		6A1A8DB822423331009DB3FD /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1A8DB722423331009DB3FD /* Mission.swift */; };
 		842ABBFA2253658400C48CD1 /* TimeKeeperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842ABBF92253658300C48CD1 /* TimeKeeperViewController.swift */; };
 		842ABBFD2253689800C48CD1 /* ManageSubscriber.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842ABBFC2253689800C48CD1 /* ManageSubscriber.storyboard */; };
+		842ABBFF22537D0200C48CD1 /* AdminSubscriberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842ABBFE22537D0200C48CD1 /* AdminSubscriberViewController.swift */; };
+		842ABC012253D47100C48CD1 /* KGRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842ABC002253D47100C48CD1 /* KGRadioButton.swift */; };
+		842ABC0322549A6C00C48CD1 /* MyTabBarCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842ABC0222549A6C00C48CD1 /* MyTabBarCustomization.swift */; };
 		842CA7922242308B00260ECF /* Competition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CA7912242308B00260ECF /* Competition.swift */; };
 		842CA7962242620A00260ECF /* MyGradientTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CA7952242620A00260ECF /* MyGradientTableView.swift */; };
 		8445A78D22394B930018C1EE /* CompetionCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445A78922394B860018C1EE /* CompetionCreationViewController.swift */; };
@@ -66,6 +69,9 @@
 		6A1A8DB722423331009DB3FD /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
 		842ABBF92253658300C48CD1 /* TimeKeeperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeKeeperViewController.swift; sourceTree = "<group>"; };
 		842ABBFC2253689800C48CD1 /* ManageSubscriber.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ManageSubscriber.storyboard; sourceTree = "<group>"; };
+		842ABBFE22537D0200C48CD1 /* AdminSubscriberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSubscriberViewController.swift; sourceTree = "<group>"; };
+		842ABC002253D47100C48CD1 /* KGRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KGRadioButton.swift; sourceTree = "<group>"; };
+		842ABC0222549A6C00C48CD1 /* MyTabBarCustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarCustomization.swift; sourceTree = "<group>"; };
 		842CA7912242308B00260ECF /* Competition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Competition.swift; sourceTree = "<group>"; };
 		842CA7952242620A00260ECF /* MyGradientTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGradientTableView.swift; sourceTree = "<group>"; };
 		8445A78922394B860018C1EE /* CompetionCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompetionCreationViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +205,7 @@
 				CE7C823F222682F500FA4B3B /* SecondViewController.swift */,
 				CEE4645F22368F1500F42D5D /* LoginViewController.swift */,
 				CE11914E2237C07900EE325C /* SettingsViewController.swift */,
+				842ABBFE22537D0200C48CD1 /* AdminSubscriberViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -212,6 +219,8 @@
 				8445A791223F8FAD0018C1EE /* MyGradientView.swift */,
 				842CA7952242620A00260ECF /* MyGradientTableView.swift */,
 				842ABBFC2253689800C48CD1 /* ManageSubscriber.storyboard */,
+				842ABC002253D47100C48CD1 /* KGRadioButton.swift */,
+				842ABC0222549A6C00C48CD1 /* MyTabBarCustomization.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -494,15 +503,18 @@
 				CE7C8240222682F500FA4B3B /* SecondViewController.swift in Sources */,
 				CE11914F2237C07900EE325C /* SettingsViewController.swift in Sources */,
 				6A1A8DB822423331009DB3FD /* Mission.swift in Sources */,
+				842ABBFF22537D0200C48CD1 /* AdminSubscriberViewController.swift in Sources */,
 				8445A78E22394B930018C1EE /* MissionCreationViewController.swift in Sources */,
 				CE7C823C222682F500FA4B3B /* AppDelegate.swift in Sources */,
 				84F075C42239105800084B8B /* User.swift in Sources */,
+				842ABC012253D47100C48CD1 /* KGRadioButton.swift in Sources */,
 				CEE4646022368F1500F42D5D /* LoginViewController.swift in Sources */,
 				8445A78F22394B930018C1EE /* AdminManagementViewController.swift in Sources */,
 				8445A792223F8FAD0018C1EE /* MyGradientView.swift in Sources */,
 				CEE05BC922427EAD002B5DD5 /* FirebaseManager.swift in Sources */,
 				8445A79022394B930018C1EE /* AdminViewController.swift in Sources */,
 				84F075C6223932B200084B8B /* FirebaseSession.swift in Sources */,
+				842ABC0322549A6C00C48CD1 /* MyTabBarCustomization.swift in Sources */,
 				CE7C823E222682F500FA4B3B /* FirstViewController.swift in Sources */,
 				84C056FC22490DC7009367AF /* DetailAvailability.swift in Sources */,
 				8445A78D22394B930018C1EE /* CompetionCreationViewController.swift in Sources */,

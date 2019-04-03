@@ -13,8 +13,6 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var logoutButton: UIButton!
     
-    
-
     @IBAction func logoutFunc(_ sender: Any) {
         do
         {
