@@ -12,7 +12,7 @@ import UIKit
 
 class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource,  UITableViewDataSource, UITableViewDelegate {
     
-    
+    // selected competition and discipline
     var selectedCompetition: String?
     var selectedDiscipline: String?
 
@@ -22,8 +22,9 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     
     // TAG -> 1
     @IBOutlet weak var disciplinePicker: UIPickerView!
-    var listDisciplines:[String] = [String]()
+    var listDisciplines:[String] = []
     
+    // list of missions
     var listMissions:[Mission] = []
    
     // get current user
@@ -32,20 +33,24 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     // table view
     @IBOutlet weak var TableViewMission: UITableView!
     
-    // selected competition
-    var selectedMission: String?
+    // semaphore : the value is the amount of threads we want
+    let semaphore = DispatchSemaphore(value: 1)
     
+    // dispatchQueue for semafore
+    let dispatchQueue = DispatchQueue(label: "dispatchQueue")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Load the table view
         TableViewMission.dataSource = self
         TableViewMission.delegate = self
-        loadListCompetitions();
-      
         
+        // Call the compettions
+        self.loadListCompetitions();
+    
     }
     
-    
+    // pickerView
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         if (pickerView.tag == 0){
@@ -64,7 +69,8 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
         
         let cell = TableViewMission.dequeueReusableCell(withIdentifier: "cellMissionSelected")!
         cell.textLabel?.textColor = UIColor.white
-        let text = listMissions[indexPath.row].title //2.
+        let start: UnixTime = listMissions[indexPath.row].startTime
+        let text = "\(listMissions[indexPath.row].title) \(" ") \(start.toDateTime)"//2.
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.textLabel?.text = text //3.
         return cell
@@ -101,91 +107,121 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     //Check wich element has been choosen
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
+        // picker competitions
        if(pickerView.tag == 0){
-            self.selectedCompetition = listCompetitions[row]
-              loadListDisciplines();
-            
-        }else{
-            self.selectedDiscipline = listDisciplines[row]
-            loadListMissions();
+        // if no competitions has been selected
+            if (row==0){
+                // remove all the lists to display nothing
+                listDisciplines.removeAll()
+                listMissions.removeAll()
+                TableViewMission.reloadData()
+                disciplinePicker.reloadAllComponents()
+            }else{
+               // Load the disciplines for the competition selected
+                self.selectedCompetition = self.listCompetitions[row]
+                self.loadListDisciplines();
+                print("piker after list discipline")
+                if (self.listDisciplines.count>0){
+                    print ("MIS -------------------------------------------------")
+                     self.loadListMissions();
+                }
+               
+            }
+       
         }
-        
+       else{ // picker disciplines
+                self.selectedDiscipline = self.listDisciplines[row]
+                self.loadListMissions();
+        }
     }
     
+    // load the list of competitions
     func loadListCompetitions(){
+       // call firebase
         FirebaseManager.getCompetitons(completion: { (data) in
             self.listCompetitions = Array(data)
             self.competitionPicker.delegate = self
             self.competitionPicker.dataSource = self
-            // self.listCompetitions.insert("Please select", at: 0)
+            self.listCompetitions.insert("Please select", at: 0)
+          
             // print(data)
         })
       
     }
     
+    // load list of disciplines
     func loadListDisciplines(){
-       print("loadDisciplines")
-        FirebaseManager.getDisciplinesOfCompetition(name: self.selectedCompetition!) { (pickerData) in
-            self.listDisciplines = Array(pickerData)
-            self.disciplinePicker.delegate = self
-            self.disciplinePicker.dataSource = self
-            // when select a competition -> load discipline and set the first discipline in the list
-            //self.disciplinePicker.selectedRow(inComponent: 0)
+        print ("DIS -------------------------------------------------")
+        DispatchQueue.global().async {
+            print("loadDisciplines")
             
-            if(self.listDisciplines.count>0){
-                self.selectedDiscipline = self.listDisciplines[0]
-               //self.loadListMissions();
-            }
+            self.semaphore.wait()
+            self.listDisciplines = [String]()
             
-           /* if (self.listDisciplines.isEmpty) {
-                self.disciplinePicker.isHidden = false
-            }else{
-                self.disciplinePicker.isHidden = true
+            FirebaseManager.getDisciplinesOfCompetition(name: self.selectedCompetition!) { (pickerData) in
+                self.listDisciplines = Array(pickerData)
+                self.disciplinePicker.delegate = self
+                self.disciplinePicker.dataSource = self
+                // when select a competition -> load discipline and set the first discipline in the list
+                self.disciplinePicker.selectedRow(inComponent: 0)
+                print ("longeur list discplines ", self.listDisciplines.count)
+               
+                if (self.listDisciplines.count>0){
+                 self.selectedDiscipline = self.listDisciplines[0]
+                //    print("fin du load discipline")
+                    print("fin du load discipline")
+                    self.semaphore.signal()
+                }
             }
- */
         }
         
     }
     
+    // load list of missions
     func loadListMissions(){
         //print("---- I'm in load list missions")
-        
-        // create the list for missions
-        self.listMissions = [Mission]()
-        self.TableViewMission.dataSource = self
-        //print("size of list missions ", listMissions.count)
-        
-        FirebaseManager.getMisOfDisciplines(competitionName: self.selectedCompetition!, disciplineName: self.selectedDiscipline!){ (missionData) in
-          
+        DispatchQueue.global().async {
+            self.semaphore.wait()
+            // create the list for missions
+            self.listMissions.removeAll()
+            self.TableViewMission.dataSource = self
+            //print("size of list missions ", listMissions.count)
             
-            print("list of missions for : ", self.selectedCompetition)
-            
-            // display for the discipline selected the names of the missions
-            for (index, elementMission) in missionData.enumerated(){
-                //print("------------ ", elementMission.title)
+            FirebaseManager.getMisOfDisciplines(competitionName: self.selectedCompetition!, disciplineName: self.selectedDiscipline!){ (missionData) in
                 
-                //print("element selected", elementMission.selected)
                 
-                for (_, elementSelected) in elementMission.selected.enumerated(){
+                print("list of missions for : ", self.selectedCompetition)
+                
+                // display for the discipline selected the names of the missions
+                for (_, elementMission) in missionData.enumerated(){
+                    //print("------------ ", elementMission.title)
                     
-                    // var listSelected = [String]()
+                    //print("element selected", elementMission.selected)
                     
-                    if (self.currentUserUid == elementSelected){
-                        // print("current id", self.currentUserUid)
-                        // print ("uid selected ", elementSelected)
-                        print(elementMission.title)
-                        self.listMissions.append(elementMission)
-                        //print(self.listMissions)
+                    for (_, elementSelected) in elementMission.selected.enumerated(){
+                        
+                        // var listSelected = [String]()
+                        
+                        if (self.currentUserUid == elementSelected){
+                            // print("current id", self.currentUserUid)
+                            // print ("uid selected ", elementSelected)
+                            print(elementMission.title)
+                            self.listMissions.append(elementMission)
+                            //print(self.listMissions)
+                            
+                        }
                         
                     }
-                    
                 }
-             }
-            
-            print("***** list ****", self.listMissions)
-            self.TableViewMission.reloadData()
+                
+                print("***** list ****", self.listMissions)
+                self.TableViewMission.reloadData()
+                
+                self.semaphore.signal()
+                
+            }
         }
-        
+      
         
     }
 
