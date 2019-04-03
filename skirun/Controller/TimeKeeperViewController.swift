@@ -25,6 +25,8 @@ class TimeKeeperViewController: UIViewController {
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var dnfButton: UIButton!
     
+    var unitResult: String = "M, sec"
+    
     //TO REMOVE WHEN LINK WITH MISSION
     var currentCompetition: String!
     var currentDiscipline: String!
@@ -48,15 +50,12 @@ class TimeKeeperViewController: UIViewController {
     
     @IBAction func submitAction(_ sender: Any) {
         
-        let result = Result (number: numberField.text!, result: resultField.text!)
-        
+        let result = Result (number: numberField.text!, result: resultField.text!, unit:unitResult)
         addResult(result: result)
     }
     
     @IBAction func dnfAction(_ sender: Any) {
-        let result = Result (number: numberField.text!,result: "0")
-        result.status = "Did not finish"
-        
+        let result = Result (number: numberField.text!,result: "Did not finish", unit:unitResult)
         addResult(result: result)
     }
     
@@ -64,10 +63,12 @@ class TimeKeeperViewController: UIViewController {
         
         if(typeJob == "TimeKeeper - distance"){
             self.resultLabel.text = "Distance"
+            self.unitResult = "Meter"
         }
         
         if(typeJob == "TimeKeeper - vitesse"){
             self.resultLabel.text = "Vitesse"
+            self.unitResult = "Km/h"
         }
         
         if(typeJob == "Logistics"){

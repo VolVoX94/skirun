@@ -225,7 +225,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     func loadCompetitionData(){
         FirebaseManager.getCompetiton(name: self.name! , completion: { (data) in
             self.myCompetition = data
-            self.myStartDateLabel.text = data.startDateTime.description
+            //self.myStartDateLabel.text = data.startDateTime.description
         })
     }
     
