@@ -105,6 +105,7 @@ class FirebaseManager{
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(competitionName).child("disciplines").child(disciplineName);
         var missions:[Mission] = []
         ref.observe(.value, with: { (snapshot) in
+            missions.removeAll()
             for childSnapshot in snapshot.children{
                 let tempMission = Mission(title: (childSnapshot as AnyObject ).key as String,
                                           description: snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String).childSnapshot(forPath: FirebaseSession.MISSION_DESCRIPTION.rawValue).value as! String,
