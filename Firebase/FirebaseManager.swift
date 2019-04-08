@@ -78,7 +78,7 @@ class FirebaseManager{
     }
     
     // **** GET DISCIPLINE BY COMPETITION
-    static func getDisciplinesOfCompetition(name: String, completion: @escaping ([String])-> Void){
+    static func getDisciplinesOfCompetition_old(name: String, completion: @escaping ([String])-> Void){
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(name).child("disciplines");
         var numberOfDisciplines = [String]()
         
