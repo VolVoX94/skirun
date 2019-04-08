@@ -95,6 +95,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQO-NU-EfD">
+                                <rect key="frame" x="181" y="663" width="52" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Volunteer"/>
+                                <connections>
+                                    <action selector="manageVolunteerFunc:" destination="Ut1-35-9MO" eventType="touchUpInside" id="pjt-Ri-l4t"/>
+                                    <segue destination="Tda-Mx-vnZ" kind="show" identifier="MyAdminSegue" id="QAc-Bv-Jbx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <accessibility key="accessibilityConfiguration">
@@ -115,6 +124,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="dnfButton" destination="eH9-YZ-amj" id="sdv-KB-PSb"/>
+                        <outlet property="myAdminButton" destination="ZQO-NU-EfD" id="AtP-iC-TjV"/>
                         <outlet property="navbar" destination="jTq-GT-bY0" id="TSl-pC-tHw"/>
                         <outlet property="numberField" destination="mAg-CR-QFy" id="G9l-by-oI3"/>
                         <outlet property="numberLabel" destination="WDO-I1-JFf" id="KRe-ZI-8AY"/>
@@ -128,9 +138,18 @@
             </objects>
             <point key="canvasLocation" x="-1159.4202898550725" y="-382.36607142857139"/>
         </scene>
+        <!--ManageSubscriber-->
+        <scene sceneID="t3L-dg-YDQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ManageSubscriber" id="Tda-Mx-vnZ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yob-NE-Dy8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-501" y="-206"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Submit" width="60" height="60"/>
+        <image name="Volunteer" width="80" height="114"/>
         <image name="dnf button" width="175" height="60"/>
     </resources>
 </document>

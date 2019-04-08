@@ -29,8 +29,8 @@ class Competition {
     
     func toAnyObject() -> Any {
         return [
-            "startDateTime" : startDateTime,
-            "endDateTime": endDateTime,
+            "startDate" : startDateTime,
+            "endDate": endDateTime,
             "refAPI": refAPI,
         ]
     }
