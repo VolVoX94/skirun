@@ -21,6 +21,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     @IBOutlet weak var nameMission: UITextField!
     @IBOutlet weak var nbPeople: UITextField!
     @IBOutlet weak var descriptionMission: UITextField!
+    @IBOutlet weak var myAdminButton: UIButton!
     
     
     // Picker for the job
@@ -43,6 +44,21 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     var disciplineChoose = "none"
     var missionChoose = "none"
     var competitionChoose = "none"
+    
+    //------Button
+    
+    @IBAction func myAdminFunc(_ sender: Any) {
+        performSegue(withIdentifier: "MyAdminSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        
+        print("prepare link to manage")
+        let destinationController = segue.destination as! AdminSubscriberViewController;
+        destinationController.competitionName = self.competitionChoose;
+        destinationController.disciplineName = self.disciplineChoose;
+        destinationController.missionName = self.missionChoose
+    }
     
     //--------- Time function for edit and changed value -------------------
     @IBAction func starTimeEdit(_ sender: UITextField) {

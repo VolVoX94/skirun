@@ -22,6 +22,7 @@ class TimeKeeperViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var resultField: UITextField!
     
+    @IBOutlet weak var myAdminButton: UIButton!
     
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var dnfButton: UIButton!
@@ -41,6 +42,18 @@ class TimeKeeperViewController: UIViewController {
         
         loadMission()
         // Do any additional setup after loading the view.
+    }
+    @IBAction func manageVolunteerFunc(_ sender: Any) {
+        performSegue(withIdentifier: "MyAdminSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        
+        print("prepare link to manage")
+        let destinationController = segue.destination as! AdminSubscriberViewController;
+        destinationController.competitionName = self.currentCompetition;
+        destinationController.disciplineName = self.currentDiscipline;
+        destinationController.missionName = self.currentMission
     }
     
     @IBAction func submitAction(_ sender: Any) {
