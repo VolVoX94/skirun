@@ -15,6 +15,8 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     var selectedDiscipline: String?
     var selectedMission: String?
 
+    @IBOutlet weak var myWaitSymbolizer: UIActivityIndicatorView!
+    @IBOutlet weak var noDataLabel: UILabel!
     // TAG -> 0
     @IBOutlet weak var competitionPicker: UIPickerView!
     var listCompetitions:[String] = [String]()
@@ -44,6 +46,7 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
         TableViewMission.dataSource = self
         TableViewMission.delegate = self
         
+        self.noDataLabel.text = ""
         // Call the compettions
         self.loadListCompetitions();
     
@@ -113,12 +116,19 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
                 TableViewMission.reloadData()
                 disciplinePicker.reloadAllComponents()
             }else{
+                //launch animating loading sign
+                self.myWaitSymbolizer.startAnimating()
                // get the selected competition
                 self.selectedCompetition = self.listCompetitions[row]
+                
+                //refresh
+                self.listMissions.removeAll()
+                self.TableViewMission.reloadData()
+                
                 // Load the disciplines for the competition selected
                 self.loadListDisciplines();
                 // load the missions from the competition and the discipline selected
-                self.loadListMissions();
+                //self.loadListMissions();
             }
        
         }else{ // picker disciplines
@@ -143,8 +153,9 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     
     // load list of disciplines
     func loadListDisciplines(){
-        DispatchQueue.global().async {
-            self.semaphore.wait()
+        //  DispatchQueue.global().async {
+        //    self.semaphore.wait()
+            self.listMissions.removeAll()
             self.listDisciplines = [String]()
             // call firebase
             FirebaseManager.getDisciplinesOfCompetition(name: self.selectedCompetition!) { (pickerData) in
@@ -152,22 +163,37 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
                 self.disciplinePicker.delegate = self
                 self.disciplinePicker.dataSource = self
 
+                
                 // check if the list of disciplines is more than 0
                 if (self.listDisciplines.count>0){
                     self.selectedDiscipline = self.listDisciplines[0]
-                    self.semaphore.signal()
+        
+
+                    
+                    self.loadListMissions();
+                  //  self.semaphore.signal()
+           //     }
+                    self.noDataLabel.text = ""
                 }
-            }
+                else{
+                    self.noDataLabel.text = "No data"
+                    self.myWaitSymbolizer.stopAnimating()
+                }
         }
     }
     
     // load list of missions
     func loadListMissions(){
+        
+        //refresh
+        self.listMissions.removeAll()
+        self.TableViewMission.reloadData()
         //print("---- I'm in load list missions")
-        DispatchQueue.global().async {
-            self.semaphore.wait()
+        //DispatchQueue.global().async {
+        //    self.semaphore.wait()
             // create the list for missions
-            self.listMissions.removeAll()
+        
+
             self.TableViewMission.dataSource = self
             // call firebase
             FirebaseManager.getMisOfDisciplines(competitionName: self.selectedCompetition!, disciplineName: self.selectedDiscipline!){ (missionData) in
@@ -183,10 +209,18 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
                         }
                     }
                 }
+                
+                if(missionData.count == 0){
+                    self.noDataLabel.text = "No data"
+                }
+                else{
+                    self.noDataLabel.text = ""
+                }
+                self.myWaitSymbolizer.stopAnimating()
                 // reload the data
                 self.TableViewMission.reloadData()
-                self.semaphore.signal()
-            }
+             //   self.semaphore.signal()
+         //   }
         }
     }
 
