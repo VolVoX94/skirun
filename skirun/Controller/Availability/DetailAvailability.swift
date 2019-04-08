@@ -42,6 +42,8 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var myWaitAnimation: UIActivityIndicatorView!
+    
     @IBOutlet weak var myCompetitionName: UILabel!
     
     @IBOutlet weak var myStartDateLabel: UILabel!
@@ -51,6 +53,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
             super.viewDidLoad()
             tableView.dataSource = self
+        
             
             loadCompetitionData()
             self.myCompetitionName.text = self.name
@@ -59,6 +62,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
             self.myPicker.delegate = self
             self.myPicker.dataSource = self
             loadDisciplineData()
+    
         }
     
     //2 PICKER METHODS -------------------------
@@ -87,9 +91,15 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         self.notChoosenMissions.removeAll()
         self.choosenMissions.removeAll()
         self.myDiscipline = pickerData[row]
+        
+        //Important that when have no data nothing empty table is displayed
+        self.missionData.removeAll()
+        self.tableView.reloadData()
         //load the data for missions
         if(row>0){
+            self.myWaitAnimation.startAnimating()
             loadMissionData(disciplineName: pickerData[row])
+        
             //checkAlreadySubscribed()
             self.alreadyReloaded = false
         }
@@ -148,13 +158,20 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "missionCell")! //1.
-        //2.
-        let tempMission = missionData[indexPath.row]
-            
-        let start: UnixTime = missionData[indexPath.row].startTime
-        let end: UnixTime = missionData[indexPath.row].endTime
-        let text = tempMission.jobs + " " + start.toHour + " - " + end.toHour
+        
+        var text = ""
+        //EXCEPTION - CATCH NULLPOINTER
+        do{
+            let tempMission = try assignData(data: missionData, index: indexPath.row)//2.
+            let start: UnixTime = tempMission.startTime
+            let end: UnixTime = tempMission.endTime
+            text = tempMission.jobs + " " + start.toHour + " - " + end.toHour
+        } catch let error as NSError{
+            print(error.localizedDescription)
+            text = "NULL"
+        }
             
         cell.textLabel?.text = text //3.
         cell.textLabel?.font = UIFont(name: "Avenir Next", size: 18)
@@ -164,9 +181,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         
         //SWITCH BUTTON ---------------------------------
         let switchObj = UISwitch(frame: CGRect(x: 1, y: 1, width: 20, height: 20))
-        print("compared Value", missionData[indexPath.row].jobs)
         if(alreadySubscribedMissions.contains(missionData[indexPath.row].jobs)){
-            print("switched on")
             switchObj.isOn = true
             choosenMissions.append(indexPath.row)
         }
@@ -193,8 +208,6 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
             choosenMissions = choosenMissions.filter{$0 != sender.tag}
             notChoosenMissions.append(sender.tag)
         }
-        print("choosenMission",choosenMissions.count)
-        print("NotCHoosenMission",notChoosenMissions.count)
     }
   
     //---------------- FIREBASE CONNECTION -----------------
@@ -202,8 +215,8 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         FirebaseManager.getMisOfDisciplines(competitionName: self.name!, disciplineName: disciplineName) { (missionData) in
             self.missionData = Array(missionData)
             self.checkAlreadySubscribed(missionData: self.missionData, nameCompetition: self.name!, disciplineName: disciplineName)
-            
-            
+            self.tableView.reloadData()
+            self.myWaitAnimation.stopAnimating()
         }
     }
     
@@ -230,7 +243,6 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func saveSubscriber(mission:String){
-        print("added")
         FirebaseManager.saveSubscribersToMission(uidUser: (Auth.auth().currentUser?.uid)!,
                                                  nameMission: mission,
                                                  nameDiscipline: (self.myDiscipline)!,
@@ -238,7 +250,6 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func deleteSubscriber(mission:String){
-        print("deleted")
         FirebaseManager.deleteSubscriber(uidUser: (Auth.auth().currentUser?.uid)!,
                                                  nameMission: mission,
                                                  nameDiscipline: (self.myDiscipline)!,
@@ -269,5 +280,10 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
             self.dismiss(animated: true, completion: nil)
         }))
         self.present(alertBox, animated: true)
+    }
+    
+    //ERROR - HANDLING
+    func assignData(data:[Mission], index:Int) throws -> Mission{
+        return data[index]
     }
 }
