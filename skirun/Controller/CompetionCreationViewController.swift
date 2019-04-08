@@ -257,7 +257,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     }
     
     @IBAction func back(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
 
     }
     

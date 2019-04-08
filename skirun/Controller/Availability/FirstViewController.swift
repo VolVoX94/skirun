@@ -24,13 +24,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
      
     }
     
-    @IBAction func nextButton(_ sender: Any) {
-        performSegue(withIdentifier: "MyNextSegue", sender: self)
-    }
-    @IBAction func backButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(self.data.count == 0 && self.myWaitAnimation.isAnimating == false){
             self.noDataLabel.text = "No data"
