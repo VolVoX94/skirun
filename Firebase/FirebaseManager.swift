@@ -298,4 +298,21 @@ class FirebaseManager{
             completion(tempUIDS)
         })
     }
+    
+    
+    //------------- ADMIN
+    //**** compare numbers
+    static func checkAdminNumber(inputNumber:String, result: @escaping(Bool)-> Void){
+         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.admin.rawValue)
+        ref.observe(.value, with: {(snapshot) in
+            var tempNumber = snapshot.childSnapshot(forPath: FirebaseSession.ADMIN_CHECKNUMBER.rawValue).value as! String
+            
+            if(inputNumber == tempNumber){
+                result(true)
+            }
+            else{
+                result(false)
+            }
+        })
+    }
 }

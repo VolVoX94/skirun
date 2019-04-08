@@ -71,7 +71,7 @@ class AdminSubscriberViewController: UIViewController, UITableViewDataSource, UI
             FirebaseManager.saveFinalSubscribersToMission(uidUsers: tempUID, nameMission: self.missionName!, nameDiscipline: self.disciplineName!, nameCompetition: self.competitionName!)
             self.dismiss(animated: true, completion: nil)
         }))
-        alertBox.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{(action: UIAlertAction!) in
+        alertBox.addAction(UIAlertAction(title: "No", style: .cancel, handler:{(action: UIAlertAction!) in
         }))
         self.present(alertBox, animated: true)
     }
