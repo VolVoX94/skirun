@@ -18,14 +18,6 @@ class AdminViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func backAdmin(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func next(_ sender: UIButton) {
-        performSegue(withIdentifier: "addChampion", sender: self)
-    }
-    
     @IBAction func back(_ sender: Any) {
     self.dismiss(animated: false, completion: nil)
     }

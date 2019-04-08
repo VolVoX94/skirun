@@ -54,6 +54,10 @@ class TimeKeeperViewController: UIViewController {
         addResult(result: result)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     func loadTypeJob(typeJob: String){
         
         self.navbar.title = currentMissionObject.title
