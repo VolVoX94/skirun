@@ -32,6 +32,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
  
     var startDateInt = 0
     var endDateInt = 0
+    
 
     
     override func viewDidLoad() {
@@ -146,6 +147,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     //Check wich element has been choosen
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedDiscipline = pickerData[row]
+        
         //load the data for missions
         if(row>0){
             loadMissionData(disciplineName: pickerData[row])
@@ -167,7 +169,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     }
     
     func loadCompetition(){
-        //diable the field
+        //disable the field
         titleCompetition.isEnabled = false
         startDate.isEnabled = false
         endDate.isEnabled = false
@@ -275,6 +277,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         destinationController.competitionChoose = self.titleCompetition.text!
         destinationController.missionChoose = selectedMission
         destinationController.disciplineChoose = selectedDiscipline!
+            
         }
     }
     
