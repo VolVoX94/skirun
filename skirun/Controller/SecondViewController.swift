@@ -8,6 +8,8 @@
 import Firebase
 import UIKit
 
+// Get all the missions where the current user has been selected by the admin
+// according the selected competition and the selected discpline
 class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource,  UITableViewDataSource, UITableViewDelegate {
     
     // selected competition and discipline
@@ -15,8 +17,12 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     var selectedDiscipline: String?
     var selectedMission: String?
 
+    // View Indicator while waiting data
     @IBOutlet weak var myWaitSymbolizer: UIActivityIndicatorView!
+    
+    // In case if there are no data
     @IBOutlet weak var noDataLabel: UILabel!
+    
     // TAG -> 0
     @IBOutlet weak var competitionPicker: UIPickerView!
     var listCompetitions:[String] = [String]()
@@ -34,22 +40,15 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     // table view
     @IBOutlet weak var TableViewMission: UITableView!
     
-    // semaphore : the value is the amount of threads we want
-    let semaphore = DispatchSemaphore(value: 1)
-    
-    // dispatchQueue for semafore
-    let dispatchQueue = DispatchQueue(label: "dispatchQueue")
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Load the table view
         TableViewMission.dataSource = self
         TableViewMission.delegate = self
-        
+        // set the label for no data input to ""
         self.noDataLabel.text = ""
         // Call the compettions
         self.loadListCompetitions();
-    
     }
     
     // ------------------------- table view and picker view  -------------------------
@@ -66,13 +65,18 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = TableViewMission.dequeueReusableCell(withIdentifier: "cellMissionSelected")!
-        cell.textLabel?.textColor = UIColor.white
-        let start: UnixTime = listMissions[indexPath.row].startTime
-        let text = "\(listMissions[indexPath.row].title) \(" ") \(start.toDateTime)"//2.
-        cell.selectionStyle = UITableViewCell.SelectionStyle.none
-        cell.textLabel?.text = text //3.
+         let cell = TableViewMission.dequeueReusableCell(withIdentifier: "cellMissionSelected")!
+        do{
+           
+            cell.textLabel?.textColor = UIColor.white
+            let start: UnixTime = listMissions[indexPath.row].startTime
+            let text = "\(listMissions[indexPath.row].title) \(" ") \(start.toDateTime)"//2.
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
+              cell.textLabel?.text = text //3.
+      
+        } catch let error as NSError{
+            print(error.localizedDescription)
+        }
         return cell
     }
     
@@ -102,6 +106,7 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
             return listDisciplines.count
         }
     }
+     // ------------------------- END  -------------------------
     
     //Check wich element has been choosen
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -120,18 +125,15 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
                 self.myWaitSymbolizer.startAnimating()
                // get the selected competition
                 self.selectedCompetition = self.listCompetitions[row]
-                
                 //refresh
                 self.listMissions.removeAll()
                 self.TableViewMission.reloadData()
-                
-                // Load the disciplines for the competition selected
-                self.loadListDisciplines();
                 // load the missions from the competition and the discipline selected
-                //self.loadListMissions();
+                self.loadListDisciplines();
             }
-       
-        }else{ // picker disciplines
+        }
+       // picker disciplines
+       else{
         // get the selected discipline
         self.selectedDiscipline = self.listDisciplines[row]
         // load the missions
@@ -153,32 +155,28 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     
     // load list of disciplines
     func loadListDisciplines(){
-        //  DispatchQueue.global().async {
-        //    self.semaphore.wait()
-            self.listMissions.removeAll()
-            self.listDisciplines = [String]()
-            // call firebase
-            FirebaseManager.getDisciplinesOfCompetition(name: self.selectedCompetition!) { (pickerData) in
-                self.listDisciplines = Array(pickerData)
-                self.disciplinePicker.delegate = self
-                self.disciplinePicker.dataSource = self
+        // remove the conent of the list of missions
+        self.listMissions.removeAll()
+        self.listDisciplines = [String]()
+        // call firebase
+        FirebaseManager.getDisciplinesOfCompetition(name: self.selectedCompetition!) { (pickerData) in
+            self.listDisciplines = Array(pickerData)
+            self.disciplinePicker.delegate = self
+            self.disciplinePicker.dataSource = self
 
-                
-                // check if the list of disciplines is more than 0
-                if (self.listDisciplines.count>0){
-                    self.selectedDiscipline = self.listDisciplines[0]
-        
-
-                    
-                    self.loadListMissions();
-                  //  self.semaphore.signal()
-           //     }
-                    self.noDataLabel.text = ""
-                }
-                else{
-                    self.noDataLabel.text = "No data"
-                    self.myWaitSymbolizer.stopAnimating()
-                }
+            // check if the list of disciplines is more than 0
+            if (self.listDisciplines.count>0){
+                self.selectedDiscipline = self.listDisciplines[0]
+                // Load the missions
+                self.loadListMissions();
+                // set label of no data to ""
+                self.noDataLabel.text = ""
+            }
+            else{
+                // if no disciplines set label data
+                self.noDataLabel.text = "There is no disciplines"
+                self.myWaitSymbolizer.stopAnimating()
+            }
         }
     }
     
@@ -188,43 +186,35 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
         //refresh
         self.listMissions.removeAll()
         self.TableViewMission.reloadData()
-        //print("---- I'm in load list missions")
-        //DispatchQueue.global().async {
-        //    self.semaphore.wait()
-            // create the list for missions
-        
-
-            self.TableViewMission.dataSource = self
-            // call firebase
-            FirebaseManager.getMisOfDisciplines(competitionName: self.selectedCompetition!, disciplineName: self.selectedDiscipline!){ (missionData) in
-                // display all the missions for the selected discipline
-                for (_, elementMission) in missionData.enumerated(){
-                    // loop in all the selected user in the mission
-                    for (_, elementSelected) in elementMission.selected.enumerated(){
-                        
-                        // if the current user id is the same as the user selected for the mission
-                        if (self.currentUserUid == elementSelected){
-                           // add this mission to the list of missions for this current user
-                            self.listMissions.append(elementMission)
-                        }
+        // create the list for missions
+        self.TableViewMission.dataSource = self
+        // call firebase
+        FirebaseManager.getMisOfDisciplines(competitionName: self.selectedCompetition!, disciplineName: self.selectedDiscipline!){ (missionData) in
+            // display all the missions for the selected discipline
+            for (_, elementMission) in missionData.enumerated(){
+                // loop in all the selected user in the mission
+                for (_, elementSelected) in elementMission.selected.enumerated(){
+                    // if the current user id is the same as the user selected for the mission
+                    if (self.currentUserUid == elementSelected){
+                        // add this mission to the list of missions for this current user
+                        self.listMissions.append(elementMission)
                     }
                 }
-                
-                if(missionData.count == 0){
-                    self.noDataLabel.text = "No data"
-                }
-                else{
-                    self.noDataLabel.text = ""
-                }
-                self.myWaitSymbolizer.stopAnimating()
-                // reload the data
-                self.TableViewMission.reloadData()
-             //   self.semaphore.signal()
-         //   }
+            }
+            // if there is no missions for the current user, set the label no data
+            if(self.listMissions.count == 0){
+                self.noDataLabel.text = "You don't have any missions"
+            }
+            // if there is some mission, set label noData to ""
+            else{
+                self.noDataLabel.text = ""
+            }
+            self.myWaitSymbolizer.stopAnimating()
+            // reload the data
+            self.TableViewMission.reloadData()
         }
     }
 
- 
     //Picker formatting
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         

@@ -147,7 +147,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
             subscribe()
         }
         else{
-             self.dismiss(animated: true, completion: nil)
+             self.dismiss(animated: false, completion: nil)
         }
     }
     
