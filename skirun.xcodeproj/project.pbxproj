@@ -27,6 +27,9 @@
 		84F075C42239105800084B8B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F075C32239105800084B8B /* User.swift */; };
 		84F075C6223932B200084B8B /* FirebaseSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F075C5223932B200084B8B /* FirebaseSession.swift */; };
 		B6A32530ACB85AC0D5AA2B22 /* Pods_skirun.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7739317431CD4D4FA0C9A5 /* Pods_skirun.framework */; };
+		CC79C05A225B358A00F0C612 /* VideoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC79C058225B358A00F0C612 /* VideoHelper.swift */; };
+		CC79C05B225B358A00F0C612 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC79C059225B358A00F0C612 /* VideoViewController.swift */; };
+		CC79C05D225B35B700F0C612 /* CameraStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC79C05C225B35B700F0C612 /* CameraStoryboard.storyboard */; };
 		CE069ED4225366000057F349 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE069ED3225366000057F349 /* Result.swift */; };
 		CE069ED62254A0F50057F349 /* TimeKeeper.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE069ED52254A0F50057F349 /* TimeKeeper.storyboard */; };
 		CE11914F2237C07900EE325C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE11914E2237C07900EE325C /* SettingsViewController.swift */; };
@@ -86,6 +89,9 @@
 		84F075C32239105800084B8B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		84F075C5223932B200084B8B /* FirebaseSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSession.swift; sourceTree = "<group>"; };
 		C213F753E47128B9333F7934 /* Pods-skirun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-skirun.debug.xcconfig"; path = "Target Support Files/Pods-skirun/Pods-skirun.debug.xcconfig"; sourceTree = "<group>"; };
+		CC79C058225B358A00F0C612 /* VideoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoHelper.swift; sourceTree = "<group>"; };
+		CC79C059225B358A00F0C612 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		CC79C05C225B35B700F0C612 /* CameraStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CameraStoryboard.storyboard; sourceTree = "<group>"; };
 		CE069ED3225366000057F349 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		CE069ED52254A0F50057F349 /* TimeKeeper.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimeKeeper.storyboard; sourceTree = "<group>"; };
 		CE11914E2237C07900EE325C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -194,9 +200,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CC79C057225B349000F0C612 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				CC79C058225B358A00F0C612 /* VideoHelper.swift */,
+				CC79C059225B358A00F0C612 /* VideoViewController.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
 		CE42A1882236A052000CBE46 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CC79C057225B349000F0C612 /* Camera */,
 				842ABBF92253658300C48CD1 /* TimeKeeperViewController.swift */,
 				8445A78B22394B930018C1EE /* AdminManagementViewController.swift */,
 				8445A78C22394B930018C1EE /* AdminViewController.swift */,
@@ -224,6 +240,7 @@
 				842ABBFC2253689800C48CD1 /* ManageSubscriber.storyboard */,
 				842ABC002253D47100C48CD1 /* KGRadioButton.swift */,
 				842ABC0222549A6C00C48CD1 /* MyTabBarCustomization.swift */,
+				CC79C05C225B35B700F0C612 /* CameraStoryboard.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -395,6 +412,7 @@
 				CE7C8248222682F600FA4B3B /* LaunchScreen.storyboard in Resources */,
 				842ABBFD2253689800C48CD1 /* ManageSubscriber.storyboard in Resources */,
 				84827B96224B8C2400F40A71 /* Main.storyboard in Resources */,
+				CC79C05D225B35B700F0C612 /* CameraStoryboard.storyboard in Resources */,
 				CE2C1F46222D684500D4A491 /* GoogleService-Info.plist in Resources */,
 				CE7C8245222682F600FA4B3B /* Assets.xcassets in Resources */,
 				CE1191582237DB8100EE325C /* Login.storyboard in Resources */,
@@ -497,6 +515,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC79C05A225B358A00F0C612 /* VideoHelper.swift in Sources */,
 				84629B39225245F700B53B35 /* AvailabilityController.swift in Sources */,
 				CEE4646222368F2300F42D5D /* SignUpViewController.swift in Sources */,
 				CEAB3CC7224A25AD0079CE5B /* UnixTime.swift in Sources */,
@@ -518,6 +537,7 @@
 				CEE05BC922427EAD002B5DD5 /* FirebaseManager.swift in Sources */,
 				8445A79022394B930018C1EE /* AdminViewController.swift in Sources */,
 				84F075C6223932B200084B8B /* FirebaseSession.swift in Sources */,
+				CC79C05B225B358A00F0C612 /* VideoViewController.swift in Sources */,
 				842ABC0322549A6C00C48CD1 /* MyTabBarCustomization.swift in Sources */,
 				CE7C823E222682F500FA4B3B /* FirstViewController.swift in Sources */,
 				84C056FC22490DC7009367AF /* DetailAvailability.swift in Sources */,

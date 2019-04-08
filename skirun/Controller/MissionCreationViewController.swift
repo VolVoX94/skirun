@@ -16,12 +16,12 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     
     var disciplines: String?
     var jobs: String?
-    var selectedCompetition: String?
 
     @IBOutlet weak var location: UITextField!
     @IBOutlet weak var nameMission: UITextField!
     @IBOutlet weak var nbPeople: UITextField!
     @IBOutlet weak var descriptionMission: UITextField!
+    @IBOutlet weak var myAdminButton: UIButton!
     
 
     @IBOutlet weak var jobPrinted: UITextField!
@@ -48,6 +48,21 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     var missionChoose = "none"
     var competitionChoose = "none"
     var nbdiscipline = 0
+    
+    //------Button
+    
+    @IBAction func myAdminFunc(_ sender: Any) {
+        performSegue(withIdentifier: "MyAdminSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        
+        print("prepare link to manage")
+        let destinationController = segue.destination as! AdminSubscriberViewController;
+        destinationController.competitionName = self.competitionChoose;
+        destinationController.disciplineName = self.disciplineChoose;
+        destinationController.missionName = self.missionChoose
+    }
     
     //--------- Time function for edit and changed value -------------------
     @IBAction func starTimeEdit(_ sender: UITextField) {
@@ -309,7 +324,8 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         let newMission = Mission(title: nameMission.text ?? "Error", description: descriptionMission.text ?? "Error", startTime: startTimeInt, endTime: endTimeInt, nbPeople: Int(nbPeople.text!)! ,location: location.text ?? "Error", discipline: disciplines ?? data[0], jobs: jobs ?? job[0])
         
         
-        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(self.selectedCompetition!).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(newMission.discipline).child(newMission.title);
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(self.competitionChoose).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(newMission.discipline).child(newMission.title);
+        
         
         //add the object
         ref.setValue(newMission.toAnyObject())
@@ -321,7 +337,10 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     
     
     @IBAction func back(_ sender: Any) {
-         self.dismiss(animated: true, completion: nil)
+        self.disciplineChoose = "none"
+         self.missionChoose = "none"
+         self.competitionChoose = "none"
+         self.dismiss(animated: false, completion: nil)
     }
     
     

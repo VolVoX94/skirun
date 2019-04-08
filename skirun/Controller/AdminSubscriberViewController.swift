@@ -13,10 +13,14 @@ class AdminSubscriberViewController: UIViewController, UITableViewDataSource, UI
     private var data:[String] = []
     private var dataUser:[User] = []
     private var tempUser:User?
+    private var selectedUser:Int?
+    private var alreadySelected:[String] = []
     public var competitionName:String?
     public var disciplineName:String?
     public var missionName:String?
-    public var mySemaphore:DispatchSemaphore?
+    private var mySemaphore:DispatchSemaphore?
+    private var choosenSubscriber:[Int] = []
+    private var notChoosenMissions:[Int] = []
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,19 +30,20 @@ class AdminSubscriberViewController: UIViewController, UITableViewDataSource, UI
     
     @IBOutlet weak var missionLabel: UILabel!
     
+    @IBOutlet weak var noDataLabel: UILabel!
+    
     @IBOutlet weak var disciplineLabel: UILabel!
+    
+    @IBOutlet weak var myWaitSymbolizer: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mySemaphore = DispatchSemaphore(value: 1)
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        loadUserUID()
-        loadUserDataByUID()
+        myWaitSymbolizer.startAnimating()
         
-        self.competitionName = "Concours Crans-Montana - 2019"
-        self.disciplineName = "Cross-country skiing"
-        self.missionName = "mission10"
+        loadUserUID()
         
         //Label will be written
         self.competitionLabel.text = competitionName
@@ -52,18 +57,21 @@ class AdminSubscriberViewController: UIViewController, UITableViewDataSource, UI
     
     
     @IBAction func saveButtonFunc(_ sender: Any) {
-        print("save pressed")
         let alertBox = UIAlertController(
             title: "Save Subscriber",
             message: "Do you want to save your choice?",
             preferredStyle: .actionSheet);
         
         alertBox.addAction(UIAlertAction(title: "Yes", style: .default, handler:{ (action: UIAlertAction!) in
+            var tempUID = [String]()
+            for item in self.choosenSubscriber{
+                tempUID.append(self.data[item])
+            }
             
-            print("saved")
+            FirebaseManager.saveFinalSubscribersToMission(uidUsers: tempUID, nameMission: self.missionName!, nameDiscipline: self.disciplineName!, nameCompetition: self.competitionName!)
+            self.dismiss(animated: true, completion: nil)
         }))
         alertBox.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{(action: UIAlertAction!) in
-            print("canceled")
         }))
         self.present(alertBox, animated: true)
     }
@@ -71,20 +79,18 @@ class AdminSubscriberViewController: UIViewController, UITableViewDataSource, UI
     @IBAction func didPressButton(_ sender: KGRadioButton) {
         sender.isSelected = !sender.isSelected
         if sender.isSelected{
-            print("Selected")
-        }
-        else{
-            print("not selected")
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        var cell:UITableViewCell = tableView.cellForRow(at: indexPath)!
-        cell.contentView.backgroundColor = UIColor(red:0.00, green:0.15, blue:0.29, alpha:1.0)
+        let cell:UITableViewCell = tableView.cellForRow(at: indexPath)!
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
         tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -94,64 +100,144 @@ class AdminSubscriberViewController: UIViewController, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCompetition")! //1.
-        //var text = ""
-       // cell.textLabel?.text = text //3.
-        
-        /*DispatchQueue.global().async {
-            self.mySemaphore?.wait()*/
-            print("TABLE VIEW-----")
-            print(data.count, dataUser.count)
             if(data.count == dataUser.count){
-                var text = self.dataUser[indexPath.row].firstName//2.
+                let text = self.dataUser[indexPath.row].firstName//2.
                 cell.textLabel?.text = text //3.
             }
         
         
+        
             cell.textLabel?.font = UIFont(name: "Avenir Next", size: 18)
             cell.textLabel?.textColor = UIColor.white
+        
+        if(cell.textLabel?.text != "NULL"){
             
-           // self.mySemaphore?.signal()
-        //}
+            let switchObj = UISwitch(frame: CGRect(x: 1, y: 1, width: 20, height: 20))
+            //EXCEPTION - CATCH NULLPOINTER
+            do{
+                
+                let tempData = self.alreadySelected//2.
+                let currentData = try assignData(data: self.data, index: indexPath.row)
+                if(tempData.contains(currentData)){
+                    switchObj.isOn = true
+                    choosenSubscriber.append(indexPath.row)
+                }
+                else{
+                    switchObj.isOn = false;
+                }
+            } catch let error as NSError{
+                switchObj.isOn = false;
+                print(error.localizedDescription)
+            }
+            
+            switchObj.addTarget(self, action: #selector(toggel(_:name:)), for: .valueChanged)
+            switchObj.tag = indexPath.row
+            cell.accessoryView = switchObj
+        }
+        else{
+            let switchObj = UISwitch(frame: CGRect(x: 1, y: 1, width: 20, height: 20))
+            switchObj.isHidden = true
+            cell.accessoryView = switchObj
+            print("NULL FOUND")
+        }
+
+        /*
+        let button = KGRadioButton(frame: CGRect(x:20, y:170, width: 30, height: 30))
+        button.addTarget(self, action: #selector(manualAction(sender:)), for: .touchUpInside)
+        button.tag = indexPath.row
+        button.innerCircleCircleColor = UIColor.white
+        button.outerCircleColor = UIColor.white
+        cell.accessoryView = button
+        if(selectedUser == button.tag){
+            button.isSelected = true
+        }
+        
+        if(self.alreadySelected == data[indexPath.row]){
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+            
+            label.textAlignment = .right
+            label.textColor = UIColor.white
+            label.font = UIFont(name: "Avenir Next", size: 15)
+            label.text = "Current"
+            label.font = UIFont.boldSystemFont(ofSize: label.font.pointSize)
+            cell.accessoryView = label
+        }*/
         
         return cell //4.
 
     }
     
+    @objc func toggel(_ sender:UISwitch, name:String){
+        
+        if(sender.isOn){
+            //ADD element
+            choosenSubscriber.append(sender.tag);
+            notChoosenMissions = notChoosenMissions.filter{$0 != sender.tag}
+        }
+        else{
+            //DELETE element
+            choosenSubscriber = choosenSubscriber.filter{$0 != sender.tag}
+            notChoosenMissions.append(sender.tag)
+        }
+    }
+    
+    /*@objc func manualAction (sender: KGRadioButton){
+        selectedUser = sender.tag
+        self.tableView.reloadData()
+    }*/
+    
+    // --------- EXCEPTION HANDLING
+    //ERROR - HANDLING
+    func assignData(data:[String], index:Int) throws -> String{
+        return data[index]
+    }
+    
     // --------- FIREBASE
     
     func loadUserUID(){
-        DispatchQueue.global().async {
-            self.mySemaphore?.wait()
-            print("LoadUserUID")
+        //DispatchQueue.global().async {
+        //  self.mySemaphore?.wait()
 
-            FirebaseManager.getSubscriberOfMission(competitionName: "Concours Crans-Montana - 2019", disciplineName: "Cross-country skiing", nameMission: "mission10") { (data, ref) in
+        
+        FirebaseManager.getSubscriberOfMission(competitionName: self.competitionName!, disciplineName: self.disciplineName!, nameMission: self.missionName!) { (data, ref) in
                 //let test = ref
                 self.data = Array(data)
-                self.mySemaphore?.signal()
-                print("LoadUserUID-FINISH")
-            }
+                self.loadUserDataByUID()
+               // self.mySemaphore?.signal()
+           // }
         }
     }
     
     func loadUserDataByUID(){
-        DispatchQueue.global().async {
-            self.mySemaphore?.wait()
-            print("LoadUserDataByUID")
-            print(self.data.count)
+
+
+        
+            if(self.data.count == 0){
+                self.myWaitSymbolizer.stopAnimating()
+                self.noDataLabel.text = "No subscriber"
+            }
+            else{
+               self.noDataLabel.text = ""
+            }
             for item in self.data{
                 
                 FirebaseManager.getUserByUID(uidUser: item) { (userData) in
                     self.dataUser.append(userData)
-                    print(userData.firstName)
                     
                     if (item == self.data.last){
-                        print("START RELOADING DATA")
-                        self.tableView.reloadData()
-                        self.mySemaphore?.signal()
-                        print("LoadUserDataByUID - FINISH")
+                        self.loadSelectedUser()
+                        self.myWaitSymbolizer.stopAnimating()
                     }
                 }
+        }
+    }
+    
+    func loadSelectedUser(){
+        FirebaseManager.checkAlreadySelectedUsers(nameMission: self.missionName!, nameDiscipline: self.disciplineName!, nameCompetition: self.competitionName!) { (selectedUID) in
+            if(selectedUID != nil){
+                self.alreadySelected = Array(selectedUID)
             }
+            self.tableView.reloadData()
         }
     }
 }
