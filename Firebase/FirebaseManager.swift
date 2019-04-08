@@ -77,36 +77,6 @@ class FirebaseManager{
         
     }
     
-    // **** GET DISCIPLINE BY COMPETITION
-    static func getDisciplinesOfCompetition(name: String, completion: @escaping ([String])-> Void){
-        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(name).child("disciplines");
-        var numberOfDisciplines = [String]()
-        
-        
-        ref.observe(.value, with: { (snapshot) in
-            
-            for childSnapshot in snapshot.children{
-                numberOfDisciplines.append((childSnapshot as AnyObject).key as String)
-            }
-            completion(numberOfDisciplines)
-        })
-    }
-    
-    // **** GET DISCIPLINE BY COMPETITION OLD
-    static func getDisciplinesOfCompetition_old(name: String, completion: @escaping ([String])-> Void){
-        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(name).child("disciplines");
-        var numberOfDisciplines = [String]()
-        
-        
-        ref.observe(.childAdded, with: { (snapshot) in
-            let name:String = snapshot.key
-            print("XXXXXXXXXXX",name)
-            
-            numberOfDisciplines.append(name)
-            completion(numberOfDisciplines)
-        })
-    }
-    
     //4.-------------------------- MISSIONS --------------------------
     //***** Get Mission
     static func getMission(nameCompetition: String,nameDiscipline: String, nameMission: String, completion: @escaping (Mission) -> Void) {
