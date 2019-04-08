@@ -16,7 +16,6 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     
     var disciplines: String?
     var jobs: String?
-    var selectedCompetition: String?
 
     @IBOutlet weak var location: UITextField!
     @IBOutlet weak var nameMission: UITextField!
@@ -24,6 +23,9 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     @IBOutlet weak var descriptionMission: UITextField!
     @IBOutlet weak var myAdminButton: UIButton!
     
+
+    @IBOutlet weak var jobPrinted: UITextField!
+    @IBOutlet weak var discipline: UITextField!
     
     // Picker for the job
     @IBOutlet weak var pickerJob: UIPickerView!
@@ -45,6 +47,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     var disciplineChoose = "none"
     var missionChoose = "none"
     var competitionChoose = "none"
+    var nbdiscipline = 0
     
     //------Button
     
@@ -107,6 +110,8 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         datePicker.isHidden = true
+        discipline.isHidden = true
+        jobPrinted.isHidden = true
         datePicker.backgroundColor = UIColor.white
         loadJobData()
         loadDisciplineData()
@@ -189,13 +194,42 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     //------------ End of the stuff print discipline or jobs -------------
     
     func loadMission(){
+        //disable the field
+        nameMission.isEnabled = false
+        location.isEnabled = false
+        descriptionMission.isEnabled = false
+        nbPeople.isEnabled = false
+        startTime.isEnabled = false
+        endTime.isEnabled = false
+        pickerView.isHidden = true
+        pickerJob.isHidden = true
+        discipline.isHidden = false;
+        discipline.isEnabled = false;
+        jobPrinted.isHidden = false;
+        jobPrinted.isEnabled = false;
+        
         
         FirebaseManager.getMission(nameCompetition: competitionChoose, nameDiscipline: disciplineChoose, nameMission: missionChoose) { (data) in
             self.mission = data
             self.nameMission.text = self.mission?.title
-        }
+            self.location.text = self.mission?.location
+            self.descriptionMission.text = self.mission?.description
+            let start: UnixTime =
+            (self.mission?.startTime)!
+            self.startTime.text = start.toDateTime
+            let end: UnixTime =
+            (self.mission?.endTime)!
+            self.endTime.text = end.toDateTime
+            self.nbPeople.text =  self.mission?.nbPeople.description
+            
+            self.discipline.text = self.disciplineChoose
+            self.jobPrinted.text = self.mission?.jobs
+            
+            }
+
         
     }
+    
     
     // call the function in FirebaseManager getJobs ==> return all the jobs existing
     func loadJobData(){
@@ -215,6 +249,8 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         })
     }
     
+    
+    
     // Function go back to the previous view
     @IBAction func backCompetition(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -233,7 +269,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         alertBox.addAction(UIAlertAction(title:"OK",
                                          style: .cancel, handler:nil))
         
-        if(nameMission.text!.count < 5) || (nameMission.text ?? "").isEmpty{
+        if(nameMission.text!.count < 4) || (nameMission.text ?? "").isEmpty{
             
             //Define that something is wrong
             wrongInput = true;
@@ -243,7 +279,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
             self.present(alertBox, animated: true);
         }
         
-        if(descriptionMission.text!.count < 5) || (descriptionMission.text ?? "").isEmpty{
+        if(descriptionMission.text!.count < 4) || (descriptionMission.text ?? "").isEmpty{
             //Define that something is wrong
             wrongInput = true;
             alertBox.message = "Description of the mission, you can write some text and/or numbers";
@@ -252,7 +288,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
             self.present(alertBox, animated: true);
         }
     
-        if(location.text!.count < 5) || (location.text ?? "").isEmpty{
+        if(location.text!.count < 4) || (location.text ?? "").isEmpty{
             //Define that something is wrong
             wrongInput = true;
             alertBox.message = "The Location of the mission, you can write some text and/or numbers";
@@ -288,32 +324,26 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         let newMission = Mission(title: nameMission.text ?? "Error", description: descriptionMission.text ?? "Error", startTime: startTimeInt, endTime: endTimeInt, nbPeople: Int(nbPeople.text!)! ,location: location.text ?? "Error", discipline: disciplines ?? data[0], jobs: jobs ?? job[0])
         
         
-        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(self.selectedCompetition!).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(newMission.discipline).child(newMission.title);
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(self.competitionChoose).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(newMission.discipline).child(newMission.title);
+        
         
         //add the object
         ref.setValue(newMission.toAnyObject())
         
-        
-        
        
     }
     
-
-    //Regex pattern see the title and description
-    func isValidTexte(test:String)-> Bool {
-        let textRegEx = "[A-Z-a-z-0-9]{4,20}"
-        
-        let textTest = NSPredicate(format: "SELF MATCHES %@", textRegEx)
-        return textTest.evaluate(with:test)
-    }
     
     
     
     @IBAction func back(_ sender: Any) {
+        self.disciplineChoose = "none"
+         self.missionChoose = "none"
+         self.competitionChoose = "none"
          self.dismiss(animated: false, completion: nil)
     }
     
     
-    
-    
 }
+    
+

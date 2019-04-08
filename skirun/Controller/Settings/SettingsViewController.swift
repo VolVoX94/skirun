@@ -10,7 +10,11 @@ import UIKit
 import Firebase
 
 class SettingsViewController: UIViewController {
-
+    
+    let uid:String? = Auth.auth().currentUser?.email
+    
+    @IBOutlet weak var uidLabel: UILabel!
+    
     @IBOutlet weak var logoutButton: UIButton!
     
     @IBAction func logoutFunc(_ sender: Any) {
@@ -29,9 +33,14 @@ class SettingsViewController: UIViewController {
     }
     
     
+    @IBAction func changeRoleButton(_ sender: Any) {
+        performSegue(withIdentifier: "toRole", sender: self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.uidLabel.text = uid
 
         // Do any additional setup after loading the view.
     }

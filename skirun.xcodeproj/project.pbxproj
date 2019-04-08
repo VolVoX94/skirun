@@ -27,6 +27,7 @@
 		84F075C42239105800084B8B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F075C32239105800084B8B /* User.swift */; };
 		84F075C6223932B200084B8B /* FirebaseSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F075C5223932B200084B8B /* FirebaseSession.swift */; };
 		B6A32530ACB85AC0D5AA2B22 /* Pods_skirun.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7739317431CD4D4FA0C9A5 /* Pods_skirun.framework */; };
+		CC6D4633225B9A81005FB27B /* RolesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6D4632225B9A81005FB27B /* RolesViewController.swift */; };
 		CC79C05A225B358A00F0C612 /* VideoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC79C058225B358A00F0C612 /* VideoHelper.swift */; };
 		CC79C05B225B358A00F0C612 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC79C059225B358A00F0C612 /* VideoViewController.swift */; };
 		CC79C05D225B35B700F0C612 /* CameraStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC79C05C225B35B700F0C612 /* CameraStoryboard.storyboard */; };
@@ -89,6 +90,7 @@
 		84F075C32239105800084B8B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		84F075C5223932B200084B8B /* FirebaseSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSession.swift; sourceTree = "<group>"; };
 		C213F753E47128B9333F7934 /* Pods-skirun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-skirun.debug.xcconfig"; path = "Target Support Files/Pods-skirun/Pods-skirun.debug.xcconfig"; sourceTree = "<group>"; };
+		CC6D4632225B9A81005FB27B /* RolesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RolesViewController.swift; sourceTree = "<group>"; };
 		CC79C058225B358A00F0C612 /* VideoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoHelper.swift; sourceTree = "<group>"; };
 		CC79C059225B358A00F0C612 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		CC79C05C225B35B700F0C612 /* CameraStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CameraStoryboard.storyboard; sourceTree = "<group>"; };
@@ -200,6 +202,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CC6D4631225B9A5F005FB27B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CE11914E2237C07900EE325C /* SettingsViewController.swift */,
+				CC6D4632225B9A81005FB27B /* RolesViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		CC79C057225B349000F0C612 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +223,7 @@
 		CE42A1882236A052000CBE46 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CC6D4631225B9A5F005FB27B /* Settings */,
 				CC79C057225B349000F0C612 /* Camera */,
 				842ABBF92253658300C48CD1 /* TimeKeeperViewController.swift */,
 				8445A78B22394B930018C1EE /* AdminManagementViewController.swift */,
@@ -222,7 +234,6 @@
 				842ABBFB2253664300C48CD1 /* Availability */,
 				CE7C823F222682F500FA4B3B /* SecondViewController.swift */,
 				CEE4645F22368F1500F42D5D /* LoginViewController.swift */,
-				CE11914E2237C07900EE325C /* SettingsViewController.swift */,
 				842ABBFE22537D0200C48CD1 /* AdminSubscriberViewController.swift */,
 			);
 			path = Controller;
@@ -542,6 +553,7 @@
 				CE7C823E222682F500FA4B3B /* FirstViewController.swift in Sources */,
 				84C056FC22490DC7009367AF /* DetailAvailability.swift in Sources */,
 				8445A78D22394B930018C1EE /* CompetionCreationViewController.swift in Sources */,
+				CC6D4633225B9A81005FB27B /* RolesViewController.swift in Sources */,
 				CE42A18622369D56000CBE46 /* DetailsSignupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
