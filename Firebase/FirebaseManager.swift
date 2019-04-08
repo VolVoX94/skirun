@@ -78,6 +78,21 @@ class FirebaseManager{
     }
     
     // **** GET DISCIPLINE BY COMPETITION
+    static func getDisciplinesOfCompetition(name: String, completion: @escaping ([String])-> Void){
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(name).child("disciplines");
+        var numberOfDisciplines = [String]()
+        
+        
+        ref.observe(.value, with: { (snapshot) in
+            
+            for childSnapshot in snapshot.children{
+                numberOfDisciplines.append((childSnapshot as AnyObject).key as String)
+            }
+            completion(numberOfDisciplines)
+        })
+    }
+    
+    // **** GET DISCIPLINE BY COMPETITION OLD
     static func getDisciplinesOfCompetition_old(name: String, completion: @escaping ([String])-> Void){
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(name).child("disciplines");
         var numberOfDisciplines = [String]()
@@ -115,21 +130,7 @@ class FirebaseManager{
     }
     
     
-    //---------------- DISCIPLINES ------------
-    
-    static func getDisciplinesOfCompetition(name: String, completion: @escaping ([String])-> Void){
-        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(name).child("disciplines");
-        var numberOfDisciplines = [String]()
-        
-        
-        ref.observe(.value, with: { (snapshot) in
-            
-            for childSnapshot in snapshot.children{
-                numberOfDisciplines.append((childSnapshot as AnyObject).key as String)
-            }
-            completion(numberOfDisciplines)
-        })
-    }
+
     
     //----------------- MISSIONS ------------------
     //****** GET MISSION BY DISCIPLINE
@@ -177,16 +178,21 @@ class FirebaseManager{
     static func getUserByUID(uidUser: String, completion: @escaping (User) -> Void) {
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.user.rawValue).child(uidUser);
         ref.observe(.value, with: { (snapshot) in
-            
-            
-            //CREATING USER OBJECT
-            let tempUser = User(firstName: snapshot.childSnapshot(forPath: FirebaseSession.USER_FIRSTNAME.rawValue).value as! String,
-                                lastName: snapshot.childSnapshot(forPath: FirebaseSession.USER_LASTNAME.rawValue).value as! String,
-                                phone: snapshot.childSnapshot(forPath: FirebaseSession.USER_PHONE.rawValue).value as! String,
-                                admin: false, // NOT NECESSARY
-                email: snapshot.childSnapshot(forPath: FirebaseSession.USER_EMAIL.rawValue).value as! String,
-                password: "" //NOT NECESSARY
-            )
+            var tempUser = User(firstName: "NULL", lastName: "NULL", phone: "NULL", admin: false, email: "NULL", password: "")
+            if(snapshot.childSnapshot(forPath: FirebaseSession.USER_FIRSTNAME.rawValue).value is NSNull){
+                tempUser = User(firstName: "NULL", lastName: "NULL", phone: "NULL", admin: false, email: "NULL", password: "")
+            }
+            else{
+                //CREATING USER OBJECT
+                tempUser = User(firstName: snapshot.childSnapshot(forPath: FirebaseSession.USER_FIRSTNAME.rawValue).value as! String,
+                                    lastName: snapshot.childSnapshot(forPath: FirebaseSession.USER_LASTNAME.rawValue).value as! String,
+                                    phone: snapshot.childSnapshot(forPath: FirebaseSession.USER_PHONE.rawValue).value as! String,
+                                    admin: false, // NOT NECESSARY
+                    email: snapshot.childSnapshot(forPath: FirebaseSession.USER_EMAIL.rawValue).value as! String,
+                    password: "" //NOT NECESSARY
+                )
+            }
+
             
             
             //ADDING TO LIST
@@ -235,6 +241,20 @@ class FirebaseManager{
         newChild.setValue(true)
     }
     
+    // ******* SAVE SUBSCRIBER TO SELECTED
+    static func saveFinalSubscribersToMission(uidUsers:[String], nameMission:String, nameDiscipline:String, nameCompetition:String){
+        
+        //set the reference to the name of the new cometition
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(nameCompetition).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(nameDiscipline).child(nameMission).child(FirebaseSession.MISSION_SELECTED.rawValue);
+        
+        ref.removeValue()
+        
+        for item in uidUsers{
+            let newChild = ref.child(item)
+            newChild.setValue(true)
+        }
+    }
+    
     // ****** DELETE SUBSCRIBER
     static func deleteSubscriber(uidUser:String, nameMission:String, nameDiscipline:String, nameCompetition:String){
         
@@ -280,6 +300,20 @@ class FirebaseManager{
                 tempUID = ((childSnapshot as AnyObject).key as String)
             }
             completion(tempUID)
+        })
+    }
+    
+    //******* CHECK SUBSCRIBER FINAL SELECTED STATE
+    static func checkAlreadySelectedUsers(nameMission:String, nameDiscipline:String, nameCompetition:String, completion: @escaping ([String])-> Void){
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(nameCompetition).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(nameDiscipline).child(nameMission).child(FirebaseSession.MISSION_SELECTED.rawValue);
+        
+        var tempUIDS = [String]()
+        
+        ref.observe(.value, with: { (snapshot) in
+            for childSnapshot in snapshot.children {
+                tempUIDS.append((childSnapshot as AnyObject).key as String)
+            }
+            completion(tempUIDS)
         })
     }
 }

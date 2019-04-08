@@ -14,11 +14,13 @@ class AdminSubscriberViewController: UIViewController, UITableViewDataSource, UI
     private var dataUser:[User] = []
     private var tempUser:User?
     private var selectedUser:Int?
-    private var alreadySelected:String?
-    private var competitionName:String?
-    private var disciplineName:String?
-    private var missionName:String?
+    private var alreadySelected:[String] = []
+    public var competitionName:String?
+    public var disciplineName:String?
+    public var missionName:String?
     private var mySemaphore:DispatchSemaphore?
+    private var choosenSubscriber:[Int] = []
+    private var notChoosenMissions:[Int] = []
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -40,12 +42,8 @@ class AdminSubscriberViewController: UIViewController, UITableViewDataSource, UI
         self.tableView.dataSource = self
         self.tableView.delegate = self
         myWaitSymbolizer.startAnimating()
+        
         loadUserUID()
-        
-        
-        self.competitionName = "Concours Crans-Montana - 2019"
-        self.disciplineName = "Cross-country skiing"
-        self.missionName = "mission10"
         
         //Label will be written
         self.competitionLabel.text = competitionName
@@ -65,9 +63,12 @@ class AdminSubscriberViewController: UIViewController, UITableViewDataSource, UI
             preferredStyle: .actionSheet);
         
         alertBox.addAction(UIAlertAction(title: "Yes", style: .default, handler:{ (action: UIAlertAction!) in
+            var tempUID = [String]()
+            for item in self.choosenSubscriber{
+                tempUID.append(self.data[item])
+            }
             
-            
-            FirebaseManager.saveFinalSubscriberToMission(uidUser: self.data[self.selectedUser!], allUidOfUsers: self.data, nameMission: self.missionName!, nameDiscipline: self.disciplineName!, nameCompetition: self.competitionName!)
+            FirebaseManager.saveFinalSubscribersToMission(uidUsers: tempUID, nameMission: self.missionName!, nameDiscipline: self.disciplineName!, nameCompetition: self.competitionName!)
             self.dismiss(animated: true, completion: nil)
         }))
         alertBox.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{(action: UIAlertAction!) in
@@ -105,9 +106,42 @@ class AdminSubscriberViewController: UIViewController, UITableViewDataSource, UI
             }
         
         
+        
             cell.textLabel?.font = UIFont(name: "Avenir Next", size: 18)
             cell.textLabel?.textColor = UIColor.white
         
+        if(cell.textLabel?.text != "NULL"){
+            
+            let switchObj = UISwitch(frame: CGRect(x: 1, y: 1, width: 20, height: 20))
+            //EXCEPTION - CATCH NULLPOINTER
+            do{
+                
+                let tempData = self.alreadySelected//2.
+                let currentData = try assignData(data: self.data, index: indexPath.row)
+                if(tempData.contains(currentData)){
+                    switchObj.isOn = true
+                    choosenSubscriber.append(indexPath.row)
+                }
+                else{
+                    switchObj.isOn = false;
+                }
+            } catch let error as NSError{
+                switchObj.isOn = false;
+                print(error.localizedDescription)
+            }
+            
+            switchObj.addTarget(self, action: #selector(toggel(_:name:)), for: .valueChanged)
+            switchObj.tag = indexPath.row
+            cell.accessoryView = switchObj
+        }
+        else{
+            let switchObj = UISwitch(frame: CGRect(x: 1, y: 1, width: 20, height: 20))
+            switchObj.isHidden = true
+            cell.accessoryView = switchObj
+            print("NULL FOUND")
+        }
+
+        /*
         let button = KGRadioButton(frame: CGRect(x:20, y:170, width: 30, height: 30))
         button.addTarget(self, action: #selector(manualAction(sender:)), for: .touchUpInside)
         button.tag = indexPath.row
@@ -127,15 +161,35 @@ class AdminSubscriberViewController: UIViewController, UITableViewDataSource, UI
             label.text = "Current"
             label.font = UIFont.boldSystemFont(ofSize: label.font.pointSize)
             cell.accessoryView = label
-        }
+        }*/
         
         return cell //4.
 
     }
     
-    @objc func manualAction (sender: KGRadioButton){
+    @objc func toggel(_ sender:UISwitch, name:String){
+        
+        if(sender.isOn){
+            //ADD element
+            choosenSubscriber.append(sender.tag);
+            notChoosenMissions = notChoosenMissions.filter{$0 != sender.tag}
+        }
+        else{
+            //DELETE element
+            choosenSubscriber = choosenSubscriber.filter{$0 != sender.tag}
+            notChoosenMissions.append(sender.tag)
+        }
+    }
+    
+    /*@objc func manualAction (sender: KGRadioButton){
         selectedUser = sender.tag
         self.tableView.reloadData()
+    }*/
+    
+    // --------- EXCEPTION HANDLING
+    //ERROR - HANDLING
+    func assignData(data:[String], index:Int) throws -> String{
+        return data[index]
     }
     
     // --------- FIREBASE
@@ -144,7 +198,8 @@ class AdminSubscriberViewController: UIViewController, UITableViewDataSource, UI
         //DispatchQueue.global().async {
         //  self.mySemaphore?.wait()
 
-            FirebaseManager.getSubscriberOfMission(competitionName: "Concours Crans-Montana - 2019", disciplineName: "Cross-country skiing", nameMission: "mission10") { (data, ref) in
+        
+        FirebaseManager.getSubscriberOfMission(competitionName: self.competitionName!, disciplineName: self.disciplineName!, nameMission: self.missionName!) { (data, ref) in
                 //let test = ref
                 self.data = Array(data)
                 self.loadUserDataByUID()
@@ -154,8 +209,9 @@ class AdminSubscriberViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func loadUserDataByUID(){
-      //  DispatchQueue.global().async {
-       //     self.mySemaphore?.wait()
+
+
+        
             if(self.data.count == 0){
                 self.myWaitSymbolizer.stopAnimating()
                 self.noDataLabel.text = "No subscriber"
@@ -164,36 +220,24 @@ class AdminSubscriberViewController: UIViewController, UITableViewDataSource, UI
                self.noDataLabel.text = ""
             }
             for item in self.data{
+                
                 FirebaseManager.getUserByUID(uidUser: item) { (userData) in
                     self.dataUser.append(userData)
                     
                     if (item == self.data.last){
                         self.loadSelectedUser()
                         self.myWaitSymbolizer.stopAnimating()
-                    //    self.mySemaphore?.signal()
-                 //   }
+                    }
                 }
-            }
         }
     }
     
     func loadSelectedUser(){
-      //  DispatchQueue.global().async {
-        //    self.mySemaphore?.wait()
-            for item in self.data{
-                FirebaseManager.checkAlreadySelected(uidUser: item, nameMission: self.missionName!, nameDiscipline: self.disciplineName!, nameCompetition: self.competitionName!) { (selectedUID) in
-                    if(selectedUID != nil){
-                        self.alreadySelected = selectedUID
-                    }
-                    if (item == self.data.last){
-                        self.tableView.reloadData()
-                        
-                        
-                      //  self.mySemaphore?.signal()
-                        
-            //        }
-                }
+        FirebaseManager.checkAlreadySelectedUsers(nameMission: self.missionName!, nameDiscipline: self.disciplineName!, nameCompetition: self.competitionName!) { (selectedUID) in
+            if(selectedUID != nil){
+                self.alreadySelected = Array(selectedUID)
             }
+            self.tableView.reloadData()
         }
     }
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -130,7 +130,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYq-Es-H0b">
-                                <rect key="frame" x="176" y="437" width="16" height="22"/>
+                                <rect key="frame" x="263" y="387" width="85" height="122"/>
                                 <state key="normal" image="Location"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znN-qk-Ej9">
@@ -138,16 +138,6 @@
                                 <state key="normal" image="Management"/>
                                 <connections>
                                     <segue destination="oFV-Vs-ePn" kind="show" id="Ehz-FG-DVX"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYg-MZ-RHw">
-                                <rect key="frame" x="140" y="651" width="134" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Manage Subscriber">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="ied-oy-RMv" kind="show" id="rvR-Mk-ojk"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -177,14 +167,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HEN-Cz-szW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1755" y="17"/>
-        </scene>
-        <!--ManageSubscriber-->
-        <scene sceneID="yUH-Yd-18Y">
-            <objects>
-                <viewControllerPlaceholder storyboardName="ManageSubscriber" id="ied-oy-RMv" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XQo-Sq-r5e" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2307" y="433"/>
         </scene>
         <!--Admin Management View Controller-->
         <scene sceneID="W0A-TX-IHi">
@@ -642,6 +624,15 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.027450980390000001" green="0.20000000000000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOi-C0-oFb">
+                                <rect key="frame" x="181" y="605" width="53" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Volunteer"/>
+                                <connections>
+                                    <action selector="myAdminFunc:" destination="M6B-KH-18W" eventType="touchUpInside" id="eQW-nq-TeX"/>
+                                    <segue destination="7ca-JV-R2F" kind="show" identifier="MyAdminSegue" id="E5M-Pz-dnM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.027450980390000001" green="0.20000000000000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="ZMw-gk-94X"/>
@@ -651,6 +642,7 @@
                         <outlet property="descriptionMission" destination="WSJ-HA-M3Q" id="I8d-Se-vKW"/>
                         <outlet property="endTime" destination="AMm-GQ-ql8" id="rfH-8t-RbS"/>
                         <outlet property="location" destination="NPW-ft-6ud" id="sXP-TA-e9Q"/>
+                        <outlet property="myAdminButton" destination="nOi-C0-oFb" id="dsy-7K-U9F"/>
                         <outlet property="nameMission" destination="hfq-Nq-UNw" id="4FY-ZX-CrJ"/>
                         <outlet property="nbPeople" destination="aOY-2V-24o" id="ee0-BP-GAe"/>
                         <outlet property="pickerJob" destination="qEW-Np-3YS" id="DFT-tc-8m9"/>
@@ -661,6 +653,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MYe-Ck-U0V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4365.217391304348" y="-0.6696428571428571"/>
+        </scene>
+        <!--ManageSubscriber-->
+        <scene sceneID="1sv-55-4L3">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ManageSubscriber" id="7ca-JV-R2F" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Q5-Vd-zA7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5051" y="80"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="n2D-NT-HfP">
@@ -957,7 +957,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xgk-h6-PLO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1586.9565217391305" y="764.73214285714278"/>
+            <point key="canvasLocation" x="672" y="765"/>
         </scene>
     </scenes>
     <resources>
@@ -967,6 +967,7 @@
         <image name="Settings white" width="42" height="42"/>
         <image name="Submit" width="60" height="60"/>
         <image name="Time White" width="30" height="30"/>
+        <image name="Volunteer" width="80" height="114"/>
         <image name="rocketWhite" width="30" height="30"/>
     </resources>
 </document>
