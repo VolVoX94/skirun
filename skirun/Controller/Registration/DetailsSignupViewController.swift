@@ -21,9 +21,13 @@ class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var lnameField: UITextField!
     @IBOutlet weak var phonefield: UITextField!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var adminCheckNumber: UITextField!
     
+    @IBOutlet weak var adminTest: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        adminCheckNumber.isHidden = true
 
         //UI field designing
         designTextField()
@@ -46,13 +50,26 @@ class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    @IBAction func adminTestFunc(_ sender: Any) {
+        if(adminCheckNumber.text != ""){
+            FirebaseManager.checkAdminNumber(inputNumber: adminCheckNumber.text!) { (Bool) in
+                print(Bool)
+                self.admin = Bool
+            }
+        }
+        else{
+            print("please insert a checknumber")
+        }
+    }
     @IBAction func adminSwitch(_ sender: UISwitch) {
         if(sender.isOn == true){
             admin = true;
+            self.adminCheckNumber.isHidden = false
 
         }
         else{
             admin = false;
+            self.adminCheckNumber.isHidden = true
         }
     }
     
@@ -104,16 +121,43 @@ class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
             //Display the alertBox
             self.present(alertBox, animated: true);
         }
-        
+        print("admin before", self.admin)
+        //Check admin input
+        if(self.admin == true && wrongInput != true){
+            if(adminCheckNumber.text != ""){
+                FirebaseManager.checkAdminNumber(inputNumber: adminCheckNumber.text!) { (Bool) in
+                    print(Bool)
+                    if(Bool == false){
+                        wrongInput = true;
+                        alertBox.message = "Admin checknumber is wrong, please enter correct key";
+                        self.present(alertBox, animated: true);
+                    }
+                    else{
+                        self.createAndAutheticateUser(wrongInput: wrongInput, alertBox: alertBox)
+                    }
+                }
+            }
+            else{
+                wrongInput = true;
+                alertBox.message = "Admin checknumber is empty, please enter the key";
+                self.present(alertBox, animated: true);
+            }
+        }
+        else{
+            self.createAndAutheticateUser(wrongInput: wrongInput, alertBox: alertBox)
+        }
+    }
+    
+    func createAndAutheticateUser(wrongInput:Bool, alertBox:UIAlertController){
         if(wrongInput == false){
             //Create the user
             self.myUser = User(
-                    firstName: fnameField.text!,
-                    lastName: lnameField.text!,
-                    phone: phonefield.text!,
-                    admin: admin,
-                    email: email!,
-                    password: password!);
+                firstName: fnameField.text!,
+                lastName: lnameField.text!,
+                phone: phonefield.text!,
+                admin: admin,
+                email: email!,
+                password: password!);
             
             print(myUser!.firstName + myUser!.lastName + myUser!.phone + myUser!.password + myUser!.email);
             
@@ -125,6 +169,12 @@ class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
                     if error == nil && user != nil {
                         print("user created")
                         
+                        //2 ---- Get UID of actual user
+                        let firebaseUser = Auth.auth().currentUser;
+                        if let firebaseUser = firebaseUser {
+                            let uid = firebaseUser.uid;
+                            self.createUserInDB(uid: uid)
+                        }
                     }
                     else {
                         alertBox.message = "\(error!.localizedDescription)";
@@ -132,13 +182,6 @@ class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
                         //Display the alertBox
                         self.present(alertBox, animated: true);
                     }
-            }
-            
-            //2 ---- Get UID of actual user
-            let firebaseUser = Auth.auth().currentUser;
-            if let firebaseUser = firebaseUser {
-                let uid = firebaseUser.uid;
-                createUserInDB(uid: uid)
             }
         }
     }
@@ -186,5 +229,8 @@ class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
         
         phonefield.borderStyle = UITextField.BorderStyle.roundedRect
         phonefield.backgroundColor = UIColor.white
+        
+        adminCheckNumber.borderStyle = UITextField.BorderStyle.roundedRect
+        adminCheckNumber.backgroundColor = UIColor.white
     }
 }
