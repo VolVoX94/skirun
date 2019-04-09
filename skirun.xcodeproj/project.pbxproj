@@ -11,6 +11,7 @@
 		6A1A8DB822423331009DB3FD /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1A8DB722423331009DB3FD /* Mission.swift */; };
 		8424E3A1225BB531000902B4 /* AdminKeyManagement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8424E3A0225BB531000902B4 /* AdminKeyManagement.storyboard */; };
 		8424E3A3225BB903000902B4 /* KeyAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424E3A2225BB903000902B4 /* KeyAdminViewController.swift */; };
+		8424E3A5225CB400000902B4 /* FirebaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424E3A4225CB400000902B4 /* FirebaseTests.swift */; };
 		842ABBFA2253658400C48CD1 /* TimeKeeperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842ABBF92253658300C48CD1 /* TimeKeeperViewController.swift */; };
 		842ABBFD2253689800C48CD1 /* ManageSubscriber.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842ABBFC2253689800C48CD1 /* ManageSubscriber.storyboard */; };
 		842ABBFF22537D0200C48CD1 /* AdminSubscriberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842ABBFE22537D0200C48CD1 /* AdminSubscriberViewController.swift */; };
@@ -76,6 +77,7 @@
 		6A1A8DB722423331009DB3FD /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
 		8424E3A0225BB531000902B4 /* AdminKeyManagement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AdminKeyManagement.storyboard; sourceTree = "<group>"; };
 		8424E3A2225BB903000902B4 /* KeyAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyAdminViewController.swift; sourceTree = "<group>"; };
+		8424E3A4225CB400000902B4 /* FirebaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTests.swift; sourceTree = "<group>"; };
 		842ABBF92253658300C48CD1 /* TimeKeeperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeKeeperViewController.swift; sourceTree = "<group>"; };
 		842ABBFC2253689800C48CD1 /* ManageSubscriber.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ManageSubscriber.storyboard; sourceTree = "<group>"; };
 		842ABBFE22537D0200C48CD1 /* AdminSubscriberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSubscriberViewController.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 			children = (
 				CE7C8254222682F600FA4B3B /* Info.plist */,
 				CE1191522237C27900EE325C /* LoginTests.swift */,
+				8424E3A4225CB400000902B4 /* FirebaseTests.swift */,
 			);
 			path = skirunTests;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8424E3A5225CB400000902B4 /* FirebaseTests.swift in Sources */,
 				CE1191532237C27900EE325C /* LoginTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

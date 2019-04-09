@@ -44,4 +44,5 @@ enum FirebaseSession:String {
     
     //Admin nodes
     case ADMIN_CHECKNUMBER = "checkNumber";
+    case ADMIN_LASTUPDATE = "lastUpdate";
 }

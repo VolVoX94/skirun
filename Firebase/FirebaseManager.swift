@@ -318,10 +318,14 @@ class FirebaseManager{
     
     
     //**** Save generated key into firebase
-    static func saveKey(key:String){
+    static func saveKey(key:String, date:String){
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.admin.rawValue).child(FirebaseSession.ADMIN_CHECKNUMBER.rawValue)
         
         ref.setValue(key)
+        
+        let refDate:DatabaseReference = Database.database().reference().child(FirebaseSession.admin.rawValue).child(FirebaseSession.ADMIN_LASTUPDATE.rawValue)
+        
+        refDate.setValue(date)
     }
     
     //**** Check pw automation
@@ -337,6 +341,17 @@ class FirebaseManager{
             else{
                 result(false)
             }
+        })
+    }
+    
+    //**** Get last Updated date
+    static func getLastCheckNumberDate(result: @escaping(String)-> Void){
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.admin.rawValue)
+        print("2")
+        
+        ref.observe(.value, with: {(snapshot) in
+            var tempDate = snapshot.childSnapshot(forPath: FirebaseSession.ADMIN_LASTUPDATE.rawValue).value as! String
+            result(tempDate)
         })
     }
 }

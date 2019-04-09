@@ -13,15 +13,18 @@ class KeyAdminViewController: UIViewController {
     private var nextMonthName:String?
     private var currentMonthNumber:String?
     private var nextMonthNumber:String?
+    private var lastUpdated:String?
     
     @IBOutlet weak var myDateLabel: UILabel!
     
     @IBOutlet weak var myBackButton: UIButton!
     
+    @IBOutlet weak var myLastUpdateLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getMonth()
-        
+        self.getDate()
         self.myDateLabel.text = self.nextMonthName
     }
     
@@ -51,7 +54,21 @@ class KeyAdminViewController: UIViewController {
         uuid = String(uuid.prefix(8)) // Hello
         uuid.append(inputDate)
         
-        FirebaseManager.saveKey(key: uuid)
+        //Get actual date with as DD_MM
+        let now = Date()
+        let dateNumberFormatter = DateFormatter()
+        dateNumberFormatter.dateFormat = "dd.MM"
+        let lastUpdate = dateNumberFormatter.string(from: now)
+        
+        FirebaseManager.saveKey(key: uuid, date:lastUpdate)
+    }
+    
+    private func getDate(){
+        print("1")
+        FirebaseManager.getLastCheckNumberDate { (String) in
+            
+            self.myLastUpdateLabel.text = String
+        }
     }
     
     
