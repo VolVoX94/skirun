@@ -123,7 +123,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="818.84057971014499" y="37.5"/>
+            <point key="canvasLocation" x="819" y="17"/>
         </scene>
         <!--Admin View Controller-->
         <scene sceneID="3T8-qo-ogT">
@@ -308,7 +308,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="skl-Dm-zgV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="7iP-uM-gqX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2533" y="-4"/>
+            <point key="canvasLocation" x="2532" y="17"/>
         </scene>
         <!--Competion Creation View Controller-->
         <scene sceneID="Gzi-aF-RJz">
@@ -513,7 +513,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lnh-jQ-xcD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3328.985507246377" y="-13.392857142857142"/>
+            <point key="canvasLocation" x="3351" y="17"/>
         </scene>
         <!--Mission Creation View Controller-->
         <scene sceneID="pk9-Gn-V9d">
@@ -724,7 +724,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MYe-Ck-U0V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4365.217391304348" y="-0.6696428571428571"/>
+            <point key="canvasLocation" x="4313" y="17"/>
         </scene>
         <!--ManageSubscriber-->
         <scene sceneID="1sv-55-4L3">
@@ -732,7 +732,7 @@
                 <viewControllerPlaceholder storyboardName="ManageSubscriber" id="7ca-JV-R2F" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Q5-Vd-zA7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5051" y="80"/>
+            <point key="canvasLocation" x="5068" y="17"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="n2D-NT-HfP">

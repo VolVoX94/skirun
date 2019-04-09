@@ -26,7 +26,7 @@ enum FirebaseSession:String {
     
     //Mission nodes
     case MISSION_DESCRIPTION = "description";
-    case MISSION_DOOR = "location";
+    case MISSION_LOCATION = "location";
     case MISSION_ENDDATE = "endDateTime";
     case MISSION_NBROFPEOPLE = "nbrPeople";
     case MISSION_RESULT_BY_BIB = "resultsByBibNumber";

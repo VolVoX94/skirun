@@ -38,9 +38,9 @@ class FirebaseManager{
         
         ref.observe(.value, with: { (snapshot) in
             let competition = Competition(name: snapshot.key,
-                                          startDateTime: snapshot.childSnapshot(forPath: FirebaseSession.NODE_STARTDATE.rawValue).value as! Int,
-                                          endDateTime: snapshot.childSnapshot(forPath: FirebaseSession.NODE_ENDDATE.rawValue).value as! Int,
-                                          refAPI: snapshot.childSnapshot(forPath: FirebaseSession.NODE_REFAPI.rawValue).value as! String)
+                                          startDateTime: snapshot.childSnapshot(forPath: FirebaseSession.NODE_STARTDATE.rawValue).value as? Int ?? 0,
+                                          endDateTime: snapshot.childSnapshot(forPath: FirebaseSession.NODE_ENDDATE.rawValue).value as? Int ?? 0,
+                                          refAPI: snapshot.childSnapshot(forPath: FirebaseSession.NODE_REFAPI.rawValue).value as? String ?? "NULL")
             completion(competition)
         })
     }
@@ -86,15 +86,15 @@ class FirebaseManager{
             print(snapshot)
             let mission = Mission(title: snapshot.key,
                                   description: snapshot.childSnapshot(forPath:
-                                    FirebaseSession.MISSION_DESCRIPTION.rawValue).value as! String,
+                                    FirebaseSession.MISSION_DESCRIPTION.rawValue).value as? String ?? "NULL",
                                   startTime: snapshot.childSnapshot(forPath:
-                                    FirebaseSession.MISSION_STARTDATE.rawValue).value as! Int,
-                                  endTime: snapshot.childSnapshot(forPath: FirebaseSession.MISSION_ENDDATE.rawValue).value as! Int,
-                                  nbPeople: snapshot.childSnapshot(forPath: FirebaseSession.MISSION_NBROFPEOPLE.rawValue).value as! Int,
+                                    FirebaseSession.MISSION_STARTDATE.rawValue).value as? Int ?? 0,
+                                  endTime: snapshot.childSnapshot(forPath: FirebaseSession.MISSION_ENDDATE.rawValue).value as? Int ?? 0,
+                                  nbPeople: snapshot.childSnapshot(forPath: FirebaseSession.MISSION_NBROFPEOPLE.rawValue).value as? Int ?? 0,
                                   location: snapshot.childSnapshot(forPath:
-                                    FirebaseSession.MISSION_DOOR.rawValue).value as! String, discipline: "null",
+                                    FirebaseSession.MISSION_LOCATION.rawValue).value as? String ?? "NULL",
                                   jobs: snapshot.childSnapshot(forPath:
-                                    FirebaseSession.MISSION_TYPE_JOB.rawValue).value as! String)
+                                    FirebaseSession.MISSION_TYPE_JOB.rawValue).value as? String ?? "NULL")
             completion(mission)
         })
     }
@@ -136,13 +136,16 @@ class FirebaseManager{
         ref.observe(.value, with: { (snapshot) in
             missions.removeAll()
             for childSnapshot in snapshot.children{
+                let object = snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String)
                 let tempMission = Mission(title: (childSnapshot as AnyObject ).key as String,
-                                          description: snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String).childSnapshot(forPath: FirebaseSession.MISSION_DESCRIPTION.rawValue).value as! String,
-                                          startTime: snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String).childSnapshot(forPath: FirebaseSession.MISSION_STARTDATE.rawValue).value as! Int, endTime: snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String).childSnapshot(forPath: FirebaseSession.MISSION_ENDDATE.rawValue).value as! Int, nbPeople:  snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String).childSnapshot(forPath: FirebaseSession.MISSION_NBROFPEOPLE.rawValue).value as! Int, location:" ", discipline: "String", jobs: snapshot.childSnapshot(forPath: (childSnapshot as AnyObject).key as String).childSnapshot(forPath: FirebaseSession.MISSION_TYPE_JOB.rawValue).value as! String)
+                                          description: object.childSnapshot(forPath: FirebaseSession.MISSION_DESCRIPTION.rawValue).value as? String ??  "NULL",
+                                          startTime: object.childSnapshot(forPath: FirebaseSession.MISSION_STARTDATE.rawValue).value as? Int ?? 0,
+                                          endTime: object.childSnapshot(forPath: FirebaseSession.MISSION_ENDDATE.rawValue).value as? Int ?? 0,
+                                          nbPeople:  object.childSnapshot(forPath: FirebaseSession.MISSION_NBROFPEOPLE.rawValue).value as? Int ?? 0,
+                                          location: object.childSnapshot(forPath: FirebaseSession.MISSION_LOCATION.rawValue).value as? String ??  "NULL",
+                                          jobs: object.childSnapshot(forPath: FirebaseSession.MISSION_TYPE_JOB.rawValue).value as? String ??  "NULL")
             
                 var selected = [String]()
-                
-                
                 
                 for selectedChild in ((childSnapshot as AnyObject).childSnapshot(forPath: FirebaseSession.MISSION_SELECTED.rawValue)).children{
                     selected.append((selectedChild as AnyObject ).key as String)
@@ -166,11 +169,11 @@ class FirebaseManager{
             }
             else{
                 //CREATING USER OBJECT
-                tempUser = User(firstName: snapshot.childSnapshot(forPath: FirebaseSession.USER_FIRSTNAME.rawValue).value as! String,
-                                    lastName: snapshot.childSnapshot(forPath: FirebaseSession.USER_LASTNAME.rawValue).value as! String,
-                                    phone: snapshot.childSnapshot(forPath: FirebaseSession.USER_PHONE.rawValue).value as! String,
+                tempUser = User(firstName: snapshot.childSnapshot(forPath: FirebaseSession.USER_FIRSTNAME.rawValue).value as? String ?? "NULL",
+                                    lastName: snapshot.childSnapshot(forPath: FirebaseSession.USER_LASTNAME.rawValue).value as? String ?? "NULL",
+                                    phone: snapshot.childSnapshot(forPath: FirebaseSession.USER_PHONE.rawValue).value as? String ?? "NULL",
                                     admin: snapshot.childSnapshot(forPath: FirebaseSession.USER_ADMIN.rawValue).value as! Bool, // NOT NECESSARY
-                    email: snapshot.childSnapshot(forPath: FirebaseSession.USER_EMAIL.rawValue).value as! String,
+                    email: snapshot.childSnapshot(forPath: FirebaseSession.USER_EMAIL.rawValue).value as? String ?? "NULL",
                     password: "" //NOT NECESSARY
                 )
             }
@@ -305,7 +308,7 @@ class FirebaseManager{
     static func checkAdminNumber(inputNumber:String, result: @escaping(Bool)-> Void){
          let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.admin.rawValue)
         ref.observe(.value, with: {(snapshot) in
-            var tempNumber = snapshot.childSnapshot(forPath: FirebaseSession.ADMIN_CHECKNUMBER.rawValue).value as! String
+            let tempNumber = snapshot.childSnapshot(forPath: FirebaseSession.ADMIN_CHECKNUMBER.rawValue).value as? String ?? "NULL"
             
             if(inputNumber == tempNumber){
                 result(true)
