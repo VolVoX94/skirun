@@ -16,19 +16,17 @@ class Mission {
     let endTime: Int
     let nbPeople: Int
     let location: String
-    let discipline: String
     let jobs: String
     var selected: [String]
     
     
-    init(title: String, description: String, startTime: Int, endTime: Int, nbPeople: Int, location: String, discipline: String, jobs: String) {
+    init(title: String, description: String, startTime: Int, endTime: Int, nbPeople: Int, location: String,  jobs: String) {
         self.title = title
         self.description = description
         self.startTime = startTime
         self.endTime = endTime
         self.nbPeople = nbPeople
         self.location = location
-        self.discipline = discipline
         self.jobs = jobs
         self.selected = [String]()
     }

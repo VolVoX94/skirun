@@ -322,10 +322,10 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     func createMission(){
         //3 ---- Create Mission
         
-        let newMission = Mission(title: nameMission.text ?? "Error", description: descriptionMission.text ?? "Error", startTime: startTimeInt, endTime: endTimeInt, nbPeople: Int(nbPeople.text!)! ,location: location.text ?? "Error", discipline: disciplines ?? data[0], jobs: jobs ?? job[0])
+        let newMission = Mission(title: nameMission.text ?? "Error", description: descriptionMission.text ?? "Error", startTime: startTimeInt, endTime: endTimeInt, nbPeople: Int(nbPeople.text!)! ,location: location.text ?? "Error", jobs: jobs ?? job[0])
         
         
-        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(self.competitionChoose).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(newMission.discipline).child(newMission.title);
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(self.competitionChoose).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(disciplines ?? data[0]).child(newMission.title);
         
         
         //add the object
