@@ -29,8 +29,8 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     private var data:[String] = []
     var selectedMission = "none"
 
+
     
- 
     var startDateInt = 0
     var endDateInt = 0
     
@@ -52,8 +52,23 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
             self.missionTableview.delegate = self
             self.missionTableview.dataSource = self
             self.disciplinePicker.isHidden = false
+            
+            let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
+            view.addGestureRecognizer(rightSwipe)
         }
-        
+    }
+    
+    @objc func handleSwipe(sender: UISwipeGestureRecognizer) {
+        if sender.state == .ended {
+            let alertBox = UIAlertController(
+                title: "Delete this competiton",
+                message: "This action will delete the competiton and all missions associated !",
+                preferredStyle: .actionSheet)
+            
+            alertBox.addAction(UIAlertAction(title:"Ok", style: .cancel, handler:nil))
+            
+            self.present(alertBox, animated: true);
+        }
     }
     
     @IBAction func startdateEditing(_ sender: UITextField) {
@@ -150,9 +165,8 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         selectedDiscipline = pickerData[row]
         
         //load the data for missions
-        if(row>0){
-            loadMissionData(disciplineName: pickerData[row])
-        }
+        loadMissionData(disciplineName: pickerData[row])
+        
     }
     
     func loadMissionData(disciplineName: String){
@@ -168,7 +182,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
             self.pickerData.insert("Please select", at: 0)
         }
     }
-    
+    //
     func loadCompetition(){
         //disable the field
         titleCompetition.isEnabled = false
