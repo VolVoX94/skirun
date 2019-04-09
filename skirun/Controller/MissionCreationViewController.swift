@@ -17,6 +17,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     var disciplines: String?
     var jobs: String?
 
+    @IBOutlet weak var save: UIBarButtonItem!
     @IBOutlet weak var location: UITextField!
     @IBOutlet weak var nameMission: UITextField!
     @IBOutlet weak var nbPeople: UITextField!
@@ -208,6 +209,8 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         discipline.isEnabled = false;
         jobPrinted.isHidden = false;
         jobPrinted.isEnabled = false;
+        save.isEnabled = false;
+        save.title = ""
         
         
         FirebaseManager.getMission(nameCompetition: competitionChoose, nameDiscipline: disciplineChoose, nameMission: missionChoose) { (data) in
@@ -259,7 +262,6 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     
     // Function Save a Mission
    @IBAction func saveMission(_ sender: Any) {
-        var wrongInput = false;
         
         //UIAlert
         let alertBox = UIAlertController(
@@ -272,30 +274,32 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         
         if(nameMission.text!.count < 4) || (nameMission.text ?? "").isEmpty{
             
-            //Define that something is wrong
-            wrongInput = true;
-            alertBox.message = "The title of the Mission can contain text and/or numbers ";
+            alertBox.message = "The title of the Mission must be longer !";
             
             //Display the alertBox
             self.present(alertBox, animated: true);
+            
+            return;
         }
         
         if(descriptionMission.text!.count < 4) || (descriptionMission.text ?? "").isEmpty{
-            //Define that something is wrong
-            wrongInput = true;
-            alertBox.message = "Description of the mission, you can write some text and/or numbers";
+
+            alertBox.message = " The description of the mission must be longer !";
             
             //Display the alertBox
             self.present(alertBox, animated: true);
+            
+            return;
         }
     
-        if(location.text!.count < 4) || (location.text ?? "").isEmpty{
-            //Define that something is wrong
-            wrongInput = true;
-            alertBox.message = "The Location of the mission, you can write some text and/or numbers";
+        if(location.text!.count < 4) {
+
+            alertBox.message = "The Location of the mission must be longer !";
         
             //Display the alertBox
             self.present(alertBox, animated: true);
+            
+            return;
         }
     
     if(startTimeInt > endTimeInt){
@@ -303,16 +307,18 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         
         //Display the alertBox
         self.present(alertBox, animated: true);
+        
+        return;
     }
         
-    if(0>=(Int(nbPeople.text!)!) && wrongInput != true){
-            //Define that something is wrong
-            wrongInput = true;
-            alertBox.message = "Input wrong please enter a number";
+    if(0>=(Int(nbPeople.text ?? "0") ?? 0)){
+
+            alertBox.message = "Minimum one person !";
             
             //Display the alertBox
             self.present(alertBox, animated: true);
         
+        return;
         }
         
         createMission()
@@ -331,7 +337,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         //add the object
         ref.setValue(newMission.toAnyObject())
         
-       
+       self.dismiss(animated: false, completion: nil)
     }
     
     

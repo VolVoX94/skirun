@@ -506,7 +506,7 @@
                         <outlet property="endDate" destination="oQY-Q5-q9N" id="aOE-M3-ucc"/>
                         <outlet property="missionTableview" destination="uGi-lf-YB2" id="I33-ye-GHB"/>
                         <outlet property="refApi" destination="JhP-0g-fIi" id="hgv-xp-2N3"/>
-                        <outlet property="save" destination="jyf-d2-Y5X" id="ZDz-BZ-gKp"/>
+                        <outlet property="save" destination="jyf-d2-Y5X" id="pAy-9p-0bH"/>
                         <outlet property="startDate" destination="HxE-X9-Xx1" id="jUo-Pj-Alu"/>
                         <outlet property="titleCompetition" destination="M1a-B7-wst" id="XCa-vZ-i2T"/>
                     </connections>
@@ -719,6 +719,7 @@
                         <outlet property="nbPeople" destination="aOY-2V-24o" id="ee0-BP-GAe"/>
                         <outlet property="pickerJob" destination="qEW-Np-3YS" id="DFT-tc-8m9"/>
                         <outlet property="pickerView" destination="Jm6-WL-s1j" id="j9m-rA-4aZ"/>
+                        <outlet property="save" destination="QBQ-Yc-zeU" id="HgM-Yg-qZC"/>
                         <outlet property="startTime" destination="fk3-pE-7Wv" id="kSd-cj-o1f"/>
                     </connections>
                 </viewController>

@@ -176,7 +176,8 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         endDate.isEnabled = false
         refApi.isEnabled = false
         save.isEnabled = false
-        
+        save.title = ""
+       
         //load the competion object in the fields
         FirebaseManager.getCompetiton(name: selectedCompetition! , completion: { (data) in
             self.competiton = data
@@ -198,6 +199,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     //New competitions functions ---------------------------------------
     
     @IBAction func saveButton(_ sender: Any) {
+        
         
         //UIAlert
         let alertBox = UIAlertController(
@@ -232,7 +234,6 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
             self.present(alertBox, animated: true);
             return;
         }
-        
         
         insertCompetition()
         
