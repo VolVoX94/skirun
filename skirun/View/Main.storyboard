@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -91,6 +91,7 @@
                     <tabBarItem key="tabBarItem" title="" image="rocketWhite" selectedImage="rocketWhite" id="VRL-zN-l4T"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="MyAdminButton" destination="oKh-Zo-V7t" id="aMw-5a-QN5"/>
                         <outlet property="TableViewMission" destination="Zeh-Yj-NwL" id="jMP-Xh-Lpe"/>
                         <outlet property="competitionPicker" destination="5kf-cn-ud4" id="BTb-TA-DTK"/>
                         <outlet property="disciplinePicker" destination="XQd-KW-AO6" id="nVj-wB-QZN"/>
@@ -140,6 +141,15 @@
                                     <segue destination="oFV-Vs-ePn" kind="show" animates="NO" id="Ehz-FG-DVX"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEQ-dF-vcK">
+                                <rect key="frame" x="75" y="560" width="103" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Generate Key"/>
+                                <connections>
+                                    <action selector="adminPWFunc:" destination="8hz-nY-BuE" eventType="touchUpInside" id="cvd-1v-me0"/>
+                                    <segue destination="2Bc-k7-GFd" kind="show" identifier="MyAdminKeySegue" id="wI2-QW-CHW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.027450980390000001" green="0.20000000000000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -163,10 +173,21 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isHorizontal" value="NO"/>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="myAdminPWButton" destination="DEQ-dF-vcK" id="ygR-mG-s7P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HEN-Cz-szW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1755" y="17"/>
+            <point key="canvasLocation" x="1753.6231884057972" y="16.741071428571427"/>
+        </scene>
+        <!--AdminKeyManagement-->
+        <scene sceneID="MBX-YA-eMq">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AdminKeyManagement" id="2Bc-k7-GFd" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VOM-Cl-c1B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1685" y="440"/>
         </scene>
         <!--Admin Management View Controller-->
         <scene sceneID="W0A-TX-IHi">
@@ -1175,6 +1196,7 @@
         <image name="+" width="27" height="27"/>
         <image name="Admin" width="63" height="88"/>
         <image name="Fw" width="19" height="24"/>
+        <image name="Generate Key" width="80" height="70"/>
         <image name="Location" width="85" height="122"/>
         <image name="Management" width="103" height="119"/>
         <image name="Settings white" width="42" height="42"/>

@@ -13,10 +13,11 @@ import UIKit
 class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource,  UITableViewDataSource, UITableViewDelegate {
     
     // selected competition and discipline
-    var selectedCompetition: String?
-    var selectedDiscipline: String?
-    var selectedMission: String?
-
+    private var selectedCompetition: String?
+    private var selectedDiscipline: String?
+    private var selectedMission: String?
+    private var myUser:User?
+    
     // View Indicator while waiting data
     @IBOutlet weak var myWaitSymbolizer: UIActivityIndicatorView!
     
@@ -40,8 +41,12 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     // table view
     @IBOutlet weak var TableViewMission: UITableView!
     
+    @IBOutlet weak var MyAdminButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.MyAdminButton.isHidden = true
+        self.loadCurrentUser()
         // Load the table view
         TableViewMission.dataSource = self
         TableViewMission.delegate = self
@@ -91,7 +96,7 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
         let destinationController = segue.destination as! TimeKeeperViewController;
         destinationController.currentMission = self.selectedMission;
         destinationController.currentDiscipline = selectedDiscipline;
-        destinationController.currentCompetition = selectedCompetition;
+            destinationController.currentCompetition = selectedCompetition;
         }
     }
     
@@ -212,6 +217,17 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
             self.myWaitSymbolizer.stopAnimating()
             // reload the data
             self.TableViewMission.reloadData()
+        }
+    }
+    
+    func loadCurrentUser(){
+        let uid = Auth.auth().currentUser?.uid
+        FirebaseManager.getUserByUID(uidUser: uid!) { (User) in
+            self.myUser = User
+            print(self.myUser!.admin)
+            if(self.myUser!.admin == true){
+                self.MyAdminButton.isHidden = false
+            }
         }
     }
 

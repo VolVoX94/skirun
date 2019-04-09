@@ -38,8 +38,6 @@ class TimeKeeperViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         loadMission()
         // Do any additional setup after loading the view.
     }

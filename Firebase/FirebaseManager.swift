@@ -169,7 +169,7 @@ class FirebaseManager{
                 tempUser = User(firstName: snapshot.childSnapshot(forPath: FirebaseSession.USER_FIRSTNAME.rawValue).value as! String,
                                     lastName: snapshot.childSnapshot(forPath: FirebaseSession.USER_LASTNAME.rawValue).value as! String,
                                     phone: snapshot.childSnapshot(forPath: FirebaseSession.USER_PHONE.rawValue).value as! String,
-                                    admin: false, // NOT NECESSARY
+                                    admin: snapshot.childSnapshot(forPath: FirebaseSession.USER_ADMIN.rawValue).value as! Bool, // NOT NECESSARY
                     email: snapshot.childSnapshot(forPath: FirebaseSession.USER_EMAIL.rawValue).value as! String,
                     password: "" //NOT NECESSARY
                 )
@@ -309,6 +309,30 @@ class FirebaseManager{
             
             if(inputNumber == tempNumber){
                 result(true)
+            }
+            else{
+                result(false)
+            }
+        })
+    }
+    
+    
+    //**** Save generated key into firebase
+    static func saveKey(key:String){
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.admin.rawValue).child(FirebaseSession.ADMIN_CHECKNUMBER.rawValue)
+        
+        ref.setValue(key)
+    }
+    
+    //**** Check pw automation
+    static func isNewKeyNeeded(inputDate:String, result: @escaping(Bool)-> Void){
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.admin.rawValue)
+        
+        ref.observe(.value, with: {(snapshot) in
+            var tempNumber = snapshot.childSnapshot(forPath: FirebaseSession.ADMIN_CHECKNUMBER.rawValue).value as! String
+            if(tempNumber.suffix(2) != inputDate){
+                result(true)
+                print("Key AUTOMATICALLY GENERATED")
             }
             else{
                 result(false)

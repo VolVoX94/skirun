@@ -12,23 +12,20 @@ class AdminViewController: UIViewController {
     
    
 
+    @IBOutlet weak var myAdminPWButton: UIButton!
+    
     override func viewDidLoad() {
+        let keyManageController = KeyAdminViewController()
+        keyManageController.automaticKeyGeneration()
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    }
+    
+    
+    @IBAction func adminPWFunc(_ sender: Any) {
+        performSegue(withIdentifier: "MyAdminKeySegue", sender: self)
     }
     
     @IBAction func back(_ sender: Any) {
     self.dismiss(animated: false, completion: nil)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

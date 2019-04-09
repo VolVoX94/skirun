@@ -40,6 +40,7 @@ enum FirebaseSession:String {
     case USER_EMAIL = "email";
     case USER_LASTNAME = "lastname";
     case USER_PHONE = "phone";
+    case USER_ADMIN = "admin";
     
     //Admin nodes
     case ADMIN_CHECKNUMBER = "checkNumber";

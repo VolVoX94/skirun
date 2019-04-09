@@ -35,8 +35,6 @@ class LoginViewController: UIViewController,  UITextFieldDelegate {
                 self.performSegue(withIdentifier: "alreadyLoggedIn", sender: nil)
             } 
         }
-
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -53,6 +51,7 @@ class LoginViewController: UIViewController,  UITextFieldDelegate {
     @IBAction func loginAction(_ sender: Any) {
         Auth.auth().signIn(withEmail: emailField.text!, password: passwordField.text!) { (user, error) in
             if error == nil{
+                print("LAUNCHED")
                 self.performSegue(withIdentifier: "alreadyLoggedIn", sender: self)
             }
             else{
