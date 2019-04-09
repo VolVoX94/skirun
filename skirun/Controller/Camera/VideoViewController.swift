@@ -12,10 +12,17 @@ import AVFoundation
 import MobileCoreServices
 
 import FirebaseStorage
+import Firebase
 
 class VideoViewController: UIViewController{
 
     var bipNumber:Int = 0
+    var currentCompetition: String!
+    var currentDiscipline: String!
+    var currentMission: String!
+    var currentMissionObject: Mission!
+    
+    @IBOutlet weak var missionDescription: UITextView!
     
     var storageReference : StorageReference {
         return Storage.storage().reference().child("videos")
@@ -23,23 +30,11 @@ class VideoViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadMission()
     }
     
     @IBAction func recordButton(_ sender: AnyObject) {
         VideoHelper.startMediaBrowser(delegate: self , sourceType: .camera)
-    }
-  
-    @IBAction func playVideoButton(_ sender: Any) {
-        
-        if let path = Bundle.main.path(forResource: "video", ofType: "mov"){
-            let video = AVPlayer(url: URL(fileURLWithPath: path))
-            let videoPlayer = AVPlayerViewController()
-            videoPlayer.player = video
-            
-            present(videoPlayer, animated: true) {
-                video.play()
-            }
-        }
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -57,6 +52,14 @@ class VideoViewController: UIViewController{
         present(alert, animated: true, completion: nil)
     }
     */
+    
+    func loadMission(){
+        FirebaseManager.getMission(nameCompetition: currentCompetition, nameDiscipline: currentDiscipline, nameMission: currentMission) { (data) in
+            self.currentMissionObject = data
+            self.missionDescription.text = self.currentMissionObject.description
+        }
+    }
+
     
 }
 
@@ -80,6 +83,8 @@ extension VideoViewController: UIImagePickerControllerDelegate, UINavigationCont
         DispatchQueue.global().async {
             semaphore.wait()
             
+            print("FIRST SEMAPHORE STARTING")
+            
             let title = "BIP number"
             let message = "Save video linked to the runner"
             
@@ -93,7 +98,8 @@ extension VideoViewController: UIImagePickerControllerDelegate, UINavigationCont
                 if let textFields = inputController.textFields{
                     let theTextFields = textFields as [UITextField]
                     let enteredNumber = theTextFields[0].text!
-                    
+                    print("CREATING SUBMIT")
+
                     self.bipNumber = Int(enteredNumber)!
                     semaphore.signal()
                 }
@@ -105,6 +111,7 @@ extension VideoViewController: UIImagePickerControllerDelegate, UINavigationCont
         
         DispatchQueue.global().async {
             semaphore.wait()
+            print("SECOND SEMAPHORE STARTING")
             let date = Date()
             let calendar = Calendar.current
             let day = calendar.component(.day, from: date)
@@ -112,12 +119,13 @@ extension VideoViewController: UIImagePickerControllerDelegate, UINavigationCont
             let minutes = calendar.component(.minute, from: date)
             let month = calendar.component(.month, from: date)
             
-            let uploadVideoReference = self.storageReference.child("Runner_\(self.bipNumber)_\(month)month_\(day)day_\(hour)h_\(minutes)min.mp4")
+            let uploadVideoReference = self.storageReference.child("Nr:\(self.bipNumber)__\(month)month_\(day)day_\(hour)h_\(minutes)min.mp4")
             let uploadTask = uploadVideoReference.putFile(from: url)
             
+            print("UPLOADING")
             uploadTask.observe(.success, handler: { (snapshot) in
                 let title = (snapshot.error == nil) ? "Success" : "Error"
-                let message = (snapshot.error == nil) ? "Video was saved" : "Video failed to save"
+                let message = (snapshot.error == nil) ? "Video was saved" : "Error! Video failed to save"
                 
                 let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))

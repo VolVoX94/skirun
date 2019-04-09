@@ -11,8 +11,7 @@ import Firebase
 
 class TimeKeeperViewController: UIViewController {
 
-    
-    @IBOutlet weak var navbar: UINavigationItem!
+    @IBOutlet weak var titleMission: UILabel!
     
     @IBOutlet weak var textMission: UITextView!
     
@@ -21,8 +20,6 @@ class TimeKeeperViewController: UIViewController {
     
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var resultField: UITextField!
-    
-    @IBOutlet weak var myAdminButton: UIButton!
     
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var dnfButton: UIButton!
@@ -42,9 +39,6 @@ class TimeKeeperViewController: UIViewController {
         
         loadMission()
         // Do any additional setup after loading the view.
-    }
-    @IBAction func manageVolunteerFunc(_ sender: Any) {
-        performSegue(withIdentifier: "MyAdminSegue", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
@@ -73,7 +67,7 @@ class TimeKeeperViewController: UIViewController {
     
     func loadTypeJob(typeJob: String){
         
-        self.navbar.title = currentMissionObject.title
+        self.titleMission.text = currentMissionObject.title
         self.textMission.text = currentMissionObject.description
         
         if(typeJob == "TimeKeeper - time"){

@@ -16,6 +16,7 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     var selectedCompetition: String?
     var selectedDiscipline: String?
     var selectedMission: String?
+    var selectedMissionJob: String?
 
     // View Indicator while waiting data
     @IBOutlet weak var myWaitSymbolizer: UIActivityIndicatorView!
@@ -72,7 +73,7 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
             let start: UnixTime = listMissions[indexPath.row].startTime
             let text = "\(listMissions[indexPath.row].title) \(" ") \(start.toDateTime)"//2.
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
-              cell.textLabel?.text = text //3.
+            cell.textLabel?.text = text //3.
       
         } catch let error as NSError{
             print(error.localizedDescription)
@@ -83,16 +84,34 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         selectedMission = listMissions[indexPath.item].title
-        performSegue(withIdentifier: "toMission", sender: self)
+        selectedMissionJob = listMissions[indexPath.item].jobs
+        if selectedMissionJob!.contains("keeper"){
+            performSegue(withIdentifier: "toMission", sender: self)
+        } else if selectedMissionJob!.contains("ontroller") {
+            performSegue(withIdentifier: "toMissionController", sender: self)
+        } else {
+            performSegue(withIdentifier: "toMissionLogistics", sender: self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toMission" {
-        let destinationController = segue.destination as! TimeKeeperViewController;
-        destinationController.currentMission = self.selectedMission;
-        destinationController.currentDiscipline = selectedDiscipline;
-        destinationController.currentCompetition = selectedCompetition;
+        if segue.identifier == "toMission"{
+            let destinationController = segue.destination as! TimeKeeperViewController;
+            destinationController.currentMission = self.selectedMission;
+            destinationController.currentDiscipline = selectedDiscipline;
+            destinationController.currentCompetition = selectedCompetition;
+        } else if segue.identifier == "toMissionController" {
+            let destinationController = segue.destination as! VideoViewController;
+            destinationController.currentMission = self.selectedMission;
+            destinationController.currentDiscipline = selectedDiscipline;
+            destinationController.currentCompetition = selectedCompetition
+        } else if segue.identifier == "toMissionLogistics" {
+            let destinationController = segue.destination as! VideoViewController;
+            destinationController.currentMission = self.selectedMission;
+            destinationController.currentDiscipline = selectedDiscipline;
+            destinationController.currentCompetition = selectedCompetition
         }
+
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
