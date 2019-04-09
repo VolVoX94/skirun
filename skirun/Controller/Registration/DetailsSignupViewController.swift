@@ -77,7 +77,6 @@ class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
     @IBAction func registerButton(_ sender: Any) {
         var wrongInput = false;
         

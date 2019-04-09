@@ -47,12 +47,18 @@ class AdminManagementViewController: UIViewController, UITableViewDataSource, UI
         performSegue(withIdentifier: "toChampionship", sender: self)
     }
     
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let destinationController = segue.destination as! CompetionCreationViewController;
         destinationController.selectedCompetition = selectedCompetition;
     }
     
+    @IBAction func addAction(_ sender: Any) {
+        selectedCompetition = "none"
+        performSegue(withIdentifier: "toChampionship", sender: self)
+    }
     
     
     @IBAction func backAdmin(_ sender: Any) {

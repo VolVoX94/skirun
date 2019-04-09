@@ -176,7 +176,8 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         endDate.isEnabled = false
         refApi.isEnabled = false
         save.isEnabled = false
-        
+        save.title = ""
+       
         //load the competion object in the fields
         FirebaseManager.getCompetiton(name: selectedCompetition! , completion: { (data) in
             self.competiton = data
@@ -198,6 +199,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     //New competitions functions ---------------------------------------
     
     @IBAction func saveButton(_ sender: Any) {
+        
         
         //UIAlert
         let alertBox = UIAlertController(
@@ -233,7 +235,6 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
             return;
         }
         
-        
         insertCompetition()
         
     }
@@ -265,13 +266,14 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-         print("------to display mission", indexPath.item)
         selectedMission = missionData[indexPath.item].title
         performSegue(withIdentifier: "toDisplayMission", sender: self)
        
     }
     
     @IBAction func addAction(_ sender: Any) {
+        selectedMission = "none"
+        performSegue(withIdentifier: "toDisplayMission", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

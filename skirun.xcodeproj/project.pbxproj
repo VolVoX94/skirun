@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		53F33A3E1BAB0C046DFD7A38 /* Pods_skirunTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 459C244C4ECA3C81E12A71A6 /* Pods_skirunTests.framework */; };
 		6A1A8DB822423331009DB3FD /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1A8DB722423331009DB3FD /* Mission.swift */; };
+		8424E3A1225BB531000902B4 /* AdminKeyManagement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8424E3A0225BB531000902B4 /* AdminKeyManagement.storyboard */; };
+		8424E3A3225BB903000902B4 /* KeyAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424E3A2225BB903000902B4 /* KeyAdminViewController.swift */; };
+		8424E3A5225CB400000902B4 /* FirebaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424E3A4225CB400000902B4 /* FirebaseTests.swift */; };
+		8424E3A7225CBD98000902B4 /* KeyManagementTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424E3A6225CBD98000902B4 /* KeyManagementTest.swift */; };
 		842ABBFA2253658400C48CD1 /* TimeKeeperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842ABBF92253658300C48CD1 /* TimeKeeperViewController.swift */; };
 		842ABBFD2253689800C48CD1 /* ManageSubscriber.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842ABBFC2253689800C48CD1 /* ManageSubscriber.storyboard */; };
 		842ABBFF22537D0200C48CD1 /* AdminSubscriberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842ABBFE22537D0200C48CD1 /* AdminSubscriberViewController.swift */; };
@@ -72,6 +76,10 @@
 		579E97E107E43CF0A777C66A /* Pods-skirun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-skirun.release.xcconfig"; path = "Target Support Files/Pods-skirun/Pods-skirun.release.xcconfig"; sourceTree = "<group>"; };
 		5C7739317431CD4D4FA0C9A5 /* Pods_skirun.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_skirun.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A1A8DB722423331009DB3FD /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
+		8424E3A0225BB531000902B4 /* AdminKeyManagement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AdminKeyManagement.storyboard; sourceTree = "<group>"; };
+		8424E3A2225BB903000902B4 /* KeyAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyAdminViewController.swift; sourceTree = "<group>"; };
+		8424E3A4225CB400000902B4 /* FirebaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTests.swift; sourceTree = "<group>"; };
+		8424E3A6225CBD98000902B4 /* KeyManagementTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyManagementTest.swift; sourceTree = "<group>"; };
 		842ABBF92253658300C48CD1 /* TimeKeeperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeKeeperViewController.swift; sourceTree = "<group>"; };
 		842ABBFC2253689800C48CD1 /* ManageSubscriber.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ManageSubscriber.storyboard; sourceTree = "<group>"; };
 		842ABBFE22537D0200C48CD1 /* AdminSubscriberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSubscriberViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +185,7 @@
 			children = (
 				CEE4646122368F2300F42D5D /* SignUpViewController.swift */,
 				CE42A18522369D56000CBE46 /* DetailsSignupViewController.swift */,
+				8424E3A2225BB903000902B4 /* KeyAdminViewController.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -252,6 +261,7 @@
 				842ABC002253D47100C48CD1 /* KGRadioButton.swift */,
 				842ABC0222549A6C00C48CD1 /* MyTabBarCustomization.swift */,
 				CC79C05C225B35B700F0C612 /* CameraStoryboard.storyboard */,
+				8424E3A0225BB531000902B4 /* AdminKeyManagement.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -297,6 +307,8 @@
 			children = (
 				CE7C8254222682F600FA4B3B /* Info.plist */,
 				CE1191522237C27900EE325C /* LoginTests.swift */,
+				8424E3A4225CB400000902B4 /* FirebaseTests.swift */,
+				8424E3A6225CBD98000902B4 /* KeyManagementTest.swift */,
 			);
 			path = skirunTests;
 			sourceTree = "<group>";
@@ -425,6 +437,7 @@
 				84827B96224B8C2400F40A71 /* Main.storyboard in Resources */,
 				CC79C05D225B35B700F0C612 /* CameraStoryboard.storyboard in Resources */,
 				CE2C1F46222D684500D4A491 /* GoogleService-Info.plist in Resources */,
+				8424E3A1225BB531000902B4 /* AdminKeyManagement.storyboard in Resources */,
 				CE7C8245222682F600FA4B3B /* Assets.xcassets in Resources */,
 				CE1191582237DB8100EE325C /* Login.storyboard in Resources */,
 			);
@@ -540,6 +553,7 @@
 				842ABBFF22537D0200C48CD1 /* AdminSubscriberViewController.swift in Sources */,
 				8445A78E22394B930018C1EE /* MissionCreationViewController.swift in Sources */,
 				CE7C823C222682F500FA4B3B /* AppDelegate.swift in Sources */,
+				8424E3A3225BB903000902B4 /* KeyAdminViewController.swift in Sources */,
 				84F075C42239105800084B8B /* User.swift in Sources */,
 				842ABC012253D47100C48CD1 /* KGRadioButton.swift in Sources */,
 				CEE4646022368F1500F42D5D /* LoginViewController.swift in Sources */,
@@ -562,6 +576,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8424E3A5225CB400000902B4 /* FirebaseTests.swift in Sources */,
+				8424E3A7225CBD98000902B4 /* KeyManagementTest.swift in Sources */,
 				CE1191532237C27900EE325C /* LoginTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -112,6 +112,7 @@
                     <tabBarItem key="tabBarItem" title="" image="rocketWhite" selectedImage="rocketWhite" id="VRL-zN-l4T"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="MyAdminButton" destination="oKh-Zo-V7t" id="aMw-5a-QN5"/>
                         <outlet property="TableViewMission" destination="Zeh-Yj-NwL" id="jMP-Xh-Lpe"/>
                         <outlet property="competitionPicker" destination="5kf-cn-ud4" id="BTb-TA-DTK"/>
                         <outlet property="disciplinePicker" destination="XQd-KW-AO6" id="nVj-wB-QZN"/>
@@ -123,7 +124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="818.84057971014499" y="37.5"/>
+            <point key="canvasLocation" x="819" y="17"/>
         </scene>
         <!--Admin View Controller-->
         <scene sceneID="3T8-qo-ogT">
@@ -162,6 +163,15 @@
                                     <segue destination="oFV-Vs-ePn" kind="show" animates="NO" id="Ehz-FG-DVX"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEQ-dF-vcK">
+                                <rect key="frame" x="75" y="560" width="103" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Generate Key"/>
+                                <connections>
+                                    <action selector="adminPWFunc:" destination="8hz-nY-BuE" eventType="touchUpInside" id="cvd-1v-me0"/>
+                                    <segue destination="2Bc-k7-GFd" kind="show" identifier="MyAdminKeySegue" id="wI2-QW-CHW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.027450980390000001" green="0.20000000000000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -185,10 +195,21 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isHorizontal" value="NO"/>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="myAdminPWButton" destination="DEQ-dF-vcK" id="ygR-mG-s7P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HEN-Cz-szW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1755" y="17"/>
+            <point key="canvasLocation" x="1753.6231884057972" y="16.741071428571427"/>
+        </scene>
+        <!--AdminKeyManagement-->
+        <scene sceneID="MBX-YA-eMq">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AdminKeyManagement" id="2Bc-k7-GFd" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VOM-Cl-c1B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1685" y="440"/>
         </scene>
         <!--Admin Management View Controller-->
         <scene sceneID="W0A-TX-IHi">
@@ -230,6 +251,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="addAction:" destination="oFV-Vs-ePn" eventType="touchUpInside" id="VRc-IO-uoj"/>
                                     <action selector="next:" destination="7iP-uM-gqX" eventType="touchUpInside" id="JrL-sX-DvQ"/>
                                     <segue destination="DiL-V7-qlv" kind="presentation" identifier="toChampionship" animates="NO" id="t80-IV-DA1"/>
                                 </connections>
@@ -287,7 +309,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="skl-Dm-zgV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="7iP-uM-gqX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2543" y="17"/>
+            <point key="canvasLocation" x="2532" y="17"/>
         </scene>
         <!--Competion Creation View Controller-->
         <scene sceneID="Gzi-aF-RJz">
@@ -397,6 +419,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
+                                            <action selector="addAction:" destination="DiL-V7-qlv" eventType="touchUpInside" id="f0K-u6-H6W"/>
                                             <segue destination="M6B-KH-18W" kind="show" identifier="toDisplayMission" animates="NO" id="IB7-qQ-rAC"/>
                                         </connections>
                                     </button>
@@ -484,14 +507,14 @@
                         <outlet property="endDate" destination="oQY-Q5-q9N" id="aOE-M3-ucc"/>
                         <outlet property="missionTableview" destination="uGi-lf-YB2" id="I33-ye-GHB"/>
                         <outlet property="refApi" destination="JhP-0g-fIi" id="hgv-xp-2N3"/>
-                        <outlet property="save" destination="jyf-d2-Y5X" id="ZDz-BZ-gKp"/>
+                        <outlet property="save" destination="jyf-d2-Y5X" id="pAy-9p-0bH"/>
                         <outlet property="startDate" destination="HxE-X9-Xx1" id="jUo-Pj-Alu"/>
                         <outlet property="titleCompetition" destination="M1a-B7-wst" id="XCa-vZ-i2T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lnh-jQ-xcD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3343" y="17"/>
+            <point key="canvasLocation" x="3351" y="17"/>
         </scene>
         <!--Mission Creation View Controller-->
         <scene sceneID="pk9-Gn-V9d">
@@ -697,12 +720,13 @@
                         <outlet property="nbPeople" destination="aOY-2V-24o" id="ee0-BP-GAe"/>
                         <outlet property="pickerJob" destination="qEW-Np-3YS" id="DFT-tc-8m9"/>
                         <outlet property="pickerView" destination="Jm6-WL-s1j" id="j9m-rA-4aZ"/>
+                        <outlet property="save" destination="QBQ-Yc-zeU" id="HgM-Yg-qZC"/>
                         <outlet property="startTime" destination="fk3-pE-7Wv" id="kSd-cj-o1f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MYe-Ck-U0V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4362" y="17"/>
+            <point key="canvasLocation" x="4313" y="17"/>
         </scene>
         <!--ManageSubscriber-->
         <scene sceneID="1sv-55-4L3">
@@ -710,7 +734,7 @@
                 <viewControllerPlaceholder storyboardName="ManageSubscriber" id="7ca-JV-R2F" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Q5-Vd-zA7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5051" y="17"/>
+            <point key="canvasLocation" x="5068" y="17"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="n2D-NT-HfP">
@@ -1205,6 +1229,7 @@
         <image name="+" width="27" height="27"/>
         <image name="Admin" width="63" height="88"/>
         <image name="Fw" width="19" height="24"/>
+        <image name="Generate Key" width="80" height="70"/>
         <image name="Location" width="85" height="122"/>
         <image name="Management" width="103" height="119"/>
         <image name="Settings white" width="42" height="42"/>

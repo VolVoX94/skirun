@@ -18,6 +18,7 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     var selectedMission: String?
     var selectedMissionJob: String?
 
+    private var myUser:User?
     // View Indicator while waiting data
     @IBOutlet weak var myWaitSymbolizer: UIActivityIndicatorView!
     
@@ -41,8 +42,12 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     // table view
     @IBOutlet weak var TableViewMission: UITableView!
     
+    @IBOutlet weak var MyAdminButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.MyAdminButton.isHidden = true
+        self.loadCurrentUser()
         // Load the table view
         TableViewMission.dataSource = self
         TableViewMission.delegate = self
@@ -231,6 +236,17 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
             self.myWaitSymbolizer.stopAnimating()
             // reload the data
             self.TableViewMission.reloadData()
+        }
+    }
+    
+    func loadCurrentUser(){
+        let uid = Auth.auth().currentUser?.uid
+        FirebaseManager.getUserByUID(uidUser: uid!) { (User) in
+            self.myUser = User
+            print(self.myUser!.admin)
+            if(self.myUser!.admin == true){
+                self.MyAdminButton.isHidden = false
+            }
         }
     }
 

@@ -7,6 +7,8 @@
 //
 
 import XCTest
+import Firebase
+@testable import skirun
 
 class LoginTests: XCTestCase {
 
@@ -23,12 +25,16 @@ class LoginTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
+    
+    func test_RegisterAsAdmin_CorrectAdminNumber_True() {
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.admin.rawValue).child(FirebaseSession.ADMIN_CHECKNUMBER.rawValue)
+        
+        ref.observe(.value, with: {(snapshot) in
+            var tempNumber = snapshot.childSnapshot(forPath: FirebaseSession.ADMIN_CHECKNUMBER.rawValue).value as! String
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+            FirebaseManager.checkAdminNumber(inputNumber: tempNumber, result: { (Bool) in
+                XCTAssertTrue(Bool)
+            })
+        })
     }
-
 }
