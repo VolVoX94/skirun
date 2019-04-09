@@ -265,13 +265,14 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-         print("------to display mission", indexPath.item)
         selectedMission = missionData[indexPath.item].title
         performSegue(withIdentifier: "toDisplayMission", sender: self)
        
     }
     
     @IBAction func addAction(_ sender: Any) {
+        selectedMission = "none"
+        performSegue(withIdentifier: "toDisplayMission", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
