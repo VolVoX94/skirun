@@ -15,8 +15,12 @@ class AdminViewController: UIViewController {
     @IBOutlet weak var myAdminPWButton: UIButton!
     
     override func viewDidLoad() {
+        let now = Date()
+        let dateNumberFormatter = DateFormatter()
+        dateNumberFormatter.dateFormat = "MM"
+        let monthNumber = dateNumberFormatter.string(from: now)
         let keyManageController = KeyAdminViewController()
-        keyManageController.automaticKeyGeneration()
+        keyManageController.automaticKeyGeneration(currentMonth: monthNumber)
         super.viewDidLoad()
     }
     

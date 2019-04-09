@@ -72,15 +72,10 @@ class KeyAdminViewController: UIViewController {
     }
     
     
-    public func automaticKeyGeneration(){
-        let now = Date()
-        let dateNumberFormatter = DateFormatter()
-        dateNumberFormatter.dateFormat = "MM"
-        let monthNumber = dateNumberFormatter.string(from: now)
-        print("key generation check", monthNumber)
-        FirebaseManager.isNewKeyNeeded(inputDate: monthNumber) { (Bool) in
+    public func automaticKeyGeneration(currentMonth:String){
+        FirebaseManager.isNewKeyNeeded(inputDate: currentMonth) { (Bool) in
             if(Bool == true){
-                self.generateKey(inputDate: monthNumber)
+                self.generateKey(inputDate: currentMonth)
             }
         }
     }

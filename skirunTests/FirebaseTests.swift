@@ -8,6 +8,7 @@
 
 import XCTest
 import Firebase
+@testable import skirun
 
 class FirebaseTests: XCTestCase {
 
@@ -19,14 +20,33 @@ class FirebaseTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testGetCompetition() {
-        
+    func test_GetAllCompetition_NoCircumstances_DataRetrieved() {
+        FirebaseManager.getCompetitons { (sampleData) in
+            XCTAssertNotNil(sampleData)
+        }
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func test_GetAllJobs_NoCircumstances_DataRetrieved() {
+        FirebaseManager.getJobs { (sampleData) in
+            XCTAssertNotNil(sampleData)
+        }
+    }
+    
+    func test_GetAllDisciplines_NoCircumstances_DataRetrieved() {
+        FirebaseManager.getDisciplines { (sampleData) in
+            XCTAssertNotNil(sampleData)
+        }
+    }
+    
+    func test_IsNewKeyNeeded_00Month_True() {
+        FirebaseManager.isNewKeyNeeded(inputDate: "00") { (Bool) in
+            XCTAssertTrue(Bool)
+        }
+    }
+    
+    func test_GetLastAdminKeyDateValue_NoCircumstances_True() {
+        FirebaseManager.getLastCheckNumberDate{ (Data) in
+            XCTAssertNotNil(Data)
         }
     }
 
