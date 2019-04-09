@@ -115,6 +115,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         datePicker.backgroundColor = UIColor.white
         loadJobData()
         loadDisciplineData()
+        print("missionChoose-----", self.missionChoose)
         if(missionChoose != "none"){
             loadMission()
         }
