@@ -35,6 +35,7 @@
 		CC79C05A225B358A00F0C612 /* VideoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC79C058225B358A00F0C612 /* VideoHelper.swift */; };
 		CC79C05B225B358A00F0C612 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC79C059225B358A00F0C612 /* VideoViewController.swift */; };
 		CC79C05D225B35B700F0C612 /* CameraStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC79C05C225B35B700F0C612 /* CameraStoryboard.storyboard */; };
+		CCB87358225D289B006C1B75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCB87357225D289A006C1B75 /* Assets.xcassets */; };
 		CE069ED4225366000057F349 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE069ED3225366000057F349 /* Result.swift */; };
 		CE069ED62254A0F50057F349 /* TimeKeeper.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE069ED52254A0F50057F349 /* TimeKeeper.storyboard */; };
 		CE11914F2237C07900EE325C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE11914E2237C07900EE325C /* SettingsViewController.swift */; };
@@ -45,7 +46,6 @@
 		CE7C823C222682F500FA4B3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C823B222682F500FA4B3B /* AppDelegate.swift */; };
 		CE7C823E222682F500FA4B3B /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C823D222682F500FA4B3B /* FirstViewController.swift */; };
 		CE7C8240222682F500FA4B3B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C823F222682F500FA4B3B /* SecondViewController.swift */; };
-		CE7C8245222682F600FA4B3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7C8244222682F600FA4B3B /* Assets.xcassets */; };
 		CE7C8248222682F600FA4B3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7C8246222682F600FA4B3B /* LaunchScreen.storyboard */; };
 		CEAB3CC7224A25AD0079CE5B /* UnixTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB3CC6224A25AD0079CE5B /* UnixTime.swift */; };
 		CEE05BC922427EAD002B5DD5 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE05BC822427EAD002B5DD5 /* FirebaseManager.swift */; };
@@ -102,6 +102,7 @@
 		CC79C058225B358A00F0C612 /* VideoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoHelper.swift; sourceTree = "<group>"; };
 		CC79C059225B358A00F0C612 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		CC79C05C225B35B700F0C612 /* CameraStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CameraStoryboard.storyboard; sourceTree = "<group>"; };
+		CCB87357225D289A006C1B75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		CE069ED3225366000057F349 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		CE069ED52254A0F50057F349 /* TimeKeeper.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimeKeeper.storyboard; sourceTree = "<group>"; };
 		CE11914E2237C07900EE325C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -117,7 +118,6 @@
 		CE7C823B222682F500FA4B3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE7C823D222682F500FA4B3B /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		CE7C823F222682F500FA4B3B /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		CE7C8244222682F600FA4B3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE7C8247222682F600FA4B3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE7C8249222682F600FA4B3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE7C824E222682F600FA4B3B /* skirunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = skirunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -296,7 +296,7 @@
 				CE42A1882236A052000CBE46 /* Controller */,
 				CE42A1892236A071000CBE46 /* View */,
 				CE7C823B222682F500FA4B3B /* AppDelegate.swift */,
-				CE7C8244222682F600FA4B3B /* Assets.xcassets */,
+				CCB87357225D289A006C1B75 /* Assets.xcassets */,
 				CE7C8249222682F600FA4B3B /* Info.plist */,
 			);
 			path = skirun;
@@ -438,7 +438,7 @@
 				CC79C05D225B35B700F0C612 /* CameraStoryboard.storyboard in Resources */,
 				CE2C1F46222D684500D4A491 /* GoogleService-Info.plist in Resources */,
 				8424E3A1225BB531000902B4 /* AdminKeyManagement.storyboard in Resources */,
-				CE7C8245222682F600FA4B3B /* Assets.xcassets in Resources */,
+				CCB87358225D289B006C1B75 /* Assets.xcassets in Resources */,
 				CE1191582237DB8100EE325C /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

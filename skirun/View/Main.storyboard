@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -153,36 +153,42 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYq-Es-H0b">
-                                <rect key="frame" x="172" y="167" width="16" height="22"/>
+                                <rect key="frame" x="249" y="300" width="85" height="122"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="122" id="R2z-10-jbF"/>
+                                </constraints>
                                 <state key="normal" image="Location"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znN-qk-Ej9">
-                                <rect key="frame" x="71" y="118" width="16" height="120"/>
-                                <state key="normal" image="Management"/>
+                                <rect key="frame" x="80" y="300" width="97" height="120"/>
+                                <state key="normal" image="Management 2"/>
                                 <connections>
                                     <segue destination="oFV-Vs-ePn" kind="show" animates="NO" id="Ehz-FG-DVX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEQ-dF-vcK">
-                                <rect key="frame" x="75" y="560" width="103" height="120"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Generate Key"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEQ-dF-vcK">
+                                <rect key="frame" x="156" y="484" width="103" height="120"/>
+                                <state key="normal" image="Generate Key2"/>
                                 <connections>
                                     <action selector="adminPWFunc:" destination="8hz-nY-BuE" eventType="touchUpInside" id="cvd-1v-me0"/>
-                                    <segue destination="2Bc-k7-GFd" kind="show" identifier="MyAdminKeySegue" id="wI2-QW-CHW"/>
+                                    <segue destination="2Bc-k7-GFd" kind="show" identifier="MyAdminKeySegue" animates="NO" id="wI2-QW-CHW"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.027450980390000001" green="0.20000000000000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="znN-qk-Ej9" firstAttribute="centerY" secondItem="JYq-Es-H0b" secondAttribute="centerY" id="9sM-14-ueL"/>
+                            <constraint firstItem="DEQ-dF-vcK" firstAttribute="leading" secondItem="kq0-rm-9qa" secondAttribute="leading" constant="156" id="7YF-gG-RC8"/>
                             <constraint firstItem="Srq-Z4-jGa" firstAttribute="top" secondItem="fgZ-Hx-M1d" secondAttribute="topMargin" constant="-2" id="Ahn-S5-jrB"/>
                             <constraint firstAttribute="trailing" secondItem="Srq-Z4-jGa" secondAttribute="trailing" id="At6-yF-qjE"/>
-                            <constraint firstItem="znN-qk-Ej9" firstAttribute="centerY" secondItem="fgZ-Hx-M1d" secondAttribute="centerY" constant="-270" id="GyI-90-55n"/>
+                            <constraint firstItem="JYq-Es-H0b" firstAttribute="leading" secondItem="znN-qk-Ej9" secondAttribute="trailing" constant="72" id="Fr2-wJ-1YD"/>
+                            <constraint firstItem="znN-qk-Ej9" firstAttribute="centerY" secondItem="fgZ-Hx-M1d" secondAttribute="centerY" constant="-88" id="GyI-90-55n"/>
                             <constraint firstItem="Srq-Z4-jGa" firstAttribute="leading" secondItem="fgZ-Hx-M1d" secondAttribute="leading" id="KTS-xj-sic"/>
-                            <constraint firstItem="kq0-rm-9qa" firstAttribute="bottom" secondItem="znN-qk-Ej9" secondAttribute="bottom" constant="624" id="dc0-kK-jdh"/>
-                            <constraint firstItem="znN-qk-Ej9" firstAttribute="leading" secondItem="kq0-rm-9qa" secondAttribute="leading" constant="71" id="i3n-wj-hMS"/>
-                            <constraint firstItem="JYq-Es-H0b" firstAttribute="leading" secondItem="znN-qk-Ej9" secondAttribute="trailing" constant="85" id="y6U-4Q-dQb"/>
+                            <constraint firstItem="DEQ-dF-vcK" firstAttribute="centerX" secondItem="Srq-Z4-jGa" secondAttribute="centerX" id="N6D-rt-94Y"/>
+                            <constraint firstItem="kq0-rm-9qa" firstAttribute="bottom" secondItem="znN-qk-Ej9" secondAttribute="bottom" constant="442" id="dc0-kK-jdh"/>
+                            <constraint firstItem="znN-qk-Ej9" firstAttribute="leading" secondItem="kq0-rm-9qa" secondAttribute="leading" constant="80" id="i3n-wj-hMS"/>
+                            <constraint firstItem="kq0-rm-9qa" firstAttribute="bottom" secondItem="DEQ-dF-vcK" secondAttribute="bottom" constant="258" id="sx9-aB-XR2"/>
+                            <constraint firstItem="JYq-Es-H0b" firstAttribute="top" secondItem="znN-qk-Ej9" secondAttribute="top" id="ucp-fz-IMD"/>
+                            <constraint firstItem="DEQ-dF-vcK" firstAttribute="top" secondItem="JYq-Es-H0b" secondAttribute="bottom" constant="62" id="yMQ-L0-MQT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kq0-rm-9qa"/>
                         <userDefinedRuntimeAttributes>
@@ -689,7 +695,7 @@
                                 </subviews>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOi-C0-oFb">
-                                <rect key="frame" x="181" y="605" width="53" height="75"/>
+                                <rect key="frame" x="158" y="656" width="99" height="133"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Volunteer"/>
                                 <connections>
@@ -727,7 +733,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MYe-Ck-U0V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4313" y="17"/>
+            <point key="canvasLocation" x="4311.594202898551" y="16.741071428571427"/>
         </scene>
         <!--ManageSubscriber-->
         <scene sceneID="1sv-55-4L3">
@@ -1230,9 +1236,9 @@
         <image name="+" width="27" height="27"/>
         <image name="Admin" width="63" height="88"/>
         <image name="Fw" width="19" height="24"/>
-        <image name="Generate Key" width="80" height="70"/>
+        <image name="Generate Key2" width="100" height="110"/>
         <image name="Location" width="85" height="122"/>
-        <image name="Management" width="103" height="119"/>
+        <image name="Management 2" width="97" height="116"/>
         <image name="Settings white" width="42" height="42"/>
         <image name="Submit" width="60" height="60"/>
         <image name="Time White" width="30" height="30"/>
