@@ -62,7 +62,8 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
             self.myPicker.delegate = self
             self.myPicker.dataSource = self
             loadDisciplineData()
-    
+        
+
         }
     
     //2 PICKER METHODS -------------------------
@@ -143,7 +144,12 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     
     //Open previous page
     @IBAction func backButton(_ sender: Any) {
+        print("BACK BUTTON")
+        print("ChoosenMission", choosenMissions.count)
+        print("NotChoosenMission", choosenMissions.count)
+        
         if(choosenMissions.count > 0 || notChoosenMissions.count > 0){
+            print("BACK BUTTON_FOUND STH")
             subscribe()
         }
         else{
@@ -183,7 +189,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         let switchObj = UISwitch(frame: CGRect(x: 1, y: 1, width: 20, height: 20))
         if(alreadySubscribedMissions.contains(missionData[indexPath.row].jobs)){
             switchObj.isOn = true
-            choosenMissions.append(indexPath.row)
+            //choosenMissions.append(indexPath.row)
         }
         else{
             switchObj.isOn = false;
@@ -276,7 +282,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
             }
             self.dismiss(animated: true, completion: nil)
         }))
-        alertBox.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{(action: UIAlertAction!) in
+        alertBox.addAction(UIAlertAction(title: "No", style: .cancel, handler:{(action: UIAlertAction!) in
             self.dismiss(animated: true, completion: nil)
         }))
         self.present(alertBox, animated: true)

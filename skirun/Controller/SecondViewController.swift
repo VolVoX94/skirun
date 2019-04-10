@@ -244,8 +244,6 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
         let uid = Auth.auth().currentUser?.uid
         FirebaseManager.getUserByUID(uidUser: uid!) { (User) in
             self.myUser = User
-            print(uid)
-            print("ADMIN", self.myUser!.admin)
             if(self.myUser!.admin == true){
                 self.MyAdminButton.isHidden = false
             }
