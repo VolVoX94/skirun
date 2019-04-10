@@ -11,6 +11,11 @@ import Firebase
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var myBottomToButton_Gap: NSLayoutConstraint!
+    @IBOutlet weak var myThirdToSecodField_Gap: NSLayoutConstraint!
+    @IBOutlet weak var mySecondToFirstField_Gap: NSLayoutConstraint!
+    @IBOutlet weak var myFirstTextToTitle_Gap: NSLayoutConstraint!
+    @IBOutlet weak var myTitleToTop_Gap: NSLayoutConstraint!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var repeatPwField: UITextField!
@@ -26,6 +31,44 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         self.emailField.delegate = self
         self.passwordField.delegate = self
         self.repeatPwField.delegate = self
+        
+        //set height when keyboard is activated
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyBoardWillShow(notification:Notification){
+        print("Up")
+        if let userInfo = notification.userInfo as? Dictionary<String, AnyObject>{
+            let frame = userInfo[UIResponder.keyboardFrameEndUserInfoKey]
+            let keyBoardRect = frame?.cgRectValue
+            if let keyBoardHeight = keyBoardRect?.height{
+                self.myBottomToButton_Gap.constant = keyBoardHeight
+                
+                self.myTitleToTop_Gap.constant = 80
+                self.myFirstTextToTitle_Gap.constant = 30
+                self.mySecondToFirstField_Gap.constant = 20
+                self.myThirdToSecodField_Gap.constant = 20
+                
+                UIView.animate(withDuration: 0.5, animations:{
+                    self.view.layoutIfNeeded()
+                })
+            }
+        }
+    }
+    
+    @objc func keyBoardWillHide(notification:Notification){
+        print("Up")
+        
+        self.myTitleToTop_Gap.constant = 100
+        self.myFirstTextToTitle_Gap.constant = 80
+        self.mySecondToFirstField_Gap.constant = 40
+        self.myThirdToSecodField_Gap.constant = 40
+        self.myBottomToButton_Gap.constant = 10
+        UIView.animate(withDuration: 0.5, animations:{
+            self.view.layoutIfNeeded()
+        })
     }
     
     //Back button

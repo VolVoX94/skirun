@@ -17,12 +17,17 @@ class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
     var admin: Bool = false;
     var myUser:User?;
     
+    @IBOutlet weak var myUpperGapSpace: NSLayoutConstraint!
+    @IBOutlet weak var myMiddleGapSpace: NSLayoutConstraint!
+    @IBOutlet weak var myGapSpace: NSLayoutConstraint!
+    @IBOutlet weak var myKeyboardSafeSpace: NSLayoutConstraint!
     @IBOutlet weak var fnameField: UITextField!
     @IBOutlet weak var lnameField: UITextField!
     @IBOutlet weak var phonefield: UITextField!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var adminCheckNumber: UITextField!
     
+    @IBOutlet weak var myTitleTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var adminTest: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +37,49 @@ class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
         //UI field designing
         designTextField()
         
+        //set height when keyboard is activated
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+ 
         //KEYBOARD - RETURN = Button "next"
         self.fnameField.delegate = self
         self.lnameField.delegate = self
         self.phonefield.delegate = self
+    }
+    
+    @objc func keyBoardWillShow(notification:Notification){
+        print("Up")
+        if let userInfo = notification.userInfo as? Dictionary<String, AnyObject>{
+            let frame = userInfo[UIResponder.keyboardFrameEndUserInfoKey]
+            let keyBoardRect = frame?.cgRectValue
+            if let keyBoardHeight = keyBoardRect?.height{
+                self.myKeyboardSafeSpace.constant = keyBoardHeight
+                
+                self.myTitleTopConstraint.constant = 9
+                
+                    self.myGapSpace.constant = 10
+                    self.myMiddleGapSpace.constant = 10
+                self.myUpperGapSpace.constant = 20
+                
+                UIView.animate(withDuration: 0.5, animations:{
+                    self.view.layoutIfNeeded()
+                })
+            }
+        }
+    }
+    
+    @objc func keyBoardWillHide(notification:Notification){
+        print("Up")
+        self.myGapSpace.constant = 40
+        self.myKeyboardSafeSpace.constant = 10.0
+        self.myTitleTopConstraint.constant = 100
+        
+        self.myMiddleGapSpace.constant = 40
+        self.myUpperGapSpace.constant = 80
+        UIView.animate(withDuration: 0.5, animations:{
+            self.view.layoutIfNeeded()
+        })
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -222,16 +266,21 @@ class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
     
     //UI Design purpose
     func designTextField(){
+        
         fnameField.borderStyle = UITextField.BorderStyle.roundedRect
         fnameField.backgroundColor = UIColor.white
+        fnameField.frame.size.height = 50;
         
         lnameField.borderStyle = UITextField.BorderStyle.roundedRect
         lnameField.backgroundColor = UIColor.white
+        lnameField.frame.size.height = 50;
         
         phonefield.borderStyle = UITextField.BorderStyle.roundedRect
         phonefield.backgroundColor = UIColor.white
+        phonefield.frame.size.height = 50;
         
         adminCheckNumber.borderStyle = UITextField.BorderStyle.roundedRect
         adminCheckNumber.backgroundColor = UIColor.white
+        adminCheckNumber.frame.size.height = 50;
     }
 }

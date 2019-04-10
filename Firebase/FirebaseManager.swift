@@ -50,22 +50,21 @@ class FirebaseManager{
     static func getJobs(completion: @escaping ([String])-> Void){
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.jobType.rawValue);
         var jobs = [String]()
-        
-   
-        
+        // get all the job preferences in a list
         ref.observe(.value, with: { (snapshot) in
             for childSnapshot in snapshot.children{
+                // put it in the list
                 jobs.append((childSnapshot as AnyObject).key as String)
             }
             completion(jobs)
         })
     }
     
-    // ****** GET JOBS FROM CURRENT USER AS STRING
+    // ****** GET THE JOB FROM CURRENT USER AS STRING
     static func getJobsFromUser(uidUser: String, completion: @escaping (String) -> Void) {
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.user.rawValue).child(uidUser);
         var job = String()
-        
+        // get the job in the current user
         ref.observe(.value, with: { (snapshot) in
             job = snapshot.childSnapshot(forPath: FirebaseSession.USER_JOBPREFERENCE.rawValue).value as? String ?? "NULL"
             
@@ -190,20 +189,17 @@ class FirebaseManager{
                 )
             }
 
-            
-            
             //ADDING TO LIST
             completion(tempUser)
         })
-
-        
         
     }
     
+    // SAVE THE JOB SELECTED BY THE USER IN THE CURRENT USER
     static func saveJobPreferenceInUser(uidUser:String, newJobPreference:String){
-        
+        // save the job in the user
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.user.rawValue).child(uidUser).child(FirebaseSession.USER_JOBPREFERENCE.rawValue);
-        
+        // set new job preference
         ref.setValue(newJobPreference)
         
     }
