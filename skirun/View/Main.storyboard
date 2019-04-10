@@ -153,15 +153,15 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYq-Es-H0b">
-                                <rect key="frame" x="249" y="300" width="85" height="122"/>
+                                <rect key="frame" x="176" y="437" width="16" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="122" id="R2z-10-jbF"/>
                                 </constraints>
                                 <state key="normal" image="Location"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znN-qk-Ej9">
-                                <rect key="frame" x="80" y="300" width="97" height="120"/>
-                                <state key="normal" image="Management 2"/>
+                                <rect key="frame" x="75" y="388" width="16" height="120"/>
+                                <state key="normal" image="Management"/>
                                 <connections>
                                     <segue destination="oFV-Vs-ePn" kind="show" animates="NO" id="Ehz-FG-DVX"/>
                                 </connections>
@@ -974,6 +974,30 @@
                                     <action selector="backButton:" destination="42J-V3-VPw" eventType="touchUpInside" id="Jia-7L-cq7"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZAP-dl-gHh">
+                                <rect key="frame" x="38" y="132" width="339" height="461"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="cellRoles" id="RTP-nX-wgN">
+                                        <rect key="frame" x="0.0" y="28" width="339" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RTP-nX-wgN" id="z9y-qx-GrI">
+                                            <rect key="frame" x="0.0" y="0.0" width="339" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="q90-UI-9DG" userLabel="RolesSymbolizer">
+                                <rect key="frame" x="197" y="642" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="uZE-qL-7ZH"/>
@@ -987,10 +1011,14 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isHorizontal" value="NO"/>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="RolesWaitSymbolizer" destination="q90-UI-9DG" id="Cgm-Do-jJr"/>
+                        <outlet property="tableViewRoles" destination="ZAP-dl-gHh" id="ALc-Ub-ZeI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l7h-TV-qWJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1868" y="-696"/>
+            <point key="canvasLocation" x="1866.6666666666667" y="-696.42857142857144"/>
         </scene>
         <!--TimeKeeper-->
         <scene sceneID="cfT-ge-DV6">

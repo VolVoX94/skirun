@@ -61,6 +61,19 @@ class FirebaseManager{
         })
     }
     
+    // ****** GET JOBS FROM CURRENT USER AS STRING
+    static func getJobsFromUser(uidUser: String, completion: @escaping (String) -> Void) {
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.user.rawValue).child(uidUser);
+        var job = String()
+        
+        ref.observe(.value, with: { (snapshot) in
+            job = snapshot.childSnapshot(forPath: FirebaseSession.USER_JOBPREFERENCE.rawValue).value as! String
+            
+            completion(job)
+        })
+    }
+  
+    
     //3.-------------------------- DISCIPLINES --------------------------
     
     //***** GET DISCIPLINE AS STRING
@@ -163,9 +176,9 @@ class FirebaseManager{
     static func getUserByUID(uidUser: String, completion: @escaping (User) -> Void) {
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.user.rawValue).child(uidUser);
         ref.observe(.value, with: { (snapshot) in
-            var tempUser = User(firstName: "NULL", lastName: "NULL", phone: "NULL", admin: false, email: "NULL", password: "")
+            var tempUser = User(firstName: "NULL", lastName: "NULL", phone: "NULL", admin: false, email: "NULL", password: "", jobPreference: "")
             if(snapshot.childSnapshot(forPath: FirebaseSession.USER_FIRSTNAME.rawValue).value is NSNull){
-                tempUser = User(firstName: "NULL", lastName: "NULL", phone: "NULL", admin: false, email: "NULL", password: "")
+                tempUser = User(firstName: "NULL", lastName: "NULL", phone: "NULL", admin: false, email: "NULL", password: "", jobPreference: "NULL")
             }
             else{
                 //CREATING USER OBJECT
@@ -174,7 +187,7 @@ class FirebaseManager{
                                     phone: snapshot.childSnapshot(forPath: FirebaseSession.USER_PHONE.rawValue).value as? String ?? "NULL",
                                     admin: snapshot.childSnapshot(forPath: FirebaseSession.USER_ADMIN.rawValue).value as! Bool, // NOT NECESSARY
                     email: snapshot.childSnapshot(forPath: FirebaseSession.USER_EMAIL.rawValue).value as? String ?? "NULL",
-                    password: "" //NOT NECESSARY
+                    password: "", jobPreference: ""//NOT NECESSARY
                 )
             }
 
@@ -184,6 +197,15 @@ class FirebaseManager{
             completion(tempUser)
         })
 
+        
+        
+    }
+    
+    static func saveJobPreferenceInUser(uidUser:String, newJobPreference:String){
+        
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.user.rawValue).child(uidUser).child(FirebaseSession.USER_JOBPREFERENCE.rawValue);
+        
+        ref.setValue(newJobPreference)
         
     }
     

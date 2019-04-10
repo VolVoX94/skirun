@@ -17,14 +17,16 @@ class User {
     let phone: String
     let admin: Bool
     let password: String
+    let jobPreference: String?
     
-    init(firstName: String, lastName: String, phone: String, admin: Bool, email: String, password: String) {
+    init(firstName: String, lastName: String, phone: String, admin: Bool, email: String, password: String, jobPreference: String?) {
         self.firstName = firstName;
         self.lastName = lastName;
         self.email = email;
         self.phone = phone;
         self.admin = admin;
         self.password = password;
+        self.jobPreference = jobPreference;
     }
     
     
@@ -34,7 +36,8 @@ class User {
             "lastName": lastName,
             "email": email,
             "phone": phone,
-            "admin": admin
+            "admin": admin,
+            "jobPreference": jobPreference
         ]
     }
 }

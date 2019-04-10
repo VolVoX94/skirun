@@ -156,7 +156,9 @@ class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
                 phone: phonefield.text!,
                 admin: admin,
                 email: email!,
-                password: password!);
+                password: password!,
+                jobPreference: ""
+            );
             
             print(myUser!.firstName + myUser!.lastName + myUser!.phone + myUser!.password + myUser!.email);
             
