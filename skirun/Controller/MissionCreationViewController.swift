@@ -14,6 +14,7 @@ import FirebaseDatabase
 class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
     
     
+    @IBOutlet var swipeRight: UISwipeGestureRecognizer!
     var disciplines: String?
     var jobs: String?
 
@@ -124,6 +125,8 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         print("missionChoose-----", self.missionChoose)
         if(missionChoose != "none"){
             loadMission()
+            swipeRight.addTarget(self, action: #selector(handleSwipe(sender:)))
+            view.addGestureRecognizer(swipeRight)
         }
         
     }
@@ -343,9 +346,23 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         
         
         //add the object
-        ref.setValue(newMission.toAnyObject())
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if snapshot.hasChildren(){
+                let alertBox = UIAlertController(title: "This mission already exist !", message: "", preferredStyle: .actionSheet)
+                
+                alertBox.addAction(UIAlertAction(title:"Ok", style: .cancel, handler:nil))
+                
+                self.present(alertBox, animated: true);
+                
+            }else{
+                //add the object
+                ref.setValue(newMission.toAnyObject())
+                self.dismiss(animated: false, completion: nil)
+            }
+        })
         
-       self.dismiss(animated: false, completion: nil)
+        
     }
     
     
@@ -356,6 +373,42 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
          self.missionChoose = "none"
          self.competitionChoose = "none"
          self.dismiss(animated: false, completion: nil)
+    }
+    
+    @objc func handleSwipe(sender: UISwipeGestureRecognizer) {
+        if sender.state == .ended {
+            
+            let title = "Delete the mission"
+            let message = "This action will delete the mission and all result associated ! To continue, enter the name of the mission."
+            
+            let inputController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            inputController.addTextField { (textField: UITextField!) in
+                textField.placeholder = "Mission name"
+            }
+            
+            let submitAction = UIAlertAction(title: "Delete", style: .destructive) { (paramAction:UIAlertAction) in
+                if let textFields = inputController.textFields{
+                    let theTextFields = textFields as [UITextField]
+                    let name = theTextFields[0].text!
+                    
+                    if(name == self.missionChoose){
+                        self.deleteMission(name: name)
+                    }else{
+                        self.present(inputController, animated: true, completion: nil)
+                    }
+                }
+            }
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+            inputController.addAction(cancel)
+            inputController.addAction(submitAction)
+            self.present(inputController, animated: true, completion: nil)
+        }
+    }
+    
+    func deleteMission(name: String){
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(self.competitionChoose).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(self.disciplineChoose).child(name);
+        ref.removeValue()
+        self.dismiss(animated: false, completion: nil)
     }
     
     

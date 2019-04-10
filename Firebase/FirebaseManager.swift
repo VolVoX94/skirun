@@ -118,7 +118,7 @@ class FirebaseManager{
         var numberOfDisciplines = [String]()
         
         ref.observe(.value, with: { (snapshot) in
-            
+            print("changggee-------------")
             for childSnapshot in snapshot.children{
                 numberOfDisciplines.append((childSnapshot as AnyObject).key as String)
             }

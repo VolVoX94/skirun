@@ -592,6 +592,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hfq-Nq-UNw">
                                         <rect key="frame" x="20" y="8" width="374" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -600,6 +601,9 @@
                                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="TQ1-CZ-18r" appends="YES" id="faO-Le-49H"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Description..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WSJ-HA-M3Q">
                                         <rect key="frame" x="20" y="60" width="374" height="30"/>
@@ -767,9 +771,11 @@
                         <outlet property="pickerView" destination="Jm6-WL-s1j" id="j9m-rA-4aZ"/>
                         <outlet property="save" destination="QBQ-Yc-zeU" id="HgM-Yg-qZC"/>
                         <outlet property="startTime" destination="fk3-pE-7Wv" id="kSd-cj-o1f"/>
+                        <outlet property="swipeRight" destination="TQ1-CZ-18r" id="DER-Dz-X5o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MYe-Ck-U0V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="TQ1-CZ-18r"/>
             </objects>
             <point key="canvasLocation" x="4311.594202898551" y="16.741071428571427"/>
         </scene>

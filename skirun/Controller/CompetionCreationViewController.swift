@@ -85,17 +85,13 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
                     if(name == self.competiton?.name){
                         self.deleteCompetition(name: name)
                     }else{
-                         self.present(inputController, animated: true, completion: nil)
+                        self.present(inputController, animated: true, completion: nil)
                     }
                 }
             }
-            
             let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-            
-            
             inputController.addAction(cancel)
             inputController.addAction(submitAction)
-            
             self.present(inputController, animated: true, completion: nil)
         }
     }
@@ -213,6 +209,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         FirebaseManager.getDisciplinesOfCompetition(name: self.selectedCompetition!) { (pickerData) in
             self.pickerData = Array(pickerData)
             self.pickerData.insert("Please select", at: 0)
+            self.disciplinePicker.reloadAllComponents()
         }
     }
     //
@@ -295,8 +292,22 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(newCompetition.name);
         
         //add the object
-        ref.setValue(newCompetition.toAnyObject())
-        self.save.isEnabled = false
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if snapshot.hasChildren(){
+                let alertBox = UIAlertController(title: "This competition already exist !", message: "", preferredStyle: .actionSheet)
+        
+                alertBox.addAction(UIAlertAction(title:"Ok", style: .cancel, handler:nil))
+                
+                self.present(alertBox, animated: true);
+                
+            }else{
+                ref.setValue(newCompetition.toAnyObject())
+                self.save.isEnabled = false
+            }
+        })
+        
+    
     }
     
     func isValidTexte(test:String)-> Bool {
@@ -334,6 +345,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     
     func deleteCompetition(name: String){
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(self.competiton!.name)
+        
         ref.removeValue()
         self.dismiss(animated: false, completion: nil)
     }
