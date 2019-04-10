@@ -12,6 +12,8 @@ import Firebase
 class LoginViewController: UIViewController,  UITextFieldDelegate {
 
     
+    @IBOutlet weak var myRegisterToSubmit_Gap: NSLayoutConstraint!
+    @IBOutlet weak var myTopTitelToTop_Gap: NSLayoutConstraint!
     @IBOutlet weak var myRegisterToBottom_Gap: NSLayoutConstraint!
     @IBOutlet weak var myLoginToTopTitle_Gap: NSLayoutConstraint!
     @IBOutlet weak var emailField: UITextField!
@@ -50,9 +52,18 @@ class LoginViewController: UIViewController,  UITextFieldDelegate {
             let frame = userInfo[UIResponder.keyboardFrameEndUserInfoKey]
             let keyBoardRect = frame?.cgRectValue
             if let keyBoardHeight = keyBoardRect?.height{
-                self.myRegisterToBottom_Gap.constant = keyBoardHeight
+                //Calculating relation
+                let screenSize: CGRect = UIScreen.main.bounds
+                let screenHeight = screenSize.height
+                let factor = screenHeight/568
+                print("Höhe:", screenHeight)
                 
-                self.myLoginToTopTitle_Gap.constant = 50
+                self.myRegisterToBottom_Gap.constant = keyBoardHeight + 10*factor
+                
+                self.myTopTitelToTop_Gap.constant = -110
+                self.myRegisterToSubmit_Gap.constant = 10*factor
+                
+
                 
                 UIView.animate(withDuration: 0.5, animations:{
                     self.view.layoutIfNeeded()
@@ -64,9 +75,10 @@ class LoginViewController: UIViewController,  UITextFieldDelegate {
     @objc func keyBoardWillHide(notification:Notification){
         print("Up")
         
-        self.myRegisterToBottom_Gap.constant = 150
+        self.myRegisterToBottom_Gap.constant = 47
+        self.myRegisterToSubmit_Gap.constant = 48
+        self.myTopTitelToTop_Gap.constant = 57
         
-        self.myLoginToTopTitle_Gap.constant = 150
         UIView.animate(withDuration: 0.5, animations:{
             self.view.layoutIfNeeded()
         })
@@ -109,5 +121,4 @@ class LoginViewController: UIViewController,  UITextFieldDelegate {
         passwordField.borderStyle = UITextField.BorderStyle.roundedRect
         passwordField.backgroundColor = UIColor.white
     }
-
 }

@@ -13,6 +13,7 @@
 		8424E3A3225BB903000902B4 /* KeyAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424E3A2225BB903000902B4 /* KeyAdminViewController.swift */; };
 		8424E3A5225CB400000902B4 /* FirebaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424E3A4225CB400000902B4 /* FirebaseTests.swift */; };
 		8424E3A7225CBD98000902B4 /* KeyManagementTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424E3A6225CBD98000902B4 /* KeyManagementTest.swift */; };
+		8425F120225E41CC0037B15A /* MyUIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8425F11F225E41CC0037B15A /* MyUIDevice.swift */; };
 		842ABBFA2253658400C48CD1 /* TimeKeeperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842ABBF92253658300C48CD1 /* TimeKeeperViewController.swift */; };
 		842ABBFD2253689800C48CD1 /* ManageSubscriber.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842ABBFC2253689800C48CD1 /* ManageSubscriber.storyboard */; };
 		842ABBFF22537D0200C48CD1 /* AdminSubscriberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842ABBFE22537D0200C48CD1 /* AdminSubscriberViewController.swift */; };
@@ -80,6 +81,7 @@
 		8424E3A2225BB903000902B4 /* KeyAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyAdminViewController.swift; sourceTree = "<group>"; };
 		8424E3A4225CB400000902B4 /* FirebaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTests.swift; sourceTree = "<group>"; };
 		8424E3A6225CBD98000902B4 /* KeyManagementTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyManagementTest.swift; sourceTree = "<group>"; };
+		8425F11F225E41CC0037B15A /* MyUIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUIDevice.swift; sourceTree = "<group>"; };
 		842ABBF92253658300C48CD1 /* TimeKeeperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeKeeperViewController.swift; sourceTree = "<group>"; };
 		842ABBFC2253689800C48CD1 /* ManageSubscriber.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ManageSubscriber.storyboard; sourceTree = "<group>"; };
 		842ABBFE22537D0200C48CD1 /* AdminSubscriberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSubscriberViewController.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				842ABC0222549A6C00C48CD1 /* MyTabBarCustomization.swift */,
 				CC79C05C225B35B700F0C612 /* CameraStoryboard.storyboard */,
 				8424E3A0225BB531000902B4 /* AdminKeyManagement.storyboard */,
+				8425F11F225E41CC0037B15A /* MyUIDevice.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				CE7C823E222682F500FA4B3B /* FirstViewController.swift in Sources */,
 				84C056FC22490DC7009367AF /* DetailAvailability.swift in Sources */,
 				8445A78D22394B930018C1EE /* CompetionCreationViewController.swift in Sources */,
+				8425F120225E41CC0037B15A /* MyUIDevice.swift in Sources */,
 				CC6D4633225B9A81005FB27B /* RolesViewController.swift in Sources */,
 				CE42A18622369D56000CBE46 /* DetailsSignupViewController.swift in Sources */,
 			);

@@ -16,7 +16,16 @@ class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
     var password: String?;
     var admin: Bool = false;
     var myUser:User?;
+    @IBOutlet weak var myMiddleBottomGap: NSLayoutConstraint!
     
+    @IBOutlet weak var myAdminGap: NSLayoutConstraint!
+    @IBOutlet weak var myMiddleTopGap: NSLayoutConstraint!
+    @IBOutlet weak var myFourthField_Height: NSLayoutConstraint!
+    @IBOutlet weak var myThirdField_Height: NSLayoutConstraint!
+
+    @IBOutlet weak var mySecondField_Height: NSLayoutConstraint!
+    
+    @IBOutlet weak var myFirstField_Height: NSLayoutConstraint!
     @IBOutlet weak var myUpperGapSpace: NSLayoutConstraint!
     @IBOutlet weak var myMiddleGapSpace: NSLayoutConstraint!
     @IBOutlet weak var myGapSpace: NSLayoutConstraint!
@@ -54,13 +63,27 @@ class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
             let frame = userInfo[UIResponder.keyboardFrameEndUserInfoKey]
             let keyBoardRect = frame?.cgRectValue
             if let keyBoardHeight = keyBoardRect?.height{
-                self.myKeyboardSafeSpace.constant = keyBoardHeight
+                //Calculating relation
+                let screenSize: CGRect = UIScreen.main.bounds
+                let screenHeight = screenSize.height
+                let factor = screenHeight/568
                 
-                self.myTitleTopConstraint.constant = 9
+                self.myKeyboardSafeSpace.constant = keyBoardHeight + 10*factor
                 
-                    self.myGapSpace.constant = 10
-                    self.myMiddleGapSpace.constant = 10
-                self.myUpperGapSpace.constant = 20
+                self.myTitleTopConstraint.constant = -100
+                self.myFirstField_Height.constant  = 30
+                self.mySecondField_Height.constant  = 30
+                self.myThirdField_Height.constant  = 30
+                self.myFourthField_Height.constant  = 30
+                if(factor <= 1){
+                    self.myGapSpace.constant = 3
+                    self.myMiddleGapSpace.constant = 3
+                    self.myMiddleTopGap.constant = 3
+                    self.myAdminGap.constant = 3
+                    self.myMiddleBottomGap.constant = 3
+                }
+                
+                self.myUpperGapSpace.constant = 100*factor
                 
                 UIView.animate(withDuration: 0.5, animations:{
                     self.view.layoutIfNeeded()
@@ -71,12 +94,18 @@ class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
     
     @objc func keyBoardWillHide(notification:Notification){
         print("Up")
-        self.myGapSpace.constant = 40
-        self.myKeyboardSafeSpace.constant = 10.0
-        self.myTitleTopConstraint.constant = 100
-        
-        self.myMiddleGapSpace.constant = 40
-        self.myUpperGapSpace.constant = 80
+        self.myGapSpace.constant = 25
+        self.myKeyboardSafeSpace.constant = 9.0
+        self.myTitleTopConstraint.constant = 56
+        self.myAdminGap.constant = 25
+        self.myMiddleGapSpace.constant = 31
+        self.myMiddleTopGap.constant = 31
+        self.myMiddleBottomGap.constant = 31
+        self.myUpperGapSpace.constant = 62
+        self.myFirstField_Height.constant  = 40
+        self.mySecondField_Height.constant  = 40
+        self.myThirdField_Height.constant  = 40
+        self.myFourthField_Height.constant  = 40
         UIView.animate(withDuration: 0.5, animations:{
             self.view.layoutIfNeeded()
         })

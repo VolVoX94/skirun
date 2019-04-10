@@ -7,10 +7,12 @@
 //
 
 import UIKit
-import Firebase
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var myThirdFieldHeight: NSLayoutConstraint!
+    @IBOutlet weak var mySecondFieldHeight: NSLayoutConstraint!
+    @IBOutlet weak var myFieldHeight: NSLayoutConstraint!
     @IBOutlet weak var myBottomToButton_Gap: NSLayoutConstraint!
     @IBOutlet weak var myThirdToSecodField_Gap: NSLayoutConstraint!
     @IBOutlet weak var mySecondToFirstField_Gap: NSLayoutConstraint!
@@ -44,12 +46,19 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             let frame = userInfo[UIResponder.keyboardFrameEndUserInfoKey]
             let keyBoardRect = frame?.cgRectValue
             if let keyBoardHeight = keyBoardRect?.height{
-                self.myBottomToButton_Gap.constant = keyBoardHeight
+                //Calculating relation
+                let screenSize: CGRect = UIScreen.main.bounds
+                let screenHeight = screenSize.height
+                let factor = screenHeight/568
+                self.myBottomToButton_Gap.constant = keyBoardHeight + 10*factor
                 
-                self.myTitleToTop_Gap.constant = 80
-                self.myFirstTextToTitle_Gap.constant = 30
-                self.mySecondToFirstField_Gap.constant = 20
-                self.myThirdToSecodField_Gap.constant = 20
+                self.myTitleToTop_Gap.constant = -100
+                self.myFirstTextToTitle_Gap.constant = 120*factor
+                self.mySecondToFirstField_Gap.constant = 20*factor
+                self.myThirdToSecodField_Gap.constant = 20*factor
+                self.myFieldHeight.constant = 35
+                self.myThirdFieldHeight.constant = 35
+                self.mySecondFieldHeight.constant = 35
                 
                 UIView.animate(withDuration: 0.5, animations:{
                     self.view.layoutIfNeeded()
@@ -61,11 +70,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @objc func keyBoardWillHide(notification:Notification){
         print("Up")
         
-        self.myTitleToTop_Gap.constant = 100
-        self.myFirstTextToTitle_Gap.constant = 80
-        self.mySecondToFirstField_Gap.constant = 40
-        self.myThirdToSecodField_Gap.constant = 40
-        self.myBottomToButton_Gap.constant = 10
+        self.myFieldHeight.constant = 40
+        self.myThirdFieldHeight.constant = 40
+        self.mySecondFieldHeight.constant = 40
+        self.myTitleToTop_Gap.constant = 68
+        self.myFirstTextToTitle_Gap.constant = 74
+        self.mySecondToFirstField_Gap.constant = 42
+        self.myThirdToSecodField_Gap.constant = 42
+        self.myBottomToButton_Gap.constant = 38
         UIView.animate(withDuration: 0.5, animations:{
             self.view.layoutIfNeeded()
         })
