@@ -67,7 +67,7 @@ class FirebaseManager{
         var job = String()
         
         ref.observe(.value, with: { (snapshot) in
-            job = snapshot.childSnapshot(forPath: FirebaseSession.USER_JOBPREFERENCE.rawValue).value as! String
+            job = snapshot.childSnapshot(forPath: FirebaseSession.USER_JOBPREFERENCE.rawValue).value as? String ?? "NULL"
             
             completion(job)
         })

@@ -95,7 +95,8 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
         } else if selectedMissionJob!.contains("ontroller") {
             performSegue(withIdentifier: "toMissionController", sender: self)
         } else {
-            performSegue(withIdentifier: "toMissionLogistics", sender: self)
+            performSegue(withIdentifier: "toMission", sender: self)
+           // performSegue(withIdentifier: "toMissionLogistics", sender: self)
         }
     }
     
@@ -110,12 +111,12 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
             destinationController.currentMission = self.selectedMission;
             destinationController.currentDiscipline = selectedDiscipline;
             destinationController.currentCompetition = selectedCompetition
-        } else if segue.identifier == "toMissionLogistics" {
+        }/* else if segue.identifier == "toMissionLogistics" {
             let destinationController = segue.destination as! VideoViewController;
             destinationController.currentMission = self.selectedMission;
             destinationController.currentDiscipline = selectedDiscipline;
             destinationController.currentCompetition = selectedCompetition
-        }
+        }*/
 
     }
     
