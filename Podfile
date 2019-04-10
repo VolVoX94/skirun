@@ -14,6 +14,10 @@ target 'skirun' do
   target 'skirunTests' do
     inherit! :search_paths
     # Pods for testing
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
   end
 
 end
