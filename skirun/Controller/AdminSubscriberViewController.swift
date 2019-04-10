@@ -138,31 +138,7 @@ class AdminSubscriberViewController: UIViewController, UITableViewDataSource, UI
             let switchObj = UISwitch(frame: CGRect(x: 1, y: 1, width: 20, height: 20))
             switchObj.isHidden = true
             cell.accessoryView = switchObj
-            print("NULL FOUND")
         }
-
-        /*
-        let button = KGRadioButton(frame: CGRect(x:20, y:170, width: 30, height: 30))
-        button.addTarget(self, action: #selector(manualAction(sender:)), for: .touchUpInside)
-        button.tag = indexPath.row
-        button.innerCircleCircleColor = UIColor.white
-        button.outerCircleColor = UIColor.white
-        cell.accessoryView = button
-        if(selectedUser == button.tag){
-            button.isSelected = true
-        }
-        
-        if(self.alreadySelected == data[indexPath.row]){
-            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
-            
-            label.textAlignment = .right
-            label.textColor = UIColor.white
-            label.font = UIFont(name: "Avenir Next", size: 15)
-            label.text = "Current"
-            label.font = UIFont.boldSystemFont(ofSize: label.font.pointSize)
-            cell.accessoryView = label
-        }*/
-        
         return cell //4.
 
     }

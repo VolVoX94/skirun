@@ -96,7 +96,6 @@ class FirebaseManager{
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(nameCompetition).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(nameDiscipline).child(nameMission);
         
         ref.observe(.value, with: { (snapshot) in
-            print(snapshot)
             let mission = Mission(title: snapshot.key,
                                   description: snapshot.childSnapshot(forPath:
                                     FirebaseSession.MISSION_DESCRIPTION.rawValue).value as? String ?? "NULL",
@@ -361,7 +360,6 @@ class FirebaseManager{
             var tempNumber = snapshot.childSnapshot(forPath: FirebaseSession.ADMIN_CHECKNUMBER.rawValue).value as! String
             if(tempNumber.suffix(2) != inputDate){
                 result(true)
-                print("Key AUTOMATICALLY GENERATED")
             }
             else{
                 result(false)
@@ -372,7 +370,6 @@ class FirebaseManager{
     //**** Get last Updated date
     static func getLastCheckNumberDate(result: @escaping(String)-> Void){
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.admin.rawValue)
-        print("2")
         
         ref.observe(.value, with: {(snapshot) in
             var tempDate = snapshot.childSnapshot(forPath: FirebaseSession.ADMIN_LASTUPDATE.rawValue).value as! String

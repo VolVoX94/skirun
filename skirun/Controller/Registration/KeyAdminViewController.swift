@@ -64,7 +64,6 @@ class KeyAdminViewController: UIViewController {
     }
     
     private func getDate(){
-        print("1")
         FirebaseManager.getLastCheckNumberDate { (String) in
             
             self.myLastUpdateLabel.text = String
