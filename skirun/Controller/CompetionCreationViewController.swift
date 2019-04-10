@@ -35,6 +35,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     var endDateInt = 0
     
 
+    @IBOutlet var rightSwip: UISwipeGestureRecognizer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,21 +54,43 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
             self.missionTableview.dataSource = self
             self.disciplinePicker.isHidden = false
             
-            let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
-            view.addGestureRecognizer(rightSwipe)
+            //let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
+            rightSwip.addTarget(self, action: #selector(handleSwipe(sender:)))
+            view.addGestureRecognizer(rightSwip)
         }
     }
     
     @objc func handleSwipe(sender: UISwipeGestureRecognizer) {
         if sender.state == .ended {
-            let alertBox = UIAlertController(
-                title: "Delete this competiton",
-                message: "This action will delete the competiton and all missions associated !",
-                preferredStyle: .actionSheet)
             
-            alertBox.addAction(UIAlertAction(title:"Ok", style: .cancel, handler:nil))
+            let title = "Delete the competion"
+            let message = "This action will delete the competition and all missions associated ! To continue, enter the name of the competition."
             
-            self.present(alertBox, animated: true);
+            let inputController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            inputController.addTextField { (textField: UITextField!) in
+                textField.placeholder = "Competition name"
+            }
+            
+            let submitAction = UIAlertAction(title: "Delete", style: .destructive) { (paramAction:UIAlertAction) in
+                if let textFields = inputController.textFields{
+                    let theTextFields = textFields as [UITextField]
+                    let name = theTextFields[0].text!
+                    
+                    if(name == self.competiton?.name){
+                        self.deleteCompetition(name: name)
+                    }else{
+                         self.present(inputController, animated: true, completion: nil)
+                    }
+                }
+            }
+            
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+            
+            
+            inputController.addAction(cancel)
+            inputController.addAction(submitAction)
+            
+            self.present(inputController, animated: true, completion: nil)
         }
     }
     
@@ -297,6 +320,12 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         destinationController.missionChoose = selectedMission
         destinationController.disciplineChoose = selectedDiscipline
         }
+    }
+    
+    func deleteCompetition(name: String){
+        let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(self.competiton!.name)
+        ref.removeValue()
+        self.dismiss(animated: false, completion: nil)
     }
     
     
