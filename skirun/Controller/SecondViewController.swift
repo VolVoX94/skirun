@@ -54,7 +54,12 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
         // set the label for no data input to ""
         self.noDataLabel.text = ""
         // Call the compettions
-        self.loadListCompetitions();
+        do {
+            let printComp = try self.loadListCompetitions();
+            print(printComp)
+        } catch {
+            print(error)
+        }
     }
     
     // ------------------------- table view and picker view  -------------------------
@@ -71,18 +76,13 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         let cell = TableViewMission.dequeueReusableCell(withIdentifier: "cellMissionSelected")!
-        do{
-           
-            cell.textLabel?.textColor = UIColor.white
-            let start: UnixTime = listMissions[indexPath.row].startTime
-            let text = "\(listMissions[indexPath.row].title) \(" ") \(start.toDateTime)"//2.
-            cell.selectionStyle = UITableViewCell.SelectionStyle.none
-            cell.textLabel?.text = text //3.
-      
-        } catch let error as NSError{
-            print(error.localizedDescription)
-        }
+        let cell = TableViewMission.dequeueReusableCell(withIdentifier: "cellMissionSelected")!
+       
+        cell.textLabel?.textColor = UIColor.white
+        let start: UnixTime = listMissions[indexPath.row].startTime
+        let text = "\(listMissions[indexPath.row].title) \(" ") \(start.toDateTime)"//2.
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        cell.textLabel?.text = text //3.
         return cell
     }
     
@@ -154,7 +154,13 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
                 self.listMissions.removeAll()
                 self.TableViewMission.reloadData()
                 // load the missions from the competition and the discipline selected
-                self.loadListDisciplines();
+                do {
+                    let printDisc = try self.loadListDisciplines();
+                    print(printDisc)
+                } catch {
+                    print(error)
+                }
+               
             }
         }
        // picker disciplines
@@ -162,12 +168,18 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
         // get the selected discipline
         self.selectedDiscipline = self.listDisciplines[row]
         // load the missions
-        self.loadListMissions();
+        do {
+            let printDisc = try self.loadListMissions();
+            print(printDisc)
+        } catch {
+            print(error)
+        }
+        
         }
     }
     
     // load the list of all competitions
-    func loadListCompetitions(){
+    func loadListCompetitions() throws{
        // call firebase
         FirebaseManager.getCompetitons(completion: { (data) in
             self.listCompetitions = Array(data)
@@ -179,7 +191,7 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     }
     
     // load list of disciplines
-    func loadListDisciplines(){
+    func loadListDisciplines() throws {
         // remove the conent of the list of missions
         self.listMissions.removeAll()
         self.listDisciplines = [String]()
@@ -193,7 +205,12 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
             if (self.listDisciplines.count>0){
                 self.selectedDiscipline = self.listDisciplines[0]
                 // Load the missions
-                self.loadListMissions();
+                do {
+                    let printDisc = try self.loadListMissions();
+                    print(printDisc)
+                } catch {
+                    print(error)
+                }
                 // set label of no data to ""
                 self.noDataLabel.text = ""
             }
@@ -206,7 +223,7 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     }
     
     // load list of missions
-    func loadListMissions(){
+    func loadListMissions() throws{
         
         //refresh
         self.listMissions.removeAll()

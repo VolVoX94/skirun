@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -153,14 +153,14 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYq-Es-H0b">
-                                <rect key="frame" x="176" y="437" width="16" height="22"/>
+                                <rect key="frame" x="255" y="300" width="85" height="122"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="122" id="R2z-10-jbF"/>
                                 </constraints>
                                 <state key="normal" image="Location"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znN-qk-Ej9">
-                                <rect key="frame" x="75" y="388" width="16" height="120"/>
+                                <rect key="frame" x="80" y="300" width="103" height="120"/>
                                 <state key="normal" image="Management"/>
                                 <connections>
                                     <segue destination="oFV-Vs-ePn" kind="show" animates="NO" id="Ehz-FG-DVX"/>
@@ -369,6 +369,9 @@
                                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Z4J-eh-InQ" appends="YES" id="H9f-4Q-HDO"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="End Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oQY-Q5-q9N">
                                         <rect key="frame" x="8" y="81" width="398" height="30"/>
@@ -514,12 +517,14 @@
                         <outlet property="endDate" destination="oQY-Q5-q9N" id="aOE-M3-ucc"/>
                         <outlet property="missionTableview" destination="uGi-lf-YB2" id="I33-ye-GHB"/>
                         <outlet property="refApi" destination="JhP-0g-fIi" id="hgv-xp-2N3"/>
+                        <outlet property="rightSwip" destination="Z4J-eh-InQ" id="Oo3-n7-D2H"/>
                         <outlet property="save" destination="jyf-d2-Y5X" id="pAy-9p-0bH"/>
                         <outlet property="startDate" destination="HxE-X9-Xx1" id="jUo-Pj-Alu"/>
                         <outlet property="titleCompetition" destination="M1a-B7-wst" id="XCa-vZ-i2T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lnh-jQ-xcD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="Z4J-eh-InQ"/>
             </objects>
             <point key="canvasLocation" x="3351" y="17"/>
         </scene>
@@ -1266,7 +1271,7 @@
         <image name="Fw" width="19" height="24"/>
         <image name="Generate Key2" width="100" height="110"/>
         <image name="Location" width="85" height="122"/>
-        <image name="Management 2" width="97" height="116"/>
+        <image name="Management" width="103" height="119"/>
         <image name="Settings white" width="42" height="42"/>
         <image name="Submit" width="60" height="60"/>
         <image name="Time White" width="30" height="30"/>

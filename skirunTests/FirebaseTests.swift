@@ -49,5 +49,18 @@ class FirebaseTests: XCTestCase {
             XCTAssertNotNil(Data)
         }
     }
+    
+    func test_GetNoneExistingMission() {
+        FirebaseManager.getMission(nameCompetition: "NoneExisting", nameDiscipline: "NoneExisting", nameMission: "NoneExisting") { (data) in
+            let mission = data
+            XCTAssertEqual(mission.description, "NULL")
+            XCTAssertEqual(mission.endTime, 0)
+            XCTAssertEqual(mission.startTime, 0)
+            XCTAssertEqual(mission.nbPeople, 0)
+            XCTAssertEqual(mission.jobs, "NULL")
+            XCTAssertEqual(mission.location, "NULL")
+        }
+    }
+
 
 }

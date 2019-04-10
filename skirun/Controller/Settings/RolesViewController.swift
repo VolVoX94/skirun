@@ -23,9 +23,6 @@ class RolesViewController: UIViewController, UITableViewDataSource, UITableViewD
     // get the current job preference
     private var currentJobPreference:String?
     
-    // get current user
-    let currentUserUid = Auth.auth().currentUser?.uid
-    
     // Wait symbolizer
     @IBOutlet weak var RolesWaitSymbolizer: UIActivityIndicatorView!
     
@@ -36,9 +33,21 @@ class RolesViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableViewRoles.delegate = self
         RolesWaitSymbolizer.startAnimating()
         // load the job preferences from the current user
-        self.loadJobPreferenceByUser()
+        do {
+           let printJobPref = try self.loadJobPreferenceByUser()
+            print(printJobPref)
+        } catch {
+            print(error)
+        }
+        
         // load the list of job preferences
-        self.loadListTypeOfJobs()
+        do {
+            let printListJobs = try self.loadListTypeOfJobs()
+            print(printListJobs)
+        } catch {
+            print(error)
+        }
+        
     }
     
     // button back
@@ -80,7 +89,13 @@ class RolesViewController: UIViewController, UITableViewDataSource, UITableViewD
             // set the button to true
             button.isSelected = true
             // save the job in the user in firebase
-            saveJobPreferenceChoosen()
+            do {
+                let printSave = try self.saveJobPreferenceChoosen()
+                print(printSave)
+            } catch {
+                print(error)
+            }
+           
         }
         else {
             // set all others button to false
@@ -93,7 +108,6 @@ class RolesViewController: UIViewController, UITableViewDataSource, UITableViewD
             // set the button to true
             button.isSelected = true
         }
-      
         // return cell
         return cell //4.
     }
@@ -120,7 +134,7 @@ class RolesViewController: UIViewController, UITableViewDataSource, UITableViewD
    // ------ FIREBASE
     
     // load all the lists of the jobs
-    func loadListTypeOfJobs(){
+    func loadListTypeOfJobs() throws{
         // remove all data
         self.listJobType.removeAll()
        
@@ -136,7 +150,7 @@ class RolesViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     // load the job preference for the current user
-    func loadJobPreferenceByUser(){
+    func loadJobPreferenceByUser() throws{
         // call firebase method getjobsfromuser
         FirebaseManager.getJobsFromUser(uidUser: (Auth.auth().currentUser?.uid)!) { (data) in
             // if the current job doesn't exist set it to ""
@@ -146,13 +160,11 @@ class RolesViewController: UIViewController, UITableViewDataSource, UITableViewD
             // set the current job with the data
             self.currentJobPreference = data
         }
-        
     }
     
     // save the job choosen by the user in the firebase
-    func saveJobPreferenceChoosen(){
+    func saveJobPreferenceChoosen() throws{
         // call firebase method and save job preference in the current user
         FirebaseManager.saveJobPreferenceInUser(uidUser: (Auth.auth().currentUser?.uid)!, newJobPreference: self.currentJobPreference!)
     }
-    
 }
