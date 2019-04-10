@@ -41,6 +41,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         datePicker.isHidden=true
         datePicker.backgroundColor = UIColor.white
         
+        
         self.disciplinePicker.delegate = self
         self.disciplinePicker.dataSource = self
         
@@ -56,6 +57,11 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
             let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
             view.addGestureRecognizer(rightSwipe)
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        datePicker.isHidden = true
     }
     
     @objc func handleSwipe(sender: UISwipeGestureRecognizer) {
@@ -76,18 +82,18 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         datePicker.isHidden = false
     }
     
-    @IBAction func startdateEditingEnd(_ sender: UITextField) {
+    /*@IBAction func startdateEditingEnd(_ sender: UITextField) {
         datePicker.isHidden = true
-    }
+    }*/
     
     @IBAction func enddateEditing(_ sender: UITextField) {
         endDate.inputView = UIView()
         datePicker.isHidden = false
     }
     
-    @IBAction func enddateEditingEnd(_ sender: UITextField) {
+    /*@IBAction func enddateEditingEnd(_ sender: UITextField) {
         datePicker.isHidden = true
-    }
+    }*/
     
     
     
@@ -124,7 +130,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         let tempMission = missionData[indexPath.row]
         
         cell.textLabel?.text = tempMission.title //3.
-        cell.textLabel?.font = UIFont(name: "Avenir Next", size: 14)
+        cell.textLabel?.font = UIFont(name: "Avenir Next Medium", size: 20)
         cell.textLabel?.textColor = UIColor.white
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
@@ -138,6 +144,9 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     
     //Max element of picker array
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        pickerView.subviews.forEach({
+            $0.isHidden = $0.frame.height < 1.0
+        })
         return pickerData.count
     }
     
@@ -150,11 +159,12 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let view = UIView(frame: CGRect(x:0, y:0, width:400, height: 30))
         
-        let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: 14))
+        let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: 30))
         topLabel.text = pickerData[row]
         topLabel.textColor = UIColor.white
         topLabel.textAlignment = .center
-        topLabel.font = UIFont.systemFont(ofSize: 14)
+        topLabel.backgroundColor = UIColor.clear
+        topLabel.font = UIFont(name: "Avenir Next Medium", size: 20)
         view.addSubview(topLabel)
         
         return view

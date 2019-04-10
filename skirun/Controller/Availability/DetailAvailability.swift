@@ -74,6 +74,9 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     
     //Max element of picker array
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        pickerView.subviews.forEach({
+            $0.isHidden = $0.frame.height < 1.0
+        })
         return pickerData.count
     }
     
@@ -110,11 +113,11 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let view = UIView(frame: CGRect(x:0, y:0, width:400, height: 30))
         
-        let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: 25))
+        let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: 30))
         topLabel.text = pickerData[row]
         topLabel.textColor = UIColor.white
         topLabel.textAlignment = .center
-        topLabel.font = UIFont.systemFont(ofSize: 25)
+        topLabel.font = UIFont(name: "Avenir Next Medium", size: 20)
         view.addSubview(topLabel)
         
         return view
@@ -180,7 +183,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         }
             
         cell.textLabel?.text = text //3.
-        cell.textLabel?.font = UIFont(name: "Avenir Next", size: 18)
+        cell.textLabel?.font = UIFont(name: "Avenir Next Medium", size: 20)
         cell.textLabel?.textColor = UIColor.white
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         

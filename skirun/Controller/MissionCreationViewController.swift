@@ -56,6 +56,11 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         performSegue(withIdentifier: "MyAdminSegue", sender: self)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        datePicker.isHidden = true
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         
         print("prepare link to manage")
@@ -131,11 +136,11 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         if (pickerView.tag == 0){
             let view = UIView(frame: CGRect(x:0, y:0, width:400, height: 30))
             
-            let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: 14))
+            let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: 30))
             topLabel.text = job[row]
             topLabel.textColor = UIColor.white
             topLabel.textAlignment = .center
-            topLabel.font = UIFont.systemFont(ofSize: 14)
+            topLabel.font = UIFont(name: "Avenir Next Medium", size: 20)
             view.addSubview(topLabel)
             
             return view
@@ -143,11 +148,11 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         }else{
             let view = UIView(frame: CGRect(x:0, y:0, width:400, height: 30))
             
-            let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: 14))
+            let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: 30))
             topLabel.text = data[row]
             topLabel.textColor = UIColor.white
             topLabel.textAlignment = .center
-            topLabel.font = UIFont.systemFont(ofSize: 14)
+            topLabel.font = UIFont(name: "Avenir Next Medium", size: 20)
             view.addSubview(topLabel)
             
             return view
@@ -156,6 +161,9 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        pickerView.subviews.forEach({
+            $0.isHidden = $0.frame.height < 1.0
+        })
         
         if (pickerView.tag == 0){
             return job.count

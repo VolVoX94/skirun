@@ -79,6 +79,8 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
             let text = "\(listMissions[indexPath.row].title) \(" ") \(start.toDateTime)"//2.
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.textLabel?.text = text //3.
+            cell.textLabel?.font = UIFont(name: "Avenir Next Medium", size: 20)
+            cell.textLabel?.textColor = UIColor.white
       
         } catch let error as NSError{
             print(error.localizedDescription)
@@ -125,6 +127,9 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        pickerView.subviews.forEach({
+            $0.isHidden = $0.frame.height < 1.0
+        })
         if (pickerView.tag == 0){
             return listCompetitions.count
         }else{
@@ -256,11 +261,11 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
         if (pickerView.tag == 0){
             let view = UIView(frame: CGRect(x:0, y:0, width:400, height: 30))
             
-            let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: 14))
+            let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: 30))
             topLabel.text = listCompetitions[row]
             topLabel.textColor = UIColor.white
             topLabel.textAlignment = .center
-            topLabel.font = UIFont.systemFont(ofSize: 14)
+            topLabel.font = UIFont(name: "Avenir Next Medium", size: 20)
             view.addSubview(topLabel)
             
             return view
@@ -268,11 +273,11 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
         }else{
             let view = UIView(frame: CGRect(x:0, y:0, width:400, height: 30))
             
-            let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: 14))
+            let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: 30))
             topLabel.text = listDisciplines[row]
             topLabel.textColor = UIColor.white
             topLabel.textAlignment = .center
-            topLabel.font = UIFont.systemFont(ofSize: 14)
+            topLabel.font = UIFont(name: "Avenir Next Medium", size: 20)
             view.addSubview(topLabel)
             
             return view

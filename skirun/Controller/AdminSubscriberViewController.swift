@@ -24,8 +24,6 @@ class AdminSubscriberViewController: UIViewController, UITableViewDataSource, UI
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var saveButton: UIButton!
-    
     @IBOutlet weak var competitionLabel: UILabel!
     
     @IBOutlet weak var missionLabel: UILabel!
@@ -107,7 +105,7 @@ class AdminSubscriberViewController: UIViewController, UITableViewDataSource, UI
         
         
         
-            cell.textLabel?.font = UIFont(name: "Avenir Next", size: 18)
+            cell.textLabel?.font = UIFont(name: "Avenir Next Medium", size: 20)
             cell.textLabel?.textColor = UIColor.white
         
         if(cell.textLabel?.text != "NULL"){

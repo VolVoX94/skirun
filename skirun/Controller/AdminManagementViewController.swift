@@ -36,6 +36,8 @@ class AdminManagementViewController: UIViewController, UITableViewDataSource, UI
         let text = data[indexPath.row] //2.
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.textLabel?.text = text //3.
+        cell.textLabel?.font = UIFont(name: "Avenir Next Medium", size: 20)
+        cell.textLabel?.textColor = UIColor.white
         
         return cell //4.
     }

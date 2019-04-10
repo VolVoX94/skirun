@@ -48,7 +48,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         
         cell.textLabel?.text = text //3.
-        cell.textLabel?.font = UIFont(name: "Avenir Next", size: 18)
+        cell.textLabel?.font = UIFont(name: "Avenir Next Medium", size: 20)
         cell.textLabel?.textColor = UIColor.white
         
         return cell //4.
