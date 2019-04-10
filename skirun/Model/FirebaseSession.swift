@@ -36,9 +36,9 @@ enum FirebaseSession:String {
     case MISSION_TYPE_JOB = "typeJob";
     
     //User nodes
-    case USER_FIRSTNAME = "firstname";
+    case USER_FIRSTNAME = "firstName";
     case USER_EMAIL = "email";
-    case USER_LASTNAME = "lastname";
+    case USER_LASTNAME = "lastName";
     case USER_PHONE = "phone";
     case USER_JOBPREFERENCE = "jobPreference";
     case USER_ADMIN = "admin";
