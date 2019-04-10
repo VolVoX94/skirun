@@ -63,7 +63,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     @objc func handleSwipe(sender: UISwipeGestureRecognizer) {
         if sender.state == .ended {
             
-            let title = "Delete the competion"
+            let title = "Delete the competition"
             let message = "This action will delete the competition and all missions associated ! To continue, enter the name of the competition."
             
             let inputController = UIAlertController(title: title, message: message, preferredStyle: .alert)
