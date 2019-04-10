@@ -12,6 +12,8 @@ import Firebase
 class LoginViewController: UIViewController,  UITextFieldDelegate {
 
     
+    @IBOutlet weak var myRegisterToBottom_Gap: NSLayoutConstraint!
+    @IBOutlet weak var myLoginToTopTitle_Gap: NSLayoutConstraint!
     @IBOutlet weak var emailField: UITextField!
     
     @IBOutlet weak var passwordField: UITextField!
@@ -35,7 +37,41 @@ class LoginViewController: UIViewController,  UITextFieldDelegate {
                 self.performSegue(withIdentifier: "alreadyLoggedIn", sender: nil)
             } 
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
     }
+    
+    @objc func keyBoardWillShow(notification:Notification){
+        print("Up")
+        if let userInfo = notification.userInfo as? Dictionary<String, AnyObject>{
+            let frame = userInfo[UIResponder.keyboardFrameEndUserInfoKey]
+            let keyBoardRect = frame?.cgRectValue
+            if let keyBoardHeight = keyBoardRect?.height{
+                self.myRegisterToBottom_Gap.constant = keyBoardHeight
+                
+                self.myLoginToTopTitle_Gap.constant = 50
+                
+                UIView.animate(withDuration: 0.5, animations:{
+                    self.view.layoutIfNeeded()
+                })
+            }
+        }
+    }
+    
+    @objc func keyBoardWillHide(notification:Notification){
+        print("Up")
+        
+        self.myRegisterToBottom_Gap.constant = 150
+        
+        self.myLoginToTopTitle_Gap.constant = 150
+        UIView.animate(withDuration: 0.5, animations:{
+            self.view.layoutIfNeeded()
+        })
+    }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
