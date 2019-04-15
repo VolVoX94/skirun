@@ -53,7 +53,6 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
             super.viewDidLoad()
             tableView.dataSource = self
-        
             
             loadCompetitionData()
             self.myCompetitionName.text = self.name
@@ -62,9 +61,9 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
             self.myPicker.delegate = self
             self.myPicker.dataSource = self
             loadDisciplineData()
-        
-
         }
+    
+
     
     //2 PICKER METHODS -------------------------
     //Picker for one element

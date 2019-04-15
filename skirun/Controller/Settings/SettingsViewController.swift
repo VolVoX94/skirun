@@ -13,7 +13,9 @@ class SettingsViewController: UIViewController {
     
     let uid:String? = Auth.auth().currentUser?.email
     
+    @IBOutlet weak var myUIDTitleLabel: UILabel!
     @IBOutlet weak var uidLabel: UILabel!
+    @IBOutlet weak var bottomGap: NSLayoutConstraint!
     
     @IBOutlet weak var logoutButton: UIButton!
     
@@ -41,8 +43,20 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         self.uidLabel.text = uid
-
+        checkBottomConstraint()
         // Do any additional setup after loading the view.
+    }
+    
+    func checkBottomConstraint(){
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        let factor = screenHeight/568
+        print(factor)
+        if(factor < 1.2){
+            self.bottomGap.constant = 5
+            self.uidLabel.isHidden = true
+            self.myUIDTitleLabel.isHidden = true
+        }
     }
     
 

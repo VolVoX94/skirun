@@ -19,6 +19,13 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     var selectedMissionJob: String?
 
     private var myUser:User?
+    //Constraints used for small devices
+    @IBOutlet weak var Select_Title_Gap: NSLayoutConstraint!
+    @IBOutlet weak var firstPickerHeight: NSLayoutConstraint!
+    @IBOutlet weak var secondPickerHeight: NSLayoutConstraint!
+    @IBOutlet weak var tableHeight: NSLayoutConstraint!
+    
+    
     // View Indicator while waiting data
     @IBOutlet weak var myWaitSymbolizer: UIActivityIndicatorView!
     
@@ -53,6 +60,9 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
         TableViewMission.delegate = self
         // set the label for no data input to ""
         self.noDataLabel.text = ""
+        
+        //Important for small device like iPhone SE
+        checkDeviceSize()
         // Call the compettions
         do {
             let printComp = try self.loadListCompetitions();
@@ -61,6 +71,19 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
             print(error)
         }
     }
+    
+    func checkDeviceSize(){
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        let factor = screenHeight/568
+        if(factor < 1.2){
+            self.Select_Title_Gap.constant = 15
+            self.firstPickerHeight.constant = 60
+            self.secondPickerHeight.constant = 60
+            self.tableHeight.constant = 150
+        }
+    }
+    
     
     // ------------------------- table view and picker view  -------------------------
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -271,6 +294,7 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
         let uid = Auth.auth().currentUser?.uid
         FirebaseManager.getUserByUID(uidUser: uid!) { (User) in
             self.myUser = User
+            print(self.myUser?.admin)
             if(self.myUser!.admin == true){
                 self.MyAdminButton.isHidden = false
             }

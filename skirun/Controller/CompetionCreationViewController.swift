@@ -12,8 +12,16 @@ import Firebase
 class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource , UITableViewDataSource, UITableViewDelegate {
 
     
-
-   
+    //Constraints
+    //Between input fields
+    @IBOutlet weak var EnterTitleToStart_Gap: NSLayoutConstraint!
+    @IBOutlet weak var StartDateToEndDate_Gap: NSLayoutConstraint!
+    @IBOutlet weak var EndDateToRefAPI_Gap: NSLayoutConstraint!
+    
+    @IBOutlet weak var MissionTop_Gap: NSLayoutConstraint!
+    //Picker
+    @IBOutlet weak var HeightPicker: NSLayoutConstraint!
+    
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var titleCompetition: UITextField!
     @IBOutlet weak var endDate: UITextField!
@@ -39,6 +47,12 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Used for handling constraints while displaying keyboard
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         datePicker.isHidden=true
         datePicker.backgroundColor = UIColor.white
         
@@ -61,9 +75,54 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         }
     }
     
+    @objc func keyBoardWillShow(notification:Notification){
+        print("Up")
+        if let userInfo = notification.userInfo as? Dictionary<String, AnyObject>{
+            let frame = userInfo[UIResponder.keyboardFrameEndUserInfoKey]
+            let keyBoardRect = frame?.cgRectValue
+            if let keyBoardHeight = keyBoardRect?.height{
+                constraintWithKeyboard()
+                UIView.animate(withDuration: 0.5, animations:{
+                    self.view.layoutIfNeeded()
+                })
+            }
+        }
+    }
+    
+    @objc func keyBoardWillHide(notification:Notification){
+        print("Up")
+        constraintWithoutKeyboard()
+        UIView.animate(withDuration: 0.5, animations:{
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    func constraintWithKeyboard(){
+        print("With")
+        //Calculating relation
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        let factor = screenHeight/568
+        
+        self.MissionTop_Gap.constant = -73
+        self.EnterTitleToStart_Gap.constant = 5 * factor
+        self.StartDateToEndDate_Gap.constant = 5 * factor
+        self.EndDateToRefAPI_Gap.constant = 5 * factor
+    }
+    
+    func constraintWithoutKeyboard(){
+        print("without")
+        self.MissionTop_Gap.constant = 13
+        self.EnterTitleToStart_Gap.constant = 20
+        self.StartDateToEndDate_Gap.constant = 20
+        self.EndDateToRefAPI_Gap.constant = 20
+        self.HeightPicker.constant = 101
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
         datePicker.isHidden = true
+        constraintWithoutKeyboard()
     }
     
     @objc func handleSwipe(sender: UISwipeGestureRecognizer) {
@@ -99,6 +158,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     @IBAction func startdateEditing(_ sender: UITextField) {
         startDate.inputView = UIView()
         datePicker.isHidden = false
+        constraintWithKeyboard()
     }
     
     /*@IBAction func startdateEditingEnd(_ sender: UITextField) {
@@ -108,6 +168,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     @IBAction func enddateEditing(_ sender: UITextField) {
         endDate.inputView = UIView()
         datePicker.isHidden = false
+        constraintWithKeyboard()
     }
     
     /*@IBAction func enddateEditingEnd(_ sender: UITextField) {

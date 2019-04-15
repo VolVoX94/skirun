@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tLD-zv-Jug">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tLD-zv-Jug">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,16 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Next Key will automatically generated in the beginning of following month:" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVI-2d-sMV">
-                                <rect key="frame" x="20" y="214" width="374" height="69"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Key will automatically generated in the beginning of following month:" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVI-2d-sMV">
+                                <rect key="frame" x="20" y="214" width="374" height="55"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWv-gy-wcF">
-                                <rect key="frame" x="140" y="692" width="134" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWv-gy-wcF">
+                                <rect key="frame" x="119.5" y="692" width="175" height="60"/>
                                 <state key="normal" backgroundImage="generate key button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -35,16 +33,14 @@
                                     <action selector="generateKeyButtonFunc:" destination="tLD-zv-Jug" eventType="touchUpInside" id="Scl-hR-SWj"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DATE_PLACEHOLDER" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ls0-HA-xeQ">
-                                <rect key="frame" x="20" y="334" width="374" height="101"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATE_PLACEHOLDER" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ls0-HA-xeQ">
+                                <rect key="frame" x="20" y="334" width="374" height="41"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="30"/>
                                 <color key="textColor" red="0.41831383973900871" green="0.47127964138984679" blue="0.18108975444714082" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bhz-Ri-k1B">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bhz-Ri-k1B">
                                 <rect key="frame" x="30" y="70" width="43" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="19"/>
                                 <state key="normal" title="Back">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -53,29 +49,45 @@
                                     <action selector="myBackButtonFunc:" destination="tLD-zv-Jug" eventType="touchUpInside" id="CX4-qM-Jbb"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last key update:" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VK0-uN-06G">
-                                <rect key="frame" x="20" y="494" width="164" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last key update:" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VK0-uN-06G">
+                                <rect key="frame" x="20" y="494" width="151.5" height="27.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DATE_PLACEHOLDER" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJD-2O-eJP">
-                                <rect key="frame" x="192" y="494" width="202" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATE_PLACEHOLDER" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJD-2O-eJP">
+                                <rect key="frame" x="192" y="494" width="308.5" height="41"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="30"/>
                                 <color key="textColor" red="0.15751284810303512" green="0.38041386008262634" blue="0.32199964075826787" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Admin Key Management" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kr3-dj-8rF">
-                                <rect key="frame" x="37" y="116" width="341" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admin Key Management" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kr3-dj-8rF">
+                                <rect key="frame" x="35" y="116" width="344" height="34.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ls0-HA-xeQ" firstAttribute="leading" secondItem="mYC-kX-8nW" secondAttribute="leading" constant="20" id="0ex-0y-cvW"/>
+                            <constraint firstItem="Bhz-Ri-k1B" firstAttribute="top" secondItem="mYC-kX-8nW" secondAttribute="top" constant="26" id="BTH-Zy-orb"/>
+                            <constraint firstItem="NVI-2d-sMV" firstAttribute="leading" secondItem="mYC-kX-8nW" secondAttribute="leading" constant="20" id="FgG-nn-2oq"/>
+                            <constraint firstItem="KJD-2O-eJP" firstAttribute="top" secondItem="Ls0-HA-xeQ" secondAttribute="bottom" constant="119" id="FgL-24-Lzy"/>
+                            <constraint firstItem="mYC-kX-8nW" firstAttribute="trailing" secondItem="NVI-2d-sMV" secondAttribute="trailing" constant="20" id="GB6-cW-2Tr"/>
+                            <constraint firstItem="KJD-2O-eJP" firstAttribute="leading" secondItem="VK0-uN-06G" secondAttribute="trailing" constant="20.5" id="MgJ-63-F5f"/>
+                            <constraint firstItem="VK0-uN-06G" firstAttribute="top" secondItem="Ls0-HA-xeQ" secondAttribute="bottom" constant="119" id="MhV-59-jz2"/>
+                            <constraint firstItem="Kr3-dj-8rF" firstAttribute="leading" secondItem="mYC-kX-8nW" secondAttribute="leading" constant="35" id="V0g-M5-mtv"/>
+                            <constraint firstItem="Bhz-Ri-k1B" firstAttribute="leading" secondItem="mYC-kX-8nW" secondAttribute="leading" constant="30" id="Yg5-Fs-ECd"/>
+                            <constraint firstItem="Ls0-HA-xeQ" firstAttribute="top" secondItem="NVI-2d-sMV" secondAttribute="bottom" constant="65" id="YgR-GR-qyd"/>
+                            <constraint firstItem="mYC-kX-8nW" firstAttribute="trailing" secondItem="Ls0-HA-xeQ" secondAttribute="trailing" constant="20" id="c7C-79-5Vz"/>
+                            <constraint firstItem="VK0-uN-06G" firstAttribute="leading" secondItem="mYC-kX-8nW" secondAttribute="leading" constant="20" id="eIg-ek-I8W"/>
+                            <constraint firstItem="HWv-gy-wcF" firstAttribute="centerX" secondItem="i5u-bj-nR3" secondAttribute="centerX" id="eTJ-CJ-mRC"/>
+                            <constraint firstItem="mYC-kX-8nW" firstAttribute="trailing" secondItem="Kr3-dj-8rF" secondAttribute="trailing" constant="35" id="hTI-nj-pw1"/>
+                            <constraint firstItem="NVI-2d-sMV" firstAttribute="top" secondItem="Kr3-dj-8rF" secondAttribute="bottom" constant="63.5" id="hfK-lI-IiA"/>
+                            <constraint firstItem="Kr3-dj-8rF" firstAttribute="top" secondItem="Bhz-Ri-k1B" secondAttribute="bottom" constant="8" id="vgI-eM-AUv"/>
+                            <constraint firstItem="mYC-kX-8nW" firstAttribute="bottom" secondItem="HWv-gy-wcF" secondAttribute="bottom" constant="110" id="y80-LW-qTJ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="mYC-kX-8nW"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="firstColor">
@@ -88,6 +100,11 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="BottomToButton_Gap" destination="y80-LW-qTJ" id="HOb-Xj-Ele"/>
+                        <outlet property="DateOneToLastKeyText_Gap" destination="MhV-59-jz2" id="vQp-0c-nmI"/>
+                        <outlet property="DateOneToTwo_Gap" destination="FgL-24-Lzy" id="3ve-wq-Dku"/>
+                        <outlet property="DescriptionToDateOne_Gap" destination="YgR-GR-qyd" id="LYa-Fq-xnq"/>
+                        <outlet property="TitleToDescription_Gap" destination="hfK-lI-IiA" id="6vt-Sb-DIo"/>
                         <outlet property="myBackButton" destination="Bhz-Ri-k1B" id="7E1-n9-dJu"/>
                         <outlet property="myDateLabel" destination="Ls0-HA-xeQ" id="XJ6-Qy-SkC"/>
                         <outlet property="myLastUpdateLabel" destination="KJD-2O-eJP" id="luc-ED-Xd7"/>

@@ -9,6 +9,14 @@
 import UIKit
 
 class KeyAdminViewController: UIViewController {
+    
+    //Constraints
+    @IBOutlet weak var TitleToDescription_Gap: NSLayoutConstraint!
+    @IBOutlet weak var DescriptionToDateOne_Gap: NSLayoutConstraint!
+    @IBOutlet weak var DateOneToTwo_Gap: NSLayoutConstraint!
+    @IBOutlet weak var BottomToButton_Gap: NSLayoutConstraint!
+    
+    @IBOutlet weak var DateOneToLastKeyText_Gap: NSLayoutConstraint!
     private var currentMonthName:String?
     private var nextMonthName:String?
     private var currentMonthNumber:String?
@@ -23,10 +31,26 @@ class KeyAdminViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkDeviceSize()
         self.getMonth()
         self.getDate()
         self.myDateLabel.text = self.nextMonthName
     }
+    
+    func checkDeviceSize(){
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        let factor = screenHeight/568
+        if(factor < 1.2){
+            self.TitleToDescription_Gap.constant = 30
+            self.DescriptionToDateOne_Gap.constant = 30
+            self.DateOneToTwo_Gap.constant = 80
+            self.DateOneToLastKeyText_Gap.constant = 80
+            self.BottomToButton_Gap.constant = 30
+            
+        }
+    }
+    
     
     func getMonth(){
         let monthsToAdd = 1

@@ -13,7 +13,12 @@ import FirebaseDatabase
 
 class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
     
+    @IBOutlet weak var firstPicker_Height: NSLayoutConstraint!
+    @IBOutlet weak var secondPicker_Height: NSLayoutConstraint!
     
+    @IBOutlet weak var label_NumberOfPeople: UILabel!
+    @IBOutlet weak var datePickerMenu_Height: NSLayoutConstraint!
+    @IBOutlet weak var buttonBottom_Gap: NSLayoutConstraint!
     @IBOutlet var swipeRight: UISwipeGestureRecognizer!
     var disciplines: String?
     var jobs: String?
@@ -116,6 +121,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkDeviceSize()
         datePicker.isHidden = true
         discipline.isHidden = true
         jobPrinted.isHidden = true
@@ -129,6 +135,26 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
             view.addGestureRecognizer(swipeRight)
         }
         
+    }
+    
+    func checkDeviceSize(){
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        let factor = screenHeight/568
+        if(factor < 1.2){
+            self.descriptionMission.font = UIFont(name: "Avenir Next Medium", size: 15)
+            self.location.font = UIFont(name: "Avenir Next Medium", size: 15)
+            self.nameMission.font = UIFont(name: "Avenir Next Medium", size: 15)
+            self.startTime.font = UIFont(name: "Avenir Next Medium", size: 15)
+            self.endTime.font = UIFont(name: "Avenir Next Medium", size: 15)
+            self.firstPicker_Height.constant = 60
+            self.secondPicker_Height.constant = 60
+            
+            self.buttonBottom_Gap.constant = 15
+            
+                self.datePickerMenu_Height.constant = 150
+            self.label_NumberOfPeople.font = UIFont(name: "Avenir Next Medium", size: 15)
+        }
     }
 
     

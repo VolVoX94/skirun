@@ -8,9 +8,9 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     private var data:[String] = []
     private var name:String?
     private var date:String?
-    
     @IBOutlet weak var myWaitAnimation: UIActivityIndicatorView!
     
+    @IBOutlet weak var myAvailabilityTitle: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var noDataLabel: UILabel!
@@ -19,10 +19,19 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        
+        checkDeviceSize()
         self.myWaitAnimation.startAnimating()
         loadData()
      
+    }
+    
+    func checkDeviceSize(){
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        let factor = screenHeight/568
+        if(factor < 1.2){
+            self.myAvailabilityTitle.font = UIFont(name: "Avenir Next Medium", size: 20)
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
