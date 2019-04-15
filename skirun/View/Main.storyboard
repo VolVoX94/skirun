@@ -626,6 +626,7 @@
                         <outlet property="HeightPicker" destination="7XO-Bd-Pk8" id="V59-fP-Ktz"/>
                         <outlet property="MissionTop_Gap" destination="qyL-le-i8g" id="31S-44-q7o"/>
                         <outlet property="StartDateToEndDate_Gap" destination="aSp-x0-ejo" id="ftb-qE-LhY"/>
+                        <outlet property="addButton" destination="5b7-qC-VFS" id="woJ-99-R19"/>
                         <outlet property="datePicker" destination="gOg-yd-4HF" id="lKR-yP-mgj"/>
                         <outlet property="disciplinePicker" destination="0Id-6w-Dgo" id="1k9-yf-rbb"/>
                         <outlet property="endDate" destination="oQY-Q5-q9N" id="aOE-M3-ucc"/>
@@ -790,7 +791,7 @@
                                 <rect key="frame" x="167" y="675" width="80" height="114"/>
                                 <state key="normal" image="Volunteer"/>
                                 <connections>
-                                    <action selector="myAdminFunc:" destination="M6B-KH-18W" eventType="touchUpInside" id="eQW-nq-TeX"/>
+                                    <action selector="myAdminAction:" destination="M6B-KH-18W" eventType="touchUpInside" id="VW7-RV-8qj"/>
                                     <segue destination="7ca-JV-R2F" kind="show" identifier="MyAdminSegue" id="E5M-Pz-dnM"/>
                                 </connections>
                             </button>

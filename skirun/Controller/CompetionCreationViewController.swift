@@ -28,6 +28,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     @IBOutlet weak var refApi: UITextField!
     @IBOutlet weak var save: UIBarButtonItem!
     @IBOutlet weak var startDate: UITextField!
+    @IBOutlet weak var addButton: UIButton!
     
     @IBOutlet weak var missionTableview: UITableView!
     @IBOutlet weak var disciplinePicker: UIPickerView!
@@ -55,11 +56,11 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         
         datePicker.isHidden=true
         datePicker.backgroundColor = UIColor.white
-        
+        self.addButton.isEnabled = false
         
         self.disciplinePicker.delegate = self
         self.disciplinePicker.dataSource = self
-        
+      
         
         //If we have a competitions, we load it
         if(selectedCompetition != "none"){
@@ -68,8 +69,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
             self.missionTableview.delegate = self
             self.missionTableview.dataSource = self
             self.disciplinePicker.isHidden = false
-            
-            //let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
+            self.addButton.isEnabled = true
             rightSwip.addTarget(self, action: #selector(handleSwipe(sender:)))
             view.addGestureRecognizer(rightSwip)
         }
@@ -271,6 +271,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
             self.pickerData = Array(pickerData)
             self.pickerData.insert("Please select", at: 0)
             self.disciplinePicker.reloadAllComponents()
+            print("discipline reloaded")
         }
     }
     //
@@ -368,7 +369,16 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
             }
         })
         
-    
+        //disable the field
+        titleCompetition.isEnabled = false
+        startDate.isEnabled = false
+        endDate.isEnabled = false
+        refApi.isEnabled = false
+        save.isEnabled = false
+        save.title = ""
+        self.disciplinePicker.isHidden = false
+        self.addButton.isEnabled = true
+        
     }
     
     func isValidTexte(test:String)-> Bool {

@@ -20,30 +20,27 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     @IBOutlet weak var datePickerMenu_Height: NSLayoutConstraint!
     @IBOutlet weak var buttonBottom_Gap: NSLayoutConstraint!
     @IBOutlet var swipeRight: UISwipeGestureRecognizer!
-    var disciplines: String?
-    var jobs: String?
-
+    
+//--- Attributes for the MissionCreation View
     @IBOutlet weak var save: UIBarButtonItem!
     @IBOutlet weak var location: UITextField!
     @IBOutlet weak var nameMission: UITextField!
     @IBOutlet weak var nbPeople: UITextField!
     @IBOutlet weak var descriptionMission: UITextField!
     @IBOutlet weak var myAdminButton: UIButton!
-    
-
     @IBOutlet weak var jobPrinted: UITextField!
     @IBOutlet weak var discipline: UITextField!
     
-    // Picker for the job
+//--- Picker for the job
     @IBOutlet weak var pickerJob: UIPickerView!
     var job:[String] = [String]()
     
-    // Picker for the disciplines
+//--- Picker for the disciplines
     @IBOutlet weak var pickerView: UIPickerView!
     var data: [String] = [String]()
     
     
-    // Picker for the start and end time
+//--- Picker for the Start and End time
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var endTime: UITextField!
     @IBOutlet weak var startTime: UITextField!
@@ -55,18 +52,21 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     var missionChoose = "none"
     var competitionChoose = "none"
     var nbdiscipline = 0
+    var disciplines: String?
+    var jobs: String?
     
-    //------Button
-    
+//--- Button that refers to the view Admin Subscriber
     @IBAction func myAdminFunc(_ sender: Any) {
+        print("my admin button")
         performSegue(withIdentifier: "MyAdminSegue", sender: self)
     }
     
+//--- Function that hides the datePicker
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
         datePicker.isHidden = true
     }
-    
+//--- Function that allows you to retrieve fields in order to retrieve them in the next view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         
         print("prepare link to manage")
@@ -76,7 +76,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         destinationController.missionName = self.missionChoose
     }
     
-    //--------- Time function for edit and changed value -------------------
+//---------- Time function for edit and changed value ----------
     @IBAction func starTimeEdit(_ sender: UITextField) {
         startTime.inputView = UIView()
         datePicker.isHidden = false
@@ -115,10 +115,10 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         }
         
     }
-    //--------- End of the time function -------------------
+//---------- End of all times function ----------
     
     
-    
+//----------  Function called to load the view ----------
     override func viewDidLoad() {
         super.viewDidLoad()
         checkDeviceSize()
@@ -157,8 +157,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         }
     }
 
-    
-    //--------- PickerView function -------------
+//---------- PickerView function ----------
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         
@@ -216,8 +215,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
 
     }
     
-    
-    //Check wich element has been choosen
+//--- Check wich picker and which element have been choosen
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if(pickerView.tag == 1){
@@ -229,11 +227,12 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         }
 
     }
+//---------- End of the pickerView function ----------
     
-    //------------ End of the stuff print discipline or jobs -------------
     
+//---------- Function that loads and displays an existing mission ----------
     func loadMission(){
-        //disable the field
+//--- Disable all the fields and Hide the pickers
         nameMission.isEnabled = false
         location.isEnabled = false
         descriptionMission.isEnabled = false
@@ -249,7 +248,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         save.isEnabled = false;
         save.title = ""
         
-        
+//--- Get a mission in Firebase and display it in a form
         FirebaseManager.getMission(nameCompetition: competitionChoose, nameDiscipline: disciplineChoose, nameMission: missionChoose) { (data) in
             self.mission = data
             self.nameMission.text = self.mission?.title
@@ -267,12 +266,12 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
             self.jobPrinted.text = self.mission?.jobs
             
             }
-
-        
     }
     
+//---------- End of the function that loads and displays an existing mission ----------
     
-    // call the function in FirebaseManager getJobs ==> return all the jobs existing
+    
+//---------- Function that calls getJobs (Firebase Manager) and returns all existing jobs ----------
     func loadJobData(){
         FirebaseManager.getJobs(completion: { (data) in
             self.job = Array(data)
@@ -281,7 +280,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         })
     }
     
-    // call the function in FirebaseManager getDisciplines ==> return all the disciplines existing
+//---------- Function that calls getDisciplines (Firebase Manager) and returns all disciplines existing ----------
     func loadDisciplineData(){
         FirebaseManager.getDisciplines(completion: { (Pdata) in
             self.data = Array(Pdata)
@@ -290,17 +289,10 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         })
     }
     
-    
-    
-    // Function go back to the previous view
-    @IBAction func backCompetition(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    // Function Save a Mission
+//---------- Function Save a Mission ----------
    @IBAction func saveMission(_ sender: Any) {
         
-        //UIAlert
+//--- UIAlert Box that displays an error when an Input is wrong
         let alertBox = UIAlertController(
             title: "Input wrong",
             message: "",
@@ -308,92 +300,115 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
         
         alertBox.addAction(UIAlertAction(title:"OK",
                                          style: .cancel, handler:nil))
-        
+    
+//--- Test the name Mission, it must contain more than 4 characters or not be Empty
         if(nameMission.text!.count < 4) || (nameMission.text ?? "").isEmpty{
             
+//--- Create of a personal message
             alertBox.message = "The title of the Mission must be longer !";
             
-            //Display the alertBox
+//--- Display the alertBox with the personal message
             self.present(alertBox, animated: true);
             
             return;
         }
-        
+
+//--- Test the description of the Mission , it must contain more than 4 characters or not be Empty
         if(descriptionMission.text!.count < 4) || (descriptionMission.text ?? "").isEmpty{
 
+//--- Create of a personal message
             alertBox.message = " The description of the mission must be longer !";
             
-            //Display the alertBox
+//--- Display the alertBox with the personal message
             self.present(alertBox, animated: true);
             
             return;
         }
     
+ //--- Test the location of the Mission , it must contain more than 4 characters
         if(location.text!.count < 4) {
-
+            
+//--- Create of a personal message
             alertBox.message = "The Location of the mission must be longer !";
         
-            //Display the alertBox
+//--- Display the alertBox with the personal message
             self.present(alertBox, animated: true);
             
             return;
         }
     
+//--- Test the Start Time of the Mission , it must be before that the endTime
     if(startTimeInt > endTimeInt){
+        
+//--- Create of a personal message
         alertBox.message = "End date can't be before start date !";
         
-        //Display the alertBox
+//--- Display the alertBox with the personal message
         self.present(alertBox, animated: true);
         
         return;
     }
-        
+    
+ //--- Test the nbre of people of the Mission , it can't be 0
     if(0>=(Int(nbPeople.text ?? "0") ?? 0)){
-
-            alertBox.message = "Minimum one person !";
+        
+//--- Create of a personal message
+        alertBox.message = "Minimum one person !";
             
-            //Display the alertBox
-            self.present(alertBox, animated: true);
+//--- Display the alertBox with the personal message
+        self.present(alertBox, animated: true);
         
         return;
         }
-        
+    
+//--- Call the function to add the mission in Firebase
         createMission()
         
     }
     
+//---------- Function create a Mission on save it in Firebase
     func createMission(){
-        //3 ---- Create Mission
         
+//--- Create an empty Mission, and add all the fields that come from the form
         let newMission = Mission(title: nameMission.text ?? "Error", description: descriptionMission.text ?? "Error", startTime: startTimeInt, endTime: endTimeInt, nbPeople: Int(nbPeople.text!)! ,location: location.text ?? "Error", jobs: jobs ?? job[0])
         
-        
+//--- Create the reference of Firebase
         let ref:DatabaseReference = Database.database().reference().child(FirebaseSession.competition.rawValue).child(self.competitionChoose).child(FirebaseSession.NODE_DISCIPLINES.rawValue).child(disciplines ?? data[0]).child(newMission.title);
         
         
-        //add the object
+//--- Test to see if the mission already exist in Firebase
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
+//--- The mission exist
             if snapshot.hasChildren(){
+                
+//--- Create the alert box with a wrong message
                 let alertBox = UIAlertController(title: "This mission already exist !", message: "", preferredStyle: .actionSheet)
                 
+//--- Add to the box an Alert with a button
                 alertBox.addAction(UIAlertAction(title:"Ok", style: .cancel, handler:nil))
                 
+//--- Display the alert box
                 self.present(alertBox, animated: true);
                 
-            }else{
-                //add the object
+                
+
+            }
+//--- The mission didn't exist
+            else
+            {
+                
+//--- Add the mission to Firebase
                 ref.setValue(newMission.toAnyObject())
                 self.dismiss(animated: false, completion: nil)
             }
         })
-        
-        
+ 
     }
     
     
     
-    
+//--- Button that refers to the view competition
     @IBAction func back(_ sender: Any) {
         self.disciplineChoose = "none"
          self.missionChoose = "none"
