@@ -52,6 +52,7 @@ class FirebaseManager{
         var jobs = [String]()
         // get all the job preferences in a list
         ref.observe(.value, with: { (snapshot) in
+            jobs.removeAll()
             for childSnapshot in snapshot.children{
                 // put it in the list
                 jobs.append((childSnapshot as AnyObject).key as String)
@@ -81,6 +82,7 @@ class FirebaseManager{
         var numberOfDisciplines = [String]()
         
         ref.observe(.value, with: { (snapshot) in
+            numberOfDisciplines.removeAll()
             for childSnapshot in snapshot.children{
                 numberOfDisciplines.append((childSnapshot as AnyObject).key as String)
             }
@@ -119,6 +121,7 @@ class FirebaseManager{
         
         ref.observe(.value, with: { (snapshot) in
             print("changggee-------------")
+            numberOfDisciplines.removeAll()
             for childSnapshot in snapshot.children{
                 numberOfDisciplines.append((childSnapshot as AnyObject).key as String)
             }
@@ -133,6 +136,7 @@ class FirebaseManager{
         var numberOfMissions = [String]()
         
         ref.observe(.value, with: { (snapshot) in
+            numberOfMissions.removeAll()
             for childSnapshot in snapshot.children{
                 numberOfMissions.append((childSnapshot as AnyObject).key as String)
             }
@@ -213,6 +217,7 @@ class FirebaseManager{
         var userList = [String]()
         
         ref.observe(.value, with: { (snapshot) in
+            userList.removeAll()
             for childSnapshot in snapshot.children {
                 userList.append((childSnapshot as AnyObject).key as String)
             }

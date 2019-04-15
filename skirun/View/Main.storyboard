@@ -490,7 +490,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="End Date..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oQY-Q5-q9N">
-                                        <rect key="frame" x="149" y="116" width="117" height="30"/>
+                                        <rect key="frame" x="148.5" y="116" width="117" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Z1x-Ov-fmf"/>
                                         </constraints>
@@ -504,13 +504,10 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="enddateEditing:" destination="DiL-V7-qlv" eventType="editingDidBegin" id="Ild-a4-xYH"/>
-                                            <action selector="enddateEditing:" destination="DiL-V7-qlv" eventType="touchDragInside" id="bHd-mn-c5J"/>
-                                            <action selector="enddateEditingEnd:" destination="DiL-V7-qlv" eventType="editingDidEnd" id="WAA-j2-Le5"/>
-                                            <action selector="enddateEditingEnd:" destination="DiL-V7-qlv" eventType="touchDragOutside" id="i5V-5u-ITN"/>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ref API..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JhP-0g-fIi">
-                                        <rect key="frame" x="149" y="168" width="117" height="30"/>
+                                        <rect key="frame" x="148.5" y="168" width="117" height="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -521,7 +518,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Start Date..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HxE-X9-Xx1">
-                                        <rect key="frame" x="149" y="62" width="117" height="30"/>
+                                        <rect key="frame" x="148.5" y="62" width="117" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="ZdA-4H-jyD"/>
                                         </constraints>
@@ -534,9 +531,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="enddateEditing:" destination="DiL-V7-qlv" eventType="touchDragInside" id="67b-eI-SJg"/>
                                             <action selector="startdateEditing:" destination="DiL-V7-qlv" eventType="editingDidBegin" id="DoF-er-lFQ"/>
-                                            <action selector="startdateEditingEnd:" destination="DiL-V7-qlv" eventType="editingDidEnd" id="f9W-hu-Pgs"/>
                                         </connections>
                                     </textField>
                                 </subviews>
@@ -599,6 +594,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="addButton" destination="5b7-qC-VFS" id="woJ-99-R19"/>
                         <outlet property="datePicker" destination="gOg-yd-4HF" id="lKR-yP-mgj"/>
                         <outlet property="disciplinePicker" destination="0Id-6w-Dgo" id="1k9-yf-rbb"/>
                         <outlet property="endDate" destination="oQY-Q5-q9N" id="aOE-M3-ucc"/>
