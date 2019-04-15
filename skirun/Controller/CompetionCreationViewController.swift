@@ -46,7 +46,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         
         self.disciplinePicker.delegate = self
         self.disciplinePicker.dataSource = self
-        
+      
         
         //If we have a competitions, we load it
         if(selectedCompetition != "none"){
@@ -56,7 +56,6 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
             self.missionTableview.dataSource = self
             self.disciplinePicker.isHidden = false
             self.addButton.isEnabled = true
-            //let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
             rightSwip.addTarget(self, action: #selector(handleSwipe(sender:)))
             view.addGestureRecognizer(rightSwip)
         }
@@ -316,6 +315,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         refApi.isEnabled = false
         save.isEnabled = false
         save.title = ""
+        self.disciplinePicker.isHidden = false
         self.addButton.isEnabled = true
         
     }

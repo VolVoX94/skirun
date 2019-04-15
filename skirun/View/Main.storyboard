@@ -729,7 +729,7 @@
                                 </constraints>
                                 <state key="normal" image="Volunteer"/>
                                 <connections>
-                                    <action selector="myAdminFunc:" destination="M6B-KH-18W" eventType="touchUpInside" id="eQW-nq-TeX"/>
+                                    <action selector="myAdminAction:" destination="M6B-KH-18W" eventType="touchUpInside" id="VW7-RV-8qj"/>
                                     <segue destination="7ca-JV-R2F" kind="show" identifier="MyAdminSegue" id="E5M-Pz-dnM"/>
                                 </connections>
                             </button>

@@ -52,6 +52,7 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     
 //--- Button that refers to the view Admin Subscriber
     @IBAction func myAdminFunc(_ sender: Any) {
+        print("my admin button")
         performSegue(withIdentifier: "MyAdminSegue", sender: self)
     }
     
