@@ -355,7 +355,7 @@
                                 <connections>
                                     <action selector="addAction:" destination="oFV-Vs-ePn" eventType="touchUpInside" id="VRc-IO-uoj"/>
                                     <action selector="next:" destination="7iP-uM-gqX" eventType="touchUpInside" id="JrL-sX-DvQ"/>
-                                    <segue destination="DiL-V7-qlv" kind="presentation" identifier="toChampionship" animates="NO" id="t80-IV-DA1"/>
+                                    <segue destination="DiL-V7-qlv" kind="show" identifier="toChampionship" animates="NO" id="t80-IV-DA1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -429,7 +429,7 @@
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="CZx-FH-avN">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
-                                                <action selector="back:" destination="DiL-V7-qlv" id="Qmi-gl-xYT"/>
+                                                <action selector="backButton:" destination="DiL-V7-qlv" id="DQp-fk-qeB"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Save" id="jyf-d2-Y5X">

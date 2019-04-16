@@ -187,7 +187,7 @@ class FirebaseManager{
                 tempUser = User(firstName: snapshot.childSnapshot(forPath: FirebaseSession.USER_FIRSTNAME.rawValue).value as? String ?? "NULL",
                                     lastName: snapshot.childSnapshot(forPath: FirebaseSession.USER_LASTNAME.rawValue).value as? String ?? "NULL",
                                     phone: snapshot.childSnapshot(forPath: FirebaseSession.USER_PHONE.rawValue).value as? String ?? "NULL",
-                                    admin: snapshot.childSnapshot(forPath: FirebaseSession.USER_ADMIN.rawValue).value as! Bool, // NOT NECESSARY
+                                    admin: snapshot.childSnapshot(forPath: FirebaseSession.USER_ADMIN.rawValue).value as? Bool ?? false, // NOT NECESSARY
                     email: snapshot.childSnapshot(forPath: FirebaseSession.USER_EMAIL.rawValue).value as? String ?? "NULL",
                     password: "", jobPreference: ""//NOT NECESSARY
                 )

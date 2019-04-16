@@ -310,7 +310,8 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         
     }
 
-    @IBAction func goBackManagement(_ sender: Any) {
+
+    @IBAction func backButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
@@ -402,10 +403,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         return textTest.evaluate(with:test)
     }
     
-    @IBAction func back(_ sender: Any) {
-        self.dismiss(animated: false, completion: nil)
-
-    }
+ 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
