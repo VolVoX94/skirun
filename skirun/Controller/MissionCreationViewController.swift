@@ -56,12 +56,10 @@ class MissionCreationViewController: UIViewController , UIPickerViewDelegate, UI
     var jobs: String?
     
 //--- Button that refers to the view Admin Subscriber
-    @IBAction func myAdminFunc(_ sender: Any) {
-        print("my admin button")
-        performSegue(withIdentifier: "MyAdminSegue", sender: self)
+    @IBAction func myAdminButton(_ sender: Any) {
+         performSegue(withIdentifier: "MyAdminSegue", sender: self)
     }
-    
-//--- Function that hides the datePicker
+    //--- Function that hides the datePicker
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
         datePicker.isHidden = true
