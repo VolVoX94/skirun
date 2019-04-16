@@ -423,6 +423,10 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         destinationController.competitionChoose = self.titleCompetition.text!
         destinationController.missionChoose = selectedMission
         destinationController.disciplineChoose = selectedDiscipline
+            
+        self.selectedCompetition = self.titleCompetition.text
+        self.loadCompetition()
+            
         }
     }
     
@@ -434,11 +438,6 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     }
     
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        selectedCompetition = self.titleCompetition.text
-        self.loadCompetition()
-    }
-  
+ 
     
 }
