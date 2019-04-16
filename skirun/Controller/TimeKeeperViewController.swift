@@ -94,9 +94,11 @@ class TimeKeeperViewController: UIViewController {
         
         if(typeJob == "Logistics"){
             
-            self.numberLabel.isHidden = true
+            self.numberLabel.isHidden = false
+            self.numberLabel.text = self.currentMissionObject.location
             self.numberField.isHidden = true
-            self.resultLabel.isHidden = true
+            self.resultLabel.isHidden = false
+            self.resultLabel.text = "\(self.currentMissionObject.startTime.toDateTime) \(" - ") \(self.currentMissionObject.endTime.toHour)"//2.
             self.resultField.isHidden = true
             self.submitButton.isHidden = true
             self.dnfButton.isHidden = true
