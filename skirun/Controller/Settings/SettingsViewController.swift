@@ -13,6 +13,7 @@ class SettingsViewController: UIViewController {
     
     let uid:String? = Auth.auth().currentUser?.email
     
+    @IBOutlet weak var mySettingsTitle: UILabel!
     @IBOutlet weak var myUIDTitleLabel: UILabel!
     @IBOutlet weak var uidLabel: UILabel!
     @IBOutlet weak var bottomGap: NSLayoutConstraint!
@@ -56,6 +57,7 @@ class SettingsViewController: UIViewController {
             self.bottomGap.constant = 5
             self.uidLabel.isHidden = true
             self.myUIDTitleLabel.isHidden = true
+            self.mySettingsTitle.font = UIFont(name: "AvenirNext-Bold", size: 20)
         }
     }
     

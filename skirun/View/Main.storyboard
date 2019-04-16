@@ -184,6 +184,7 @@
                         <outlet property="competitionPicker" destination="5kf-cn-ud4" id="BTb-TA-DTK"/>
                         <outlet property="disciplinePicker" destination="XQd-KW-AO6" id="nVj-wB-QZN"/>
                         <outlet property="firstPickerHeight" destination="EwI-DM-TDM" id="zk7-8Z-XqD"/>
+                        <outlet property="myMissionTitle" destination="Rh2-Cg-HfM" id="5zF-En-bEn"/>
                         <outlet property="myWaitSymbolizer" destination="Zha-JQ-PBR" id="sWP-4L-A6A"/>
                         <outlet property="noDataLabel" destination="YfM-vj-PVa" id="LEF-hJ-ACc"/>
                         <outlet property="secondPickerHeight" destination="2b1-KD-cZG" id="BAR-Ns-me3"/>
@@ -204,24 +205,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Srq-Z4-jGa">
-                                <rect key="frame" x="0.0" y="42" width="414" height="44"/>
-                                <color key="backgroundColor" red="0.027450980390000001" green="0.20000000000000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="barTintColor" red="0.027450980390000001" green="0.20000000000000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Admin" id="WKR-7q-4jC">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="vl1-do-ago">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <connections>
-                                                <action selector="back:" destination="8hz-nY-BuE" id="cuH-df-36L"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYq-Es-H0b">
                                 <rect key="frame" x="249" y="300" width="85" height="122"/>
                                 <state key="normal" image="Location"/>
@@ -241,10 +224,28 @@
                                     <segue destination="2Bc-k7-GFd" kind="show" identifier="MyAdminKeySegue" animates="NO" id="wI2-QW-CHW"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Srq-Z4-jGa">
+                                <rect key="frame" x="0.0" y="33" width="414" height="44"/>
+                                <color key="backgroundColor" red="0.027450980390000001" green="0.20000000000000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.027450980390000001" green="0.20000000000000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Admin" id="WKR-7q-4jC">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="vl1-do-ago">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="back:" destination="8hz-nY-BuE" id="cuH-df-36L"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.027450980390000001" green="0.20000000000000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Srq-Z4-jGa" firstAttribute="top" secondItem="fgZ-Hx-M1d" secondAttribute="top" constant="42" id="0kC-xu-XW9"/>
+                            <constraint firstItem="Srq-Z4-jGa" firstAttribute="top" secondItem="fgZ-Hx-M1d" secondAttribute="top" constant="33" id="0kC-xu-XW9"/>
                             <constraint firstItem="Srq-Z4-jGa" firstAttribute="leading" secondItem="kq0-rm-9qa" secondAttribute="leading" id="InI-Y8-8Tg"/>
                             <constraint firstItem="JYq-Es-H0b" firstAttribute="centerX" secondItem="fgZ-Hx-M1d" secondAttribute="centerX" constant="84.5" id="Oiz-31-ppl"/>
                             <constraint firstItem="znN-qk-Ej9" firstAttribute="centerX" secondItem="fgZ-Hx-M1d" secondAttribute="centerX" constant="-78.5" id="SYe-Bi-kWI"/>
@@ -1095,6 +1096,7 @@
                     <connections>
                         <outlet property="bottomGap" destination="KYY-FB-fQO" id="G9O-jn-foU"/>
                         <outlet property="logoutButton" destination="T8z-6f-HHc" id="6YB-0Q-Fq4"/>
+                        <outlet property="mySettingsTitle" destination="FGE-3h-cAd" id="15n-I7-06d"/>
                         <outlet property="myUIDTitleLabel" destination="bUl-4r-xi4" id="UyD-F8-40E"/>
                         <outlet property="uidLabel" destination="bga-mR-YsO" id="zsk-Fi-AcA"/>
                         <segue destination="42J-V3-VPw" kind="show" identifier="toRole" animates="NO" id="sUY-U0-8ju"/>
@@ -1272,7 +1274,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2g-0p-Bke">
                                                     <rect key="frame" x="30" y="11" width="0.0" height="0.0"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </label>

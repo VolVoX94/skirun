@@ -17,6 +17,7 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     var selectedDiscipline: String?
     var selectedMission: String?
     var selectedMissionJob: String?
+    var cellFontSize:CGFloat?
 
     private var myUser:User?
     //Constraints used for small devices
@@ -25,6 +26,7 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var secondPickerHeight: NSLayoutConstraint!
     @IBOutlet weak var tableHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var myMissionTitle: UILabel!
     
     // View Indicator while waiting data
     @IBOutlet weak var myWaitSymbolizer: UIActivityIndicatorView!
@@ -53,6 +55,8 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.cellFontSize = 20
+        checkDeviceSize()
         self.MyAdminButton.isHidden = true
         self.loadCurrentUser()
         // Load the table view
@@ -62,7 +66,7 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
         self.noDataLabel.text = ""
         
         //Important for small device like iPhone SE
-        checkDeviceSize()
+        
         // Call the compettions
         do {
             let printComp = try self.loadListCompetitions();
@@ -77,10 +81,12 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
         let screenHeight = screenSize.height
         let factor = screenHeight/568
         if(factor < 1.2){
+            self.cellFontSize = 15
             self.Select_Title_Gap.constant = 15
             self.firstPickerHeight.constant = 60
             self.secondPickerHeight.constant = 60
             self.tableHeight.constant = 150
+            self.myMissionTitle.font = UIFont(name: "AvenirNext-Bold", size: 20)
         }
     }
     
@@ -107,7 +113,7 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
             let text = "\(listMissions[indexPath.row].title) \(" ") \(start.toDateTime)"//2.
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.textLabel?.text = text //3.
-            cell.textLabel?.font = UIFont(name: "Avenir Next Medium", size: 20)
+            cell.textLabel?.font = UIFont(name: "Avenir Next Medium", size: self.cellFontSize!)
             cell.textLabel?.textColor = UIColor.white
       
         } catch let error as NSError{
@@ -225,11 +231,13 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     
     // load list of disciplines
     func loadListDisciplines() throws {
-        // remove the conent of the list of missions
-        self.listMissions.removeAll()
+       
         self.listDisciplines = [String]()
         // call firebase
         FirebaseManager.getDisciplinesOfCompetition(name: self.selectedCompetition!) { (pickerData) in
+            // remove the conent of the list of missions
+            self.listMissions.removeAll()
+            
             self.listDisciplines = Array(pickerData)
             self.disciplinePicker.delegate = self
             self.disciplinePicker.dataSource = self
@@ -305,25 +313,25 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         
         if (pickerView.tag == 0){
-            let view = UIView(frame: CGRect(x:0, y:0, width:400, height: 30))
+            let view = UIView(frame: CGRect(x:0, y:0, width:400, height: self.cellFontSize!+5))
             
-            let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: 30))
+            let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: self.cellFontSize!+5))
             topLabel.text = listCompetitions[row]
             topLabel.textColor = UIColor.white
             topLabel.textAlignment = .center
-            topLabel.font = UIFont(name: "Avenir Next Medium", size: 20)
+            topLabel.font = UIFont(name: "Avenir Next Medium", size: self.cellFontSize!)
             view.addSubview(topLabel)
             
             return view
             
         }else{
-            let view = UIView(frame: CGRect(x:0, y:0, width:400, height: 30))
+            let view = UIView(frame: CGRect(x:0, y:0, width:400, height: self.cellFontSize!+5))
             
-            let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: 30))
+            let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: self.cellFontSize!+5))
             topLabel.text = listDisciplines[row]
             topLabel.textColor = UIColor.white
             topLabel.textAlignment = .center
-            topLabel.font = UIFont(name: "Avenir Next Medium", size: 20)
+            topLabel.font = UIFont(name: "Avenir Next Medium", size: self.cellFontSize!)
             view.addSubview(topLabel)
             
             return view
