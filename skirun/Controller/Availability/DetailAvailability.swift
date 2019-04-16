@@ -140,7 +140,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
             self.present(alertBox, animated: true);
         }
         else{
-            subscribe()
+            modifySubscriber()
         }
     }
     
@@ -275,14 +275,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         alertBox.message = "Do you want to submit your choice?";
         alertBox.addAction(UIAlertAction(title: "Yes", style: .default, handler:{ (action: UIAlertAction!) in
             //SUBSCRIBE SELECTION
-            for item in self.choosenMissions {
-                self.saveSubscriber(mission: self.missionData[item].title)
-            }
-            //DELETE DESELECTION
-            for item in self.notChoosenMissions {
-                self.deleteSubscriber(mission: self.missionData[item].title)
-            }
-            self.dismiss(animated: true, completion: nil)
+            self.modifySubscriber()
         }))
         alertBox.addAction(UIAlertAction(title: "No", style: .cancel, handler:{(action: UIAlertAction!) in
             self.dismiss(animated: true, completion: nil)
@@ -293,5 +286,16 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     //ERROR - HANDLING
     func assignData(data:[Mission], index:Int) throws -> Mission{
         return data[index]
+    }
+    
+    func modifySubscriber(){
+        for item in self.choosenMissions {
+            self.saveSubscriber(mission: self.missionData[item].title)
+        }
+        //DELETE DESELECTION
+        for item in self.notChoosenMissions {
+            self.deleteSubscriber(mission: self.missionData[item].title)
+        }
+        self.dismiss(animated: true, completion: nil)
     }
 }
