@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -234,8 +234,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEQ-dF-vcK">
-                                <rect key="frame" x="157" y="489" width="100" height="110"/>
-                                <state key="normal" image="Generate Key2"/>
+                                <rect key="frame" x="157" y="494.5" width="100" height="99"/>
+                                <state key="normal" image="Generate Key Round"/>
                                 <connections>
                                     <action selector="adminPWFunc:" destination="8hz-nY-BuE" eventType="touchUpInside" id="cvd-1v-me0"/>
                                     <segue destination="2Bc-k7-GFd" kind="show" identifier="MyAdminKeySegue" animates="NO" id="wI2-QW-CHW"/>
@@ -875,7 +875,6 @@
                         <outlet property="jobPrinted" destination="ikc-bY-hYm" id="0nK-Gw-TMy"/>
                         <outlet property="label_NumberOfPeople" destination="Me3-RS-XyU" id="PCA-G6-SeW"/>
                         <outlet property="location" destination="NPW-ft-6ud" id="sXP-TA-e9Q"/>
-                        <outlet property="myAdminButton" destination="nOi-C0-oFb" id="dsy-7K-U9F"/>
                         <outlet property="nameMission" destination="hfq-Nq-UNw" id="4FY-ZX-CrJ"/>
                         <outlet property="nbPeople" destination="aOY-2V-24o" id="ee0-BP-GAe"/>
                         <outlet property="pickerJob" destination="qEW-Np-3YS" id="DFT-tc-8m9"/>
@@ -1487,7 +1486,7 @@
         <image name="+" width="27" height="27"/>
         <image name="Admin" width="63" height="88"/>
         <image name="Fw" width="19" height="24"/>
-        <image name="Generate Key2" width="100" height="110"/>
+        <image name="Generate Key Round" width="100" height="99"/>
         <image name="Location" width="85" height="122"/>
         <image name="Management 2" width="97" height="116"/>
         <image name="Settings white" width="42" height="42"/>
