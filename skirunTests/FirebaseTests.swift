@@ -61,6 +61,22 @@ class FirebaseTests: XCTestCase {
             XCTAssertEqual(mission.location, "NULL")
         }
     }
-
+    
+    // check if the list of discipline of an non existing competition is set to 0
+    func test_DisciplinesOfCompetition() {
+        FirebaseManager.getDisciplinesOfCompetition(name: "not existing competition") { (sampleData) in
+            XCTAssertEqual(sampleData.count, 0)
+        }
+    }
+    
+    // check if the list of mission of an non existing competition and non existing discipline
+    func test_MissionOfDisciplines() {
+        FirebaseManager.getMisOfDisciplines(competitionName: "not existing competition", disciplineName: "not existing discplines"){ (sampleData) in
+            
+            XCTAssertEqual(sampleData.count, 0)
+        }
+    }
+    
+    
 
 }
