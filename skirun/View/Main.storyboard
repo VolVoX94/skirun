@@ -780,7 +780,7 @@
                                 <rect key="frame" x="167" y="675" width="80" height="114"/>
                                 <state key="normal" image="Volunteer"/>
                                 <connections>
-                                    <action selector="myAdminAction:" destination="M6B-KH-18W" eventType="touchUpInside" id="VW7-RV-8qj"/>
+                                    <action selector="myAdminButton:" destination="M6B-KH-18W" eventType="touchUpInside" id="mGK-Fa-7I0"/>
                                     <segue destination="7ca-JV-R2F" kind="show" identifier="MyAdminSegue" id="E5M-Pz-dnM"/>
                                 </connections>
                             </button>
