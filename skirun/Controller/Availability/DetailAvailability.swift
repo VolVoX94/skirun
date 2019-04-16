@@ -204,7 +204,9 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         
         //SWITCH BUTTON ---------------------------------
         let switchObj = UISwitch(frame: CGRect(x: 1, y: 1, width: 20, height: 20))
-        if(alreadySubscribedMissions.contains(missionData[indexPath.row].jobs)){
+        let txt = missionData[indexPath.row].jobs + missionData[indexPath.row].title
+        print(txt)
+        if(alreadySubscribedMissions.contains(txt)){
             switchObj.isOn = true
         }
         else{

@@ -286,8 +286,9 @@ class FirebaseManager{
                     //Check if currentUser has an subscription
                     if(tempUid == uidUser){
                         //Identifier for mission
-                        
-                        states.append(item.jobs)
+                        let txt = item.jobs+item.title
+                        print("FIREBASE:", txt)
+                        states.append(item.jobs + item.title)
                     }
                     completion(states)
                 }
