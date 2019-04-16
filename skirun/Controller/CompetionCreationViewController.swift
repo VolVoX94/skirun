@@ -18,6 +18,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     @IBOutlet weak var StartDateToEndDate_Gap: NSLayoutConstraint!
     @IBOutlet weak var EndDateToRefAPI_Gap: NSLayoutConstraint!
     
+    @IBOutlet weak var labelLineTwo: UILabel!
     @IBOutlet weak var MissionTop_Gap: NSLayoutConstraint!
     //Picker
     @IBOutlet weak var HeightPicker: NSLayoutConstraint!
@@ -119,7 +120,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         let screenHeight = screenSize.height
         let factor = screenHeight/568
         
-        self.MissionTop_Gap.constant = -73
+        self.MissionTop_Gap.constant = 5
         self.EnterTitleToStart_Gap.constant = 5 * factor
         self.StartDateToEndDate_Gap.constant = 5 * factor
         self.EndDateToRefAPI_Gap.constant = 5 * factor
