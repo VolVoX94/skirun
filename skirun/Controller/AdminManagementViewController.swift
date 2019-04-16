@@ -10,13 +10,17 @@ import UIKit
 
 class AdminManagementViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
+    @IBOutlet weak var chamLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     private var data: [String] = []
+    private var fontCellSize:CGFloat?
     var selectedCompetition = "none"
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        fontCellSize = 20
+        checkDeviceSize()
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -24,6 +28,16 @@ class AdminManagementViewController: UIViewController, UITableViewDataSource, UI
             self.data = Array(data)
             self.tableView.reloadData()
         })
+    }
+    
+    func checkDeviceSize(){
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        let factor = screenHeight/568
+        if(factor < 1.2){
+            self.fontCellSize = 15
+            self.chamLabel.font = UIFont(name: "AvenirNext-MediumItalic", size: 15)
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,7 +50,7 @@ class AdminManagementViewController: UIViewController, UITableViewDataSource, UI
         let text = data[indexPath.row] //2.
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.textLabel?.text = text //3.
-        cell.textLabel?.font = UIFont(name: "Avenir Next Medium", size: 20)
+        cell.textLabel?.font = UIFont(name: "Avenir Next Medium", size: self.fontCellSize!)
         cell.textLabel?.textColor = UIColor.white
         
         return cell //4.

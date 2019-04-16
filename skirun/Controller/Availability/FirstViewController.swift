@@ -64,7 +64,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.textLabel?.text = text //3.
         cell.textLabel?.font = UIFont(name: "Avenir Next Medium", size: self.fontSizeCell!)
         cell.textLabel?.textColor = UIColor.white
-        
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell //4.
     }
     
@@ -80,7 +80,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             print(error.localizedDescription)
         }
             let cell:UITableViewCell = tableView.cellForRow(at: indexPath)!
-            cell.contentView.backgroundColor = UIColor(red:0.00, green:0.15, blue:0.29, alpha:1.0)
+            //cell.contentView.backgroundColor = UIColor(red:0.00, green:0.15, blue:0.29, alpha:1.0)
             performSegue(withIdentifier: "MyNextAvailability", sender: self)
     }
     
@@ -91,6 +91,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             destinationController.date = self.date;
         }
     }
+    
     
     func loadData(){
         

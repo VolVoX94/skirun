@@ -30,10 +30,12 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     @IBOutlet weak var startDate: UITextField!
     @IBOutlet weak var addButton: UIButton!
     
+    @IBOutlet weak var misLabel: UILabel!
     @IBOutlet weak var missionTableview: UITableView!
     @IBOutlet weak var disciplinePicker: UIPickerView!
     var pickerData: [String] = [String]()
     var missionData:[Mission] = []
+    private var fontCellSize:CGFloat?
     
     private var data:[String] = []
     var selectedMission = "none"
@@ -48,7 +50,8 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.fontCellSize = 20
+        checkDeviceSize()
         //Used for handling constraints while displaying keyboard
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
@@ -72,6 +75,20 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
             self.addButton.isEnabled = true
             rightSwip.addTarget(self, action: #selector(handleSwipe(sender:)))
             view.addGestureRecognizer(rightSwip)
+        }
+    }
+    
+    func checkDeviceSize(){
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        let factor = screenHeight/568
+        if(factor < 1.2){
+            self.fontCellSize = 15
+            self.endDate.font = UIFont(name: "AvenirNext-DemiBold", size: 15)
+            self.refApi.font = UIFont(name: "AvenirNext-DemiBold", size: 15)
+            self.startDate.font = UIFont(name: "AvenirNext-DemiBold", size: 15)
+            self.titleCompetition.font = UIFont(name: "AvenirNext-DemiBold", size: 15)
+            self.misLabel.font = UIFont(name: "AvenirNext-MediumItalic", size: 15)
         }
     }
     
@@ -210,7 +227,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         let tempMission = missionData[indexPath.row]
         
         cell.textLabel?.text = tempMission.title //3.
-        cell.textLabel?.font = UIFont(name: "Avenir Next Medium", size: 20)
+        cell.textLabel?.font = UIFont(name: "Avenir Next Medium", size: self.fontCellSize!)
         cell.textLabel?.textColor = UIColor.white
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
@@ -237,14 +254,14 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     
     //Picker formatting
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let view = UIView(frame: CGRect(x:0, y:0, width:400, height: 30))
+        let view = UIView(frame: CGRect(x:0, y:0, width:400, height: self.fontCellSize!+5))
         
-        let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: 30))
+        let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: self.fontCellSize!+5))
         topLabel.text = pickerData[row]
         topLabel.textColor = UIColor.white
         topLabel.textAlignment = .center
         topLabel.backgroundColor = UIColor.clear
-        topLabel.font = UIFont(name: "Avenir Next Medium", size: 20)
+        topLabel.font = UIFont(name: "Avenir Next Medium", size: self.fontCellSize!)
         view.addSubview(topLabel)
         
         return view

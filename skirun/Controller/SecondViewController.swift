@@ -28,6 +28,8 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     
     @IBOutlet weak var myMissionTitle: UILabel!
     
+    @IBOutlet weak var selMisLabel: UILabel!
+    @IBOutlet weak var selChamLabel: UILabel!
     // View Indicator while waiting data
     @IBOutlet weak var myWaitSymbolizer: UIActivityIndicatorView!
     
@@ -87,6 +89,8 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
             self.secondPickerHeight.constant = 60
             self.tableHeight.constant = 150
             self.myMissionTitle.font = UIFont(name: "AvenirNext-Bold", size: 20)
+            self.selMisLabel.font = UIFont(name: "AvenirNext-MediumItalic", size: 15)
+            self.selChamLabel.font = UIFont(name: "AvenirNext-MediumItalic", size: 15)
         }
     }
     

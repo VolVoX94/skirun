@@ -28,17 +28,17 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
    
     //1------- DECLARED VARIABLES
     private var data:[Competition] = []
-    var name:String?
-    var date:String?
-    var alreadyReloaded:Bool = true
-    var myDiscipline:String?
-    var myCompetition:Competition?
-    var myMission:Mission?
-    var pickerData: [String] = [String]()
-    var missionData:[Mission] = []
-    var choosenMissions:[Int] = []
-    var notChoosenMissions:[Int] = []
-    var alreadySubscribedMissions: [String] = []
+    public var name:String?
+    public var date:String?
+    private var alreadyReloaded:Bool = true
+    private var myDiscipline:String?
+    private var myCompetition:Competition?
+    private var myMission:Mission?
+    private var pickerData: [String] = [String]()
+    private var missionData:[Mission] = []
+    private var choosenMissions:[Int] = []
+    private var notChoosenMissions:[Int] = []
+    private var alreadySubscribedMissions: [String] = []
     private var fontSizeCell:CGFloat?
     
     @IBOutlet weak var tableView: UITableView!
@@ -51,6 +51,8 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         
     @IBOutlet weak var myPicker: UIPickerView!
     
+    @IBOutlet weak var chooseMisLabel: UILabel!
+    @IBOutlet weak var chooseDiscLabel: UILabel!
     override func viewDidLoad() {
             super.viewDidLoad()
             self.fontSizeCell = 20
@@ -71,6 +73,8 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         let factor = screenHeight/568
         if(factor < 1.2){
             self.fontSizeCell = 15
+            self.chooseMisLabel.font = UIFont(name: "AvenirNext-MediumItalic", size: 15)
+            self.chooseDiscLabel.font = UIFont(name: "AvenirNext-MediumItalic", size: 15)
         }
     }
 
@@ -104,6 +108,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         self.notChoosenMissions.removeAll()
         self.choosenMissions.removeAll()
         self.myDiscipline = pickerData[row]
+        self.alreadySubscribedMissions.removeAll()
         
         //Important that when have no data nothing empty table is displayed
         self.missionData.removeAll()
@@ -201,7 +206,6 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         let switchObj = UISwitch(frame: CGRect(x: 1, y: 1, width: 20, height: 20))
         if(alreadySubscribedMissions.contains(missionData[indexPath.row].jobs)){
             switchObj.isOn = true
-            //choosenMissions.append(indexPath.row)
         }
         else{
             switchObj.isOn = false;

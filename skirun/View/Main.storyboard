@@ -188,6 +188,8 @@
                         <outlet property="myWaitSymbolizer" destination="Zha-JQ-PBR" id="sWP-4L-A6A"/>
                         <outlet property="noDataLabel" destination="YfM-vj-PVa" id="LEF-hJ-ACc"/>
                         <outlet property="secondPickerHeight" destination="2b1-KD-cZG" id="BAR-Ns-me3"/>
+                        <outlet property="selChamLabel" destination="a35-PH-d2p" id="HN4-yz-laA"/>
+                        <outlet property="selMisLabel" destination="j8b-5T-9I9" id="t3b-ax-ayb"/>
                         <outlet property="tableHeight" destination="MIn-rr-S4Q" id="Rn3-0s-cXs"/>
                         <segue destination="eWn-0Z-gAN" kind="presentation" identifier="toMission" id="HvW-ef-zf9"/>
                         <segue destination="fMA-Cs-XIw" kind="show" identifier="toMissionController" id="abK-4O-sLv"/>
@@ -383,6 +385,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="chamLabel" destination="Kep-cc-n0T" id="loR-5I-f5B"/>
                         <outlet property="tableView" destination="bvY-wG-ZDD" id="iWu-Du-aud"/>
                     </connections>
                 </viewController>
@@ -628,6 +631,7 @@
                         <outlet property="datePicker" destination="gOg-yd-4HF" id="lKR-yP-mgj"/>
                         <outlet property="disciplinePicker" destination="0Id-6w-Dgo" id="1k9-yf-rbb"/>
                         <outlet property="endDate" destination="oQY-Q5-q9N" id="aOE-M3-ucc"/>
+                        <outlet property="misLabel" destination="rjm-ai-HRM" id="sB2-G4-XFV"/>
                         <outlet property="missionTableview" destination="uGi-lf-YB2" id="I33-ye-GHB"/>
                         <outlet property="refApi" destination="JhP-0g-fIi" id="hgv-xp-2N3"/>
                         <outlet property="rightSwip" destination="Z4J-eh-InQ" id="Oo3-n7-D2H"/>
@@ -1474,6 +1478,8 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="chooseDiscLabel" destination="uvY-ta-W2k" id="MTx-HL-zXE"/>
+                        <outlet property="chooseMisLabel" destination="xtR-5c-mZt" id="354-yC-wei"/>
                         <outlet property="myCompetitionName" destination="Cp9-sw-cbQ" id="M7Z-ga-dKI"/>
                         <outlet property="myPicker" destination="XIg-JY-Tsd" id="6Ko-Mm-ybM"/>
                         <outlet property="myWaitAnimation" destination="4Aa-wd-iic" id="qQk-yz-3mN"/>
