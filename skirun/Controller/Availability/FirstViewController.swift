@@ -8,6 +8,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     private var data:[String] = []
     private var name:String?
     private var date:String?
+    private var fontSizeCell:CGFloat?
     @IBOutlet weak var myWaitAnimation: UIActivityIndicatorView!
     
     @IBOutlet weak var myAvailabilityTitle: UILabel!
@@ -17,9 +18,12 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Default size for cell, used for small Device -> will overwritten by checkDeviceSize
+        self.fontSizeCell = 20
+        checkDeviceSize()
         tableView.dataSource = self
         tableView.delegate = self
-        checkDeviceSize()
+        
         self.myWaitAnimation.startAnimating()
         loadData()
      
@@ -30,7 +34,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         let screenHeight = screenSize.height
         let factor = screenHeight/568
         if(factor < 1.2){
-            self.myAvailabilityTitle.font = UIFont(name: "Avenir Next Medium", size: 20)
+            self.fontSizeCell = 15
+            self.myAvailabilityTitle.font = UIFont(name: "AvenirNext-Bold", size: 20)
         }
     }
     
@@ -57,7 +62,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         
         cell.textLabel?.text = text //3.
-        cell.textLabel?.font = UIFont(name: "Avenir Next Medium", size: 20)
+        cell.textLabel?.font = UIFont(name: "Avenir Next Medium", size: self.fontSizeCell!)
         cell.textLabel?.textColor = UIColor.white
         
         return cell //4.

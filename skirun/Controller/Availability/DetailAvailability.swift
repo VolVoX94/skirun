@@ -39,6 +39,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     var choosenMissions:[Int] = []
     var notChoosenMissions:[Int] = []
     var alreadySubscribedMissions: [String] = []
+    private var fontSizeCell:CGFloat?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -52,8 +53,9 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
             super.viewDidLoad()
+            self.fontSizeCell = 20
             tableView.dataSource = self
-            
+            checkDeviceSize()
             loadCompetitionData()
             self.myCompetitionName.text = self.name
             //self.myStartDateLabel.text = self.name
@@ -63,6 +65,14 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
             loadDisciplineData()
         }
     
+    func checkDeviceSize(){
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        let factor = screenHeight/568
+        if(factor < 1.2){
+            self.fontSizeCell = 15
+        }
+    }
 
     
     //2 PICKER METHODS -------------------------
@@ -110,13 +120,13 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     
     //Picker formatting
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let view = UIView(frame: CGRect(x:0, y:0, width:400, height: 30))
+        let view = UIView(frame: CGRect(x:0, y:0, width:400, height: self.fontSizeCell!+10))
         
-        let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: 30))
+        let topLabel = UILabel(frame: CGRect(x:0, y:0, width: 400, height: self.fontSizeCell!+10))
         topLabel.text = pickerData[row]
         topLabel.textColor = UIColor.white
         topLabel.textAlignment = .center
-        topLabel.font = UIFont(name: "Avenir Next Medium", size: 20)
+        topLabel.font = UIFont(name: "Avenir Next Medium", size: self.fontSizeCell!)
         view.addSubview(topLabel)
         
         return view
@@ -182,7 +192,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         }
             
         cell.textLabel?.text = text //3.
-        cell.textLabel?.font = UIFont(name: "Avenir Next Medium", size: 20)
+        cell.textLabel?.font = UIFont(name: "Avenir Next Medium", size: self.fontSizeCell!)
         cell.textLabel?.textColor = UIColor.white
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
