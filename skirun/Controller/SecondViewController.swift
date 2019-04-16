@@ -235,11 +235,13 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     
     // load list of disciplines
     func loadListDisciplines() throws {
-        // remove the conent of the list of missions
-        self.listMissions.removeAll()
+       
         self.listDisciplines = [String]()
         // call firebase
         FirebaseManager.getDisciplinesOfCompetition(name: self.selectedCompetition!) { (pickerData) in
+            // remove the conent of the list of missions
+            self.listMissions.removeAll()
+            
             self.listDisciplines = Array(pickerData)
             self.disciplinePicker.delegate = self
             self.disciplinePicker.dataSource = self

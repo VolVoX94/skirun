@@ -57,18 +57,19 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        datePicker.isHidden=true
+        datePicker.isHidden = true
         datePicker.backgroundColor = UIColor.white
         self.addButton.isEnabled = false
         
         self.disciplinePicker.delegate = self
         self.disciplinePicker.dataSource = self
-      
+        
+        self.missionTableview.delegate = self
+        self.missionTableview.dataSource = self
         
         //If we have a competitions, we load it
         if(selectedCompetition != "none"){
             loadCompetition()
-            loadDisciplineData()
             self.missionTableview.delegate = self
             self.missionTableview.dataSource = self
             self.disciplinePicker.isHidden = false
@@ -93,7 +94,6 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     }
     
     @objc func keyBoardWillShow(notification:Notification){
-        print("Up")
         if let userInfo = notification.userInfo as? Dictionary<String, AnyObject>{
             let frame = userInfo[UIResponder.keyboardFrameEndUserInfoKey]
             let keyBoardRect = frame?.cgRectValue
@@ -107,7 +107,6 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     }
     
     @objc func keyBoardWillHide(notification:Notification){
-        print("Up")
         constraintWithoutKeyboard()
         UIView.animate(withDuration: 0.5, animations:{
             self.view.layoutIfNeeded()
@@ -115,7 +114,6 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     }
     
     func constraintWithKeyboard(){
-        print("With")
         //Calculating relation
         let screenSize: CGRect = UIScreen.main.bounds
         let screenHeight = screenSize.height
@@ -128,7 +126,6 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     }
     
     func constraintWithoutKeyboard(){
-        print("without")
         self.MissionTop_Gap.constant = 13
         self.EnterTitleToStart_Gap.constant = 20
         self.StartDateToEndDate_Gap.constant = 20
@@ -270,10 +267,8 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     //Check wich element has been choosen
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedDiscipline = pickerData[row]
-        
         //load the data for missions
         loadMissionData(disciplineName: pickerData[row])
-        
     }
     
     func loadMissionData(disciplineName: String){
@@ -284,11 +279,10 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     }
     
     func loadDisciplineData(){
-        FirebaseManager.getDisciplinesOfCompetition(name: self.selectedCompetition!) { (pickerData) in
+        FirebaseManager.getDisciplinesOfCompetition(name: self.titleCompetition.text!) { (pickerData) in
             self.pickerData = Array(pickerData)
             self.pickerData.insert("Please select", at: 0)
             self.disciplinePicker.reloadAllComponents()
-            print("discipline reloaded")
         }
     }
     //
@@ -310,6 +304,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
             let end: UnixTime = (self.competiton?.endDateTime)!
             self.endDate.text = end.toDateTime
             self.refApi.text = self.competiton?.refAPI
+            self.loadDisciplineData()
         })
         
     }
@@ -395,6 +390,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         save.title = ""
         self.disciplinePicker.isHidden = false
         self.addButton.isEnabled = true
+        datePicker.isHidden = true
         
     }
     
@@ -439,7 +435,11 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     }
     
     
- 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        selectedCompetition = self.titleCompetition.text
+        self.loadCompetition()
+    }
   
     
 }

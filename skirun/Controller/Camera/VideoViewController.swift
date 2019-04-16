@@ -17,9 +17,9 @@ import Firebase
 class VideoViewController: UIViewController{
 
     var bipNumber:Int = 0
-    var currentCompetition: String!
-    var currentDiscipline: String!
-    var currentMission: String!
+    var currentCompetition: String! = ""
+    var currentDiscipline: String! = ""
+    var currentMission: String! = ""
     var currentMissionObject: Mission!
     
     @IBOutlet weak var missionDescription: UITextView!
@@ -83,10 +83,9 @@ extension VideoViewController: UIImagePickerControllerDelegate, UINavigationCont
         DispatchQueue.global().async {
             semaphore.wait()
             
-            print("FIRST SEMAPHORE STARTING")
             
             let title = "BIP number"
-            let message = "Save video linked to the runner"
+            let message = "Save video linked to the skier"
             
             let inputController = UIAlertController(title: title, message: message, preferredStyle: .alert)
             inputController.addTextField { (textField: UITextField!) in
@@ -98,7 +97,6 @@ extension VideoViewController: UIImagePickerControllerDelegate, UINavigationCont
                 if let textFields = inputController.textFields{
                     let theTextFields = textFields as [UITextField]
                     let enteredNumber = theTextFields[0].text!
-                    print("CREATING SUBMIT")
 
                     self.bipNumber = Int(enteredNumber)!
                     semaphore.signal()
@@ -111,18 +109,25 @@ extension VideoViewController: UIImagePickerControllerDelegate, UINavigationCont
         
         DispatchQueue.global().async {
             semaphore.wait()
-            print("SECOND SEMAPHORE STARTING")
+            
+            //Date formater
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "fr_CH")
+            dateFormatter.dateFormat = "dd-MM-yyyy' 'HH:mm:ssZZZZZ"
+            //Date
             let date = Date()
-            let calendar = Calendar.current
+            /*let calendar = Calendar.current
             let day = calendar.component(.day, from: date)
+            let month = calendar.component(.month, from: date)
+            let year = calendar.component(.year, from: date)
             let hour = calendar.component(.hour, from: date)
             let minutes = calendar.component(.minute, from: date)
-            let month = calendar.component(.month, from: date)
+            */
+            //let newDate = dateFormatter.date(from: dateFormatter.string(from: date))
             
-            let uploadVideoReference = self.storageReference.child("Nr:\(self.bipNumber)__\(month)month_\(day)day_\(hour)h_\(minutes)min.mp4")
+            let uploadVideoReference = self.storageReference.child("\(self.currentCompetition!)_\(self.currentDiscipline!)_\(self.currentMission!)_\(self.bipNumber)_\(dateFormatter.string(from: date)))")
             let uploadTask = uploadVideoReference.putFile(from: url)
             
-            print("UPLOADING")
             uploadTask.observe(.success, handler: { (snapshot) in
                 let title = (snapshot.error == nil) ? "Success" : "Error"
                 let message = (snapshot.error == nil) ? "Video was saved" : "Error! Video failed to save"
