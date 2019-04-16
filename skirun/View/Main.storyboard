@@ -1143,16 +1143,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Roles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbd-YE-FJB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbd-YE-FJB">
                                 <rect key="frame" x="171" y="64" width="72" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="27"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WfK-cL-tpc">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WfK-cL-tpc">
                                 <rect key="frame" x="38" y="53" width="45" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                 <state key="normal" title="Back">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1162,32 +1160,44 @@
                                     <action selector="backButton:" destination="42J-V3-VPw" eventType="touchUpInside" id="Jia-7L-cq7"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZAP-dl-gHh">
-                                <rect key="frame" x="38" y="132" width="339" height="461"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZAP-dl-gHh">
+                                <rect key="frame" x="37" y="132" width="340" height="461"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="461" id="G2T-ZN-5Wy"/>
+                                </constraints>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="cellRoles" id="RTP-nX-wgN">
-                                        <rect key="frame" x="0.0" y="28" width="339" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="340" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RTP-nX-wgN" id="z9y-qx-GrI">
-                                            <rect key="frame" x="0.0" y="0.0" width="339" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="340" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="q90-UI-9DG" userLabel="RolesSymbolizer">
-                                <rect key="frame" x="197" y="642" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="q90-UI-9DG" userLabel="RolesSymbolizer">
+                                <rect key="frame" x="197" y="633" width="20" height="20"/>
                                 <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="WfK-cL-tpc" firstAttribute="leading" secondItem="uZE-qL-7ZH" secondAttribute="leading" constant="38" id="5Zn-Nm-6Hj"/>
+                            <constraint firstItem="q90-UI-9DG" firstAttribute="centerX" secondItem="Pxo-UR-tVw" secondAttribute="centerX" id="75I-OF-H5T"/>
+                            <constraint firstItem="ZAP-dl-gHh" firstAttribute="top" secondItem="vbd-YE-FJB" secondAttribute="bottom" constant="31" id="9p1-uo-chM"/>
+                            <constraint firstItem="uZE-qL-7ZH" firstAttribute="bottom" secondItem="q90-UI-9DG" secondAttribute="bottom" constant="209" id="Di4-dn-6IJ"/>
+                            <constraint firstItem="vbd-YE-FJB" firstAttribute="centerX" secondItem="Pxo-UR-tVw" secondAttribute="centerX" id="Epw-AV-ZFc"/>
+                            <constraint firstItem="WfK-cL-tpc" firstAttribute="top" secondItem="uZE-qL-7ZH" secondAttribute="top" constant="9" id="OvZ-Ye-8xN"/>
+                            <constraint firstItem="ZAP-dl-gHh" firstAttribute="leading" secondItem="uZE-qL-7ZH" secondAttribute="leading" constant="37" id="ZEH-QT-UUA"/>
+                            <constraint firstItem="uZE-qL-7ZH" firstAttribute="trailing" secondItem="ZAP-dl-gHh" secondAttribute="trailing" constant="37" id="jl7-As-9ee"/>
+                            <constraint firstItem="vbd-YE-FJB" firstAttribute="top" secondItem="uZE-qL-7ZH" secondAttribute="top" constant="20" id="yS9-D5-CyN"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="uZE-qL-7ZH"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="firstColor">
