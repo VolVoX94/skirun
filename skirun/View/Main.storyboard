@@ -511,8 +511,6 @@
                                 <connections>
                                     <action selector="enddateEditing:" destination="DiL-V7-qlv" eventType="editingDidBegin" id="Ild-a4-xYH"/>
                                     <action selector="enddateEditing:" destination="DiL-V7-qlv" eventType="touchDragInside" id="bHd-mn-c5J"/>
-                                    <action selector="enddateEditingEnd:" destination="DiL-V7-qlv" eventType="editingDidEnd" id="WAA-j2-Le5"/>
-                                    <action selector="enddateEditingEnd:" destination="DiL-V7-qlv" eventType="touchDragOutside" id="i5V-5u-ITN"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ref API..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JhP-0g-fIi">
@@ -542,7 +540,6 @@
                                 <connections>
                                     <action selector="enddateEditing:" destination="DiL-V7-qlv" eventType="touchDragInside" id="67b-eI-SJg"/>
                                     <action selector="startdateEditing:" destination="DiL-V7-qlv" eventType="editingDidBegin" id="DoF-er-lFQ"/>
-                                    <action selector="startdateEditingEnd:" destination="DiL-V7-qlv" eventType="editingDidEnd" id="f9W-hu-Pgs"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Title..." textAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="M1a-B7-wst" userLabel="Title Competition">
