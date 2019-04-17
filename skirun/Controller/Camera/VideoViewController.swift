@@ -17,9 +17,9 @@ import Firebase
 class VideoViewController: UIViewController{
 
     var bipNumber:Int = 0
-    var currentCompetition: String! = ""
-    var currentDiscipline: String! = ""
-    var currentMission: String! = ""
+    var currentCompetition: String = ""
+    var currentDiscipline: String = ""
+    var currentMission: String = ""
     var currentMissionObject: Mission!
     
     @IBOutlet weak var missionDescription: UITextView!
@@ -164,7 +164,7 @@ extension VideoViewController: UIImagePickerControllerDelegate, UINavigationCont
                     //Date
                     let date = Date()
                     
-                    let uploadVideoReference = self.storageReference.child("\(self.currentCompetition!)_\(self.currentDiscipline!)_\(self.currentMission!)_\(self.bipNumber)_\(dateFormatter.string(from: date)))")
+                    let uploadVideoReference = self.storageReference.child("\(self.currentCompetition)_\(self.currentDiscipline)_\(self.currentMission)_\(self.bipNumber)_\(dateFormatter.string(from: date)))")
                     let uploadTask = uploadVideoReference.putFile(from: outputURL )
                     
                     uploadTask.observe(.success, handler: { (snapshot) in

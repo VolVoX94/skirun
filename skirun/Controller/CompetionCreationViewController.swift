@@ -51,6 +51,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.fontCellSize = 20
         checkDeviceSize()
         //Used for handling constraints while displaying keyboard
@@ -137,6 +138,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
         datePicker.isHidden = true
+        self.missionTableview.isHidden = false
         constraintWithoutKeyboard()
     }
     
@@ -173,6 +175,9 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     @IBAction func startdateEditing(_ sender: UITextField) {
         startDate.inputView = UIView()
         datePicker.isHidden = false
+        self.missionTableview.isHidden = true
+        
+        
         constraintWithKeyboard()
     }
     
@@ -183,6 +188,7 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
     @IBAction func enddateEditing(_ sender: UITextField) {
         endDate.inputView = UIView()
         datePicker.isHidden = false
+        self.missionTableview.isHidden = true
         constraintWithKeyboard()
     }
     
@@ -393,6 +399,8 @@ class CompetionCreationViewController: UIViewController, UIPickerViewDelegate, U
         self.disciplinePicker.isHidden = false
         self.addButton.isEnabled = true
         datePicker.isHidden = true
+        
+        self.missionTableview.isHidden = false
         
     }
     

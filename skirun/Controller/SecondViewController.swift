@@ -143,14 +143,14 @@ class SecondViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMission"{
             let destinationController = segue.destination as! TimeKeeperViewController;
-            destinationController.currentMission = self.selectedMission;
-            destinationController.currentDiscipline = selectedDiscipline;
-            destinationController.currentCompetition = selectedCompetition;
+            destinationController.currentMission = self.selectedMission
+            destinationController.currentDiscipline = self.selectedDiscipline
+            destinationController.currentCompetition = self.selectedCompetition
         } else if segue.identifier == "toMissionController" {
-            let destinationController = segue.destination as! VideoViewController;
-            destinationController.currentMission = self.selectedMission;
-            destinationController.currentDiscipline = selectedDiscipline;
-            destinationController.currentCompetition = selectedCompetition
+            let destinationController = segue.destination as! VideoViewController
+            destinationController.currentMission = self.selectedMission ?? "NULL"
+            destinationController.currentDiscipline = selectedDiscipline ?? "NULL"
+            destinationController.currentCompetition = selectedCompetition ?? "NULL"
         }/* else if segue.identifier == "toMissionLogistics" {
             let destinationController = segue.destination as! VideoViewController;
             destinationController.currentMission = self.selectedMission;
