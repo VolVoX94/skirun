@@ -110,33 +110,114 @@ extension VideoViewController: UIImagePickerControllerDelegate, UINavigationCont
         DispatchQueue.global().async {
             semaphore.wait()
             
-            //Date formater
-            let dateFormatter = DateFormatter()
-            dateFormatter.locale = Locale(identifier: "fr_CH")
-            dateFormatter.dateFormat = "dd-MM-yyyy' 'HH:mm:ssZZZZZ"
-            //Date
-            let date = Date()
-            /*let calendar = Calendar.current
-            let day = calendar.component(.day, from: date)
-            let month = calendar.component(.month, from: date)
-            let year = calendar.component(.year, from: date)
-            let hour = calendar.component(.hour, from: date)
-            let minutes = calendar.component(.minute, from: date)
-            */
-            //let newDate = dateFormatter.date(from: dateFormatter.string(from: date))
+            let asset = AVURLAsset(url: url)
             
-            let uploadVideoReference = self.storageReference.child("\(self.currentCompetition!)_\(self.currentDiscipline!)_\(self.currentMission!)_\(self.bipNumber)_\(dateFormatter.string(from: date)))")
-            let uploadTask = uploadVideoReference.putFile(from: url)
+            let length = Float(asset.duration.value) / Float(asset.duration.timescale)
             
-            uploadTask.observe(.success, handler: { (snapshot) in
-                let title = (snapshot.error == nil) ? "Success" : "Error"
-                let message = (snapshot.error == nil) ? "Video was saved" : "Error! Video failed to save"
+            var newStart = length - 20.0
+            var newDuration = 20.0
+            
+            if newStart < 0 {
+                newStart = 0
+                newDuration = Float64(length)
+            }
+            
+            print("---lenght---", length)
+            print("---nStart---", newStart)
+
+            
+            let fileManager = FileManager.default
+            
+            guard let documentDirectory = try? fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true) else { return }
+            
+            
+            var outputURL = documentDirectory.appendingPathComponent("output")
+            do {
+                try fileManager.createDirectory(at: outputURL, withIntermediateDirectories: true, attributes: nil)
                 
-                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            })
-            uploadTask.resume()
+                outputURL = outputURL.appendingPathComponent("newfile.mp4")
+            }catch let error {
+                print(error)
+            }
+            
+            //Remove previous existing file
+            _ = try? fileManager.removeItem(at: outputURL)
+            
+            guard let exportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetHighestQuality) else {return}
+            
+            exportSession.outputURL = outputURL
+            exportSession.outputFileType = AVFileType.mp4
+            exportSession.shouldOptimizeForNetworkUse = true
+            let start = CMTimeMakeWithSeconds(Float64(newStart), preferredTimescale: 600)
+            let duration = CMTimeMakeWithSeconds(newDuration, preferredTimescale: 600)
+            let range = CMTimeRangeMake(start: start, duration: duration)
+
+            exportSession.timeRange = range
+            exportSession.exportAsynchronously {
+                switch(exportSession.status) {
+                case .completed:
+                    print("------complete")
+                    //Date formater
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.locale = Locale(identifier: "fr_CH")
+                    dateFormatter.dateFormat = "dd-MM-yyyy' 'HH:mm:ssZZZZZ"
+                    //Date
+                    let date = Date()
+                    
+                    let uploadVideoReference = self.storageReference.child("\(self.currentCompetition!)_\(self.currentDiscipline!)_\(self.currentMission!)_\(self.bipNumber)_\(dateFormatter.string(from: date)))")
+                    let uploadTask = uploadVideoReference.putFile(from: outputURL )
+                    
+                    uploadTask.observe(.success, handler: { (snapshot) in
+                        let title = (snapshot.error == nil) ? "Success" : "Error"
+                        let message = (snapshot.error == nil) ? "Video was saved" : "Error! Video failed to save"
+                        
+                        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    })
+                    uploadTask.resume()
+                    
+                    break
+                case .failed:
+                    break
+                case .cancelled:
+                    break
+                //
+                default:
+                    break
+                }
+            }
+            
+            /*
+             //Date formater
+             let dateFormatter = DateFormatter()
+             dateFormatter.locale = Locale(identifier: "fr_CH")
+             dateFormatter.dateFormat = "dd-MM-yyyy' 'HH:mm:ssZZZZZ"
+             //Date
+             let date = Date()
+             /*let calendar = Calendar.current
+             let day = calendar.component(.day, from: date)
+             let month = calendar.component(.month, from: date)
+             let year = calendar.component(.year, from: date)
+             let hour = calendar.component(.hour, from: date)
+             let minutes = calendar.component(.minute, from: date)
+             */
+             //let newDate = dateFormatter.date(from: dateFormatter.string(from: date))
+             
+             let uploadVideoReference = self.storageReference.child("\(self.currentCompetition!)_\(self.currentDiscipline!)_\(self.currentMission!)_\(self.bipNumber)_\(dateFormatter.string(from: date)))")
+             let uploadTask = uploadVideoReference.putFile(from: url)
+             
+             uploadTask.observe(.success, handler: { (snapshot) in
+             let title = (snapshot.error == nil) ? "Success" : "Error"
+             let message = (snapshot.error == nil) ? "Video was saved" : "Error! Video failed to save"
+             
+             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
+             self.present(alert, animated: true, completion: nil)
+             })
+             uploadTask.resume()
+             */
+
             semaphore.signal()
         }
         
