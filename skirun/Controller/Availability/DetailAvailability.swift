@@ -7,7 +7,7 @@
 //
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-         1. Declared Variables
+         1. Attributes
          2. PICKERVIEW
          3. BUTTONS
          4. TABLE VIEW - MISSIONS
@@ -26,7 +26,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
 
     
    
-    //1------- DECLARED VARIABLES
+    //1------- Attributes
     private var data:[Competition] = []
     public var name:String?
     public var date:String?
@@ -41,18 +41,16 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
     private var alreadySubscribedMissions: [String] = []
     private var fontSizeCell:CGFloat?
     
+    //Frontend elements
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var myWaitAnimation: UIActivityIndicatorView!
-    
     @IBOutlet weak var myCompetitionName: UILabel!
-    
     @IBOutlet weak var myStartDateLabel: UILabel!
-        
     @IBOutlet weak var myPicker: UIPickerView!
-    
     @IBOutlet weak var chooseMisLabel: UILabel!
     @IBOutlet weak var chooseDiscLabel: UILabel!
+    
+    //Constructor
     override func viewDidLoad() {
             super.viewDidLoad()
             self.fontSizeCell = 20
@@ -67,6 +65,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
             loadDisciplineData()
         }
     
+    //Method to rearange elements when u are using small devices like iphoneSE
     func checkDeviceSize(){
         let screenSize: CGRect = UIScreen.main.bounds
         let screenHeight = screenSize.height
@@ -252,6 +251,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    //Load data of discipline to display the list with its information
     func loadDisciplineData(){
         FirebaseManager.getDisciplinesOfCompetition(name: self.name!) { (pickerData) in
             self.pickerData = Array(pickerData)
@@ -259,6 +259,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    //Load competition
     func loadCompetitionData(){
         FirebaseManager.getCompetiton(name: self.name! , completion: { (data) in
             self.myCompetition = data
@@ -266,6 +267,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
         })
     }
     
+    //Save subscriber when selected
     func saveSubscriber(mission:String){
         FirebaseManager.saveSubscribersToMission(uidUser: (Auth.auth().currentUser?.uid)!,
                                                  nameMission: mission,
@@ -273,6 +275,7 @@ class DetailAvailability: UIViewController, UITableViewDataSource, UITableViewDe
                                                  nameCompetition: (self.myCompetition!.name))
     }
     
+    //Delete a subscriber when deselected
     func deleteSubscriber(mission:String){
         FirebaseManager.deleteSubscriber(uidUser: (Auth.auth().currentUser?.uid)!,
                                                  nameMission: mission,

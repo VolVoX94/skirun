@@ -16,28 +16,33 @@ class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
     var password: String?;
     var admin: Bool = false;
     var myUser:User?;
-    @IBOutlet weak var myMiddleBottomGap: NSLayoutConstraint!
     
+    //Frontend elements relations
+    //Constraints for gaps between elements
+    @IBOutlet weak var myMiddleBottomGap: NSLayoutConstraint!
     @IBOutlet weak var myAdminGap: NSLayoutConstraint!
     @IBOutlet weak var myMiddleTopGap: NSLayoutConstraint!
     @IBOutlet weak var myFourthField_Height: NSLayoutConstraint!
     @IBOutlet weak var myThirdField_Height: NSLayoutConstraint!
-
     @IBOutlet weak var mySecondField_Height: NSLayoutConstraint!
-    
     @IBOutlet weak var myFirstField_Height: NSLayoutConstraint!
     @IBOutlet weak var myUpperGapSpace: NSLayoutConstraint!
     @IBOutlet weak var myMiddleGapSpace: NSLayoutConstraint!
     @IBOutlet weak var myGapSpace: NSLayoutConstraint!
     @IBOutlet weak var myKeyboardSafeSpace: NSLayoutConstraint!
+    @IBOutlet weak var myTitleTopConstraint: NSLayoutConstraint!
+    
+    //Text elements
     @IBOutlet weak var fnameField: UITextField!
     @IBOutlet weak var lnameField: UITextField!
     @IBOutlet weak var phonefield: UITextField!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var adminCheckNumber: UITextField!
     
-    @IBOutlet weak var myTitleTopConstraint: NSLayoutConstraint!
+    //Button
     @IBOutlet weak var adminTest: UIButton!
+    
+    //Constructor
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,6 +62,7 @@ class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
         self.phonefield.delegate = self
     }
     
+    //When keyboard is activated - frontend will change to following attributes:
     @objc func keyBoardWillShow(notification:Notification){
         print("Up")
         if let userInfo = notification.userInfo as? Dictionary<String, AnyObject>{
@@ -92,6 +98,7 @@ class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    //When keyboard is deactivated - frontend will have to following default attributes:
     @objc func keyBoardWillHide(notification:Notification){
         print("Up")
         self.myGapSpace.constant = 25
@@ -111,6 +118,7 @@ class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
         })
     }
     
+    //When you click somewhere keyboard will disappear
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -122,7 +130,7 @@ class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    
+    //Function for checking keynumber
     @IBAction func adminTestFunc(_ sender: Any) {
         if(adminCheckNumber.text != ""){
             FirebaseManager.checkAdminNumber(inputNumber: adminCheckNumber.text!) { (Bool) in
@@ -134,6 +142,8 @@ class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
             print("please insert a checknumber")
         }
     }
+    
+    //Switch element for registering as an administrator
     @IBAction func adminSwitch(_ sender: UISwitch) {
         if(sender.isOn == true){
             admin = true;
@@ -146,10 +156,12 @@ class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    //Back button function
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    //Function when you click on register button
     @IBAction func registerButton(_ sender: Any) {
         var wrongInput = false;
         
@@ -220,6 +232,7 @@ class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    //Function to create a user
     func createAndAutheticateUser(wrongInput:Bool, alertBox:UIAlertController){
         if(wrongInput == false){
             //Create the user
@@ -260,6 +273,7 @@ class DetailsSignupViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    //Method to write user in firebase
     func createUserInDB(uid:String){
         //3 ---- Create user in the storage
         

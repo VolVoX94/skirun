@@ -10,6 +10,7 @@ import UIKit
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
+    //Frontend element relations
     @IBOutlet weak var myThirdFieldHeight: NSLayoutConstraint!
     @IBOutlet weak var mySecondFieldHeight: NSLayoutConstraint!
     @IBOutlet weak var myFieldHeight: NSLayoutConstraint!
@@ -23,6 +24,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var repeatPwField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
     
+    //Constructor
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,6 +42,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    //When keyboard is activated - frontend will change to following attributes:
     @objc func keyBoardWillShow(notification:Notification){
         print("Up")
         if let userInfo = notification.userInfo as? Dictionary<String, AnyObject>{
@@ -67,6 +70,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    //When keyboard is deactivated - frontend will have to following default attributes:
     @objc func keyBoardWillHide(notification:Notification){
         print("Up")
         
@@ -88,6 +92,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             self.dismiss(animated: true, completion: nil)
     }
     
+    //When you click somewhere keyboard will disappear
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -163,7 +168,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         return emailTest.evaluate(with: testStr)
     }
     
-    
+    //Prepare opening of next screen, automatically called when performSegue is called (nextButton)
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let email = emailField.text;
         let password = passwordField.text;

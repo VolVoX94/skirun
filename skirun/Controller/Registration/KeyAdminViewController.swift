@@ -10,25 +10,27 @@ import UIKit
 
 class KeyAdminViewController: UIViewController {
     
+    //Frontend element relations
     //Constraints
     @IBOutlet weak var TitleToDescription_Gap: NSLayoutConstraint!
     @IBOutlet weak var DescriptionToDateOne_Gap: NSLayoutConstraint!
     @IBOutlet weak var DateOneToTwo_Gap: NSLayoutConstraint!
     @IBOutlet weak var BottomToButton_Gap: NSLayoutConstraint!
-    
     @IBOutlet weak var DateOneToLastKeyText_Gap: NSLayoutConstraint!
+    
+    //Label and Button
+    @IBOutlet weak var myDateLabel: UILabel!
+    @IBOutlet weak var myBackButton: UIButton!
+    @IBOutlet weak var myLastUpdateLabel: UILabel!
+    
+    //Attributes
     private var currentMonthName:String?
     private var nextMonthName:String?
     private var currentMonthNumber:String?
     private var nextMonthNumber:String?
     private var lastUpdated:String?
     
-    @IBOutlet weak var myDateLabel: UILabel!
-    
-    @IBOutlet weak var myBackButton: UIButton!
-    
-    @IBOutlet weak var myLastUpdateLabel: UILabel!
-    
+    //Constructor
     override func viewDidLoad() {
         super.viewDidLoad()
         checkDeviceSize()
@@ -37,6 +39,7 @@ class KeyAdminViewController: UIViewController {
         self.myDateLabel.text = self.nextMonthName
     }
     
+    //Important to rearange elements when you use a small device like iphone SE
     func checkDeviceSize(){
         let screenSize: CGRect = UIScreen.main.bounds
         let screenHeight = screenSize.height
@@ -51,7 +54,7 @@ class KeyAdminViewController: UIViewController {
         }
     }
     
-    
+    //method to get information about the date
     func getMonth(){
         let monthsToAdd = 1
         let now = Date()
@@ -69,10 +72,13 @@ class KeyAdminViewController: UIViewController {
         self.nextMonthNumber = dateNameFormatter.string(from: futureDate!)
     }
     
+    
+    //FUnction to create a new key manually
     @IBAction func generateKeyButtonFunc(_ sender: Any) {
         generateKey(inputDate: self.currentMonthNumber!)
     }
     
+    //Method to check if a new key is necessary
     public func generateKey(inputDate:String){
         var uuid = UUID().uuidString
         uuid = String(uuid.prefix(8)) // Hello
@@ -94,7 +100,7 @@ class KeyAdminViewController: UIViewController {
         }
     }
     
-    
+    //Main method to generate a new key in firebase
     public func automaticKeyGeneration(currentMonth:String){
         FirebaseManager.isNewKeyNeeded(inputDate: currentMonth) { (Bool) in
             if(Bool == true){
@@ -103,7 +109,7 @@ class KeyAdminViewController: UIViewController {
         }
     }
     
-    
+    //Back button function
     @IBAction func myBackButtonFunc(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)
     }

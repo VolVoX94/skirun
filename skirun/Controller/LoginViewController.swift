@@ -11,20 +11,22 @@ import Firebase
 
 class LoginViewController: UIViewController,  UITextFieldDelegate {
 
-    
+    //Frontend element relations
+    //Constraints
     @IBOutlet weak var myRegisterToSubmit_Gap: NSLayoutConstraint!
     @IBOutlet weak var myTopTitelToTop_Gap: NSLayoutConstraint!
     @IBOutlet weak var myRegisterToBottom_Gap: NSLayoutConstraint!
     @IBOutlet weak var myLoginToTopTitle_Gap: NSLayoutConstraint!
-    @IBOutlet weak var emailField: UITextField!
     
+    //Textfield elements
+    @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
+    //Button
     @IBOutlet weak var loginButton: UIButton!
-    
     @IBOutlet weak var registerButton: UIButton!
     
-    
+    //Constructor
     override func viewDidLoad() {
         super.viewDidLoad()
         designTextField()
@@ -46,6 +48,7 @@ class LoginViewController: UIViewController,  UITextFieldDelegate {
         
     }
     
+    //When keyboard is activated - frontend will change to following attributes:
     @objc func keyBoardWillShow(notification:Notification){
         print("Up")
         if let userInfo = notification.userInfo as? Dictionary<String, AnyObject>{
@@ -72,6 +75,7 @@ class LoginViewController: UIViewController,  UITextFieldDelegate {
         }
     }
     
+    //When keyboard is deactivated - frontend will have to following default attributes:
     @objc func keyBoardWillHide(notification:Notification){
         print("Up")
         
@@ -84,7 +88,7 @@ class LoginViewController: UIViewController,  UITextFieldDelegate {
         })
     }
     
-    
+    //When you click somewhere keyboard will disappear
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -96,6 +100,7 @@ class LoginViewController: UIViewController,  UITextFieldDelegate {
         return true
     }
     
+    //Main method to login when click on button login
     @IBAction func loginAction(_ sender: Any) {
         Auth.auth().signIn(withEmail: emailField.text!, password: passwordField.text!) { (user, error) in
             if error == nil{
