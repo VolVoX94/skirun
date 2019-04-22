@@ -37,4 +37,58 @@ class LoginTests: XCTestCase {
             })
         })
     }
+    
+    
+    //Email Regex
+    func test_RegisterEmail_WrongEmailNo_Fail(){
+        let testStr = "abcdefgh.ch"
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        XCTAssertFalse(emailTest.evaluate(with: testStr))
+    }
+    
+    func test_RegisterEmail_CorrectEmail_True(){
+        let testStr = "abcd@efgh.ch"
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        XCTAssertTrue(emailTest.evaluate(with: testStr))
+    }
+    
+    //Name Regex
+    func test_RegisterName_WrongNameInput_Fail(){
+        let testStr = "VolVoX1994"
+        let nameRegEx = "[A-Za-z]{4,20}"
+        
+        let nameTest = NSPredicate(format:"SELF MATCHES %@", nameRegEx)
+         XCTAssertFalse(nameTest.evaluate(with: testStr))
+    }
+    
+    func test_RegisterName_CorrectNameInput_True(){
+        let testStr = "Hans"
+        let nameRegEx = "[A-Za-z]{4,20}"
+        
+        let nameTest = NSPredicate(format:"SELF MATCHES %@", nameRegEx)
+        XCTAssertTrue(nameTest.evaluate(with: testStr))
+    }
+
+    
+    //Phone Regex
+    func test_RegisterPhone_WrongPhoneInput_Fail(){
+        let testStr = "+41882123A"
+        let phoneRegEx = "([+]?)[0-9]{9,20}"
+        
+        let phoneTest = NSPredicate(format:"SELF MATCHES %@", phoneRegEx)
+         XCTAssertFalse(phoneTest.evaluate(with: testStr))
+    }
+    
+    func test_RegisterPhone_CorrectPhoneInput_True(){
+        let testStr = "+41794567890"
+        let phoneRegEx = "([+]?)[0-9]{9,20}"
+        
+        let phoneTest = NSPredicate(format:"SELF MATCHES %@", phoneRegEx)
+        XCTAssertTrue(phoneTest.evaluate(with: testStr))
+    }
+    
 }
