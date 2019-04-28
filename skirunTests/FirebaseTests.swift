@@ -77,6 +77,21 @@ class FirebaseTests: XCTestCase {
         }
     }
     
+    // Get the job preference of the user
+    // can be empty or not
+    func test_getJobPreferenceOfUser() {
+        
+        // call firebase
+        FirebaseManager.getJobsFromUser(uidUser: (Auth.auth().currentUser?.uid)!) { (data) in
+            
+            // if empty
+            if (data.isEmpty){
+                XCTAssertNil(data)
+            } else {
+                // if not empty
+                XCTAssertNotNil(data)
+            }
+        }
+    }
     
-
 }

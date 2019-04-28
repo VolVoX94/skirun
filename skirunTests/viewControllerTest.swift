@@ -22,8 +22,6 @@ class viewControllerTest: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
         super.setUp()
-        
-        
        
     }
     
@@ -59,7 +57,7 @@ class viewControllerTest: XCTestCase {
         let tableview = mission.TableViewMission
         
         // Table view should be nil
-        XCTAssertNil(tableview, "TableviewMission empty when loading view controller role")
+        XCTAssertNil(tableview, "TableviewMission empty when loading view controller mission")
         
     }
     
