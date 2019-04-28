@@ -76,7 +76,4 @@ class FirebaseTests: XCTestCase {
             XCTAssertEqual(sampleData.count, 0)
         }
     }
-    
-    
-
 }
