@@ -41,6 +41,7 @@
 		CE11914F2237C07900EE325C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE11914E2237C07900EE325C /* SettingsViewController.swift */; };
 		CE1191532237C27900EE325C /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1191522237C27900EE325C /* LoginTests.swift */; };
 		CE1191582237DB8100EE325C /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE11915A2237DB8100EE325C /* Login.storyboard */; };
+		CE27392222763EE50089DDE5 /* ResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE27392122763EE50089DDE5 /* ResultTests.swift */; };
 		CE2C1F46222D684500D4A491 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE2C1F45222D684500D4A491 /* GoogleService-Info.plist */; };
 		CE42A18622369D56000CBE46 /* DetailsSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42A18522369D56000CBE46 /* DetailsSignupViewController.swift */; };
 		CE7C823C222682F500FA4B3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C823B222682F500FA4B3B /* AppDelegate.swift */; };
@@ -113,6 +114,7 @@
 		CE1191592237DB8100EE325C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		CE11915C2237DB8D00EE325C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Login.strings; sourceTree = "<group>"; };
 		CE11915E2237DB8E00EE325C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Login.strings; sourceTree = "<group>"; };
+		CE27392122763EE50089DDE5 /* ResultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTests.swift; sourceTree = "<group>"; };
 		CE2C1F45222D684500D4A491 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE42A18522369D56000CBE46 /* DetailsSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsSignupViewController.swift; sourceTree = "<group>"; };
 		CE7C8238222682F500FA4B3B /* skirun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = skirun.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -312,6 +314,7 @@
 				8424E3A4225CB400000902B4 /* FirebaseTests.swift */,
 				8424E3A6225CBD98000902B4 /* KeyManagementTest.swift */,
 				EB74E917226614C800B7AD8A /* viewControllerTest.swift */,
+				CE27392122763EE50089DDE5 /* ResultTests.swift */,
 			);
 			path = skirunTests;
 			sourceTree = "<group>";
@@ -611,6 +614,7 @@
 				8424E3A5225CB400000902B4 /* FirebaseTests.swift in Sources */,
 				8424E3A7225CBD98000902B4 /* KeyManagementTest.swift in Sources */,
 				EB74E918226614C800B7AD8A /* viewControllerTest.swift in Sources */,
+				CE27392222763EE50089DDE5 /* ResultTests.swift in Sources */,
 				CE1191532237C27900EE325C /* LoginTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

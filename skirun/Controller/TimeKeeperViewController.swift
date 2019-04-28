@@ -69,7 +69,7 @@ class TimeKeeperViewController: UIViewController {
         self.textMission.text = currentMissionObject.description
         
         if(typeJob == "TimeKeeper - time"){
-            self.resultLabel.text = "Distance"
+            self.resultLabel.text = "Time"
             self.unitResult = "Min, sec"
         }
         
