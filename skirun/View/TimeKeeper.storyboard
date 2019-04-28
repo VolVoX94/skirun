@@ -13,8 +13,8 @@
         <!--Time Keeper View Controller-->
         <scene sceneID="mnx-DR-RjB">
             <objects>
-                <viewController id="Ut1-35-9MO" customClass="TimeKeeperViewController" customModule="skirun" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kij-wv-p36" customClass="MyGradientView" customModule="skirun" customModuleProvider="target">
+                <viewController storyboardIdentifier="keeperStoryBoard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ut1-35-9MO" customClass="TimeKeeperViewController" customModule="skirun" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="keeperStoryBoard" id="kij-wv-p36" customClass="MyGradientView" customModule="skirun" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
