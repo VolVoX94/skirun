@@ -21,9 +21,10 @@ class ResultTests: XCTestCase {
         
         // create storyboard
         let storyboard = UIStoryboard(name: "TimeKeeper", bundle: nil)
-        
         // instantiate view controller
         let result = storyboard.instantiateViewController(withIdentifier: "keeperStoryBoard") as! TimeKeeperViewController
+        result.loadView()
+        result.currentMissionObject = Mission (title: "NULL", description: "NULL", startTime: 0, endTime: 0, nbPeople: 0, location: "NULL", jobs: "NULL")
         
         result.loadTypeJob(typeJob: "TimeKeeper - time")
         
@@ -37,9 +38,10 @@ class ResultTests: XCTestCase {
         
         // create storyboard
         let storyboard = UIStoryboard(name: "TimeKeeper", bundle: nil)
-        
         // instantiate view controller
         let result = storyboard.instantiateViewController(withIdentifier: "keeperStoryBoard") as! TimeKeeperViewController
+        result.loadView()
+        result.currentMissionObject = Mission (title: "NULL", description: "NULL", startTime: 0, endTime: 0, nbPeople: 0, location: "NULL", jobs: "NULL")
         
         result.loadTypeJob(typeJob: "TimeKeeper - distance")
         
@@ -53,9 +55,10 @@ class ResultTests: XCTestCase {
         
         // create storyboard
         let storyboard = UIStoryboard(name: "TimeKeeper", bundle: nil)
-        
         // instantiate view controller
         let result = storyboard.instantiateViewController(withIdentifier: "keeperStoryBoard") as! TimeKeeperViewController
+        result.loadView()
+        result.currentMissionObject = Mission (title: "NULL", description: "NULL", startTime: 0, endTime: 0, nbPeople: 0, location: "NULL", jobs: "NULL")
         
         result.loadTypeJob(typeJob: "TimeKeeper - vitesse")
         
@@ -68,9 +71,10 @@ class ResultTests: XCTestCase {
         
         // create storyboard
         let storyboard = UIStoryboard(name: "TimeKeeper", bundle: nil)
-        
         // instantiate view controller
         let result = storyboard.instantiateViewController(withIdentifier: "keeperStoryBoard") as! TimeKeeperViewController
+        result.loadView()
+        result.currentMissionObject = Mission (title: "NULL", description: "NULL", startTime: 0, endTime: 0, nbPeople: 0, location: "NULL", jobs: "NULL")
         
         result.loadTypeJob(typeJob: "Door Controller")
         
@@ -87,9 +91,10 @@ class ResultTests: XCTestCase {
         
         // create storyboard
         let storyboard = UIStoryboard(name: "TimeKeeper", bundle: nil)
-        
         // instantiate view controller
         let result = storyboard.instantiateViewController(withIdentifier: "keeperStoryBoard") as! TimeKeeperViewController
+        result.loadView()
+        result.currentMissionObject = Mission (title: "NULL", description: "NULL", startTime: 0, endTime: 0, nbPeople: 0, location: "NULL", jobs: "NULL")
         
         result.loadTypeJob(typeJob: "Logistics")
         
